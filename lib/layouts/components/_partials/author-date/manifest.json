@@ -1,0 +1,7 @@
+{
+  "name": "author-date",
+  "type": "_partials",
+  "styles": ["author-date.css"],
+  "scripts": [],
+  "dependencies": []
+}

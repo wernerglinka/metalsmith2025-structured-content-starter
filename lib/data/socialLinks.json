@@ -1,0 +1,57 @@
+[
+  {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/werner-glinka/",
+    "icon": "linkedin"
+  },
+  {
+    "name": "GitHub",
+    "url": "https://github.com/",
+    "icon": "github"
+  },
+  {
+    "name": "Twitter",
+    "url": "https://twitter.com/",
+    "icon": "twitter"
+  },
+  {
+    "name": "Behance",
+    "url": "https://www.behance.net/",
+    "icon": "behance"
+  },
+  {
+    "name": "Bluesky",
+    "url": "https://bluesky.com/",
+    "icon": "bluesky"
+  },
+  {
+    "name": "Substack",
+    "url": "https://substack.com/",
+    "icon": "substack"
+  },
+  {
+    "name": "Facebook",
+    "url": "https://www.facebook.com/",
+    "icon": "facebook"
+  },
+  {
+    "name": "Instagram",
+    "url": "https://www.instagram.com/",
+    "icon": "instagram"
+  },
+  {
+    "name": "YouTube",
+    "url": "https://www.youtube.com/",
+    "icon": "youtube"
+  },
+  {
+    "name": "Dribbble",
+    "url": "https://dribbble.com/",
+    "icon": "dribbble"
+  },
+  {
+    "name": "email",
+    "url": "mailto:you@email.com",
+    "icon": "mail"
+  }
+]

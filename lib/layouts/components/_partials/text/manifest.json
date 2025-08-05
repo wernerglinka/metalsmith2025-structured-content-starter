@@ -1,0 +1,7 @@
+{
+  "name": "text",
+  "type": "_partials",
+  "styles": ["text.css"],
+  "scripts": [],
+  "dependencies": []
+}

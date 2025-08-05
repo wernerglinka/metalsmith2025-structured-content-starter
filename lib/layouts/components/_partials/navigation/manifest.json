@@ -1,0 +1,7 @@
+{
+  "name": "navigation",
+  "type": "_partials",
+  "styles": ["navigation.css"],
+  "scripts": ["navigation.js"],
+  "dependencies": []
+}

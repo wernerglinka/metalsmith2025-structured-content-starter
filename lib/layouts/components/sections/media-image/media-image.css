@@ -1,0 +1,24 @@
+/* Overwrite threashold default for the banner content container */
+.section-wrapper .media-image.content {
+  --threshold: 50rem;
+
+  column-gap: 0;
+
+  .text {
+    background-color: var(--glass-background);
+    box-shadow: var(--glass-box-shadow);
+    backdrop-filter: var(--glass-backdrop-filter);
+    border: var(--glass-border);
+    border-radius: var(--glass-border-radius);
+    padding: var(--space-s-l);
+    overflow: hidden;
+    position: relative;
+    top: var(--space-s-m);
+    left: -1rem;
+  }
+
+  .image {
+    overflow: hidden;
+    border-radius: var(--glass-border-radius);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "breadcrumbs",
+  "type": "_partials",
+  "styles": ["breadcrumbs.css"],
+  "scripts": [],
+  "dependencies": []
+}

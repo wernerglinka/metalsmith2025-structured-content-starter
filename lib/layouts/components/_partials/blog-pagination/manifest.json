@@ -1,0 +1,7 @@
+{
+  "name": "blog-pagination",
+  "type": "_partials",
+  "styles": ["blog-pagination.css"],
+  "scripts": [],
+  "dependencies": []
+}

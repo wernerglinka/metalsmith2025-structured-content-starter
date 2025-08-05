@@ -1,0 +1,20 @@
+/**
+ * Footer
+ */
+footer {
+  background: var(--color-dark-background);
+  padding: var(--space-s-l);
+  color: #fff;
+  margin-top: auto; /* Push footer to bottom */
+  box-shadow: 0 -2px 4px var(--color-shadow);
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+    transition: opacity var(--transition-fade);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

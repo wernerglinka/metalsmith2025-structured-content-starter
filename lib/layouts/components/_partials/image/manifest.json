@@ -1,0 +1,7 @@
+{
+  "name": "image",
+  "type": "_partials",
+  "styles": ["image.css"],
+  "scripts": [],
+  "dependencies": []
+}

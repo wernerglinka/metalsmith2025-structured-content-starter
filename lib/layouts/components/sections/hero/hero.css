@@ -1,0 +1,75 @@
+.section-wrapper.first-section .hero {
+  /*
+    The text container should be 100% of the viewport width at 600px and smaller.
+    At 600px and larger, the text container should grow to 60% of the viewport width.
+    In this case 600px is about the point where the text starts to get too wide to read comfortably.
+    - Below 600px: calc((100vw - 600px) * 2) is negative, clamps to 0px, giving us 100% - 0px = 100%
+    - Above 600px: The calculation becomes positive and grows, making the width shrink from 100%
+    - The * N multiplier controls how fast the width shrinks
+    - It caps at 40% reduction (so minimum 60% width)
+
+    --hero-text-width: calc(100% - clamp(0px, calc((100vw - 600px) * N), 40%))
+  */
+  --hero-text-width: calc(100% - clamp(0px, calc((100vw - 600px) * 2), 40%));
+  .background-image {
+    background-size: cover;
+  }
+
+  .text {
+    width: var(--hero-text-width);
+    padding: var(--space-s-l);
+
+    border-radius: var(--space-2xs-xs);
+    overflow: hidden;
+  }
+
+  .full-screen {
+    position: absolute;
+    bottom: 2rem;
+    left: 55%;
+    transform: translateX(-50%);
+    border: none;
+    width: 2.6rem;
+    height: 2.6rem;
+    padding: 0.3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      stroke-width: 1px;
+    }
+
+    &:hover {
+      svg {
+        stroke-width: 2px;
+      }
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  /* Screen reader only text */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &.is-reverse .text {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "metalsmith2025-structured-content-starter",
+  "version": "0.0.1",
+  "description": "A component-based, structured content starter for Metalsmith 2025",
+  "type": "module",
+  "keywords": [
+    "metalsmith",
+    "starter",
+    "components",
+    "structured-content",
+    "static-site-generator"
+  ],
+  "author": "werner@glinka.co",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wernerglinka/metalsmith2025-structured-content-starter.git"
+  },
+  "scripts": {
+    "dev": "metalsmith -c metalsmith.js --env NODE_ENV=development --env DEBUG=@metalsmith*",
+    "build": "metalsmith -c metalsmith.js --env NODE_ENV=production",
+    "start": "NODE_ENV=development DEBUG=@metalsmith* node metalsmith.js --watch",
+    "serve": "browser-sync start --server 'build'",
+    "format": "prettier --write \"**/*.{js,json,njk,css}\"",
+    "lint": "eslint --fix .",
+    "fix": "npm run format && npm run lint",
+    "test": "mocha 'test/**/*.test.js' --timeout 30000",
+    "depcheck": "depcheck",
+    "release": "./scripts/release.sh",
+    "release:patch": "./scripts/release.sh patch",
+    "release:minor": "./scripts/release.sh minor",
+    "release:major": "./scripts/release.sh major"
+  },
+  "devDependencies": {
+    "auto-changelog": "^2.5.0",
+    "browser-sync": "^3.0.4",
+    "eslint": "^9.32.0",
+    "gray-matter": "^4.0.3",
+    "mocha": "^11.7.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-jinja-template": "^2.1.0",
+    "release-it": "^19.0.4"
+  },
+  "dependencies": {
+    "@metalsmith/collections": "^1.3.1",
+    "@metalsmith/drafts": "^1.3.0",
+    "@metalsmith/layouts": "^3.0.0",
+    "@metalsmith/permalinks": "^3.2.0",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.0",
+    "depcheck": "^1.4.7",
+    "jstransformer-nunjucks": "^1.2.0",
+    "marked": "^16.1.2",
+    "metalsmith": "^2.6.3",
+    "metalsmith-blog-lists": "^2.1.0",
+    "metalsmith-bundled-components": "^0.2.0",
+    "metalsmith-menu-plus": "^0.2.0",
+    "metalsmith-optimize-html": "^0.7.0",
+    "metalsmith-prism": "^5.0.5",
+    "metalsmith-safe-links": "^1.5.5",
+    "metalsmith-sectioned-blog-pagination": "^1.1.0",
+    "metalsmith-simple-pagination": "^0.1.0",
+    "metalsmith-sitemap": "^1.2.2",
+    "metalsmith-static-files": "^1.2.1",
+    "metalsmith-unified-markdown": "^0.0.4",
+    "postcss": "^8.5.6",
+    "rehype-highlight": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

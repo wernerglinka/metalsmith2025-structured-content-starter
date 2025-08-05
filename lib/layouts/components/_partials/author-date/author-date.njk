@@ -1,0 +1,8 @@
+{# Author/Date macro may render infor for blog posts and wherever else #} {% macro authorDate(info) %} {% if info.author
+%} {% if info.author | isArray %} {% set authors = info.author %}
+<span class="author"> {% for author in authors %} {{ author }}{% if not loop.last %}, {% endif %} {% endfor %} </span>
+{% else %}
+<span class="author"> {{ info.author }} </span>
+{% endif %} {% endif %} {% if info.date %}
+<time datetime="{{ info.date }}"> {{ info.date | blogDate }} </time>
+{% endif %} {% endmacro %}

@@ -1,0 +1,87 @@
+---
+layout: pages/sections.njk
+bodyClass: ""
+
+navigation:
+  navLabel: 'Blog'
+  navIndex: 3
+
+seo:
+  title: My Blog
+  description: "My blog posts"
+  socialImage: "/assets/images/metalsmith-starter-social.png"
+  canonicalOverwrite: ""
+
+sections:
+  - sectionType: hero
+    containerTag: section
+    classes: "first-section"
+    id: ""
+    description: "This is a blog post hero section. The hero section has a class of 'blog-hero'."
+    isDisabled: false
+    isFullScreen: false
+    isReverse: false
+    date: ""
+    author: ""
+    containerFields:
+      inContainer: false
+      isAnimated: true
+      noMargin:
+        top: true
+        bottom: false
+      noPadding:
+        top: false
+        bottom: false
+      background:
+        isDark: true
+        color: ""
+        image: "/assets/images/sample10.jpg"
+        imageScreen: "dark"  # light, dark, none
+    text:
+      leadIn: ""
+      title: Metalsmith 2025 Blog Example
+      titleTag: "h1"
+      subTitle: "Read on"
+      prose: "This is a blog post hero section. The hero section has a class of 'blog-hero'."
+    ctas:
+      - url: ""
+        label: ""
+        isButton: false
+        buttonStyle: "link"
+    image:
+      src: ""
+      alt: ""
+      caption: ""
+
+  - sectionType: blog-list
+    containerTag: section # section || article || aside
+    classes: ""
+    id: ""
+    description: "section with all blogposts"
+    isDisabled: false
+    isFullScreen: false
+    isReverse: false
+    containerFields:
+      inContainer: false
+      isAnimated: true
+      noMargin:
+        top: true
+        bottom: false
+      noPadding:
+        top: false
+        bottom: false
+      background:
+        isDark: true
+        color: ""
+        image: ""
+        imageScreen: "none"  # light, dark, none
+    hasPagingParams: true
+    pagingParams:
+      blockClass: ""
+      horizontal: false
+      numberOfBlogs: "" # updated by plugin
+      numberOfPages: "" # updated by plugin
+      pageLength: ""    # updated by plugin
+      pageStart: ""     # updated by plugin
+      pageNumber: ""    # updated by plugin
+---

@@ -1,0 +1,34 @@
+/* Overwrite threashold default for the banner content container */
+.section-wrapper .text-only {
+  .prose {
+    column-width: 30ch; /* Minimum column width in characters */
+    column-gap: 2rem;
+
+    max-width: clamp(45ch, 65ch, 80ch); /* Fluid reading width */
+    margin-inline: auto; /* Center the text block */
+
+    h1,
+    h2,
+    h3,
+    .sub-title {
+      column-span: all;
+      margin-bottom: var(--space-s);
+
+      & + div {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-m-l);
+
+    * {
+      margin: 0;
+    }
+  }
+}

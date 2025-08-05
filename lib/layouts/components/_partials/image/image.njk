@@ -1,0 +1,6 @@
+{# Image macro may render an image with a caption #} {% macro image(info) %}
+
+<img src="{{ info.src }}" alt="{{ info.alt }}" />
+{% if info.caption %}
+<p class="caption">{{ info.caption }}</p>
+{% endif %} {% endmacro %}

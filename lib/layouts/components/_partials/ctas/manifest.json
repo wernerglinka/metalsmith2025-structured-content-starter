@@ -1,0 +1,7 @@
+{
+  "name": "ctas",
+  "type": "_partials",
+  "styles": ["ctas.css"],
+  "scripts": [],
+  "dependencies": []
+}

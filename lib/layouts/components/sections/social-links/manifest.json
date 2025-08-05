@@ -1,0 +1,8 @@
+{
+  "name": "social-links",
+  "description": "Social links section",
+  "type": "section",
+  "styles": [],
+  "scripts": [],
+  "dependencies": ["social-link"]
+}

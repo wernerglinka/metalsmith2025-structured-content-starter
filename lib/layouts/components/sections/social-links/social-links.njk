@@ -1,0 +1,7 @@
+{% from "components/_partials/social-link/social-link.njk" import socialLink %}
+
+<div class="container social-links content">
+  <ul class="social-links">
+    {% for link in socialLinks %} {{ socialLink(link) }} {% endfor %}
+  </ul>
+</div>

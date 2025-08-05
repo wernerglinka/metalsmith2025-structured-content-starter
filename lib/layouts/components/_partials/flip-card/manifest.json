@@ -1,0 +1,7 @@
+{
+  "name": "flip-card",
+  "type": "_partials",
+  "styles": ["flip-card.css"],
+  "scripts": [],
+  "dependencies": ["ctas", "text", "image", "commons"]
+}

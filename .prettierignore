@@ -1,0 +1,19 @@
+# Build output
+build/
+
+# Node modules
+node_modules/
+
+# Package files (maintain formatting)
+package.json
+package-lock.json
+
+# Generated files
+*.min.js
+*.min.css
+
+# Template files with dynamic HTML tags (user-configurable semantic elements)
+# These break Prettier's Nunjucks parser: <{{ variable }}> syntax not supported
+# Manual formatting required - see CONTRIBUTING.md for details
+lib/layouts/components/_partials/text/text.njk
+lib/layouts/pages/sections.njk

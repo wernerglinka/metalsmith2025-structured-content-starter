@@ -1,0 +1,126 @@
+/**
+ * Hamburger menu button - hidden by default on desktop
+ */
+.hamburger-menu {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  position: relative;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-primary);
+  margin: 5px 0;
+  transition: all var(--transition-base);
+  border-radius: 2px; /* Rounded edges for the hamburger lines */
+}
+
+.hamburger-menu span:first-child {
+  margin-top: 0;
+}
+
+.hamburger-menu span:last-child {
+  margin-bottom: 0;
+}
+
+/* Hamburger to X animation when active */
+.hamburger-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/**
+ * Main menu
+ */
+.main-menu {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: var(--space-s);
+}
+
+/* Desktop menu links */
+.main-menu a {
+  padding-block-start: var(--space-xs);
+}
+
+/* Mobile menu styles */
+@media (max-width: 767px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  .main-menu {
+    display: flex; /* Always use flex layout */
+    position: absolute;
+    top: 105%;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: var(--color-background);
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 10px var(--color-shadow);
+
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5rem);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0s 0.3s;
+  }
+
+  /* Show menu when active */
+  .main-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  /* Mobile menu items */
+  .main-menu li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .main-menu li:last-child {
+    border-bottom: none;
+  }
+
+  /* Reset desktop hover effects for mobile */
+  .main-menu a:hover {
+    transform: none;
+  }
+}
+
+/**
+ * Current page highlighting
+ */
+.home .home,
+.other-page .other-page,
+.blog .blog {
+  color: var(--color-secondary) !important;
+  font-weight: bold;
+  pointer-events: none;
+  cursor: default;
+}

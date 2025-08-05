@@ -1,0 +1,9 @@
+{% from "components/_partials/branding/branding.njk" import branding %} {% from
+"components/_partials/navigation/navigation.njk" import navigation %}
+
+<header>
+  <div class="container">
+    {% set link = '/' %} {% set img = { src: '/assets/images/metalsmith2025-logo-bug.png', alt: 'Metalsmith Starter' }
+    %} {{ branding( link, img ) }} {{ navigation( mainMenu )}}
+  </div>
+</header>

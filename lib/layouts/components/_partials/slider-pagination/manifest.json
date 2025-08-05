@@ -1,0 +1,7 @@
+{
+  "name": "slider-pagination",
+  "type": "_partials",
+  "styles": ["slider-pagination.css"],
+  "scripts": [],
+  "dependencies": []
+}

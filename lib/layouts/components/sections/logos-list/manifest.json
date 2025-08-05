@@ -1,0 +1,47 @@
+{
+  "name": "logos-list",
+  "type": "section",
+  "styles": ["logos-list.css"],
+  "scripts": ["logos-list.js"],
+  "dependencies": ["commons"],
+  "validation": {
+    "required": ["sectionType"],
+    "properties": {
+      "sectionType": {
+        "type": "string",
+        "const": "logos-list"
+      },
+      "isDisabled": {
+        "type": "boolean"
+      },
+      "containerFields.inContainer": {
+        "type": "boolean"
+      },
+      "containerFields.isAnimated": {
+        "type": "boolean"
+      },
+      "containerFields.noMargin.top": {
+        "type": "boolean"
+      },
+      "containerFields.noMargin.bottom": {
+        "type": "boolean"
+      },
+      "containerFields.noPadding.top": {
+        "type": "boolean"
+      },
+      "containerFields.noPadding.bottom": {
+        "type": "boolean"
+      },
+      "containerFields.background.isDark": {
+        "type": "boolean"
+      },
+      "logos.scope": {
+        "type": "string",
+        "enum": ["all", "selections"]
+      },
+      "logos.logoWidth": {
+        "type": "number"
+      }
+    }
+  }
+}

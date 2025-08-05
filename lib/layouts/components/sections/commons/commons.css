@@ -1,0 +1,217 @@
+/**
+ * Common Styles for all sections
+ */
+
+.section-wrapper {
+  position: relative;
+  /* 
+    Default section margin 
+    Can be overwritten by declaring 
+    --section-space on the individualsection element.
+  */
+  margin-block-start: var(--section-space, var(--space-l-2xl));
+  margin-block-end: var(--section-space, var(--space-l-2xl));
+
+  /* Remove margin on first section */
+  &:first-child {
+    margin-block-start: 0;
+  }
+
+  /*
+    Default padding
+    Can be overwritten by declaring 
+    --section-padding on the individualsection element.
+  */
+  padding: var(--section-padding, var(--space-s-l));
+
+  /* remove top or bottom margin if set in the markdown file */
+  &.no-top-margin {
+    margin-block-start: 0;
+  }
+  &.no-bottom-margin {
+    margin-block-end: 0;
+  }
+
+  &.in-container {
+    max-width: var(--wrapper-max-width, 85rem);
+    margin-inline: auto;
+  }
+
+  &.is-dark {
+    color: var(--color-text-light);
+  }
+
+  /* 
+    Adjust the section height for transpartent header. Header is fixed 
+    so we need to move the section up and behind to compensate.
+  */
+  &.first-section {
+    margin-top: calc(-1 * (var(--space-2xl-3xl)));
+    padding-top: var(--space-3xl-4xl);
+  }
+
+  /* 
+    Remove bottom margin for sections that merge with the next section.
+    Add back the margin to the text container so the text is not flush 
+    with the next section.
+  */
+
+  &.merge-with-next {
+    margin-bottom: calc(-1 * var(--space-xl-2xl));
+
+    .text {
+      margin-bottom: var(--space-xl-2xl);
+    }
+  }
+
+  /*
+    Fill screen sections
+    Add padding to top to accommodate breadcrumps.
+  */
+  &.full-screen {
+    margin-top: calc(-1 * (var(--space-2xl-3xl)));
+    margin-bottom: var(--space-2xl-3xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 100vh;
+    position: relative;
+
+    .container {
+      position: static;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+  }
+
+  /*
+    Default padding
+    Can be overwritten by adding 'no-top-padding' and 'no-bottom-padding' classes to the section element.
+    These two can be set in the markdown file.
+  */
+  &.no-top-padding {
+    padding-block-start: 0;
+  }
+  &.no-bottom-padding {
+    padding-block-end: 0;
+  }
+
+  /*
+    Background image 
+  */
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  &.has-dark-screen .background-image:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-screen);
+    z-index: -2;
+  }
+
+  &.has-light-screen .background-image:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--light-screen);
+    z-index: -2;
+  }
+  /*
+    Content container
+    Responsive flex container that wraps at 60rem.
+    Inspiried by: https://every-layout.dev/layouts/switcher/
+  */
+  .content {
+    /*
+     Default threshold for all content containers. Can be overwritten by declaring --threshold in the section specific css file.
+    */
+    --threshold: 60rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: var(--content-gap, 2rem);
+    row-gap: 0;
+
+    > * {
+      flex-grow: 1;
+      flex-basis: calc((var(--threshold) - 100%) * 999);
+      align-self: stretch;
+    }
+
+    &.is-reverse {
+      flex-direction: row-reverse;
+    }
+
+    .prose {
+      max-width: 80ch;
+    }
+  }
+
+  /*
+    If section has no top padding or no bottom padding, add it to text
+    container if one exists
+  */
+  &.no-top-padding .text {
+    padding-block-start: var(--section-padding, var(--space-s-l));
+  }
+  &.no-bottom-padding .text {
+    padding-block-end: var(--section-padding, var(--space-s-l));
+  }
+}
+
+/**
+ * Utility classes
+ */
+.align-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/**
+ * Accessibility utilities
+ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary, #007acc);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+}
