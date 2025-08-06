@@ -1,6 +1,7 @@
-{% from "components/_partials/ctas/ctas.njk" import ctas %} {% from "components/_partials/text/text.njk" import text %}
-{% from "components/_partials/image/image.njk" import image %} {% from
-"components/_partials/slider-pagination/slider-pagination.njk" import sliderPagination %}
+{% from "components/_partials/ctas/ctas.njk" import ctas %}
+{% from "components/_partials/text/text.njk" import text %}
+{% from "components/_partials/image/image.njk" import image %}
+{% from "components/_partials/slider-pagination/slider-pagination.njk" import sliderPagination %}
 
 <div class="container slider {% if section.config === 'isTabs' %}is-tabs{% endif %}">
   <div
@@ -9,7 +10,9 @@
     aria-label="{% if section.text.title %}{{ section.text.title }}{% else %}Image carousel{% endif %}"
     tabindex="0"
   >
-    {% if section.config === "isTabs" %} {% set slides = section.slides %} {{ sliderPagination(slides, isTabs=true) }}
+    {% if section.config === "isTabs" %}
+      {% set slides = section.slides %}
+      {{ sliderPagination(slides, isTabs=true) }}
     {% endif %}
 
     <ul class="slides" aria-live="polite" aria-atomic="false">
@@ -20,21 +23,30 @@
         aria-label="{% if slide.text.title %}{{ slide.text.title }}{% else %}Slide {{ loop.index }} of {{ section.slides | length }}{% endif %}"
       >
         <div class="image">{{ image(slide.image)}}</div>
+
         <!-- .image -->
 
         <div class="slide-content">
           {% if slide.text %}
           <div class="text">{{ text(slide.text)}}</div>
+
           <!-- .text -->
-          {% endif %} {% if slide.ctas %} {{ ctas(slide.ctas)}} {% endif %}
+          {% endif %}
+          {% if slide.ctas %}
+            {{ ctas(slide.ctas) }}
+          {% endif %}
         </div>
+
         <!-- .content -->
       </li>
       {% endfor %}
     </ul>
 
-    {% if not section.config %} {% set slides = section.slides %} {{ sliderPagination(slides, isTabs=false) }} {% endif
-    %}
+    {% if not section.config %}
+      {% set slides = section.slides %}
+      {{ sliderPagination(slides, isTabs=false) }}
+    {% endif %}
   </div>
+
   <!-- .slider-wrapper -->
 </div>

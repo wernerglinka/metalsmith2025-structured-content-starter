@@ -16,18 +16,24 @@ Thank you for your interest in contributing! This document provides guidelines f
 
 We use Prettier for code formatting. Run `npm run format` before committing changes.
 
-### Template Files with Dynamic Tags
+### Nunjucks Template Files
 
-Some Nunjucks templates are excluded from Prettier formatting because they use dynamic HTML tag generation:
+**All Nunjucks template files (`.njk`) are excluded from Prettier formatting** due to widespread compatibility issues between Prettier and Nunjucks syntax.
 
-- `lib/layouts/components/_partials/text/text.njk` - User-configurable header tags (`<{{ titleTag }}>`)
-- `lib/layouts/pages/sections.njk` - Dynamic container tags (`<{{ containerTag }}>`)
+**Why this happens:** Prettier's Nunjucks parser has multiple limitations:
+- Cannot parse dynamic HTML tag expressions like `<{{ variable }}>`
+- Mangles complex Nunjucks conditionals by breaking them across lines incorrectly  
+- Creates invalid syntax when reformatting template blocks and expressions
+- Breaks multi-line template logic within HTML attributes
+- Cannot handle nested template expressions properly
 
-These files must be manually formatted to maintain readability. The dynamic tag feature allows users to set semantic heading levels (h1-h6) and container elements in their frontmatter configuration.
+**Common problematic patterns:**
+- Dynamic HTML tags: `<{{ titleTag }}>content</{{ titleTag }}>`
+- Multi-line conditionals in attributes: `{% if condition %}attribute="value"{% endif %}`
+- Complex nested template logic and macros
+- Template expressions within HTML attribute values
 
-**Why this happens:** Prettier's Nunjucks parser expects static HTML tag names and cannot parse expressions like `<{{ variable }}>` inside angle brackets.
-
-**What to do:** When editing these files, format them manually using consistent indentation and spacing to match the project's style.
+**What to do:** When editing `.njk` files, format them manually using consistent indentation and spacing to match the project's style. The `npm run format` command will automatically skip all `.njk` files to prevent syntax corruption.
 
 ## Testing
 

@@ -12,8 +12,7 @@ package-lock.json
 *.min.js
 *.min.css
 
-# Template files with dynamic HTML tags (user-configurable semantic elements)
-# These break Prettier's Nunjucks parser: <{{ variable }}> syntax not supported
+# Nunjucks template files
+# Prettier has widespread compatibility issues with Nunjucks syntax
 # Manual formatting required - see CONTRIBUTING.md for details
-lib/layouts/components/_partials/text/text.njk
-lib/layouts/pages/sections.njk
+*.njk
