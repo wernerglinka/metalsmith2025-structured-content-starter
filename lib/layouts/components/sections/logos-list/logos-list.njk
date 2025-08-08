@@ -1,24 +1,41 @@
 {% from "components/_partials/logo/logo.njk" import logo %}
 
 <div class="container logo-list content">
-  {# we need two copies so the auto scroll works properly #} {% set copies = 2 %} {# is scope is set to all we will show
-  all logos that are available in data[section.listSource] #} {% if section.logos.scope === "all" %} {% set logosList =
-  artMuseums %} {% endif %} {# filter the whole list which is available in data[section.listSource] with the list item
-  ids which is available in section.selections. #} {% if section.logos.scope === "selections" %} {% set logosList =
-  artMuseums | getSelections(section.logos.selections) %} {% endif %} {% set logoWidth = section.logos.logoWidth %} {%
-  set logosListLength = logosList | length * logoWidth ~ "px" %}
+  {# we need two copies so the auto scroll works properly #}
+  {% set copies = 2 %}
+
+  {# 
+    is scope is set to all we will show all logos that are available in 
+    data[section.listSource] 
+  #}
+  {% if section.logos.scope === "all" %}
+    {% set logosList = artMuseums %}
+  {% endif %}
+
+  {# 
+    filter the whole list which is available in data[section.listSource] with 
+    the list item ids which is available in section.selections. 
+  #}
+  {% if section.logos.scope === "selections" %}
+    {% set logosList = artMuseums | getSelections(section.logos.selections) %}
+  {% endif %}
+
+  {% set logoWidth = section.logos.logoWidth %}
+  {% set logosListLength = logosList | length * logoWidth ~ "px" %}
 
   <div class="marquee" style="--list-width: {{ logosListLength }}">
     <div class="logos-wrapper">
       {% for i in range(0, copies) -%}
-      <ul class="logos js-logos-list">
-        {% for item in logosList %}
-        <li>{{ logo(item, logoWidth) }}</li>
-        {% endfor %}
-      </ul>
+        <ul class="logos js-logos-list">
+          {% for item in logosList %}
+            <li>{{ logo(item, logoWidth) }}</li>
+          {% endfor %}
+        </ul>
       {% endfor %}
     </div>
+
     <!-- marquee-inner -->
   </div>
+
   <!-- marquee -->
 </div>

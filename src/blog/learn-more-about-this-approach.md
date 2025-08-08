@@ -1,20 +1,20 @@
 ---
 layout: pages/sections.njk
-bodyClass: ""
+bodyClass: ''
 draft: false
 
 seo:
-  title: Curabitur blandit tempus porttitor.
-  description: "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla."
-  socialImage: "https://res.cloudinary.com/glinkaco/image/upload/v1646849499/tgc2022/social_yitz6j.png"
-  canonicalOverwrite: ""
+  title: Learn More About This Approach
+  description: 'This starter accompanies a comprehensive exploration of structured content approaches in static site generation.'
+  socialImage: 'https://res.cloudinary.com/glinkaco/image/upload/v1646849499/tgc2022/social_yitz6j.png'
+  canonicalOverwrite: ''
 
 card:
-  title: "Learn More About This Approach"
-  date: "2025-06-10"
-  author: 
+  title: 'Learn More About This Approach'
+  date: '2025-06-10'
+  author:
     - Stephen Hawking
-  image: "/assets/images/sample6.jpg"
+  image: '/assets/images/sample6.jpg'
   featuredBlogpost: true
   featuredBlogpostOrder: 1
   excerpt: |-
@@ -23,14 +23,14 @@ card:
 sections:
   - sectionType: hero
     containerTag: section
-    classes: "first-section"
-    id: ""
+    classes: 'first-section'
+    id: ''
     description: "This is a blog post hero section. The hero section has a class of 'blog-hero'."
     isDisabled: false
     isFullScreen: false
     isReverse: true
-    date: "2025-06-10"
-    author: 
+    date: '2025-06-10'
+    author:
       - Stephen Hawking
     containerFields:
       inContainer: false
@@ -43,29 +43,29 @@ sections:
         bottom: false
       background:
         isDark: true
-        color: ""
-        image: "/assets/images/sample6.jpg"
-        imageScreen: "dark"  # light, dark, none
+        color: ''
+        image: '/assets/images/sample6.jpg'
+        imageScreen: 'dark' # light, dark, none
     text:
-      leadIn: ""
+      leadIn: ''
       title: Metalsmith 2025 Structured Content Starter
-      titleTag: "h1"
-      subTitle: "Learn More About This Approach"
-      prose: ""
+      titleTag: 'h1'
+      subTitle: 'Learn More About This Approach'
+      prose: ''
     ctas:
-      - url: ""
-        label: ""
+      - url: ''
+        label: ''
         isButton: false
-        buttonStyle: "link"
+        buttonStyle: 'link'
     image:
-      src: ""
-      alt: ""
-      caption: ""
+      src: ''
+      alt: ''
+      caption: ''
 
   - sectionType: text-only
     containerTag: article
-    classes: ""
-    id: "section-id"
+    classes: ''
+    id: 'section-id'
     isDisabled: false
     isReverse: false
     containerFields:
@@ -78,14 +78,14 @@ sections:
         top: false
         bottom: false
       background:
-        color: ""
-        image: ""
-        imageScreen: "none"  # light, dark, none
+        color: ''
+        image: ''
+        imageScreen: 'none' # light, dark, none
     text:
-      leadIn: ""
-      title: ""
-      titleTag: "h3"
-      subTitle: ""
+      leadIn: ''
+      title: ''
+      titleTag: 'h3'
+      subTitle: ''
       prose: |-
         This starter accompanies a comprehensive exploration of structured content approaches in static site generation. The techniques demonstrated here represent an evolution of the concepts introduced in the Metalsmith Redux blog series, particularly the component integration methods discussed in the "Beyond Markdown" article.
 
@@ -94,10 +94,8 @@ sections:
         Join the growing community of developers exploring component-driven static site generation and discover how structured content can transform your web development workflow.
 
     ctas:
-      - url: ""
-        label: ""
+      - url: ''
+        label: ''
         isButton: false
-        buttonStyle: "link"
-
+        buttonStyle: 'link'
 ---
-

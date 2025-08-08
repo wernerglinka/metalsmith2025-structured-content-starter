@@ -1,20 +1,20 @@
 ---
 layout: pages/sections.njk
-bodyClass: ""
+bodyClass: ''
 draft: false
 
 seo:
-  title: Curabitur blandit tempus porttitor.
-  description: "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla."
-  socialImage: "https://res.cloudinary.com/glinkaco/image/upload/v1646849499/tgc2022/social_yitz6j.png"
-  canonicalOverwrite: ""
+  title: Getting Started with Structured Content
+  description: 'Begin by exploring the existing page configurations to understand how content is organized.'
+  socialImage: 'https://res.cloudinary.com/glinkaco/image/upload/v1646849499/tgc2022/social_yitz6j.png'
+  canonicalOverwrite: ''
 
 card:
-  title: "Getting Started with Structured Content"
-  date: "2025-06-08"
-  author: 
+  title: 'Getting Started with Structured Content'
+  date: '2025-06-08'
+  author:
     - Niels Bohr
-  image: "/assets/images/sample7.jpg"
+  image: '/assets/images/sample7.jpg'
   featuredBlogpost: true
   featuredBlogpostOrder: 1
   excerpt: |-
@@ -23,14 +23,14 @@ card:
 sections:
   - sectionType: hero
     containerTag: section
-    classes: "first-section"
-    id: ""
+    classes: 'first-section'
+    id: ''
     description: "This is a blog post hero section. The hero section has a class of 'blog-hero'."
     isDisabled: false
     isFullScreen: false
     isReverse: true
-    date: "2025-06-08"
-    author: 
+    date: '2025-06-08'
+    author:
       - Niels Bohr
     containerFields:
       inContainer: false
@@ -43,29 +43,29 @@ sections:
         bottom: false
       background:
         isDark: true
-        color: ""
-        image: "/assets/images/sample7.jpg"
-        imageScreen: "dark"  # light, dark, none
+        color: ''
+        image: '/assets/images/sample7.jpg'
+        imageScreen: 'dark' # light, dark, none
     text:
-      leadIn: ""
+      leadIn: ''
       title: Metalsmith 2025 Structured Content Starter
-      titleTag: "h1"
-      subTitle: "Getting Started with Structured Content"
-      prose: ""
+      titleTag: 'h1'
+      subTitle: 'Getting Started with Structured Content'
+      prose: ''
     ctas:
-      - url: ""
-        label: ""
+      - url: ''
+        label: ''
         isButton: false
-        buttonStyle: "link"
+        buttonStyle: 'link'
     image:
-      src: ""
-      alt: ""
-      caption: ""
+      src: ''
+      alt: ''
+      caption: ''
 
   - sectionType: text-only
     containerTag: article
-    classes: ""
-    id: "section-id"
+    classes: ''
+    id: 'section-id'
     isDisabled: false
     isReverse: false
     containerFields:
@@ -78,14 +78,14 @@ sections:
         top: false
         bottom: false
       background:
-        color: ""
-        image: ""
-        imageScreen: "none"  # light, dark, none
+        color: ''
+        image: ''
+        imageScreen: 'none' # light, dark, none
     text:
-      leadIn: ""
-      title: ""
-      titleTag: "h2"
-      subTitle: ""
+      leadIn: ''
+      title: ''
+      titleTag: 'h2'
+      subTitle: ''
       prose: |-
         Begin by exploring the existing page configurations to understand how content is organized. Each page's frontmatter tells the complete story of its structure and content, making it easy to understand exactly what appears on the page and why.
 
@@ -95,10 +95,8 @@ sections:
 
         Ready to build your own structured content site? Clone the repository and start by modifying the existing page configurations, then gradually add your own content and customize the component templates to match your design requirements.
     ctas:
-      - url: ""
-        label: ""
+      - url: ''
+        label: ''
         isButton: false
-        buttonStyle: "link"
-
+        buttonStyle: 'link'
 ---
-

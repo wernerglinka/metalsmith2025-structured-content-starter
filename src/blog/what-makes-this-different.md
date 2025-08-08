@@ -1,20 +1,20 @@
 ---
 layout: pages/sections.njk
-bodyClass: ""
+bodyClass: ''
 draft: false
 
 seo:
-  title: Curabitur blandit tempus porttitor.
-  description: "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla."
-  socialImage: "https://res.cloudinary.com/glinkaco/image/upload/v1646849499/tgc2022/social_yitz6j.png"
-  canonicalOverwrite: ""
+  title: What Makes This Different
+  description: 'Most static site generators ask you to choose between simplicity and power. This starter bridges that gap by providing a structured approach that scales naturally.'
+  socialImage: 'https://res.cloudinary.com/glinkaco/image/upload/v1646849499/tgc2022/social_yitz6j.png'
+  canonicalOverwrite: ''
 
 card:
-  title: "What Makes This Different"
-  date: "2025-06-03"
-  author: 
+  title: 'What Makes This Different'
+  date: '2025-06-03'
+  author:
     - Marie Curie
-  image: "/assets/images/sample11.jpg"
+  image: '/assets/images/sample11.jpg'
   featuredBlogpost: true
   featuredBlogpostOrder: 1
   excerpt: |-
@@ -23,14 +23,14 @@ card:
 sections:
   - sectionType: hero
     containerTag: section
-    classes: "first-section"
-    id: ""
+    classes: 'first-section'
+    id: ''
     description: "This is a blog post hero section. The hero section has a class of 'blog-hero'."
     isDisabled: false
     isFullScreen: false
     isReverse: true
-    date: "2025-06-03"
-    author: 
+    date: '2025-06-03'
+    author:
       - Marie Curie
     containerFields:
       inContainer: false
@@ -43,29 +43,29 @@ sections:
         bottom: false
       background:
         isDark: true
-        color: ""
-        image: "/assets/images/sample11.jpg"
-        imageScreen: "dark"  # light, dark, none
+        color: ''
+        image: '/assets/images/sample11.jpg'
+        imageScreen: 'dark' # light, dark, none
     text:
-      leadIn: ""
+      leadIn: ''
       title: Metalsmith 2025 Structured Content Starter
-      titleTag: "h1"
-      subTitle: "What Makes This Different"
-      prose: ""
+      titleTag: 'h1'
+      subTitle: 'What Makes This Different'
+      prose: ''
     ctas:
-      - url: ""
-        label: ""
+      - url: ''
+        label: ''
         isButton: false
-        buttonStyle: "link"
+        buttonStyle: 'link'
     image:
-      src: ""
-      alt: ""
-      caption: ""
+      src: ''
+      alt: ''
+      caption: ''
 
   - sectionType: text-only
     containerTag: article
-    classes: ""
-    id: ""
+    classes: ''
+    id: ''
     isDisabled: false
     isReverse: false
     containerFields:
@@ -78,14 +78,14 @@ sections:
         top: false
         bottom: false
       background:
-        color: ""
-        image: ""
-        imageScreen: "none"  # light, dark, none
+        color: ''
+        image: ''
+        imageScreen: 'none' # light, dark, none
     text:
-      leadIn: ""
-      title: ""
-      titleTag: "h2"
-      subTitle: ""
+      leadIn: ''
+      title: ''
+      titleTag: 'h2'
+      subTitle: ''
       prose: |-
         Most static site generators ask you to choose between simplicity and power. Simple setups work well for basic sites but become limiting as requirements grow. Powerful configurations often require deep technical knowledge that intimidates content creators.
 
@@ -96,10 +96,8 @@ sections:
         The system grows with your requirements rather than constraining them. Components remain truly encapsulated, preventing the asset management complexity that often emerges as component-based sites scale. No more hunting through stylesheets to find the CSS affecting a particular component, or worrying about JavaScript conflicts between different sections.
 
     ctas:
-      - url: ""
-        label: ""
+      - url: ''
+        label: ''
         isButton: false
-        buttonStyle: "link"
-
+        buttonStyle: 'link'
 ---
-

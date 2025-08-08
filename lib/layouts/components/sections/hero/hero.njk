@@ -1,5 +1,7 @@
-{% from "components/_partials/ctas/ctas.njk" import ctas %} {% from "components/_partials/text/text.njk" import text %}
-{% from "components/_partials/image/image.njk" import image %} {% from
+{% from "components/_partials/ctas/ctas.njk" import ctas %}
+{% from "components/_partials/text/text.njk" import text %}
+{% from "components/_partials/image/image.njk" import image %}
+{% from
 "components/_partials/author-date/author-date.njk" import authorDate %}
 
 <div
@@ -8,20 +10,27 @@
   aria-label="{% if section.text.title %}{{ section.text.title }}{% else %}Hero section{% endif %}"
 >
   {% if section.image.src %}
-  <div class="image">{{ image(section.image)}}</div>
-  {% endif %} {% if section.text or (section.ctas and section.ctas | length > 0) %}
-  <div class="text flow glass-background">
-    {% if section.text %}
-    <div class="flow">{{ text(section.text)}}</div>
-    {% endif %} {% if section.ctas and section.ctas | length > 0 %} {{ ctas(section.ctas) }} {% endif %} {% if
-    section.date or section.author %}
-    <div class="author-date">{{ authorDate({ date: section.date, author: section.author }) }}</div>
-    {% endif %}
-  </div>
-  {% endif %} {% if section.isFullScreen %} {# scroll to first section after the hero #}
-  <a class="full-screen glass-background" href="#first-section" aria-label="Scroll to next section">
-    {% include "icons/arrow-down.njk" %}
-    <span class="sr-only">Scroll to next section</span>
-  </a>
+    <div class="image">{{ image(section.image)}}</div>
+  {% endif %}
+
+  {% if section.text or(section.ctas and section.ctas | length > 0) %}
+    <div class="text flow glass-background">
+      {% if section.text %}
+        <div class="flow">{{ text(section.text)}}</div>
+      {% endif %}
+      {% if section.ctas and section.ctas | length > 0 %}
+        {{ ctas(section.ctas) }}
+      {% endif %}
+      {% if section.date or section.author %}
+        <div class="author-date">{{ authorDate({ date: section.date, author: section.author }) }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if section.isFullScreen %}
+    {# scroll to first section after the hero #}
+    <a class="full-screen glass-background" href="#first-section" aria-label="Scroll to next section">
+      {% include "icons/arrow-down.njk" %}
+      <span class="sr-only">Scroll to next section</span>
+    </a>
   {% endif %}
 </div>

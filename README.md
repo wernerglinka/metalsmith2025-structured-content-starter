@@ -9,6 +9,8 @@
 
 This is a component-based, structured content starter built with Metalsmith, demonstrating modern web development patterns without the overhead of JavaScript frameworks. Unlike traditional lonf-text Markdown contents, this starter uses structured content in frontmatter to define reusable page sections and components. Each component manages its own styles and scripts, which are automatically bundled only when used. This approach provides the flexibility of component-driven development while maintaining the simplicity and performance benefits of static site generation with Metalsmith.
 
+[Explore the demo](https://ms2025-structured-content-starter.netlify.app/).
+
 ## Features
 
 ### Component-Based Architecture
@@ -131,7 +133,6 @@ A quick look at the top-level files and directories you'll see in this Metalsmit
 1. **`node_modules`**: This directory contains all the node modules that your project depends on.
 
 2. **`src`**: This directory contains all the content that makes up your site:
-
    - **`src/index.md`**: Homepage with structured sections in frontmatter
    - **`src/blog.md`**: Blog index page using blog-list section component
    - **`src/blog/`**: Individual blog posts with structured frontmatter
@@ -140,7 +141,6 @@ A quick look at the top-level files and directories you'll see in this Metalsmit
    - **`src/robots.txt`**: SEO-friendly robots.txt file
 
 3. **`lib`**: This directory contains all the project assets and templates:
-
    - **`lib/assets`**: Static assets like images and global CSS
    - **`lib/data`**: JSON data files for global site configuration
    - **`lib/layouts`**: Templates and components:
@@ -149,7 +149,6 @@ A quick look at the top-level files and directories you'll see in this Metalsmit
      - **`pages`**: Page-level templates that compose sections
 
 4. **Component Structure**: Each component typically includes:
-
    - **`component-name.njk`**: The component's template
    - **`component-name.css`**: Component-specific styles
    - **`component-name.js`**: Component-specific JavaScript (if needed)
@@ -238,15 +237,31 @@ Deploy and Host on any static hosting service. For example [Netlify](https://www
 
 Here is an article about [how to deploy Metalsmith on Netlify](https://www.netlify.com/blog/2015/12/08/a-step-by-step-guide-metalsmith-on-netlify/). The process is similar for this Metalsmith2025 Structured Content Starter.
 
+### Deploying to a Subdirectory
+
+When deploying your site to a subdirectory path (such as GitHub Pages at `https://username.github.io/repository-name/`), special configuration is required to ensure all assets and links work correctly. Without proper handling, your CSS, JavaScript, images, and internal links will break because they'll point to the wrong paths.
+
+This starter is using the [metalsmith-safe-links](https://github.com/wernerglinka/metalsmith-safe-links) plugin for subdirectory deployments. It automatically handles path prefixing for all your site's resources. This plugin:
+
+- Automatically prefixes all relative URLs with the correct base path
+- Processes all HTML elements with URLs (links, images, scripts, stylesheets, etc.)
+- Handles both absolute and relative URL conversion
+- Adds proper attributes to external links (target="\_blank", rel="noopener noreferrer")
+
+To configure your site for subdirectory deployment, ensure the `metalsmith-safe-links` plugin is properly configured in your `metalsmith.js` build file with the appropriate base path for your deployment target. Without this plugin, your deployed site will have broken styling, missing images, and non-functional navigation.
+
 ## Development
 
 ### Template Formatting
+
 Some Nunjucks templates use dynamic HTML tags (e.g., user-configurable header levels) which are excluded from Prettier formatting due to parser limitations. See `.prettierignore` and `CONTRIBUTING.md` for specific files and details.
 
 ### Running the Project
+
 - `npm start` - Start development server with watch mode
 - `npm run build` - Build for production
 - `npm test` - Run test suite
 - `npm run format` - Format code with Prettier
 
 ## Join the Metalsmith community at [Gitter](https://gitter.im/metalsmith/community).
+

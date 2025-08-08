@@ -1,28 +1,28 @@
 ---
 layout: pages/sections.njk
-bodyClass: ""
+bodyClass: ''
 
 navigation:
   navLabel: 'Blog'
   navIndex: 3
 
 seo:
-  title: My Blog
-  description: "My blog posts"
-  socialImage: "/assets/images/metalsmith-starter-social.png"
-  canonicalOverwrite: ""
+  title: MS2025 Structured Content Starter Blog
+  description: 'A Metalsmith Starter to build modern websites using structured data and reusable components.'
+  socialImage: '/assets/images/metalsmith-starter-social.png'
+  canonicalOverwrite: ''
 
 sections:
   - sectionType: hero
     containerTag: section
-    classes: "first-section"
-    id: ""
+    classes: 'first-section'
+    id: ''
     description: "This is a blog post hero section. The hero section has a class of 'blog-hero'."
     isDisabled: false
     isFullScreen: false
     isReverse: false
-    date: ""
-    author: ""
+    date: ''
+    author: ''
     containerFields:
       inContainer: false
       isAnimated: true
@@ -34,30 +34,30 @@ sections:
         bottom: false
       background:
         isDark: true
-        color: ""
-        image: "/assets/images/sample10.jpg"
-        imageScreen: "dark"  # light, dark, none
+        color: ''
+        image: '/assets/images/sample10.jpg'
+        imageScreen: 'dark' # light, dark, none
     text:
-      leadIn: ""
+      leadIn: ''
       title: Metalsmith 2025 Blog Example
-      titleTag: "h1"
-      subTitle: "Read on"
+      titleTag: 'h1'
+      subTitle: 'Read on'
       prose: "This is a blog post hero section. The hero section has a class of 'blog-hero'."
     ctas:
-      - url: ""
-        label: ""
+      - url: ''
+        label: ''
         isButton: false
-        buttonStyle: "link"
+        buttonStyle: 'link'
     image:
-      src: ""
-      alt: ""
-      caption: ""
+      src: ''
+      alt: ''
+      caption: ''
 
   - sectionType: blog-list
     containerTag: section # section || article || aside
-    classes: ""
-    id: ""
-    description: "section with all blogposts"
+    classes: ''
+    id: ''
+    description: 'section with all blogposts'
     isDisabled: false
     isFullScreen: false
     isReverse: false
@@ -72,16 +72,16 @@ sections:
         bottom: false
       background:
         isDark: true
-        color: ""
-        image: ""
-        imageScreen: "none"  # light, dark, none
+        color: ''
+        image: ''
+        imageScreen: 'none' # light, dark, none
     hasPagingParams: true
     pagingParams:
-      blockClass: ""
+      blockClass: ''
       horizontal: false
-      numberOfBlogs: "" # updated by plugin
-      numberOfPages: "" # updated by plugin
-      pageLength: ""    # updated by plugin
-      pageStart: ""     # updated by plugin
-      pageNumber: ""    # updated by plugin
+      numberOfBlogs: '' # updated by plugin
+      numberOfPages: '' # updated by plugin
+      pageLength: '' # updated by plugin
+      pageStart: '' # updated by plugin
+      pageNumber: '' # updated by plugin
 ---

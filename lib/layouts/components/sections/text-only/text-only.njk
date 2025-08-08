@@ -1,11 +1,15 @@
-{% from "components/_partials/ctas/ctas.njk" import ctas %} {% from "components/_partials/text/text.njk" import text %}
+{% from "components/_partials/ctas/ctas.njk" import ctas %}
+{% from "components/_partials/text/text.njk" import text %}
 
 <div class="text-only content container">
   {% if section.text and section.ctas | length > 0 %}
-  <div class="text flow">
-    {% if section.text %}
-    <div class="prose flow">{{ text(section.text)}}</div>
-    {% endif %} {% if section.ctas | length > 0 %} {{ ctas(section.ctas) }} {% endif %}
-  </div>
+    <div class="text flow">
+      {% if section.text %}
+        <div class="prose flow">{{ text(section.text)}}</div>
+      {% endif %}
+      {% if section.ctas | length > 0 %}
+        {{ ctas(section.ctas) }}
+      {% endif %}
+    </div>
   {% endif %}
 </div>

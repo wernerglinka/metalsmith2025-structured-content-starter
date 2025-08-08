@@ -1,21 +1,7 @@
-{% from "components/_partials/icon/icon.njk" import icon %} {% macro socialLink(link) %}
-<li>
-  <a
-    href="{{ link.url }}"
-    {%
-    if
-    link.url
-    |
-    isExternal
-    %}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="{{ link.name }} (opens in new window)"
-    {%
-    endif
-    %}
-  >
+{% from "components/_partials/icon/icon.njk" import icon %}
+
+{% macro socialLink(link) %}
+  <a href="{{ link.url }}" {% if link.url | isExternal %} target="_blank" rel="noopener noreferrer" aria-label="{{ link.name }} (opens in new window)" {% endif %}>
     {{ icon(link.icon) }}
   </a>
-</li>
 {% endmacro %}

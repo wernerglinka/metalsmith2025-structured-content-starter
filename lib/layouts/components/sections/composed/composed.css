@@ -32,6 +32,8 @@
  * a different flex-grow value for the columns.
  */
 .hero-cta .content {
+  container-type: inline-size;
+
   opacity: 1;
   box-shadow: 0 2px 4px var(--color-shadow);
   border-radius: var(--space-2xs-xs);
@@ -51,5 +53,15 @@
   .column.ctas {
     flex-grow: 1;
     padding-block: var(--space-xl-2xl);
+  }
+}
+
+/**
+ * Responsive adjustments for the hero-cta section
+ * Needs to be absolute number for the max-width to work properly
+ */
+@container (max-width: 60rem) {
+  .hero-cta .content .column.image {
+    display: none;
   }
 }

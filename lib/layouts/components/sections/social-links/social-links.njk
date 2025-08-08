@@ -2,6 +2,8 @@
 
 <div class="container social-links content">
   <ul class="social-links">
-    {% for link in socialLinks %} {{ socialLink(link) }} {% endfor %}
+    {% for link in socialLinks %}
+      <li>{{ socialLink(link) }}</li>
+    {% endfor %}
   </ul>
 </div>
