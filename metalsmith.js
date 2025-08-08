@@ -124,23 +124,31 @@ let devServer = null;
  */
 const metalsmith = Metalsmith( thisDirectory );
 
+// Pass DEBUG environment variable if it exists
+if ( process.env.DEBUG ) {
+  metalsmith.env( 'DEBUG', process.env.DEBUG );
+}
+
 /**
  * Configure the basic Metalsmith settings
  * These determine how Metalsmith will process our files
  */
 metalsmith
-  .clean( true ) // Clean the destination directory before building
-  .ignore( [ '**/.DS_Store' ] ) // Ignore macOS system files
-  .watch( isProduction ? false : [ 'src/**/*', 'lib/layouts/**/*', 'lib/assets/**/*' ] ) // Watch for changes in development mode only
-  .env( 'NODE_ENV', process.env.NODE_ENV ) // Pass NODE_ENV to plugins
-  //.env( 'DEBUG', "metalsmith-sectioned-blog-pagination*" )
-  .source( './src' ) // Where to find source files
-  .destination( './build' ) // Where to output the built site
+  // Clean the destination directory before building
+  .clean( true )
+  // Ignore macOS system files
+  .ignore( [ '**/.DS_Store' ] )
+  .watch( isProduction ? false : [ 'src/**/*', 'lib/layouts/**/*', 'lib/assets/**/*' ] )
+  // Pass NODE_ENV to plugins
+  .env( 'NODE_ENV', process.env.NODE_ENV )
+  // Where to find source files
+  .source( './src' )
+  // Where to output the built site
+  .destination( './build' )
   .metadata( {
-    // Global metadata available to all files
-    msVersion: dependencies.metalsmith, // Metalsmith version
-    nodeVersion: process.version, // Node.js version
-    ...globalMetadata // Global data from JSON files in /lib/data
+    msVersion: dependencies.metalsmith,
+    nodeVersion: process.version,
+    ...globalMetadata
   } )
 
   // Exclude draft content in production mode
