@@ -77,8 +77,6 @@ sections:
         imageScreen: 'none' # light, dark, none
     hasPagingParams: true
     pagingParams:
-      blockClass: ''
-      horizontal: false
       numberOfBlogs: '' # updated by plugin
       numberOfPages: '' # updated by plugin
       pageLength: '' # updated by plugin
