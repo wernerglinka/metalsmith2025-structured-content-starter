@@ -5,7 +5,7 @@
   {% if section.text and section.ctas | length > 0 %}
     <div class="text flow">
       {% if section.text %}
-        <div class="prose flow">{{ text(section.text)}}</div>
+        {{ text(section.text)}}
       {% endif %}
       {% if section.ctas | length > 0 %}
         {{ ctas(section.ctas) }}

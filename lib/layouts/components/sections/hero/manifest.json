@@ -3,7 +3,7 @@
   "type": "section",
   "styles": ["hero.css"],
   "scripts": [],
-  "dependencies": ["ctas", "text", "image", "commons"],
+  "requires": ["ctas", "text", "image", "commons"],
   "validation": {
     "required": ["sectionType"],
     "properties": {
@@ -59,7 +59,7 @@
             },
             "buttonStyle": {
               "type": "string",
-              "enum": ["button", "link"]
+              "enum": ["primary", "secondary", "terciary", "inverted"]
             }
           }
         }

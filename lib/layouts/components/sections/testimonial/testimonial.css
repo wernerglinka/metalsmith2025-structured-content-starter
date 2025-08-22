@@ -1,11 +1,12 @@
-/* Overwrite threashold default for the banner content container */
+/* 
+    the threshold determines the viewport width in which the container switches 
+    from horizontal to vertical layout. Depends on the text size.
+  */
 .testimonial {
   --threshold: 25ch !important;
 
   padding: var(--space-l-2xl);
   overflow: hidden;
-  background-color: var(--color-highlight-background);
-  margin-inline: var(--gutter, 2rem);
 
   .quotee {
     display: flex;
@@ -37,7 +38,6 @@
 
     .company {
       font-size: var(--font-p);
-
       line-height: 1.2;
     }
 

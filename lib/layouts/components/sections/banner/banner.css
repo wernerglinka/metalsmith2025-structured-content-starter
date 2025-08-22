@@ -1,14 +1,9 @@
 /* Overwrite threashold default for the banner content container */
-.section-wrapper .banner.content {
+.section-wrapper .banner {
   --threshold: 60rem;
-}
 
-/*
-  Special case: CTA Banner 
-*/
-.cta-banner {
-  .content {
-    max-width: 60rem;
+  &.content {
+    max-width: var(--threshold);
     margin: 0 auto;
     text-align: center;
   }

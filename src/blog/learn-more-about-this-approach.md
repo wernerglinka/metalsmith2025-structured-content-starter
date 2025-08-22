@@ -56,7 +56,7 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
     image:
       src: ''
       alt: ''
@@ -97,5 +97,47 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
+
+  - sectionType: blog-author
+    containerTag: section
+    classes: ''
+    id: ''
+    isDisabled: false
+    isReverse: false
+    containerFields:
+      inContainer: false
+      isAnimated: true
+      noMargin:
+        top: true
+        bottom: false
+      noPadding:
+        top: false
+        bottom: false
+      background:
+        color: ''
+        image: ''
+        imageScreen: 'none' # light, dark, none
+    name: 'Stephen Hawking'
+    logoWidth: 30
+
+  - sectionType: blog-navigation
+    containerTag: section
+    classes: ''
+    id: ''
+    isDisabled: false
+    isReverse: false
+    containerFields:
+      inContainer: false
+      isAnimated: true
+      noMargin:
+        top: true
+        bottom: false
+      noPadding:
+        top: false
+        bottom: false
+      background:
+        color: ''
+        image: ''
+        imageScreen: 'none' # light, dark, none
 ---

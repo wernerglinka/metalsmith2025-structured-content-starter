@@ -3,7 +3,7 @@
   "type": "section",
   "styles": ["slider.css"],
   "scripts": ["slider.js"],
-  "dependencies": ["ctas", "text", "image", "commons"],
+  "requires": ["ctas", "text", "image", "commons"],
   "validation": {
     "required": ["sectionType"],
     "properties": {
@@ -37,7 +37,7 @@
       },
       "config": {
         "type": "string",
-        "enum": ["isTabs"]
+        "enum": ["", "isTabs"]
       },
       "text.titleTag": {
         "type": "string",
@@ -62,7 +62,7 @@
                   },
                   "buttonStyle": {
                     "type": "string",
-                    "enum": ["button", "link"]
+                    "enum": ["primary", "secondary", "terciary", "inverted"]
                   }
                 }
               }

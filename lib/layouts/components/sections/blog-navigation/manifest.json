@@ -1,0 +1,8 @@
+{
+  "name": "blog-navigation",
+  "type": "aside",
+  "styles": ["blog-navigation.css"],
+  "scripts": [],
+  "requires": [],
+  "plugins": ["@metalsmith/collections"]
+}

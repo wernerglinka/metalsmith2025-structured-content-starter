@@ -1,43 +1,22 @@
-{# Call To Actions macro may render multiple button and/or text links #} {% macro ctas(info) %} {% set validCtas = [] %}
-{% for cta in info %} {% if cta.url and cta.url != "" %} {% set validCtas = (validCtas.push(cta), validCtas) %} {% endif
-%} {% endfor %} {% if validCtas | length > 0 %}
-<div class="ctas flow">
-  {% for cta in validCtas %} {% if cta.isButton %}
-  <a
-    class="cta button {{ cta.buttonStyle }}"
-    href="{{cta.url}}"
-    {%
-    if
-    cta.url
-    |
-    isExternal
-    %}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="{{ cta.label }} (opens in new window)"
-    {%
-    endif
-    %}
-    >{{ cta.label}}</a
-  >
-  {% else %}
-  <a
-    class="cta link"
-    href="{{cta.url}}"
-    {%
-    if
-    cta.url
-    |
-    isExternal
-    %}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="{{ cta.label }} (opens in new window)"
-    {%
-    endif
-    %}
-    >{{ cta.label}}</a
-  >
-  {% endif %} {% endfor %}
-</div>
-{% endif %} {% endmacro %}
+{# Call To Actions macro may render multiple button and/or text links #}
+{% macro ctas(info) %}
+  {% set validCtas = [] %}
+
+  {% for cta in info %}
+    {% if cta.url and cta.url != "" %}
+      {% set validCtas = (validCtas.push(cta), validCtas) %}
+    {% endif %}
+  {% endfor %}
+
+  {% if validCtas | length > 0 %}
+    <div class="ctas">
+      {% for cta in validCtas %}
+        {% if cta.isButton %}
+          <a class="cta button {{ cta.buttonStyle }}" href="{{cta.url}}" {% if cta.url | isExternal %}target="_blank" rel="noopener noreferrer" aria-label="{{ cta.label }} (opens in new window)" {% endif %}>{{ cta.label}}</a>
+        {% else %}
+          <a class="cta link" href="{{cta.url}}" {% if cta.url | isExternal %}target="_blank" rel="noopener noreferrer" aria-label="{{ cta.label }} (opens in new window)" {% endif %}>{{ cta.label}}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}

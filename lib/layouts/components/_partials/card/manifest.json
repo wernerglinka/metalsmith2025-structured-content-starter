@@ -3,5 +3,5 @@
   "type": "_partials",
   "styles": ["card.css"],
   "scripts": [],
-  "dependencies": []
+  "requires": []
 }

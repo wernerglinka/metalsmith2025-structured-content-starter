@@ -62,8 +62,4 @@
     font-size: var(--font-p);
     margin-block: var(--space-s-m) 0;
   }
-
-  &.is-horizontal {
-    /* TBD */
-  }
 }

@@ -2,7 +2,10 @@
  * Text Partial Component Styles
  * Enhances the global typography system with specific prose styling
  */
-
+.is-centered {
+  text-align: center;
+  max-width: 100%;
+}
 .prose {
   /* Ensure proper spacing for markdown content */
   & > * + * {

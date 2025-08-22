@@ -5,7 +5,7 @@ hasHero: true
 
 navigation:
   navLabel: 'More Sections'
-  navIndex: 4
+  navIndex: 3
 seo:
   title: More Starter Sections
   description: 'A Metalsmith Starter to build modern websites using structured data and reusable components.'
@@ -47,41 +47,68 @@ sections:
       - url: ''
         label: ''
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
     image:
       src: ''
       alt: ''
       caption: ''
 
-  - sectionType: social-links
-    containerTag: aside
+  - sectionType: text-only
+    containerTag: article
     classes: ''
-    id: 'social-links'
+    id: ''
     isDisabled: false
-    isReverse: false
+    isAnimated: true
     containerFields:
-      inContainer: true
-      isAnimated: true
+      inContainer: false
       noMargin:
-        top: false
-        bottom: true
-      noPadding:
         top: true
         bottom: true
+      noPadding:
+        top: false
+        bottom: false
       background:
         color: ''
         image: ''
         imageScreen: 'none' # light, dark, none
-    links:
-      source: 'social-links'
-      scope: 'all'
-      selections: []
     text:
       leadIn: ''
-      title: Get in touch
+      title: Social Links Example
       titleTag: 'h2'
       subTitle: ''
-      prose: ''
+      prose: |-
+        Display social media links with 90px width icons and scroll animation for small screens.
+
+    ctas:
+      - url: ''
+        label: ''
+        isButton: true
+        buttonStyle: 'primary'
+
+  - sectionType: logos-list
+    containerTag: aside
+    classes: ''
+    id: 'logosList'
+    isDisabled: false
+    isReverse: true
+    containerFields:
+      inContainer: false
+      isAnimated: true
+      noMargin:
+        top: true
+        bottom: false
+      noPadding:
+        top: true
+        bottom: false
+      background:
+        color: ''
+        image: ''
+        imageScreen: 'none' # light, dark, none
+    logos:
+      source: 'socialLinks'
+      logoWidth: 90
+      scope: 'all'
+      selections: []
 
   - sectionType: composed
     containerTag: section
@@ -128,7 +155,7 @@ sections:
               - url: '/apple.com'
                 label: 'go to apple'
                 isButton: true
-                buttonStyle: 'button'
+                buttonStyle: 'primary'
 
   - sectionType: composed
     containerTag: section
@@ -203,11 +230,11 @@ sections:
       - url: 'https://apple.com'
         label: 'go to apple'
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
       - url: 'https://ibm.com'
         label: 'go to big brother'
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
     image:
       src: ''
       alt: ''
@@ -248,7 +275,7 @@ sections:
           - url: '/apple.com'
             label: 'go to apple'
             isButton: true
-            buttonStyle: 'button'
+            buttonStyle: 'primary'
 
       - slideClasses: ''
         image:
@@ -277,9 +304,9 @@ sections:
           - url: '/apple.com'
             label: 'go to apple'
             isButton: true
-            buttonStyle: 'button'
+            buttonStyle: 'primary'
           - url: '/apple.com'
             label: 'where to go?'
             isButton: false
-            buttonStyle: 'button'
+            buttonStyle: 'primary'
 ---

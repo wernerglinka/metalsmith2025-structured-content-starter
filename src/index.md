@@ -47,7 +47,7 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
     image:
       src: ''
       alt: ''
@@ -97,7 +97,7 @@ sections:
               - url: 'https://glinka.co/blog/building-flexible-page-layouts/'
                 label: 'Learn More'
                 isButton: true
-                buttonStyle: 'button'
+                buttonStyle: 'primary'
 
   - sectionType: text-only
     containerTag: article
@@ -133,7 +133,7 @@ sections:
       - url: '/blog/architecture-philosophy'
         label: 'Read about the Architecture Philosophy'
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
 
   - sectionType: logos-list
     containerTag: aside
@@ -189,11 +189,11 @@ sections:
       - url: 'https://apple.com'
         label: 'go to apple'
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
       - url: 'https://ibm.com'
         label: 'go to big brother'
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
     image:
       src: '/assets/images/sample5.jpg'
       alt: 'nunjucks'
@@ -228,11 +228,11 @@ sections:
       - url: 'https://glinka.co'
         label: 'Learn More'
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
       - url: 'https://metalsmith.io'
         label: 'Be a Metalsmith'
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
     image:
       src: ''
       alt: ''

@@ -1,57 +1,57 @@
 [
   {
-    "name": "LinkedIn",
-    "url": "https://www.linkedin.com/in/werner-glinka/",
-    "icon": "linkedin"
+    "url": "https://www.linkedin.com/",
+    "icon": "linkedin",
+    "title": "LinkedIn"
   },
   {
-    "name": "GitHub",
     "url": "https://github.com/",
-    "icon": "github"
+    "icon": "github",
+    "title": "GitHub"
   },
   {
-    "name": "Twitter",
     "url": "https://twitter.com/",
-    "icon": "twitter"
+    "icon": "twitter",
+    "title": "Twitter"
   },
   {
-    "name": "Behance",
     "url": "https://www.behance.net/",
-    "icon": "behance"
+    "icon": "behance",
+    "title": "Behance"
   },
   {
-    "name": "Bluesky",
-    "url": "https://bluesky.com/",
-    "icon": "bluesky"
+    "url": "https://bsky.app/",
+    "icon": "bluesky",
+    "title": "Bluesky"
   },
   {
-    "name": "Substack",
     "url": "https://substack.com/",
-    "icon": "substack"
+    "icon": "substack",
+    "title": "Substack"
   },
   {
-    "name": "Facebook",
     "url": "https://www.facebook.com/",
-    "icon": "facebook"
+    "icon": "facebook",
+    "title": "Facebook"
   },
   {
-    "name": "Instagram",
     "url": "https://www.instagram.com/",
-    "icon": "instagram"
+    "icon": "instagram",
+    "title": "Instagram"
   },
   {
-    "name": "YouTube",
     "url": "https://www.youtube.com/",
-    "icon": "youtube"
+    "icon": "youtube",
+    "title": "YouTube"
   },
   {
-    "name": "Dribbble",
     "url": "https://dribbble.com/",
-    "icon": "dribbble"
+    "icon": "dribbble",
+    "title": "Dribbble"
   },
   {
-    "name": "email",
     "url": "mailto:you@email.com",
-    "icon": "mail"
+    "icon": "mail",
+    "title": "email"
   }
 ]

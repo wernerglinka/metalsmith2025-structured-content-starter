@@ -1,13 +1,14 @@
 # Banner Section Component
 
-A versatile banner component designed for prominent in-page banners, call-to-action sections, and promotional content. Perfect for highlighting important messages, CTAs, or featured content within page layouts.
+A call-to-action banner section that can use either a background image or color. Perfect for highlighting important messages, promotions, or calls to action. This versatile component can also function as an accordion header when paired with accordion content sections.
 
 ## Features
 
 - **Flexible Layout**: Supports text-only, image-only, or combined layouts
-- **Background Images**: Configurable background images with optional screen overlays
-- **CTA Banner Mode**: Special centered layout for call-to-action banners
-- **Reverse Layout**: Optional reverse layout for content positioning
+- **Background Options**: Use either background images with customizable screen overlays or solid background colors
+- **Container Control**: Configure full viewport width or restrict to content width
+- **CTA Support**: Multiple call-to-action buttons or links with customizable styles
+- **Accordion Mode**: Can function as an accordion header when using the `accordion-header` class
 - **Responsive Design**: Fluid layout that adapts to viewport size
 - **Content Flexibility**: All text elements and CTAs are optional
 
@@ -15,57 +16,47 @@ A versatile banner component designed for prominent in-page banners, call-to-act
 
 ```yaml
 - sectionType: banner
-  containerTag: aside  # or section, div
-  disabled: false
-  id: "section-id"
-  classes: "cta-banner"  # Optional: adds centered CTA styling
+  containerTag: aside # or section, div
+  classes: '' # Optional: use "accordion-header" for accordion mode
+  id: ''
+  isDisabled: false
+  isAnimated: true
   containerFields:
-    inContainer: false
-    isAnimated: true
+    inContainer: false # true restricts width to content width, false stretches across viewport
     noMargin:
-      top: false
-      bottom: false
+      top: true
+      bottom: true
     noPadding:
       top: false
       bottom: false
     background:
-      isDark: false
-      color: ""
-      image: "/assets/images/banner-bg.jpg"
-      imageScreen: "light"  # light, dark, none
-  reverse: false  # Reverses content positioning
+      color: '' # Optional: background color (e.g., '#333333')
+      isDark: false # Set to true when using dark backgrounds
+      image: '' # Optional: background image URL
+      imageScreen: 'none' # Screen overlay: 'light', 'dark', or 'none'
   text:
-    leadIn: "Special Offer"
-    title: "Banner Title"
-    titleTag: "h2"
-    subTitle: "Compelling subtitle"
+    leadIn: ''
+    title: 'Banner Title'
+    titleTag: 'h2'
+    subTitle: ''
     prose: |-
       Banner description text that can span
       multiple paragraphs in Markdown format.
   ctas:
-    - url: "/get-started"
-      label: "Get Started"
+    - url: 'https://example.com'
+      label: 'Call to Action'
       isButton: true
-      buttonStyle: "primary"
-    - url: "/learn-more"
-      label: "Learn More"
+      buttonStyle: 'primary'
+    - url: 'https://example.com/more'
+      label: 'Learn More'
       isButton: false
-  image:
-    src: "/assets/images/banner-image.jpg"
-    alt: "Banner image description"
-    caption: ""
+      buttonStyle: 'primary'
 ```
 
 ## HTML Structure
 
 ```html
-<div class="container banner content is-reverse">
-  
-  <!-- Optional Banner Image -->
-  <div class="image">
-    <img src="banner.jpg" alt="Description">
-  </div>
-  
+<div class="container banner content">
   <!-- Text Content and CTAs -->
   <div class="text flow">
     <div class="prose flow">
@@ -74,109 +65,134 @@ A versatile banner component designed for prominent in-page banners, call-to-act
       <p class="sub-title">Compelling subtitle</p>
       <div class="prose">Banner description...</div>
     </div>
-    
+
     <div class="ctas flow">
       <a class="cta button primary" href="/get-started">Get Started</a>
       <a class="cta link" href="/learn-more">Learn More</a>
     </div>
   </div>
-  
 </div>
 ```
 
 ## CSS Architecture
 
 ### Layout Variations
-- **Standard**: Default banner layout with flexible content positioning
-- **Reverse**: Content positioned to the right (via `is-reverse` class)
-- **CTA Banner**: Centered layout with constrained width (via `cta-banner` class)
 
-### CTA Banner Mode
-When using the `cta-banner` class:
-- Maximum width of 60rem
-- Centered alignment
-- Text-centered layout
-- Optimized for call-to-action content
+- **Standard**: Default banner layout
+- **Full Width**: Set `containerFields.inContainer: false` for viewport-wide banners
+- **Accordion Header**: Use `classes: 'accordion-header'` for accordion functionality
 
-### Responsive Behavior
-- Uses fluid design principles for optimal content display
-- Custom threshold of 60rem for content container breakpoint
-- Inherits responsive behavior from the commons section system
+### Background Options
+
+- **Image Backgrounds**: Configure with `containerFields.background.image`
+- **Screen Overlays**: Use `imageScreen` property with values:
+  - `'light'`: Light overlay for better text contrast on bright images
+  - `'dark'`: Dark overlay for better text contrast on dark images
+  - `'none'`: No overlay
+- **Solid Colors**: Set `containerFields.background.color` with hex values
+- **Dark Mode**: Set `isDark: true` when using dark backgrounds for proper text colors
 
 ## Usage Patterns
 
-### Standard In-Page Banner
-```yaml
-- sectionType: banner
-  containerTag: section
-  classes: ""
-  text:
-    title: "Featured Content"
-    prose: "Important announcement or featured information"
-  ctas:
-    - url: "/details"
-      label: "Learn More"
-      isButton: true
-```
+### Banner with Background Image
 
-### CTA Banner
 ```yaml
 - sectionType: banner
   containerTag: aside
-  classes: "cta-banner"
   containerFields:
+    inContainer: false
     background:
-      image: "/assets/images/cta-bg.jpg"
-      imageScreen: "light"
+      image: '/assets/images/sample8.jpg'
+      imageScreen: 'light' # Adds light overlay for better text contrast
   text:
-    leadIn: "Limited Time"
-    title: "Special Offer"
-    prose: "Don't miss out on this exclusive opportunity"
+    leadIn: 'With Background Image'
+    title: CTA Banner Example
+    titleTag: 'h2'
+    subTitle: Uses light image screen for better text contrast
+    prose: Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
   ctas:
-    - url: "/signup"
-      label: "Sign Up Now"
+    - url: 'https://apple.com'
+      label: 'go to apple'
       isButton: true
-      buttonStyle: "primary"
+      buttonStyle: 'primary'
+    - url: 'https://ibm.com'
+      label: 'go to big brother'
+      isButton: false
 ```
 
-### Image + Text Banner
+### Banner with Background Color
+
 ```yaml
 - sectionType: banner
-  reverse: true
+  containerTag: aside
+  containerFields:
+    inContainer: false
+    background:
+      color: '#333333'
+      isDark: true
   text:
-    title: "Product Feature"
-    prose: "Highlight key product benefits"
-  image:
-    src: "/assets/images/product.jpg"
-    alt: "Product showcase"
+    leadIn: 'With Background Color'
+    title: CTA Banner Example
+    titleTag: 'h2'
+    prose: Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
   ctas:
-    - url: "/product"
-      label: "View Product"
+    - url: 'https://apple.com'
+      label: 'go to apple'
       isButton: true
+      buttonStyle: 'primary'
+```
+
+### Accordion Header Banner
+
+```yaml
+# First, the accordion header using banner
+- sectionType: banner
+  containerTag: aside
+  classes: 'accordion-header'
+  containerFields:
+    inContainer: false
+    background:
+      image: '/assets/images/sample9.jpg'
+      imageScreen: 'dark'
+  text:
+    title: Fancy Accordion Header
+    titleTag: 'h3'
+
+# Then, the accordion content
+- sectionType: text-only
+  containerTag: article
+  classes: 'accordion-content is-closed'
+  containerFields:
+    inContainer: false
+  text:
+    prose: |-
+      Etiam porta sem malesuada magna mollis euismod. 
+      Vestibulum id ligula porta felis euismod semper.
 ```
 
 ## Dependencies
 
 - `ctas`: For rendering call-to-action buttons and links
 - `text`: For rendering text content (lead-in, title, subtitle, prose)
-- `image`: For rendering responsive images
 - `commons`: For shared utilities and base styles
 
 ## Customization
 
 ### Custom Classes
+
 Add custom styling through the classes field:
+
 ```yaml
-classes: "cta-banner custom-banner special-promotion"
+classes: 'custom-banner special-promotion'
 ```
 
 ### Styling Hooks
+
 Key CSS classes for customization:
+
 - `.banner`: Main container
-- `.banner.is-reverse`: Reversed layout
-- `.cta-banner .content`: CTA banner specific styling
+- `.banner .content`: CTA banner specific styling
 - `.text`: Text content container
-- `.image`: Image container
 
 ## Accessibility
 
@@ -185,10 +201,28 @@ Key CSS classes for customization:
 - Alt text support for images
 - Screen reader friendly CTA structure
 
+## Key Properties
+
+### Container Fields
+
+- `containerFields.inContainer`: Controls width behavior
+  - `true`: Restricts banner to content width
+  - `false`: Stretches banner across full viewport width
+- `containerFields.background.image`: Background image URL (optional)
+- `containerFields.background.color`: Background color (optional)
+- `containerFields.background.imageScreen`: Screen overlay for text readability
+- `containerFields.background.isDark`: Set to `true` for dark backgrounds
+
+### Content Fields
+
+- `text`: Standard text block with leadIn, title, subtitle, and prose
+- `ctas`: Array of call-to-action buttons or links
+
 ## Best Practices
 
 1. **Use appropriate container tags**: `aside` for promotional content, `section` for main content
-2. **Optimize images**: Provide appropriate aspect ratios and alt text
-3. **Keep CTAs focused**: Limit to 1-2 primary actions per banner
-4. **Consider background contrast**: Use `imageScreen` to ensure text readability
+2. **Set proper background contrast**: Use `imageScreen` to ensure text readability over images
+3. **Configure isDark correctly**: Set `isDark: true` when using dark backgrounds for proper text colors
+4. **Keep CTAs focused**: Limit to 1-2 primary actions per banner
 5. **Test responsively**: Verify banner appearance across different viewport sizes
+6. **Accordion usage**: When using as accordion header, keep prose empty and pair with a `text-only` section with `accordion-content is-closed` classes

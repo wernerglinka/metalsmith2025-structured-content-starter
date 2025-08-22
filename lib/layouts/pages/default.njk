@@ -6,16 +6,23 @@
     {% include "components/_partials/head/head.njk" %}
   </head>
 
-  <body class="{{ bodyClass }}">
+  <body class="{{ bodyClasses }}">
     <span id="top"></span>
-    {% include "components/sections/header/header.njk" %} {{ breadcrumbs(navigation.breadcrumbs) }}
+    {% include "components/sections/header/header.njk" %}
+    {{ breadcrumbs(navigation.breadcrumbs) }}
 
-    <main>{% block body %} {# will be replaced by page content #} {% endblock %}</main>
+    <main>
+      {% block body %}
+        {# will be replaced by page content #}
+      {% endblock %}
+    </main>
 
     {% include "components/sections/footer/footer.njk" %}
 
-    <script src="/assets/components.js"></script>
+    <script src="/assets/main.js"></script>
 
-    <a class="to-top glass-background" href="#top"> {% include "icons/arrow-up.njk" %} </a>
+    <a class="to-top glass-background" href="#top">
+      {% include "icons/arrow-up.njk" %}
+    </a>
   </body>
 </html>

@@ -5,6 +5,17 @@
   position: relative;
   overflow: hidden;
 
+  /* 
+    using image optimize plugin will have img inside picture 
+    element or an responsive wrapper 
+  */
+  picture,
+  .responsive-wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
   img {
     width: 100%;
     height: 100%;

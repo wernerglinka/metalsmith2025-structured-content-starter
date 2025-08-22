@@ -55,6 +55,7 @@
 
 /* Desktop menu links */
 .main-menu a {
+  color: inherit;
   padding-block-start: var(--space-xs);
 }
 
@@ -114,13 +115,22 @@
 }
 
 /**
- * Current page highlighting
+ * Current page highlighting - Automated active link detection
+ * No need to manually add body classes anymore
  */
-.home .home,
-.other-page .other-page,
-.blog .blog {
-  color: var(--color-secondary) !important;
-  font-weight: bold;
+.main-menu li.active a,
+.main-menu a.active {
+  color: var(--color-link-inactive) !important;
   pointer-events: none;
   cursor: default;
+}
+
+/**
+ * Path highlighting - When current page is within this menu section
+ * Example: /blog/my-post/ would make the /blog link have active-path class
+ */
+.main-menu li.active-path a,
+.main-menu a.active-path {
+  color: var(--color-link-in-path) !important;
+  /* Keep pointer events so users can still navigate to parent section */
 }

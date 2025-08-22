@@ -3,5 +3,5 @@
   "type": "_partials",
   "styles": ["branding.css"],
   "scripts": [],
-  "dependencies": []
+  "requires": []
 }

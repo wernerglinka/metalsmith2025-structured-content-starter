@@ -3,5 +3,5 @@
   "type": "section",
   "styles": ["commons.css"],
   "scripts": [],
-  "dependencies": []
+  "requires": []
 }

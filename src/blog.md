@@ -4,7 +4,7 @@ bodyClass: ''
 
 navigation:
   navLabel: 'Blog'
-  navIndex: 3
+  navIndex: 4
 
 seo:
   title: MS2025 Structured Content Starter Blog
@@ -47,7 +47,7 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
     image:
       src: ''
       alt: ''

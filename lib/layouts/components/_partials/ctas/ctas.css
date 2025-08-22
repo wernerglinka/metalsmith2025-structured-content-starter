@@ -2,6 +2,19 @@
   --flow-space: var(--space-m-l);
 }
 
+/* special case for only ctas in banner */
+.cta-banner .ctas {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+
+  > * {
+    flex: 0 0 auto;
+    margin-top: 0;
+  }
+}
+
 .cta {
   font-size: var(--font-s);
   text-decoration: none;
@@ -23,7 +36,6 @@
   font-weight: 500;
   letter-spacing: var(--default-letter-spacing);
   color: var(--color-text-light);
-  border: 1px solid hsla(0, 0%, 100%, 0.4);
   background: rgba(218, 30, 40, 0.8);
   backdrop-filter: var(--glass-backdrop-filter);
   isolation: isolate;
@@ -52,33 +64,15 @@
 .cta.link {
   display: inline-block;
   font-size: var(--font-s);
-  border-bottom: 1px solid transparent;
   transition: all 0.3s ease-in-out;
 
   &:hover {
     border-bottom-color: currentColor;
-    transform: translateY(-1px);
   }
 
   &:focus {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
     border-bottom-color: currentColor;
-  }
-}
-
-/**
- * Reduced motion support
- * Respects user's preference for reduced motion
- */
-@media (prefers-reduced-motion: reduce) {
-  .cta.button,
-  .cta.link {
-    transition: none;
-  }
-
-  .cta.button:hover,
-  .cta.link:hover {
-    transform: none;
   }
 }

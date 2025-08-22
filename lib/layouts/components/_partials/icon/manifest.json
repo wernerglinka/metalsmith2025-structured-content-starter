@@ -3,5 +3,5 @@
   "type": "_partials",
   "styles": ["icon.css"],
   "scripts": [],
-  "dependencies": []
+  "requires": []
 }

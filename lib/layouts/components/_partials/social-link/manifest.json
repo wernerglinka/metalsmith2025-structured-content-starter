@@ -1,7 +1,0 @@
-{
-  "name": "social-link",
-  "type": "_partials",
-  "styles": ["social-link.css"],
-  "scripts": [],
-  "dependencies": []
-}

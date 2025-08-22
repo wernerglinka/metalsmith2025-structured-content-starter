@@ -3,7 +3,7 @@
   "type": "section",
   "styles": ["header.css"],
   "scripts": [],
-  "dependencies": ["branding", "navigation"],
+  "requires": ["branding", "navigation"],
   "validation": {
     "required": ["sectionType"],
     "properties": {

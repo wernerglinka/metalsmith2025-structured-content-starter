@@ -3,5 +3,5 @@
   "type": "_partials",
   "styles": ["text.css"],
   "scripts": [],
-  "dependencies": []
+  "requires": []
 }

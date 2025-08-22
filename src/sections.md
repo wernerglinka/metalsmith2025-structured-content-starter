@@ -5,7 +5,7 @@ hasHero: true
 
 navigation:
   navLabel: 'Sections'
-  navIndex: 3
+  navIndex: 2
 
 seo:
   title: Starter Sections
@@ -50,7 +50,7 @@ sections:
       - url: 'https://apple.com'
         label: 'go to apple'
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
     image:
       src: ''
       alt: ''
@@ -86,7 +86,7 @@ sections:
       - url: ''
         label: ''
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
 
   - sectionType: text-only
     containerTag: article
@@ -118,7 +118,7 @@ sections:
       - url: ''
         label: ''
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
 
   - sectionType: slider
     containerTag: section
@@ -156,7 +156,7 @@ sections:
           - url: '/apple.com'
             label: 'go to apple'
             isButton: true
-            buttonStyle: 'button'
+            buttonStyle: 'primary'
 
       - slideClasses: ''
         image:
@@ -185,11 +185,11 @@ sections:
           - url: '/apple.com'
             label: 'go to apple'
             isButton: true
-            buttonStyle: 'button'
+            buttonStyle: 'primary'
           - url: '/apple.com'
             label: 'where to go?'
             isButton: false
-            buttonStyle: 'button'
+            buttonStyle: 'primary'
 
   - sectionType: slider
     containerTag: section
@@ -227,7 +227,7 @@ sections:
           - url: '/apple.com'
             label: 'go to apple'
             isButton: true
-            buttonStyle: 'button'
+            buttonStyle: 'primary'
 
       - slideClasses: ''
         image:
@@ -256,11 +256,11 @@ sections:
           - url: '/apple.com'
             label: 'go to apple'
             isButton: true
-            buttonStyle: 'button'
+            buttonStyle: 'primary'
           - url: '/apple.com'
             label: 'where to go?'
             isButton: false
-            buttonStyle: 'button'
+            buttonStyle: 'primary'
 
   - sectionType: text-only
     containerTag: article
@@ -292,7 +292,7 @@ sections:
       - url: ''
         label: ''
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
 
   - sectionType: testimonial
     containerTag: aside
@@ -301,7 +301,7 @@ sections:
     isDisabled: false
     isReverse: false
     containerFields:
-      inContainer: true
+      inContainer: false
       isAnimated: true
       noMargin:
         top: true
@@ -310,7 +310,7 @@ sections:
         top: false
         bottom: false
       background:
-        color: ''
+        color: '#f5f5f5'
         image: ''
         imageScreen: 'none' # light, dark, none
     quote:
@@ -354,7 +354,7 @@ sections:
       - url: ''
         label: ''
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
 
   - sectionType: flip-cards
     containerTag: aside
@@ -397,7 +397,7 @@ sections:
             - url: 'https://apple.com'
               label: 'Go Apple'
               isButton: false
-              buttonStyle: 'button'
+              buttonStyle: 'primary'
 
       - front:
           icon: 'airplay'
@@ -421,7 +421,7 @@ sections:
             - url: ''
               label: ''
               isButton: true
-              buttonStyle: 'button'
+              buttonStyle: 'primary'
 
       - front:
           icon: 'paperclip'
@@ -445,7 +445,7 @@ sections:
             - url: ''
               label: ''
               isButton: true
-              buttonStyle: 'button'
+              buttonStyle: 'primary'
 
       - front:
           icon: 'paperclip'
@@ -500,5 +500,5 @@ sections:
       - url: '/more-sections'
         label: 'Here'
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
 ---

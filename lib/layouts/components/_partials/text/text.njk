@@ -9,7 +9,7 @@
 
   {% if info.title %}
     {% set titleTag = info.titleTag or "h2" %}
-    <{{ titleTag }} class="title">
+    <{{ titleTag }} class="title {% if info.isCentered %}is-centered{% endif %}">
       {{ info.title}}
     </{{ titleTag }}>
   {% endif %}
@@ -19,7 +19,7 @@
   {% endif %}
 
   {% if info.prose %}
-    <div class="prose">
+    <div class="prose flow">
       {{ info.prose | mdToHTML | safe }}
     </div>
   {% endif %}

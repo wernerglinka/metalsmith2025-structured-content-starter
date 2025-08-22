@@ -3,7 +3,7 @@
   "type": "section",
   "styles": ["logos-list.css"],
   "scripts": ["logos-list.js"],
-  "dependencies": ["commons"],
+  "requires": ["commons"],
   "validation": {
     "required": ["sectionType"],
     "properties": {

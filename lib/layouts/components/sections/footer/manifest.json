@@ -3,7 +3,7 @@
   "type": "section",
   "styles": ["footer.css"],
   "scripts": [],
-  "dependencies": [],
+  "requires": [],
   "validation": {
     "required": ["sectionType"],
     "properties": {

@@ -3,5 +3,5 @@
   "type": "_partials",
   "styles": ["author-date.css"],
   "scripts": [],
-  "dependencies": []
+  "requires": []
 }

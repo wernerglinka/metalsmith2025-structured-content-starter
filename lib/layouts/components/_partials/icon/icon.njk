@@ -1,3 +1,11 @@
-{% macro icon(iconSource) %}
-<div class="icon-wrapper">{% include "icons/" + iconSource + ".njk" ignore missing %}</div>
+{% macro icon(item, iconWidth) %}
+  {% if item.url === '' %}
+    <div class="icon-wrapper">
+      {% include "icons/" + item.icon + ".njk" ignore missing %}
+    </div>
+  {% else %}
+    <a class="icon-wrapper" href="{{ item.url }}" {% if item.url | isExternal %} target="_blank" rel="noopener noreferrer" aria-label="{{ item.title }} (opens in new window)" {% endif %}>
+      {% include "icons/" + item.icon + ".njk" ignore missing %}
+    </a>
+  {% endif %}
 {% endmacro %}

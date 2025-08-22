@@ -5,8 +5,6 @@
 {# NOTE: This file is excluded from Prettier formatting due to dynamic HTML tags #}
 {# See .prettierignore and CONTRIBUTING.md for details #}
 
-
-
 {% block body %}
 
   {# loop through all sections and render them #}
@@ -16,16 +14,16 @@
 
       {# section wrapper may be article, aside, section or div depending on section.containerTag setting #}
       <{{ section.containerTag }} id="{{ section.id }}"  {{ buildContainerAttributes(section) }}>
-      
+
         {# if section has background add a background image #}
         {% if section.containerFields.background.image %}
           <div class="background-image" style="background-image: url({{ section.containerFields.background.image }})"></div>
         {% endif %}
-        
-        {# section content #}
-        {{ renderSection(section, site, navigation.breadcrumbs, artMuseums, socialLinks, pageFiles, collections) }}
 
-      {% set containerTag = section.containerTag %}
+        {# section content #}
+        {{ renderSection(section, navigation.breadcrumbs, data, collections, previous, next, urlPath) }}
+
+        {% set containerTag = section.containerTag %}
       </{{ containerTag }}>
 
     {% endif %}
@@ -33,4 +31,3 @@
     <p class="error-message">There are no sections available</p>
   {% endfor %}
 {% endblock %}
-

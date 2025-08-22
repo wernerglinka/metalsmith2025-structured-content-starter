@@ -27,8 +27,9 @@ import prism from 'metalsmith-prism';
 import componentDependencyBundler from 'metalsmith-bundled-components';
 
 import assets from 'metalsmith-static-files'; // Copies static assets to build
+import seo from 'metalsmith-seo'; // Adds SEO metadata to pages
 import htmlMinifier from 'metalsmith-optimize-html'; // Minifies HTML in production
-import sitemap from 'metalsmith-sitemap'; // Generates a sitemap.xml file
+
 
 import autoprefixer from 'autoprefixer'; // Adds browser prefixes to CSS
 import cssnano from 'cssnano'; // Minifies CSS
@@ -148,7 +149,7 @@ metalsmith
   .metadata( {
     msVersion: dependencies.metalsmith,
     nodeVersion: process.version,
-    ...globalMetadata
+    data: globalMetadata
   } )
 
   // Exclude draft content in production mode
@@ -282,6 +283,17 @@ metalsmith
       source: 'lib/assets/', // Where to find assets
       destination: 'assets/' // Where to copy assets
     } )
+  )
+
+  /**
+     * Intelligent metadata generation, social media tags, and structured data including Open Graph tags,
+     * Twitter Cards, JSON-LD structured data object, a sitemap and a robots.txt file
+     * Learn more: https://github.com/wernerglinka/metalsmith-seo
+     */
+  .use(
+    seo( {
+      metadataPath: 'data.site'  // Object in metadata points to where to find site metadata
+    } )
   );
 
 // These plugins only run in production mode to optimize the site
@@ -291,26 +303,8 @@ if ( isProduction ) {
      * Optimize HTML by Minify HTML to reduce file size
      * Learn more: https://github.com/wernerglinka/metalsmith-optimize-html
      */
-    .use( htmlMinifier() )
-
-    /**
-     * Generate a sitemap.xml file for search engines
-     * Learn more: https://github.com/ExtraHop/metalsmith-sitemap
-     */
     .use(
-      sitemap( {
-        hostname: siteURL, // Your site's URL
-        omitIndex: true, // Remove index.html from URLs
-        omitExtension: true, // Remove .html extensions
-        changefreq: 'weekly', // How often pages change
-        lastmod: new Date(), // Last modification date
-        pattern: [ '**/*.html', '!**/404.html' ], // Include all HTML except 404
-        defaults: {
-          priority: 0.5, // Default priority for pages
-          changefreq: 'weekly', // Default change frequency
-          lastmod: new Date() // Default last modified date
-        }
-      } )
+      htmlMinifier()
     );
 }
 

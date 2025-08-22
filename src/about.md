@@ -46,7 +46,7 @@ sections:
       - url: ''
         label: ''
         isButton: true
-        buttonStyle: 'button'
+        buttonStyle: 'primary'
     image:
       src: ''
       alt: ''
@@ -85,7 +85,7 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
 
   - sectionType: banner
     containerTag: aside
@@ -155,7 +155,7 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
 
   - sectionType: banner
     containerTag: aside
@@ -226,7 +226,7 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
 
   - sectionType: banner
     containerTag: aside
@@ -296,7 +296,7 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
 
   - sectionType: banner
     containerTag: aside
@@ -366,7 +366,7 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
 
   - sectionType: banner
     containerTag: aside
@@ -434,5 +434,5 @@ sections:
       - url: ''
         label: ''
         isButton: false
-        buttonStyle: 'link'
+        buttonStyle: 'primary'
 ---

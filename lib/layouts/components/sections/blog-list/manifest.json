@@ -3,7 +3,8 @@
   "type": "section",
   "styles": ["blog-list.css"],
   "scripts": [],
-  "dependencies": [],
+  "requires": [],
+  "requiredPlugins": ["metalsmith-sectioned-blog-pagination"],
   "validation": {
     "required": ["sectionType"],
     "properties": {

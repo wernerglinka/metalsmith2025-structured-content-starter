@@ -4,6 +4,7 @@
 footer {
   background: var(--color-dark-background);
   padding: var(--space-s-l);
+  font-size: 1rem;
   color: #fff;
   margin-top: auto; /* Push footer to bottom */
   box-shadow: 0 -2px 4px var(--color-shadow);
