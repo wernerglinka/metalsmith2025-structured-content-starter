@@ -1,0 +1,27 @@
+{
+  "name": "@metalsmith-components/podcast",
+  "version": "0.0.1",
+  "description": "Metalsmith podcast section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "podcast"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "b966aad8bb1467f8",
+  "main": "podcast.njk",
+  "files": [
+    "podcast.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "podcast.css",
+    "podcast.js",
+    "modules/"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/ctas": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

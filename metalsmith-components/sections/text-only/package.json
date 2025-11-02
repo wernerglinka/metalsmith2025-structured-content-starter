@@ -1,0 +1,26 @@
+{
+  "name": "@metalsmith-components/text-only",
+  "version": "0.0.1",
+  "description": "Metalsmith text-only section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "text-only"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "6bacdfa4cd8c5606",
+  "main": "text-only.njk",
+  "files": [
+    "text-only.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "text-only.css"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/ctas": ">=0.0.1",
+    "@metalsmith-components/text": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@metalsmith-components/cards-list",
+  "version": "0.0.1",
+  "description": "Metalsmith cards-list section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "cards-list"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "5ceae028f6cbd0fa",
+  "main": "cards-list.njk",
+  "files": [
+    "cards-list.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "cards-list.css"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/text": ">=0.0.1",
+    "@metalsmith-components/manual-card": ">=0.0.1"
+  }
+}

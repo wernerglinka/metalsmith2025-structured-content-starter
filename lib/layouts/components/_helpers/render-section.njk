@@ -7,5 +7,7 @@
 #}
 
 {% macro renderSection(section, crumbs, data, collections, previous, next, urlPath) %}
+  {# include the target section component based on section.sectionType #}
+  {# the 'ignore missing' flag prevents errors if the target component doesn't exist #}
   {% include "../sections/" + section.sectionType + "/" + section.sectionType + ".njk" ignore missing %}
 {% endmacro %}

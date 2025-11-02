@@ -1,0 +1,27 @@
+{
+  "name": "@metalsmith-components/flip-cards",
+  "version": "0.0.1",
+  "description": "Metalsmith flip-cards section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "flip-cards"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "eb2bce588b89624c",
+  "main": "flip-cards.njk",
+  "files": [
+    "flip-cards.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "flip-cards.css"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/ctas": ">=0.0.1",
+    "@metalsmith-components/text": ">=0.0.1",
+    "@metalsmith-components/image": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

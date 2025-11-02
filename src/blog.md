@@ -53,7 +53,9 @@ sections:
       alt: ''
       caption: ''
 
-  - sectionType: blog-list
+  - sectionType: collection-list
+    collectionName: 'blog'
+    domainName: 'blog'
     containerTag: section # section || article || aside
     classes: ''
     id: ''

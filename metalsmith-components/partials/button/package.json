@@ -1,0 +1,21 @@
+{
+  "name": "@metalsmith-components/button",
+  "version": "0.0.1",
+  "description": "Metalsmith button partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "button"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "cd646c5c5c139c3a",
+  "main": "button.njk",
+  "files": [
+    "button.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "button.css"
+  ]
+}

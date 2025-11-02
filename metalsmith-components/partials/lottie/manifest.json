@@ -1,0 +1,29 @@
+{
+  "name": "lottie",
+  "type": "partial",
+  "styles": [
+    "lottie.css"
+  ],
+  "scripts": [],
+  "requires": [],
+  "validation": {
+    "required": [
+      "src"
+    ],
+    "properties": {
+      "src": {
+        "type": "string"
+      },
+      "speed": {
+        "type": "number",
+        "default": 1
+      },
+      "control.loop": {
+        "type": "boolean"
+      },
+      "control.autoplay": {
+        "type": "boolean"
+      }
+    }
+  }
+}

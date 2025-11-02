@@ -1,0 +1,27 @@
+{
+  "name": "@metalsmith-components/search-only",
+  "version": "0.0.1",
+  "description": "Metalsmith search-only section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "search-only"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "639c399544deb194",
+  "main": "search-only.njk",
+  "files": [
+    "search-only.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "search-only.css",
+    "search-only.js"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/search": ">=0.0.1",
+    "@metalsmith-components/text": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

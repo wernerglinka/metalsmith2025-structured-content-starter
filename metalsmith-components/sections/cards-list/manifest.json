@@ -1,0 +1,23 @@
+{
+  "name": "cards-list",
+  "type": "section",
+  "styles": [
+    "cards-list.css"
+  ],
+  "scripts": [],
+  "requires": [
+    "text",
+    "manual-card"
+  ],
+  "validation": {
+    "required": [
+      "sectionType"
+    ],
+    "properties": {
+      "sectionType": {
+        "type": "string",
+        "const": "cards-list"
+      }
+    }
+  }
+}

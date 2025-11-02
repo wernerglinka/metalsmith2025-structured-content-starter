@@ -1,0 +1,21 @@
+{
+  "name": "@metalsmith-components/text-link",
+  "version": "0.0.1",
+  "description": "Metalsmith text-link partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "text-link"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "9d39084a1773cf86",
+  "main": "text-link.njk",
+  "files": [
+    "text-link.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "text-link.css"
+  ]
+}

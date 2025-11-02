@@ -1,0 +1,21 @@
+{
+  "name": "@metalsmith-components/blog-navigation",
+  "version": "0.0.1",
+  "description": "Metalsmith blog-navigation section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "blog-navigation"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "08795c07234829ee",
+  "main": "blog-navigation.njk",
+  "files": [
+    "blog-navigation.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "blog-navigation.css"
+  ]
+}

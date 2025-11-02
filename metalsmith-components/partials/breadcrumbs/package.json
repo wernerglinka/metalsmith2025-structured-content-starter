@@ -1,0 +1,21 @@
+{
+  "name": "@metalsmith-components/breadcrumbs",
+  "version": "0.0.1",
+  "description": "Metalsmith breadcrumbs partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "breadcrumbs"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "d8784086e18a519d",
+  "main": "breadcrumbs.njk",
+  "files": [
+    "breadcrumbs.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "breadcrumbs.css"
+  ]
+}

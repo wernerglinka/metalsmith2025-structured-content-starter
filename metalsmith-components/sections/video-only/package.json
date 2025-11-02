@@ -1,0 +1,27 @@
+{
+  "name": "@metalsmith-components/video-only",
+  "version": "0.0.1",
+  "description": "Metalsmith video-only section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "video-only"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "7b0c1a32381b7732",
+  "main": "video-only.njk",
+  "files": [
+    "video-only.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "video-only.css",
+    "video-only.js"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/ctas": ">=0.0.1",
+    "@metalsmith-components/video": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

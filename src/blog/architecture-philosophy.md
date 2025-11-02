@@ -11,15 +11,12 @@ seo:
 
 card:
   title: 'Architecture Philosophy'
+  description: This starter embodies several key principles that make structured content management both powerful and approachable.
   date: '2025-06-02'
   author:
     - Albert Einstein
     - Isaac Newton
-  image: '/assets/images/sample9.jpg'
-  featuredBlogpost: true
-  featuredBlogpostOrder: 1
-  excerpt: |-
-    This starter embodies several key principles that make structured content management both powerful and approachable.
+  thumbnail: '/assets/images/sample9.jpg'
 
 sections:
   - sectionType: hero

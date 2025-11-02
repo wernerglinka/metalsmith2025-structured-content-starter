@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# Installation script for navigation v0.0.1
+# Content Hash: a707c02e967b26ec
+
+set -e
+
+echo "🔧 Installing navigation v0.0.1..."
+
+# Detect Metalsmith project directory and component source
+COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Check if PROJECT_ROOT was set by bundle installer
+if [ -n "$PROJECT_ROOT" ]; then
+  # Called from bundle installer, PROJECT_ROOT already set
+  cd "$PROJECT_ROOT"
+# Check if we're in a component package directory (has x-metalsmith-component marker)
+elif [ -f "package.json" ] && grep -q "\"x-metalsmith-component\"" package.json; then
+  # In a component directory, look up for project root
+  if [ -f "../metalsmith.js" ]; then
+    PROJECT_ROOT="$(cd .. && pwd)"
+    cd "$PROJECT_ROOT"
+  elif [ -f "../../metalsmith.js" ]; then
+    # Two levels up (e.g., bundle/partials/component/)
+    PROJECT_ROOT="$(cd ../.. && pwd)"
+    cd "$PROJECT_ROOT"
+  else
+    echo "❌ Error: Component directory not in a Metalsmith project"
+    echo "Please extract components in your Metalsmith project root directory"
+    exit 1
+  fi
+elif [ -f "metalsmith.js" ]; then
+  # Already in project root
+  PROJECT_ROOT="$(pwd)"
+else
+  echo "❌ Error: Not a Metalsmith project directory"
+  echo "Please run this script from your Metalsmith project root or from within the extracted component directory"
+  exit 1
+fi
+
+# Load component paths from config or use defaults
+if [ -f "metalsmith-components.config.json" ]; then
+  COMPONENTS_BASE=$(node -p "try { require('./metalsmith-components.config.json').componentsBasePath } catch(e) { 'lib/layouts/components' }")
+  SECTIONS_DIR=$(node -p "try { require('./metalsmith-components.config.json').sectionsDir } catch(e) { 'sections' }")
+  PARTIALS_DIR=$(node -p "try { require('./metalsmith-components.config.json').partialsDir } catch(e) { '_partials' }")
+else
+  COMPONENTS_BASE="lib/layouts/components"
+  SECTIONS_DIR="sections"
+  PARTIALS_DIR="_partials"
+fi
+
+# Create target directory
+if [ "partial" = "section" ]; then
+  TARGET_DIR="$COMPONENTS_BASE/$SECTIONS_DIR/navigation"
+else
+  TARGET_DIR="$COMPONENTS_BASE/$PARTIALS_DIR/navigation"
+fi
+mkdir -p "$TARGET_DIR"
+
+# Check for existing installation
+if [ -f "$TARGET_DIR/manifest.json" ]; then
+  EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
+  if [ "$EXISTING_HASH" = "a707c02e967b26ec" ]; then
+    echo "✓ navigation v0.0.1 already installed (no changes)"
+    exit 0
+  else
+    echo "📦 Upgrading navigation (content changed)"
+  fi
+fi
+
+# Copy files
+echo "Copying files..."
+cp "$COMPONENT_DIR/navigation.njk" "$TARGET_DIR/"
+cp "$COMPONENT_DIR/navigation.css" "$TARGET_DIR/"
+cp "$COMPONENT_DIR/navigation.js" "$TARGET_DIR/"
+cp "$COMPONENT_DIR/manifest.json" "$TARGET_DIR/"
+
+echo ""
+echo "✓ Installation complete"
+echo ""
+echo "Files installed to: $TARGET_DIR"
+echo ""
+# Cleanup extracted component directory if not called from bundle
+if [ -z "$BUNDLE_INSTALL" ] && [ -f "$COMPONENT_DIR/package.json" ] && grep -q "\"x-metalsmith-component\"" "$COMPONENT_DIR/package.json" 2>/dev/null; then
+  # Check if component directory is in project root (not in a bundle structure)
+  COMPONENT_BASENAME="$(basename "$COMPONENT_DIR")"
+  if [ "$COMPONENT_DIR" = "$PROJECT_ROOT/$COMPONENT_BASENAME" ]; then
+    echo ""
+    read -p "Remove extracted component directory $COMPONENT_BASENAME? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      rm -rf "$COMPONENT_DIR"
+      echo "✓ Cleaned up $COMPONENT_BASENAME"
+    fi
+  fi
+fi
+
+echo ""
+echo "See README.md for usage instructions"

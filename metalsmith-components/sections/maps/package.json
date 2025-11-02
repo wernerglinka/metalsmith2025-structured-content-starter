@@ -1,0 +1,28 @@
+{
+  "name": "@metalsmith-components/maps",
+  "version": "0.0.1",
+  "description": "Metalsmith maps section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "maps"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "d7b7785c6e0f9c90",
+  "main": "maps.njk",
+  "files": [
+    "maps.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "maps.css",
+    "maps.js",
+    "modules/"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/ctas": ">=0.0.1",
+    "@metalsmith-components/text": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

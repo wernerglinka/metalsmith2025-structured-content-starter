@@ -11,14 +11,12 @@ seo:
 
 card:
   title: 'What Makes This Different'
+  description: |-
+    Most static site generators ask you to choose between simplicity and power. This starter bridges that gap by providing a structured approach that scales naturally.
   date: '2025-06-03'
   author:
     - Marie Curie
-  image: '/assets/images/sample11.jpg'
-  featuredBlogpost: true
-  featuredBlogpostOrder: 1
-  excerpt: |-
-    Most static site generators ask you to choose between simplicity and power. This starter bridges that gap by providing a structured approach that scales naturally.
+  thumbnail: '/assets/images/sample11.jpg'
 
 sections:
   - sectionType: hero

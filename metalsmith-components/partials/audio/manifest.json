@@ -1,0 +1,30 @@
+{
+  "name": "audio",
+  "type": "partial",
+  "styles": [
+    "audio.css"
+  ],
+  "scripts": [
+    "audio.js"
+  ],
+  "requires": [
+    "image",
+    "icon"
+  ],
+  "validation": {
+    "properties": {
+      "bgImage": {
+        "type": "string"
+      },
+      "alt": {
+        "type": "string"
+      },
+      "ogg": {
+        "type": "string"
+      },
+      "mpeg": {
+        "type": "string"
+      }
+    }
+  }
+}

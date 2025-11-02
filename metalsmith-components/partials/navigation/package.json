@@ -1,0 +1,22 @@
+{
+  "name": "@metalsmith-components/navigation",
+  "version": "0.0.1",
+  "description": "Metalsmith navigation partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "navigation"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "a707c02e967b26ec",
+  "main": "navigation.njk",
+  "files": [
+    "navigation.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "navigation.css",
+    "navigation.js"
+  ]
+}

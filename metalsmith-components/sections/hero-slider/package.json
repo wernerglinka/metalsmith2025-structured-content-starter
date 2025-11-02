@@ -1,0 +1,29 @@
+{
+  "name": "@metalsmith-components/hero-slider",
+  "version": "0.0.1",
+  "description": "Metalsmith hero-slider section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "hero-slider"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "38065cb732c60031",
+  "main": "hero-slider.njk",
+  "files": [
+    "hero-slider.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "hero-slider.css",
+    "hero-slider.js"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/ctas": ">=0.0.1",
+    "@metalsmith-components/text": ">=0.0.1",
+    "@metalsmith-components/image": ">=0.0.1",
+    "@metalsmith-components/video": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

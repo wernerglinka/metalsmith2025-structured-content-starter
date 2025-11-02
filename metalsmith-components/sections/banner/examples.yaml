@@ -1,0 +1,7 @@
+- name: Basic Example
+  description: Minimal banner configuration
+  config:
+    sectionType: banner
+    text:
+      title: Example Title
+      prose: Example content

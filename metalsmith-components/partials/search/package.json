@@ -1,0 +1,23 @@
+{
+  "name": "@metalsmith-components/search",
+  "version": "0.0.1",
+  "description": "Metalsmith search partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "search"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "02b7867ad13e1ca1",
+  "main": "search.njk",
+  "files": [
+    "search.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "search.css",
+    "search.js",
+    "modules/"
+  ]
+}

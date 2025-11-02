@@ -11,14 +11,11 @@ seo:
 
 card:
   title: 'Getting Started with Structured Content'
+  description: Begin by exploring the existing page configurations to understand how content is organized.
   date: '2025-06-08'
   author:
     - Niels Bohr
-  image: '/assets/images/sample7.jpg'
-  featuredBlogpost: true
-  featuredBlogpostOrder: 1
-  excerpt: |-
-    Begin by exploring the existing page configurations to understand how content is organized.
+  thumbnail: '/assets/images/sample7.jpg'
 
 sections:
   - sectionType: hero

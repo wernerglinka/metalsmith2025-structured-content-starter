@@ -11,14 +11,11 @@ seo:
 
 card:
   title: 'Featured Components'
+  description: Explore the various section types included in this starter to see the component system in action.
   date: '2025-06-04'
   author:
     - Werner Heisenberg
-  image: '/assets/images/sample8.jpg'
-  featuredBlogpost: true
-  featuredBlogpostOrder: 1
-  excerpt: |-
-    Explore the various section types included in this starter to see the component system in action.
+  thumbnail: '/assets/images/sample8.jpg'
 
 sections:
   - sectionType: hero

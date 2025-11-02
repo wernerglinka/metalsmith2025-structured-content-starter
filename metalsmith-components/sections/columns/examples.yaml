@@ -1,0 +1,7 @@
+- name: Basic Example
+  description: Minimal columns configuration
+  config:
+    sectionType: columns
+    text:
+      title: Example Title
+      prose: Example content

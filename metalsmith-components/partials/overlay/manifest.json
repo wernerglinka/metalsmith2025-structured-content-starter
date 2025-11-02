@@ -1,0 +1,13 @@
+{
+  "name": "overlay",
+  "type": "partial",
+  "styles": [
+    "overlay.css"
+  ],
+  "scripts": [],
+  "requires": [],
+  "validation": {
+    "required": [],
+    "properties": {}
+  }
+}

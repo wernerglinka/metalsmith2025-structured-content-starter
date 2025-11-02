@@ -1,0 +1,7 @@
+- name: Basic Example
+  description: Minimal text-only configuration
+  config:
+    sectionType: text-only
+    text:
+      title: Example Title
+      prose: Example content

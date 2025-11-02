@@ -1,0 +1,25 @@
+{
+  "name": "@metalsmith-components/code",
+  "version": "0.0.1",
+  "description": "Metalsmith code section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "code"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "4a23b03b27e4add8",
+  "main": "code.njk",
+  "files": [
+    "code.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "code.css",
+    "code.js"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@metalsmith-components/author-date",
+  "version": "0.0.1",
+  "description": "Metalsmith author-date partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "author-date"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "31a6b688afc25f68",
+  "main": "author-date.njk",
+  "files": [
+    "author-date.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "author-date.css"
+  ]
+}

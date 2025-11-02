@@ -1,0 +1,7 @@
+- name: Basic Example
+  description: Minimal blog-author configuration
+  config:
+    sectionType: blog-author
+    text:
+      title: Example Title
+      prose: Example content

@@ -1,0 +1,27 @@
+{
+  "name": "@metalsmith-components/manual-card",
+  "version": "0.0.1",
+  "description": "Metalsmith manual-card partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "manual-card"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "112c11765d684d88",
+  "main": "manual-card.njk",
+  "files": [
+    "manual-card.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "manual-card.css"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/text": ">=0.0.1",
+    "@metalsmith-components/ctas": ">=0.0.1",
+    "@metalsmith-components/image": ">=0.0.1",
+    "@metalsmith-components/icon": ">=0.0.1"
+  }
+}

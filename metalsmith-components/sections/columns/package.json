@@ -1,0 +1,24 @@
+{
+  "name": "@metalsmith-components/columns",
+  "version": "0.0.1",
+  "description": "Metalsmith columns section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "columns"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "4f03e77aa18d3c4a",
+  "main": "columns.njk",
+  "files": [
+    "columns.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "columns.css"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

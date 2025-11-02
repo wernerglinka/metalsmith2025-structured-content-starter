@@ -1,0 +1,21 @@
+{
+  "name": "@metalsmith-components/overlay",
+  "version": "0.0.1",
+  "description": "Metalsmith overlay partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "overlay"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "27e5dcc1550adc21",
+  "main": "overlay.njk",
+  "files": [
+    "overlay.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "overlay.css"
+  ]
+}

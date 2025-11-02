@@ -1,0 +1,27 @@
+{
+  "name": "@metalsmith-components/image-compare",
+  "version": "0.0.1",
+  "description": "Metalsmith image-compare section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "image-compare"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "cc61e2d3710544d8",
+  "main": "image-compare.njk",
+  "files": [
+    "image-compare.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "image-compare.css",
+    "image-compare.js"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/image": ">=0.0.1",
+    "@metalsmith-components/icon": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

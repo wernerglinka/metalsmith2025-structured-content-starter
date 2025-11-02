@@ -11,14 +11,12 @@ seo:
 
 card:
   title: 'Learn More About This Approach'
+  description: |-
+    This starter accompanies a comprehensive exploration of structured content approaches in static site generation.
   date: '2025-06-10'
   author:
     - Stephen Hawking
-  image: '/assets/images/sample6.jpg'
-  featuredBlogpost: true
-  featuredBlogpostOrder: 1
-  excerpt: |-
-    This starter accompanies a comprehensive exploration of structured content approaches in static site generation.
+  thumbnail: '/assets/images/sample6.jpg'
 
 sections:
   - sectionType: hero

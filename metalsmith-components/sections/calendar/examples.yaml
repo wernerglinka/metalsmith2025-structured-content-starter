@@ -1,0 +1,7 @@
+- name: Basic Example
+  description: Minimal calendar configuration
+  config:
+    sectionType: calendar
+    text:
+      title: Example Title
+      prose: Example content

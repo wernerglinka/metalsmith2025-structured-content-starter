@@ -1,0 +1,7 @@
+- name: Basic Example
+  description: Minimal compound configuration
+  config:
+    sectionType: compound
+    text:
+      title: Example Title
+      prose: Example content

@@ -225,7 +225,7 @@ sections:
       subTitle: May use background image of color
       prose: Example of a CTA banner section with text and backgroundimage. The text area has a lead-in, title, sub-title, and prose. The prose is markdown text. All of the text parts are optional. There can be multiple CTAs, which are optional and may be buttons or links.
     ctas:
-      - url: 'https://glinka.co'
+      - url: 'https://metalsmith-components.com'
         label: 'Learn More'
         isButton: true
         buttonStyle: 'primary'

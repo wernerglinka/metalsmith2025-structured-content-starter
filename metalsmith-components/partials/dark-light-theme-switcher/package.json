@@ -1,0 +1,25 @@
+{
+  "name": "@metalsmith-components/dark-light-theme-switcher",
+  "version": "0.0.1",
+  "description": "Metalsmith dark-light-theme-switcher partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "dark-light-theme-switcher"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "7cb96caf563b3b18",
+  "main": "dark-light-theme-switcher.njk",
+  "files": [
+    "dark-light-theme-switcher.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "dark-light-theme-switcher.css",
+    "dark-light-theme-switcher.js"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/icon": ">=0.0.1"
+  }
+}

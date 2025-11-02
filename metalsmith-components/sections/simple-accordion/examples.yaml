@@ -1,0 +1,7 @@
+- name: Basic Example
+  description: Minimal simple-accordion configuration
+  config:
+    sectionType: simple-accordion
+    text:
+      title: Example Title
+      prose: Example content

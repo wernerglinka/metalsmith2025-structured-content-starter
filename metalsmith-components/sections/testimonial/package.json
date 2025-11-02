@@ -1,0 +1,27 @@
+{
+  "name": "@metalsmith-components/testimonial",
+  "version": "0.0.1",
+  "description": "Metalsmith testimonial section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "testimonial"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "3443f07393a15149",
+  "main": "testimonial.njk",
+  "files": [
+    "testimonial.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "testimonial.css"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/ctas": ">=0.0.1",
+    "@metalsmith-components/text": ">=0.0.1",
+    "@metalsmith-components/image": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

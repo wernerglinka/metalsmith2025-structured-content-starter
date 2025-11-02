@@ -1,0 +1,25 @@
+{
+  "name": "@metalsmith-components/ctas",
+  "version": "0.0.1",
+  "description": "Metalsmith ctas partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "ctas"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "73b6fb13ee63d360",
+  "main": "ctas.njk",
+  "files": [
+    "ctas.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "ctas.css"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/button": ">=0.0.1",
+    "@metalsmith-components/text-link": ">=0.0.1"
+  }
+}

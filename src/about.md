@@ -89,7 +89,7 @@ sections:
 
   - sectionType: banner
     containerTag: aside
-    classes: 'cta-banner accordion-header'
+    classes: 'cta-banner banner-accordion-header'
     id: 'section-id'
     isDisabled: false
     isReverse: false
@@ -120,7 +120,7 @@ sections:
 
   - sectionType: text-only
     containerTag: article
-    classes: 'accordion-content is-closed'
+    classes: 'banner-accordion-content is-closed'
     id: 'section-id'
     isDisabled: false
     isReverse: false
@@ -159,7 +159,7 @@ sections:
 
   - sectionType: banner
     containerTag: aside
-    classes: 'cta-banner accordion-header'
+    classes: 'cta-banner banner-accordion-header'
     id: 'section-id'
     isDisabled: false
     isReverse: false
@@ -190,7 +190,7 @@ sections:
 
   - sectionType: text-only
     containerTag: article
-    classes: 'accordion-content is-closed'
+    classes: 'banner-accordion-content is-closed'
     id: 'section-id'
     isDisabled: false
     isReverse: false
@@ -230,7 +230,7 @@ sections:
 
   - sectionType: banner
     containerTag: aside
-    classes: 'cta-banner accordion-header'
+    classes: 'cta-banner banner-accordion-header'
     id: 'section-id'
     isDisabled: false
     isReverse: false
@@ -261,7 +261,7 @@ sections:
 
   - sectionType: text-only
     containerTag: article
-    classes: 'accordion-content is-closed'
+    classes: 'banner-accordion-content is-closed'
     id: 'section-id'
     isDisabled: false
     isReverse: false
@@ -300,7 +300,7 @@ sections:
 
   - sectionType: banner
     containerTag: aside
-    classes: 'cta-banner accordion-header'
+    classes: 'cta-banner banner-accordion-header'
     id: 'section-id'
     isDisabled: false
     isReverse: false
@@ -331,7 +331,7 @@ sections:
 
   - sectionType: text-only
     containerTag: article
-    classes: 'accordion-content is-closed'
+    classes: 'banner-accordion-content is-closed'
     id: 'section-id'
     isDisabled: false
     isReverse: false
@@ -370,7 +370,7 @@ sections:
 
   - sectionType: banner
     containerTag: aside
-    classes: 'cta-banner accordion-header'
+    classes: 'cta-banner banner-accordion-header'
     id: 'section-id'
     isDisabled: false
     isReverse: false
@@ -401,7 +401,7 @@ sections:
 
   - sectionType: text-only
     containerTag: article
-    classes: 'accordion-content is-closed'
+    classes: 'banner-accordion-content is-closed'
     id: 'section-id'
     isDisabled: false
     isReverse: false

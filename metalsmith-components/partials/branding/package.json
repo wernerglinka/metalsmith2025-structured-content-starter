@@ -1,0 +1,21 @@
+{
+  "name": "@metalsmith-components/branding",
+  "version": "0.0.1",
+  "description": "Metalsmith branding partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "branding"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "44006d495b11648f",
+  "main": "branding.njk",
+  "files": [
+    "branding.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "branding.css"
+  ]
+}

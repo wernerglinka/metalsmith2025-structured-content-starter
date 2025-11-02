@@ -1,0 +1,21 @@
+{
+  "name": "@metalsmith-components/collection-list",
+  "version": "0.0.1",
+  "description": "Metalsmith collection-list section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "collection-list"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "8acc0e08f161e7cd",
+  "main": "collection-list.njk",
+  "files": [
+    "collection-list.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "collection-list.css"
+  ]
+}

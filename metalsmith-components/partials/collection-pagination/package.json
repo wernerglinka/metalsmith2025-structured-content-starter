@@ -1,0 +1,21 @@
+{
+  "name": "@metalsmith-components/collection-pagination",
+  "version": "0.0.1",
+  "description": "Metalsmith collection-pagination partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "collection-pagination"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "be6fc67435617537",
+  "main": "collection-pagination.njk",
+  "files": [
+    "collection-pagination.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "collection-pagination.css"
+  ]
+}

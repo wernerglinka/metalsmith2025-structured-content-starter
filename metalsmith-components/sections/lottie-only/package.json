@@ -1,0 +1,25 @@
+{
+  "name": "@metalsmith-components/lottie-only",
+  "version": "0.0.1",
+  "description": "Metalsmith lottie-only section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "lottie-only"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "24a889db978370e7",
+  "main": "lottie-only.njk",
+  "files": [
+    "lottie-only.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/ctas": ">=0.0.1",
+    "@metalsmith-components/lottie": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}

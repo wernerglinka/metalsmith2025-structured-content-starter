@@ -1,0 +1,20 @@
+{
+  "name": "@metalsmith-components/icon",
+  "version": "0.0.1",
+  "description": "Metalsmith icon partial",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "partial",
+    "icon"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "fac7391b7324e58b",
+  "main": "icon.njk",
+  "files": [
+    "icon.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh"
+  ]
+}

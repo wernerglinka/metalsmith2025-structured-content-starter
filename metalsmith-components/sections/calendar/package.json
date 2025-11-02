@@ -1,0 +1,27 @@
+{
+  "name": "@metalsmith-components/calendar",
+  "version": "0.0.1",
+  "description": "Metalsmith calendar section",
+  "keywords": [
+    "metalsmith",
+    "component",
+    "section",
+    "calendar"
+  ],
+  "x-metalsmith-component": true,
+  "contentHash": "760d96f454a12a25",
+  "main": "calendar.njk",
+  "files": [
+    "calendar.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "calendar.css",
+    "calendar.js",
+    "modules/"
+  ],
+  "peerDependencies": {
+    "@metalsmith-components/text": ">=0.0.1",
+    "@metalsmith-components/commons": ">=0.0.1"
+  }
+}
