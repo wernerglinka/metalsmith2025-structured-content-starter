@@ -1,1 +1,0 @@
-/* Blurbs Section JavaScript */

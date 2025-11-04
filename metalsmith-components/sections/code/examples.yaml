@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal code configuration
-  config:
-    sectionType: code
-    text:
-      title: Example Title
-      prose: Example content

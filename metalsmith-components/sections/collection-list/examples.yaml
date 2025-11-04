@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal collection-list configuration
-  config:
-    sectionType: collection-list
-    text:
-      title: Example Title
-      prose: Example content

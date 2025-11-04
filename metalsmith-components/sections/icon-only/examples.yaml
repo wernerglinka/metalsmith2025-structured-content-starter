@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal icon-only configuration
-  config:
-    sectionType: icon-only
-    text:
-      title: Example Title
-      prose: Example content

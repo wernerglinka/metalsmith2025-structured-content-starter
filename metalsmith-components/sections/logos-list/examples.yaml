@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal logos-list configuration
-  config:
-    sectionType: logos-list
-    text:
-      title: Example Title
-      prose: Example content

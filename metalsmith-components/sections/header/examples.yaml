@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal header configuration
-  config:
-    sectionType: header
-    text:
-      title: Example Title
-      prose: Example content

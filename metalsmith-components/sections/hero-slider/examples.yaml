@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal hero-slider configuration
-  config:
-    sectionType: hero-slider
-    text:
-      title: Example Title
-      prose: Example content

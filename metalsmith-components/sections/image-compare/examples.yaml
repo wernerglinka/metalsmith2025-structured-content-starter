@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal image-compare configuration
-  config:
-    sectionType: image-compare
-    text:
-      title: Example Title
-      prose: Example content

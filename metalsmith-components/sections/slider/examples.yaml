@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal slider configuration
-  config:
-    sectionType: slider
-    text:
-      title: Example Title
-      prose: Example content

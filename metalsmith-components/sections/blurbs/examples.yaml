@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal blurbs configuration
-  config:
-    sectionType: blurbs
-    text:
-      title: Example Title
-      prose: Example content

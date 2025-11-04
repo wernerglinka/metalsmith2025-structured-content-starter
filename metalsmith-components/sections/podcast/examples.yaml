@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal podcast configuration
-  config:
-    sectionType: podcast
-    text:
-      title: Example Title
-      prose: Example content

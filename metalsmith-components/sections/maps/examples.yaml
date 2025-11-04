@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal maps configuration
-  config:
-    sectionType: maps
-    text:
-      title: Example Title
-      prose: Example content

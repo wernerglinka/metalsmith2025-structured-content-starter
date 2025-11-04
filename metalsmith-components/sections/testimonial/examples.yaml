@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal testimonial configuration
-  config:
-    sectionType: testimonial
-    text:
-      title: Example Title
-      prose: Example content

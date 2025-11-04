@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal blog-navigation configuration
-  config:
-    sectionType: blog-navigation
-    text:
-      title: Example Title
-      prose: Example content

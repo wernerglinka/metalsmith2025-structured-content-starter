@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal hero configuration
-  config:
-    sectionType: hero
-    text:
-      title: Example Title
-      prose: Example content

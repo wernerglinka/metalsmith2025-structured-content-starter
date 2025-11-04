@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal audio-only configuration
-  config:
-    sectionType: audio-only
-    text:
-      title: Example Title
-      prose: Example content

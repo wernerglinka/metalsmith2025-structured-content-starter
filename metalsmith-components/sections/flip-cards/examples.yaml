@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal flip-cards configuration
-  config:
-    sectionType: flip-cards
-    text:
-      title: Example Title
-      prose: Example content

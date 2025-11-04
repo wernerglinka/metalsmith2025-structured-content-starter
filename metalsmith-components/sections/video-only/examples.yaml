@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal video-only configuration
-  config:
-    sectionType: video-only
-    text:
-      title: Example Title
-      prose: Example content

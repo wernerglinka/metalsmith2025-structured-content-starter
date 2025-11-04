@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal search-only configuration
-  config:
-    sectionType: search-only
-    text:
-      title: Example Title
-      prose: Example content

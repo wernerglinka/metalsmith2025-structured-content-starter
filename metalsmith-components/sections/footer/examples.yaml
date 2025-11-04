@@ -1,7 +1,0 @@
-- name: Basic Example
-  description: Minimal footer configuration
-  config:
-    sectionType: footer
-    text:
-      title: Example Title
-      prose: Example content
