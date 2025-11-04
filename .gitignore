@@ -58,3 +58,6 @@ yarn-error.log
 #build notes
 build-notes/
 DEPLOY-GITHUB-PAGES.md
+
+# Temporary component updates
+metalsmith-components/
