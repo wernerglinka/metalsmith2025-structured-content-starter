@@ -30,6 +30,10 @@
   --color-surface-focus: rgb(0 0 0 / 5%);
   --color-icon-default: #161616;
 
+  /* Top Message Bar */
+  --color-top-message-background: #161616;
+  --color-top-message-text: #f4f4f4;
+
   /* Button Colors */
   --primary-button-color: rgb(218 30 40 / 80%);
   --primary-button-text-color: #f4f4f4; /* Always light text on red */

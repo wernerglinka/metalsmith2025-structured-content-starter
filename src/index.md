@@ -3,6 +3,13 @@ layout: pages/sections.njk
 bodyClasses: 'sections-page'
 hasHero: true
 
+topMessage:
+  text: 'New components available: pricing-table, team-grid, timeline, stats, and steps!'
+  link:
+    url: '/references/'
+    label: 'View the library'
+  dismissible: true
+
 navigation:
   navLabel: 'Home'
   navIndex: 0
