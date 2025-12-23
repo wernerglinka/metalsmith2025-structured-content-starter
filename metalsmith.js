@@ -82,9 +82,6 @@ const getGlobalMetadata = () => {
 
 const globalMetadata = getGlobalMetadata();
 
-// Get the site URL for use in the sitemap plugin
-const siteURL = globalMetadata.site.siteURL;
-
 /**
  * TEMPLATE ENGINE SETUP
  * Import custom Nunjucks filters that extend the template engine
