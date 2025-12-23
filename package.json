@@ -1,6 +1,6 @@
 {
   "name": "metalsmith2025-structured-content-starter",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A component-based, structured content starter for Metalsmith 2025",
   "type": "module",
   "keywords": [
