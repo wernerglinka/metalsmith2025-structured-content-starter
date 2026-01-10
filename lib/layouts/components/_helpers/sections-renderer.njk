@@ -7,7 +7,7 @@
   {% if not section.isDisabled %}
 
     {# section wrapper may be article, aside, section or div depending on section.containerTag setting #}
-    <{{ section.containerTag }} id="{{ section.id }}"  {{ buildContainerAttributes(section) }}>
+    <{{ section.containerTag }} id="{{ section.id }}"  {{ buildContainerAttributes(section, loop.first) }}>
 
       {# if section has background add a background image #}
       {% if section.containerFields.background.image %}

@@ -49,38 +49,6 @@ const mainFile = process.argv[ 1 ]; // Gets the file that was executed by Node.j
  */
 const dependencies = JSON.parse( fs.readFileSync( './package.json' ) ).dependencies;
 
-/**
- * @function getGlobalMetadata
- * @returns {Object} An object containing all JSON data files from lib/data directory
- *
- * This function reads all JSON files from the data directory and adds their data
- * to a metadata object. This object can then be added to the Metalsmith metadata.
- * /lib/data/
- *   - site.json
- *   - social.json
- *   - validate.json
- *
- * becomes
- * {
- *   site: {...},
- *   social: {...},
- *   validate: {...}
- * }
- */
-const getGlobalMetadata = () => {
-  const dataDir = path.join( thisDirectory, 'lib', 'data' ); // Path to data directory
-  const files = fs.readdirSync( dataDir ); // Get all files in directory
-
-  // Process each JSON file and add it to the result object
-  return files.reduce( ( obj, file ) => {
-    const fileName = file.replace( '.json', '' ); // Remove .json extension
-    const fileContents = fs.readFileSync( path.join( dataDir, file ), 'utf8' );
-    obj[ fileName ] = JSON.parse( fileContents ); // Parse JSON content
-    return obj;
-  }, {} );
-};
-
-const globalMetadata = getGlobalMetadata();
 
 /**
  * TEMPLATE ENGINE SETUP
@@ -137,7 +105,7 @@ metalsmith
   .clean( true )
   // Ignore macOS system files
   .ignore( [ '**/.DS_Store' ] )
-  .watch( isProduction ? false : [ 'src/**/*', 'lib/layouts/**/*', 'lib/assets/**/*' ] )
+  .watch( isProduction ? false : [ 'src/**/*', 'lib/layouts/**/*', 'lib/assets/**/*', 'lib/data/**/*' ] )
   // Pass NODE_ENV to plugins
   .env( 'NODE_ENV', process.env.NODE_ENV )
   // Where to find source files
@@ -146,8 +114,25 @@ metalsmith
   .destination( './build' )
   .metadata( {
     msVersion: dependencies.metalsmith,
-    nodeVersion: process.version,
-    data: globalMetadata
+    nodeVersion: process.version
+  } )
+
+  /**
+   * Load external data files into metadata
+   * This runs on each build, so changes to data files are picked up during watch mode
+   * Each JSON file in lib/data becomes a key under metadata.data (e.g., site.json -> data.site)
+   */
+  .use( ( files, metalsmith, done ) => {
+    const dataDir = path.join( metalsmith.directory(), 'lib', 'data' );
+    const dataFiles = fs.readdirSync( dataDir ).filter( f => f.endsWith( '.json' ) );
+    const data = dataFiles.reduce( ( obj, file ) => {
+      const key = file.replace( '.json', '' );
+      const content = fs.readFileSync( path.join( dataDir, file ), 'utf8' );
+      obj[ key ] = JSON.parse( content );
+      return obj;
+    }, {} );
+    metalsmith.metadata().data = data;
+    done();
   } )
 
   // Exclude draft content in production mode

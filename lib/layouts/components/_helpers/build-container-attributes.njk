@@ -16,17 +16,22 @@
     imageScreen: if imageScreen is set adds 'has-dark-screen' or 'has-light-screen' to class list depending on imageScreen value 
 #} 
 
-{% macro buildContainerAttributes(section) -%} 
-  {%- set containerFields = section.containerFields -%} 
-  {%- set classes = ['section-wrapper'] -%} 
-  {%- set styles = [] -%} 
+{% macro buildContainerAttributes(section, isFirst) -%}
+  {%- set containerFields = section.containerFields -%}
+  {%- set classes = ['section-wrapper'] -%}
+  {%- set styles = [] -%}
 
-  {# Add section type to section wrapper classes #} 
+  {# Add section type to section wrapper classes #}
   {% set classes = classes.concat([section.sectionType]) %}
-  
+
+  {# Add first-section class to the first section for top padding #}
+  {%- if isFirst -%}
+    {%- set classes = classes.concat(['first-section']) -%}
+  {%- endif -%}
+
   {# Build classes array #}
-  {%- if section.classes -%} 
-    {%- set classes = classes.concat(section.classes.split(' ')) -%} 
+  {%- if section.classes -%}
+    {%- set classes = classes.concat(section.classes.split(' ')) -%}
   {%- endif -%} 
   
   {%- if section.isFullScreen -%} 
