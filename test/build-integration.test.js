@@ -194,8 +194,7 @@ describe('Build Integration', () => {
           collections({
             blog: {
               pattern: 'blog/*.md',
-              sortBy: 'card.date',
-              reverse: false
+              sort: 'card.date:asc'
             }
           })
         );

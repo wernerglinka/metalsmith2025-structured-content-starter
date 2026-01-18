@@ -184,8 +184,7 @@ Requires a properly configured blog collection in Metalsmith:
 .use(collections({
   blog: {
     pattern: 'blog/**/*.md',
-    sortBy: 'date',
-    reverse: true
+    sort: 'date:desc'
   }
 }))
 ```

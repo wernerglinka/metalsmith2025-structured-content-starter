@@ -15,7 +15,7 @@
       {% endif %}
 
       {# section content #}
-      {{ renderSection(section, navigation.breadcrumbs, data, collections, previous, next, urlPath) }}
+      {{ renderSection(section, navigation.breadcrumbs, data, collections, previous, next, urlPath, collection) }}
 
       {% set containerTag = section.containerTag %}
     </{{ containerTag }}>

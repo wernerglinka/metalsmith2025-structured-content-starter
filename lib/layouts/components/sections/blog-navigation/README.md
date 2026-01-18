@@ -115,8 +115,7 @@ The component requires properly configured collections to provide previous/next 
 .use(collections({
   blog: {
     pattern: 'blog/**/*.md',
-    sortBy: 'date',
-    reverse: true,
+    sort: 'date:desc',
     metadata: {
       name: 'Blog Posts'
     }

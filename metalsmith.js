@@ -146,8 +146,7 @@ metalsmith
     collections( {
       blog: {
         pattern: 'blog/*.md',
-        sortBy: 'card.date',
-        reverse: true
+        sort: 'card.date:desc'
       }
     } )
   )
