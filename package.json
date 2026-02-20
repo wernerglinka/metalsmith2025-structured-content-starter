@@ -57,7 +57,6 @@
     "jstransformer-nunjucks": "^1.2.0",
     "marked": "^17.0.3",
     "metalsmith": "^2.7.0",
-    "metalsmith-blog-lists": "^2.1.1",
     "metalsmith-bundled-components": "^0.6.0",
     "metalsmith-menu-plus": "^0.3.0",
     "metalsmith-optimize-html": "^0.8.3",
@@ -66,7 +65,6 @@
     "metalsmith-safe-links": "^2.1.0",
     "metalsmith-sectioned-blog-pagination": "^1.2.0",
     "metalsmith-seo": "^0.4.0",
-    "metalsmith-simple-pagination": "^0.1.0",
     "metalsmith-sitemap": "^1.2.2",
     "postcss": "^8.5.6"
   },

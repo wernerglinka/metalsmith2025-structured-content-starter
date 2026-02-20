@@ -26,7 +26,6 @@ import prism from 'metalsmith-prism';
 
 import componentDependencyBundler from 'metalsmith-bundled-components';
 
-import assets from 'metalsmith-static-files'; // Copies static assets to build
 import seo from 'metalsmith-seo'; // Adds SEO metadata to pages
 import optimizeImages from 'metalsmith-optimize-images'; // Optimizes images for web
 import htmlMinifier from 'metalsmith-optimize-html'; // Minifies HTML in production
@@ -105,13 +104,22 @@ metalsmith
   .clean( true )
   // Ignore macOS system files
   .ignore( [ '**/.DS_Store' ] )
-  .watch( isProduction ? false : [ 'src/**/*', 'lib/layouts/**/*', 'lib/assets/**/*', 'lib/data/**/*' ] )
+  .watch( isProduction ? false : [
+    'src/**/*',
+    'lib/layouts/**/*',
+    'lib/assets/main.css',
+    'lib/assets/main.js',
+    'lib/assets/styles/**/*',
+    'lib/data/**/*'
+  ] )
   // Pass NODE_ENV to plugins
   .env( 'NODE_ENV', process.env.NODE_ENV )
   // Where to find source files
   .source( './src' )
   // Where to output the built site
   .destination( './build' )
+  // Static files in src/assets/ copied directly without plugin processing
+  .statik( [ 'assets' ] )
   .metadata( {
     msVersion: dependencies.metalsmith,
     nodeVersion: process.version
@@ -253,17 +261,6 @@ metalsmith
           // Additional PostCSS options if needed
         }
       }
-    } )
-  )
-
-  /**
-   * Copy static assets to the build directory
-   * Learn more: https://github.com/wernerglinka/metalsmith-static-files
-   */
-  .use(
-    assets( {
-      source: 'lib/assets/', // Where to find assets
-      destination: 'assets/' // Where to copy assets
     } )
   );
 
