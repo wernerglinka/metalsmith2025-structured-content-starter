@@ -1,14 +1,16 @@
-{% from "components/_partials/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{# feature-imports #}
+{% from "pages/parts/breadcrumbs.njk" import breadcrumbs %} {# feature:breadcrumbs #}
 
 <!doctype html>
 <html class="no-js" lang="">
-  {% include "components/_helpers/head.njk" %}
+  {% include "pages/parts/head.njk" %}
 
 
   <body class="{{ bodyClasses }}">
     <span id="top"></span>
-    {% include "components/sections/header/header.njk" %}
-    {{ breadcrumbs(navigation.breadcrumbs) }}
+    {% include "pages/parts/header.njk" %}
+    {# feature-slot:breadcrumbs #}
+    {{ breadcrumbs(navigation.breadcrumbs) }} {# feature:breadcrumbs #}
 
     <main>
       {% block body %}
@@ -16,7 +18,7 @@
       {% endblock %}
     </main>
 
-    {% include "components/sections/footer/footer.njk" %}
+    {% include "pages/parts/footer.njk" %}
 
     <script src="/assets/main.js"></script>
 

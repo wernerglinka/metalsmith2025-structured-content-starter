@@ -60,9 +60,9 @@ The `componentDependencyBundler` plugin is a key differentiator of this starter:
 - **Optimized Build**: HTML minification for production builds
 - **Combined Scripts**: Run `npm run fix` to format and lint your code in one command
 
-## Quick start
+## Getting started
 
-To get started with this Metalsmith starter You should have Node.js version 18 or higher installed.
+You need Node.js version 18 or higher.
 
 1.  **Create a Metalsmith site.**
 
@@ -88,11 +88,22 @@ To get started with this Metalsmith starter You should have Node.js version 18 o
 
     Open the `src` directory in your code editor of choice and edit any page's frontmatter to modify its sections. Save your changes and the browser will update in real time!
 
+1.  **Initialize the page shell.**
+
+    The frame every page shares (head, header, footer, navigation, branding, breadcrumbs) is the **page shell**, kept in `lib/layouts/pages/parts/` and `lib/assets/styles/` rather than the component catalog, so you edit it directly. Three pieces are optional; set them up interactively:
+
+    ```shell
+    npm run init
+    ```
+
+    This asks y/n for each optional feature and wires your choices in: the **dark/light theme switcher** (off by default), the **language switcher** (off by default), and **breadcrumbs** (on by default, turn it off for small sites). Two need a one-time setup once enabled: the language switcher reads `lib/data/languages.json`, and the theme switcher needs `.dark-theme` overrides for your design tokens to theme the whole page. See [docs/page-shell.md](docs/page-shell.md), [docs/theme-switcher.md](docs/theme-switcher.md), and [docs/language-switcher.md](docs/language-switcher.md). To change one feature without the prompts: `node scripts/init-starter.mjs disable breadcrumbs`.
+
 1.  **Available scripts**
 
     This starter includes several useful scripts:
 
     ```shell
+    npm run init   # Set up page-shell features (interactive)
     npm start      # Start development server with live reloading
     npm run dev    # Run a development build
     npm run build  # Create a production build
@@ -117,7 +128,7 @@ A quick look at the top-level files and directories you'll see in this Metalsmit
     │       │   ├── _helpers/    # Template helpers
     │       │   ├── _partials/   # Partial components (buttons, cards, etc.)
     │       │   └── sections/    # Section components (hero, banner, etc.)
-    │       └── pages/           # Page templates
+    │       └── pages/           # Page templates and pages/parts/ (the page shell)
     ├── nunjucks-filters/        # Custom Nunjucks filters
     ├── eslint.config.js         # ESLint configuration
     ├── .gitattributes           # Git attributes configuration
@@ -144,9 +155,10 @@ A quick look at the top-level files and directories you'll see in this Metalsmit
    - **`lib/assets`**: Static assets like images and global CSS
    - **`lib/data`**: JSON data files for global site configuration
    - **`lib/layouts`**: Templates and components:
-     - **`components/_partials`**: Reusable UI components (buttons, cards, navigation, etc.)
+     - **`components/_partials`**: Reusable UI components (buttons, cards, etc.)
      - **`components/sections`**: Page section components (hero, banner, media blocks, etc.)
      - **`pages`**: Page-level templates that compose sections
+     - **`pages/parts`**: The page shell (head, header, footer, navigation, branding, breadcrumbs); see [docs/page-shell.md](docs/page-shell.md)
 
 4. **Component Structure**: Each component typically includes:
    - **`component-name.njk`**: The component's template
@@ -205,8 +217,9 @@ sections:
 ### Component System
 
 - **Section Components**: Large page sections like hero, banner, media blocks
-- **Partial Components**: Smaller reusable elements like buttons, cards, navigation
+- **Partial Components**: Smaller reusable elements like buttons and cards
 - **Template Helpers**: Utilities for rendering sections and building attributes
+- **Page Shell**: The frame around content (head, header, footer, navigation, branding, breadcrumbs) lives in `pages/parts/`, not the catalog; see [Page Shell](docs/page-shell.md)
 
 ### Automatic Asset Management
 

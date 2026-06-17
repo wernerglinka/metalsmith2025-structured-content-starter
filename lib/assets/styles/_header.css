@@ -153,6 +153,11 @@ header {
     align-items: center;
     gap: var(--space-s);
 
+    /* Collapse the wrapper when no optional switchers are enabled (no element children) */
+    &:not(:has(*)) {
+      display: none;
+    }
+
     /* Reset button styles for header buttons - higher specificity than global button styles */
     button.none,
     button.theme-toggle,

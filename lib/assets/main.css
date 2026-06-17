@@ -1,6 +1,16 @@
 @import url('./styles/_css-base.css');
 @import url('./styles/_design-tokens.css');
 
+/* Page shell chrome (header/footer/navigation/branding live in layouts/pages/parts, not the component catalog) */
+@import url('./styles/_header.css');
+@import url('./styles/_footer.css');
+@import url('./styles/_navigation.css');
+@import url('./styles/_branding.css');
+
+/* Optional shell features, toggled by scripts/init-starter.mjs. Do not edit tagged lines by hand. */
+/* feature-styles */
+@import url('./styles/_breadcrumbs.css'); /* feature:breadcrumbs */
+
 /**
  * Global Styles
  */

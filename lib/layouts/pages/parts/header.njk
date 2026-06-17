@@ -1,5 +1,6 @@
-{% from "components/_partials/branding/branding.njk" import branding %}
-{% from "components/_partials/navigation/navigation.njk" import navigation %}
+{% from "pages/parts/branding.njk" import branding %}
+{% from "pages/parts/navigation.njk" import navigation %}
+{# feature-imports #}
 
 <div class="header-wrapper{% if topMessage %} has-top-message{% endif %}">
   {% if topMessage %}
@@ -25,5 +26,8 @@
       {{ branding( link, img ) }}
 
       {{ navigation( mainMenu, urlPath )}}
+      <div class="misc">
+        {# feature-slot:header #}
+      </div>
   </header>
 </div>
