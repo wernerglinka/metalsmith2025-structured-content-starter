@@ -71,7 +71,7 @@
   /* Plus/minus indicators using design tokens */
   h2::after,
   h3::after {
-    content: '+';
+    content: "+";
     color: var(--color-primary);
     font-weight: normal;
     margin-left: var(--space-s);
@@ -80,7 +80,7 @@
   &.is-open {
     h2::after,
     h3::after {
-      content: '-';
+      content: "-";
     }
   }
 }

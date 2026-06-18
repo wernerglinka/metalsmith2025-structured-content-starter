@@ -162,7 +162,7 @@ header {
     button.none,
     button.theme-toggle,
     button.search-icon-toggle,
-    button[type='submit'] {
+    button[type="submit"] {
       background: transparent;
       box-shadow: none;
       padding: 0;
@@ -288,7 +288,7 @@ header {
       }
     }
 
-    button[type='submit'] {
+    button[type="submit"] {
       padding: var(--space-2xs, 0.75rem);
       display: flex;
       align-items: center;

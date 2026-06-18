@@ -14,7 +14,7 @@
   transition: background-color 0.5s ease-in-out;
 
   &::after {
-    content: '»';
+    content: "»";
     display: inline-block;
     margin-left: 0.25em;
     padding-right: 2px;

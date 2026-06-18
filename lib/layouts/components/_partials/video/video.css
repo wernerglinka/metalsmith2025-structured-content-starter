@@ -40,7 +40,9 @@
       height: var(--space-xl);
       border-radius: 50%;
       background-color: var(--color-text-light);
-      transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      transition:
+        background-color 0.5s ease-in-out,
+        opacity 0.5s ease-in-out;
       cursor: pointer;
       opacity: 0.9;
 
@@ -49,7 +51,7 @@
         top: 50%;
         left: 50%;
         display: block;
-        content: '';
+        content: "";
         width: 0;
         height: 0;
         margin-top: calc(var(--space-m) * -0.5);
@@ -57,7 +59,9 @@
         border-width: calc(var(--space-m) * 0.5) calc(var(--space-m) * 0.75);
         border-style: solid;
         border-color: transparent transparent transparent var(--color-text);
-        transition: border-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        transition:
+          border-color 0.5s ease-in-out,
+          opacity 0.5s ease-in-out;
         opacity: 0.9;
       }
     }

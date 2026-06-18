@@ -25,8 +25,9 @@
  */
 
 import { strict as assert } from 'node:assert';
-import { existsSync, readdirSync, statSync, readFileSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 /**
@@ -186,16 +187,21 @@ describe('Component Dependency Bundler Setup', () => {
             const manifestContent = readFileSync(manifestPath, 'utf8');
             const manifest = JSON.parse(manifestContent);
 
-            // Check basic manifest structure
+            // Check basic manifest structure. The current manifest schema
+            // declares component dependencies via `requires` (an array of
+            // component names) and asset lists via `styles` and `scripts`.
             assert.ok(manifest.name, `Manifest for ${section} should have name`);
-            assert.ok(manifest.dependencies, `Manifest for ${section} should have dependencies`);
 
-            if (manifest.dependencies.css) {
-              assert.ok(Array.isArray(manifest.dependencies.css), `CSS dependencies for ${section} should be an array`);
+            if (manifest.requires !== undefined) {
+              assert.ok(Array.isArray(manifest.requires), `requires for ${section} should be an array`);
             }
 
-            if (manifest.dependencies.js) {
-              assert.ok(Array.isArray(manifest.dependencies.js), `JS dependencies for ${section} should be an array`);
+            if (manifest.styles !== undefined) {
+              assert.ok(Array.isArray(manifest.styles), `styles for ${section} should be an array`);
+            }
+
+            if (manifest.scripts !== undefined) {
+              assert.ok(Array.isArray(manifest.scripts), `scripts for ${section} should be an array`);
             }
           } catch (error) {
             assert.fail(`Invalid manifest for ${section}: ${error.message}`);

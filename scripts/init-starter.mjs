@@ -22,8 +22,8 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import readline from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
+import readline from 'node:readline/promises';
 import { fileURLToPath } from 'node:url';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -149,7 +149,9 @@ const loadRegistry = () => JSON.parse(fs.readFileSync(path.join(scriptDirectory,
  * @returns {boolean} Enabled state
  */
 const isEnabled = (featureName, feature) =>
-  [...new Set(feature.edits.map((edit) => edit.file))].some((fileKey) => featureTagRegExp(featureName).test(readTarget(fileKey)));
+  [...new Set(feature.edits.map((edit) => edit.file))].some((fileKey) =>
+    featureTagRegExp(featureName).test(readTarget(fileKey))
+  );
 
 /**
  * Enable a feature by inserting each tagged line after its anchor.
@@ -169,9 +171,13 @@ const enableFeature = (featureName, feature) => {
       return;
     }
     pending.set(edit.file, result.content);
-    log.push(result.inserted ? `  + ${targetFiles[edit.file].path}` : `  = ${targetFiles[edit.file].path} (already present)`);
+    log.push(
+      result.inserted ? `  + ${targetFiles[edit.file].path}` : `  = ${targetFiles[edit.file].path} (already present)`
+    );
   });
-  pending.forEach((after, fileKey) => writeTargetIfChanged(fileKey, readTarget(fileKey), after));
+  pending.forEach((after, fileKey) => {
+    writeTargetIfChanged(fileKey, readTarget(fileKey), after);
+  });
   return log;
 };
 
@@ -199,7 +205,9 @@ const disableFeature = (featureName, feature) => {
  * @returns {string[]} Status lines
  */
 const featureStatus = (registry) =>
-  Object.entries(registry).map(([name, feature]) => `  [${isEnabled(name, feature) ? 'x' : ' '}] ${name} — ${feature.label}`);
+  Object.entries(registry).map(
+    ([name, feature]) => `  [${isEnabled(name, feature) ? 'x' : ' '}] ${name} — ${feature.label}`
+  );
 
 /**
  * Apply a desired state to a feature, logging what happened.
@@ -225,6 +233,7 @@ const applyFeature = (featureName, feature, want) => {
  * @param {Object<string, object>} registry - Feature registry
  * @returns {Promise<void>} Resolves when done
  */
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: a single linear prompt-and-apply loop reads more clearly inline than split across helpers
 const runInteractive = async (registry) => {
   const rl = readline.createInterface({ input: stdin, output: stdout });
   // Pull lines through a single async iterator so answers are never dropped,
@@ -240,14 +249,18 @@ const runInteractive = async (registry) => {
   try {
     for (const [name, feature] of Object.entries(registry)) {
       const enabled = isEnabled(name, feature);
-      const answer = (await ask(`${feature.label} (currently ${enabled ? 'on' : 'off'}). Enable? [${enabled ? 'Y/n' : 'y/N'}]: `))
+      const answer = (
+        await ask(`${feature.label} (currently ${enabled ? 'on' : 'off'}). Enable? [${enabled ? 'Y/n' : 'y/N'}]: `)
+      )
         .trim()
         .toLowerCase();
       // Only an explicit yes/no changes anything; Enter or any unrecognized answer
       // keeps the current state, so an ambiguous reply never silently flips a feature.
       const want = answer.startsWith('y') ? true : answer.startsWith('n') ? false : enabled;
       applyFeature(name, feature, want);
-      console.log(`  ${want ? 'on' : 'off'}${want && !enabled && feature.afterEnable ? `\n  note: ${feature.afterEnable}` : ''}\n`);
+      console.log(
+        `  ${want ? 'on' : 'off'}${want && !enabled && feature.afterEnable ? `\n  note: ${feature.afterEnable}` : ''}\n`
+      );
     }
   } finally {
     rl.close();
@@ -274,7 +287,9 @@ const main = async () => {
     return;
   }
   if (command !== 'enable' && command !== 'disable') {
-    throw new Error(`Unknown command "${command}". Use: (no args) | status | enable <feature...> | disable <feature...>`);
+    throw new Error(
+      `Unknown command "${command}". Use: (no args) | status | enable <feature...> | disable <feature...>`
+    );
   }
   if (featureNames.length === 0) {
     throw new Error(`"${command}" needs at least one feature. Known: ${Object.keys(registry).join(', ')}`);

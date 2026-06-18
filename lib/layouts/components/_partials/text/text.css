@@ -56,7 +56,7 @@
 
   /* Code blocks and inline code */
   code {
-    font-family: 'Courier New', monospace;
+    font-family: "Courier New", monospace;
     font-size: 0.9em;
     background-color: var(--color-background-light);
     padding: 0.2em 0.4em;
@@ -89,7 +89,7 @@
   }
 
   /* Strong and emphasis */
-  strong { 
+  strong {
     font-weight: 600;
   }
 

@@ -19,14 +19,14 @@
  *   partialsDir        - e.g. "_partials"
  */
 
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import os from 'node:os';
-import readline from 'node:readline/promises';
-import { stdin, stdout } from 'node:process';
 import { execFile } from 'node:child_process';
-import { promisify } from 'node:util';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { stdin, stdout } from 'node:process';
+import readline from 'node:readline/promises';
 import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
 
 const runCommand = promisify(execFile);
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -63,7 +63,9 @@ const fetchCatalog = async (registry) => {
   const sections = manifest.sections || [];
   const partials = manifest.partials || [];
   const byName = new Map();
-  [...sections, ...partials].forEach((entry) => byName.set(entry.name, entry));
+  [...sections, ...partials].forEach((entry) => {
+    byName.set(entry.name, entry);
+  });
   return { sections, partials, byName };
 };
 
@@ -86,7 +88,11 @@ const listInstalled = async (root, config) => {
     } catch {
       // Directory may not exist yet; treat as nothing installed there.
     }
-    entries.filter((entry) => entry.isDirectory()).forEach((entry) => installed.add(entry.name));
+    entries
+      .filter((entry) => entry.isDirectory())
+      .forEach((entry) => {
+        installed.add(entry.name);
+      });
   }
   return installed;
 };

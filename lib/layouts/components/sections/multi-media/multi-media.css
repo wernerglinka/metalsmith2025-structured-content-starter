@@ -76,7 +76,7 @@
       }
 
       .media {
-        top: -var(--space-s-m);
+        top: calc(-1 * var(--space-s-m));
         left: -1rem;
       }
 

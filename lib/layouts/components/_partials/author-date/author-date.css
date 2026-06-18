@@ -16,12 +16,12 @@
   margin-top: var(--space-s);
 
   &::before {
-    content: 'By ';
+    content: "By ";
     margin-right: 0.25em;
   }
 
   .author::after {
-    content: ' | ';
+    content: " | ";
     margin: 0 var(--space-2xs);
   }
 
@@ -36,7 +36,7 @@
     }
 
     .author::after {
-      content: '';
+      content: "";
       margin: 0;
     }
   }

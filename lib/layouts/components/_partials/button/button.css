@@ -27,7 +27,9 @@ button {
   display: inline-block;
   text-align: center;
   padding: var(--space-2xs-xs) var(--space-s-m);
-  transition: transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
+  transition:
+    transform 0.5s ease-in-out,
+    background-color 0.5s ease-in-out;
   font-weight: 500;
   letter-spacing: var(--default-letter-spacing);
   background: rgb(218 30 40 / 80%);

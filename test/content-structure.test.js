@@ -24,8 +24,9 @@
  */
 
 import { strict as assert } from 'node:assert';
-import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { join, dirname, extname } from 'node:path';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { dirname, extname, join } from 'node:path';
+import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
 
@@ -153,7 +154,7 @@ describe('Content Structure', () => {
      *
      * What it tests:
      * - Site.json file existence and parsability
-     * - Required field presence (title, siteURL, description)
+     * - Required field presence (title, url, description)
      * - Field type validation (strings)
      * - Data completeness for site functionality
      *
@@ -166,7 +167,7 @@ describe('Content Structure', () => {
       const siteData = JSON.parse(content);
 
       assert.ok(siteData.title, 'site.json should have title');
-      assert.ok(siteData.siteURL, 'site.json should have siteURL');
+      assert.ok(siteData.url, 'site.json should have url');
       assert.ok(siteData.description, 'site.json should have description');
     });
   });
@@ -306,7 +307,7 @@ describe('Content Structure', () => {
 
         // Validate date format
         const date = new Date(data.card.date);
-        assert.ok(!isNaN(date.getTime()), `${postPath} card.date should be a valid date`);
+        assert.ok(!Number.isNaN(date.getTime()), `${postPath} card.date should be a valid date`);
       }
     });
   });

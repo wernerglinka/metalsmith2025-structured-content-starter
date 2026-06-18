@@ -30,10 +30,10 @@ footer {
 }
 
 /**
-  * Adjust footer styles when sidebar is present
-  * Background is dependent on theme light or dark, ergo 
-  * text color is always dark
-  */
+ * Adjust footer styles when sidebar is present
+ * Background is dependent on theme light or dark, ergo
+ * text color is always dark
+ */
 body.with-sidebar footer {
   background: none;
   box-shadow: none;

@@ -52,7 +52,7 @@
   /* when scrolling, add gradients for fade-out effect before and after the logos */
   .mask:has(.play)::before,
   .mask:has(.play)::after {
-    content: '';
+    content: "";
     position: absolute;
     z-index: 1000;
     top: 0;
@@ -177,7 +177,9 @@
     img {
       filter: grayscale(100%);
       opacity: 0.5;
-      transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      transition:
+        filter 0.5s ease-in-out,
+        opacity 0.5s ease-in-out;
     }
 
     img:hover {

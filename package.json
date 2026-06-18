@@ -31,24 +31,21 @@
     "start:subdomain": "NODE_ENV=development BASE_PATH=metalsmith2025-simple-starter node metalsmith.js --watch",
     "start:subdomain:debug": "NODE_ENV=development DEBUG=@metalsmith* BASE_PATH=metalsmith2025-simple-starter node metalsmith.js --watch",
     "serve": "browser-sync start --server 'build'",
-    "format": "prettier --write \"**/*.{js,json,njk,css}\"",
-    "lint": "eslint --fix .",
-    "fix": "npm run format && npm run lint",
+    "format": "biome format --write .",
+    "lint": "biome lint --write .",
+    "fix": "biome check --write .",
     "depcheck": "depcheck",
-    "test:scripts": "mocha test/install-components.test.js test/update-manifest.test.js",
+    "test": "node --test",
     "release:patch": "./scripts/release.sh patch --ci",
     "release:minor": "./scripts/release.sh minor --ci",
     "release:major": "./scripts/release.sh major --ci"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.0",
     "auto-changelog": "^2.6.0",
     "browser-sync": "^3.0.4",
-    "eslint": "^10.5.0",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
-    "mocha": "^11.7.6",
-    "prettier": "^3.8.4",
-    "prettier-plugin-jinja-template": "^2.2.0",
     "release-it": "^20.2.0"
   },
   "dependencies": {
@@ -78,6 +75,6 @@
     "shiki": "^4.2.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   }
 }

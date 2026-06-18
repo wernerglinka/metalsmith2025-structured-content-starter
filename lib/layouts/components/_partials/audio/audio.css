@@ -150,7 +150,7 @@
     white-space: nowrap;
 
     &::before {
-      content: '/';
+      content: "/";
       color: var(--color-text);
     }
   }

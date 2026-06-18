@@ -147,9 +147,9 @@
     }
 
     /**
-    * Current page highlighting - Automated active link detection
-    * No need to manually add body classes anymore
-    */
+     * Current page highlighting - Automated active link detection
+     * No need to manually add body classes anymore
+     */
     li.active a,
     a.active {
       color: var(--color-link-inactive) !important;
@@ -158,9 +158,9 @@
     }
 
     /**
-    * Path highlighting - When current page is within this menu section
-    * Example: /blog/my-post/ would make the /blog link have active-path class
-    */
+     * Path highlighting - When current page is within this menu section
+     * Example: /blog/my-post/ would make the /blog link have active-path class
+     */
     li.active-path a,
     a.active-path {
       color: var(--color-link-in-path) !important;

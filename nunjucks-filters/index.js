@@ -5,62 +5,57 @@
  * Filters are organized by category for better maintainability.
  */
 
-// String manipulation filters
+// Array manipulation filters
 export {
-  toLower,
-  toUpper,
-  spaceToDash,
-  condenseTitle,
-  trimSlashes,
-  trimString
-} from './string-filters.js';
+  getArrayLength,
+  getSelections,
+  isArray,
+  isRelated,
+  toArray
+} from './array-filters.js';
 
 // Date formatting filters
 export {
-  currentYear,
-  UTCdate,
   blogDate,
+  currentYear,
   getDate,
-  getMonthYear
+  getMonthYear,
+  UTCdate
 } from './date-filters.js';
-
-// Markdown processing
-export { mdToHTML } from './markdown-filter.js';
-
-// Array manipulation filters
-export {
-  getSelections,
-  toArray,
-  getArrayLength,
-  isArray,
-  isRelated
-} from './array-filters.js';
-
 // Debug and JSON formatting filters
 export {
-  objToString,
+  debugCollections,
   myDump,
-  safeDump,
-  debugCollections
+  objToString,
+  safeDump
 } from './debug-filters.js';
-
-// Validation and check filters
-export {
-  isExternal,
-  isString,
-  hasImage,
-  hasCtas,
-  hasText,
-  hasAuthor,
-  hasUrl,
-  hasItems,
-  hasIcon
-} from './validation-filters.js';
-
+// Markdown processing
+export { mdToHTML } from './markdown-filter.js';
 // Object manipulation filters
 export {
-  normalizeIcon,
-  mergeProps,
+  getDownloadUrl,
   merge,
-  getDownloadUrl
+  mergeProps,
+  normalizeIcon
 } from './object-filters.js';
+// String manipulation filters
+export {
+  condenseTitle,
+  spaceToDash,
+  toLower,
+  toUpper,
+  trimSlashes,
+  trimString
+} from './string-filters.js';
+// Validation and check filters
+export {
+  hasAuthor,
+  hasCtas,
+  hasIcon,
+  hasImage,
+  hasItems,
+  hasText,
+  hasUrl,
+  isExternal,
+  isString
+} from './validation-filters.js';

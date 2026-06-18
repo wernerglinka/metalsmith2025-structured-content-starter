@@ -15,9 +15,9 @@ export const currentYear = () => {
  * @param {Date|string} date - The date to format (can be Date object or string)
  * @returns {string} The formatted UTC date string
  */
-export const UTCdate = ( date ) => {
+export const UTCdate = (date) => {
   // Convert to Date object if it's a string
-  const dateObj = date instanceof Date ? date : new Date( date );
+  const dateObj = date instanceof Date ? date : new Date(date);
   return dateObj.toUTCString();
 };
 
@@ -26,21 +26,21 @@ export const UTCdate = ( date ) => {
  * @param {string} string - The date string to format
  * @returns {string} The formatted date string
  */
-export const blogDate = ( string ) =>
-  new Date( string ).toLocaleString( 'en-US', { year: 'numeric', month: 'long', day: 'numeric' } );
+export const blogDate = (string) =>
+  new Date(string).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
 /**
  * Formats a date as dd/mm/yyyy
  * @param {string|Date} dateString - The date to format (defaults to current date if not provided)
  * @returns {string} The formatted date string in dd/mm/yyyy format
  */
-export const getDate = ( dateString ) => {
-  const date = new Date( dateString || Date.now() );
-  const day = date.getDate().toString().padStart( 2, '0' );
-  const month = ( date.getMonth() + 1 ).toString().padStart( 2, '0' );
+export const getDate = (dateString) => {
+  const date = new Date(dateString || Date.now());
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const year = date.getFullYear();
 
-  return `${ day }/${ month }/${ year }`;
+  return `${day}/${month}/${year}`;
 };
 
 /**
@@ -48,10 +48,10 @@ export const getDate = ( dateString ) => {
  * @param {string|Date} dateString - The date to format (defaults to current date if not provided)
  * @returns {string} The formatted date string in 'Month Year' format
  */
-export const getMonthYear = ( dateString ) => {
-  const date = new Date( dateString || Date.now() );
-  const month = date.toLocaleString( 'en-US', { month: 'long' } );
+export const getMonthYear = (dateString) => {
+  const date = new Date(dateString || Date.now());
+  const month = date.toLocaleString('en-US', { month: 'long' });
   const year = date.getFullYear();
 
-  return `${ month } ${ year }`;
+  return `${month} ${year}`;
 };

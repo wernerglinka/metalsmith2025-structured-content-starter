@@ -2,7 +2,7 @@
  * Design Tokens
  */
 
-@import './_css-patterns.css';
+@import "./_css-patterns.css";
 
 :root {
   /* Colors */
@@ -66,14 +66,14 @@
   --contrast-text-on-dark: var(--color-text-light);
 
   /**
-  * Fluid typography is created with https://utopia.fyi/
-  * The whole typography is based on the Utopia type calculator.
-  * The calculator provides the whole fluid type sizes based on a 16px for 
-  * very small screens and and 20px for very large screens. Also, using the
-  * font Montserrat for headers I didn't want the font size for large screens
-  * to be too large so I reduced the type scale for max viewport to 1.2. 
-  * The result is a more balanced typography that looks good on all screen sizes.
-  */
+   * Fluid typography is created with https://utopia.fyi/
+   * The whole typography is based on the Utopia type calculator.
+   * The calculator provides the whole fluid type sizes based on a 16px for
+   * very small screens and and 20px for very large screens. Also, using the
+   * font Montserrat for headers I didn't want the font size for large screens
+   * to be too large so I reduced the type scale for max viewport to 1.2.
+   * The result is a more balanced typography that looks good on all screen sizes.
+   */
 
   /* @link https://utopia.fyi/space/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6|8,s-l&g=s,l,xl,12 */
   --font-xs: clamp(0.6944rem, 0.6118rem + 0.3307vw, 0.8681rem); /* 11px - 14px */
@@ -89,8 +89,8 @@
   /**
    * Fluid spacing is created with utopia.fyi
    * The whole spacing is based on the Utopia space calculator.
-   * Using the same base values from the fluid type calculator, it created the 
-   * wholea related fluid space system. 
+   * Using the same base values from the fluid type calculator, it created the
+   * wholea related fluid space system.
    */
 
   /* @link https://utopia.fyi/space/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
@@ -107,11 +107,11 @@
   --space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem); /* ~108px */
   --space-4xl: clamp(9rem, 8.6522rem + 1.7391vw, 10rem); /* ~144px */
 
-  /** 
-   * These two-step spacing pairs complement the individual spacing values 
-   * defined above, providing more flexibility for creating harmonious spacing 
-   * throughout the design.  
-   * 
+  /**
+   * These two-step spacing pairs complement the individual spacing values
+   * defined above, providing more flexibility for creating harmonious spacing
+   * throughout the design.
+   *
    * This can be read as follows:display:
    * --space-3xs-2xs: Vary the space between 3xs and 2xs. For small screens use
    * the 2x value, for large screens use the 3x value.
@@ -131,8 +131,8 @@
   --space-l-2xl: clamp(2rem, 0.5714rem + 5.7143vw, 5rem); /* 32px - 80px */
 
   /* Typography */
-  --font-primary: 'Open Sans', sans-serif;
-  --font-heading: 'Montserrat', sans-serif;
+  --font-primary: "Open Sans", sans-serif;
+  --font-heading: "Montserrat", sans-serif;
   --default-font-weight: 300;
   --default-line-height: 1.5;
   --smaller-line-height: 1;

@@ -7,8 +7,8 @@
  * @param {Object} obj - The object to stringify
  * @returns {string} The JSON string representation of the object
  */
-export const objToString = ( obj ) => {
-  return JSON.stringify( obj );
+export const objToString = (obj) => {
+  return JSON.stringify(obj);
 };
 
 /**
@@ -16,23 +16,23 @@ export const objToString = ( obj ) => {
  * @param {Object} obj - The object to stringify
  * @returns {string} The formatted JSON string with 4-space indentation
  */
-export const myDump = ( obj ) => {
+export const myDump = (obj) => {
   const getCircularReplacer = () => {
     const seen = new WeakSet();
     // The key parameter is required by JSON.stringify but not used in this function
 
-    return ( key, value ) => {
-      if ( typeof value === 'object' && value !== null ) {
-        if ( seen.has( value ) ) {
+    return (_key, value) => {
+      if (typeof value === 'object' && value !== null) {
+        if (seen.has(value)) {
           return;
         }
-        seen.add( value );
+        seen.add(value);
       }
       return value;
     };
   };
 
-  return JSON.stringify( obj, getCircularReplacer(), 4 );
+  return JSON.stringify(obj, getCircularReplacer(), 4);
 };
 
 /**
@@ -41,20 +41,24 @@ export const myDump = ( obj ) => {
  * @param {Object} obj - The object to stringify
  * @returns {string} The formatted JSON string with 4-space indentation
  */
-export const safeDump = ( obj ) => {
+export const safeDump = (obj) => {
   try {
     const seen = [];
-    return JSON.stringify( obj, ( key, val ) => {
-      if ( val !== null && typeof val === 'object' ) {
-        if ( seen.indexOf( val ) >= 0 ) {
-          return '[Circular Reference]';
+    return JSON.stringify(
+      obj,
+      (_key, val) => {
+        if (val !== null && typeof val === 'object') {
+          if (seen.indexOf(val) >= 0) {
+            return '[Circular Reference]';
+          }
+          seen.push(val);
         }
-        seen.push( val );
-      }
-      return val;
-    }, 4 );
-  } catch ( error ) {
-    return `[Error: ${ error.message }]`;
+        return val;
+      },
+      4
+    );
+  } catch (error) {
+    return `[Error: ${error.message}]`;
   }
 };
 
@@ -63,28 +67,28 @@ export const safeDump = ( obj ) => {
  * @param {Object} collections - The collections object from Metalsmith
  * @returns {string} A JSON string of just the essential collection metadata
  */
-export const debugCollections = ( collections ) => {
+export const debugCollections = (collections) => {
   try {
     const safeCollections = {};
 
-    Object.keys( collections ).forEach( name => {
+    Object.keys(collections).forEach((name) => {
       // If it's an array (a collection), extract metadata from each item
-      if ( Array.isArray( collections[ name ] ) ) {
-        safeCollections[ name ] = collections[ name ].map( item => ( {
+      if (Array.isArray(collections[name])) {
+        safeCollections[name] = collections[name].map((item) => ({
           title: item.card?.title || item.title || 'No title',
           path: item.path,
           permalink: item.permalink,
           date: item.card?.date,
           excerpt: item.card?.excerpt
-        } ) );
+        }));
       } else {
         // If it's not an array, just note its type
-        safeCollections[ name ] = `[${ typeof collections[ name ] }]`;
+        safeCollections[name] = `[${typeof collections[name]}]`;
       }
-    } );
+    });
 
-    return JSON.stringify( safeCollections, null, 2 );
-  } catch ( error ) {
-    return `[Error extracting collections: ${ error.message }]`;
+    return JSON.stringify(safeCollections, null, 2);
+  } catch (error) {
+    return `[Error extracting collections: ${error.message}]`;
   }
 };

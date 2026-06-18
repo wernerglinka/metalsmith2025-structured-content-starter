@@ -7,11 +7,11 @@
  * @param {string} url - The URL to check
  * @returns {boolean} True if the URL is external, false otherwise
  */
-export const isExternal = ( url ) => {
-  if ( !url || typeof url !== 'string' ) {
+export const isExternal = (url) => {
+  if (!url || typeof url !== 'string') {
     return false;
   }
-  return url.startsWith( 'https://' ) || url.startsWith( 'http://' ) || url.startsWith( '//' );
+  return url.startsWith('https://') || url.startsWith('http://') || url.startsWith('//');
 };
 
 /**
@@ -19,7 +19,7 @@ export const isExternal = ( url ) => {
  * @param {any} value - The value to check
  * @returns {boolean} True if the value is a string, false otherwise
  */
-export const isString = ( value ) => {
+export const isString = (value) => {
   return typeof value === 'string';
 };
 
@@ -28,8 +28,8 @@ export const isString = ( value ) => {
  * @param {Object} imageObj - The image object to check
  * @returns {boolean} True if the image has a valid src, false otherwise
  */
-export const hasImage = ( imageObj ) => {
-  return imageObj && imageObj.src && imageObj.src.trim() !== '';
+export const hasImage = (imageObj) => {
+  return imageObj?.src && imageObj.src.trim() !== '';
 };
 
 /**
@@ -38,18 +38,12 @@ export const hasImage = ( imageObj ) => {
  * @param {Array} ctasArray - The array of CTA objects to check
  * @returns {boolean} True if there is at least one valid CTA, false otherwise
  */
-export const hasCtas = ( ctasArray ) => {
-  if ( !Array.isArray( ctasArray ) || ctasArray.length === 0 ) {
+export const hasCtas = (ctasArray) => {
+  if (!Array.isArray(ctasArray) || ctasArray.length === 0) {
     return false;
   }
 
-  return ctasArray.some( cta =>
-    cta &&
-    cta.url &&
-    cta.url.trim() !== '' &&
-    cta.label &&
-    cta.label.trim() !== ''
-  );
+  return ctasArray.some((cta) => cta?.url && cta.url.trim() !== '' && cta.label && cta.label.trim() !== '');
 };
 
 /**
@@ -57,18 +51,18 @@ export const hasCtas = ( ctasArray ) => {
  * @param {Object} textObj - The text object to check
  * @returns {boolean} True if the text has meaningful content, false otherwise
  */
-export const hasText = ( textObj ) => {
-  if ( !textObj || typeof textObj !== 'object' ) {
+export const hasText = (textObj) => {
+  if (!textObj || typeof textObj !== 'object') {
     return false;
   }
 
   const { leadIn, title, subTitle, prose } = textObj;
 
   return (
-    ( leadIn && leadIn.trim() !== '' ) ||
-    ( title && title.trim() !== '' ) ||
-    ( subTitle && subTitle.trim() !== '' ) ||
-    ( prose && prose.trim() !== '' )
+    (leadIn && leadIn.trim() !== '') ||
+    (title && title.trim() !== '') ||
+    (subTitle && subTitle.trim() !== '') ||
+    (prose && prose.trim() !== '')
   );
 };
 
@@ -78,18 +72,18 @@ export const hasText = ( textObj ) => {
  * @param {string|Array} author - The author value to check (string or array)
  * @returns {boolean} True if there is at least one non-empty author, false otherwise
  */
-export const hasAuthor = ( author ) => {
-  if ( !author ) {
+export const hasAuthor = (author) => {
+  if (!author) {
     return false;
   }
 
   // If it's an array, check if it has length and at least one non-empty item
-  if ( Array.isArray( author ) ) {
-    return author.length > 0 && author.some( a => a && a.trim && a.trim() !== '' );
+  if (Array.isArray(author)) {
+    return author.length > 0 && author.some((a) => a?.trim && a.trim() !== '');
   }
 
   // If it's a string, check if it's not empty
-  if ( typeof author === 'string' ) {
+  if (typeof author === 'string') {
     return author.trim() !== '';
   }
 
@@ -101,8 +95,8 @@ export const hasAuthor = ( author ) => {
  * @param {string} url - The URL value to check
  * @returns {boolean} True if the URL exists and is not empty, false otherwise
  */
-export const hasUrl = ( url ) => {
-  if ( !url || typeof url !== 'string' ) {
+export const hasUrl = (url) => {
+  if (!url || typeof url !== 'string') {
     return false;
   }
 
@@ -114,19 +108,19 @@ export const hasUrl = ( url ) => {
  * @param {Array|Object} items - The array or object to check
  * @returns {boolean} True if there are items/properties, false otherwise
  */
-export const hasItems = ( items ) => {
-  if ( !items ) {
+export const hasItems = (items) => {
+  if (!items) {
     return false;
   }
 
   // If it's an array, check if it has length
-  if ( Array.isArray( items ) ) {
+  if (Array.isArray(items)) {
     return items.length > 0;
   }
 
   // If it's an object, check if it has keys
-  if ( typeof items === 'object' ) {
-    return Object.keys( items ).length > 0;
+  if (typeof items === 'object') {
+    return Object.keys(items).length > 0;
   }
 
   return false;
@@ -137,8 +131,8 @@ export const hasItems = ( items ) => {
  * @param {Object} obj - The object to check for an icon property
  * @returns {boolean} True if the object has a non-empty icon property, false otherwise
  */
-export const hasIcon = ( obj ) => {
-  if ( !obj || typeof obj !== 'object' ) {
+export const hasIcon = (obj) => {
+  if (!obj || typeof obj !== 'object') {
     return false;
   }
 

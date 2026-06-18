@@ -9,9 +9,9 @@
  * @param {string|Object} input - The icon input (string name or object)
  * @returns {Object} A valid icon object with icon, url, and title properties
  */
-export const normalizeIcon = ( input ) => {
+export const normalizeIcon = (input) => {
   // If it's a string, create an icon object
-  if ( typeof input === 'string' ) {
+  if (typeof input === 'string') {
     return {
       icon: input,
       url: null,
@@ -20,7 +20,7 @@ export const normalizeIcon = ( input ) => {
   }
 
   // If it's already an object with an icon property, pass it through
-  if ( input && typeof input === 'object' && input.icon ) {
+  if (input && typeof input === 'object' && input.icon) {
     return {
       icon: input.icon,
       url: input.url || null,
@@ -46,15 +46,15 @@ export const normalizeIcon = ( input ) => {
  * // Returns [{name: 'Item 1', isHorizontal: true}, {name: 'Item 2', isHorizontal: true}]
  * mergeProps([{name: 'Item 1'}, {name: 'Item 2'}], {isHorizontal: true})
  */
-export const mergeProps = ( items, propsToMerge ) => {
-  if ( !Array.isArray( items ) || !propsToMerge || typeof propsToMerge !== 'object' ) {
+export const mergeProps = (items, propsToMerge) => {
+  if (!Array.isArray(items) || !propsToMerge || typeof propsToMerge !== 'object') {
     return items;
   }
 
-  return items.map( item => ( {
+  return items.map((item) => ({
     ...item,
     ...propsToMerge
-  } ) );
+  }));
 };
 
 /**
@@ -67,8 +67,8 @@ export const mergeProps = ( items, propsToMerge ) => {
  * // Returns {name: 'Item 1', link: '/page', isActive: true}
  * merge({name: 'Item 1'}, {link: '/page', isActive: true})
  */
-export const merge = ( obj, propsToMerge ) => {
-  if ( !obj || typeof obj !== 'object' || !propsToMerge || typeof propsToMerge !== 'object' ) {
+export const merge = (obj, propsToMerge) => {
+  if (!obj || typeof obj !== 'object' || !propsToMerge || typeof propsToMerge !== 'object') {
     return obj;
   }
 
@@ -88,23 +88,23 @@ export const merge = ( obj, propsToMerge ) => {
  * // Returns '/downloads/sections/hero-v0.0.1.zip'
  * getDownloadUrl(componentPackages, 'hero')
  */
-export const getDownloadUrl = ( componentPackages, componentName ) => {
-  if ( !componentPackages || !componentName ) {
+export const getDownloadUrl = (componentPackages, componentName) => {
+  if (!componentPackages || !componentName) {
     return null;
   }
 
   // Search in sections
-  if ( componentPackages.sections ) {
-    const section = componentPackages.sections.find( pkg => pkg.name === componentName );
-    if ( section ) {
+  if (componentPackages.sections) {
+    const section = componentPackages.sections.find((pkg) => pkg.name === componentName);
+    if (section) {
       return section.downloadUrl;
     }
   }
 
   // Search in partials
-  if ( componentPackages.partials ) {
-    const partial = componentPackages.partials.find( pkg => pkg.name === componentName );
-    if ( partial ) {
+  if (componentPackages.partials) {
+    const partial = componentPackages.partials.find((pkg) => pkg.name === componentName);
+    if (partial) {
       return partial.downloadUrl;
     }
   }

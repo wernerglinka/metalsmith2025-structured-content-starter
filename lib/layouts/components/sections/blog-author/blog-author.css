@@ -92,7 +92,9 @@
           fill: none;
           stroke: var(--color-text);
           stroke-width: 1px;
-          transition: stroke 0.5s ease-in-out, fill 0.5s ease-in-out;
+          transition:
+            stroke 0.5s ease-in-out,
+            fill 0.5s ease-in-out;
         }
       }
 

@@ -28,8 +28,8 @@
 }
 
 /**
- * Custom composition with text, image and cta to be using in combination 
- * with a hero section. Removes padding from the content container and set 
+ * Custom composition with text, image and cta to be using in combination
+ * with a hero section. Removes padding from the content container and set
  * a different flex-grow value for the columns.
  */
 .hero-cta .content {

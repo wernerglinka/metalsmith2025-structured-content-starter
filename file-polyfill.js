@@ -14,8 +14,8 @@ if (typeof globalThis.File === 'undefined') {
       this.lastModified = lastModified;
     }
   }
-  
+
   globalThis.File = File;
-  
+
   console.log('File API polyfill applied');
 }

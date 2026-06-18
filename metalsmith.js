@@ -8,45 +8,39 @@
 // Apply File API polyfill if needed (for GitHub Actions compatibility)
 import './file-polyfill.js';
 
+import * as fs from 'node:fs'; // File system operations (read/write files)
+import path, { dirname } from 'node:path'; // Handles file paths across different OS
+import { performance } from 'node:perf_hooks'; // Measures build performance
 // These are built-in Node.js modules needed for file paths and operations
 import { fileURLToPath } from 'node:url'; // Converts file:// URLs to file paths
-import path, { dirname } from 'node:path'; // Handles file paths across different OS
-import * as fs from 'node:fs'; // File system operations (read/write files)
-
+import collections from '@metalsmith/collections';
+import drafts from '@metalsmith/drafts'; // Excludes draft content from builds
+import layouts from '@metalsmith/layouts'; // Applies templates to content
+import permalinks from '@metalsmith/permalinks'; // Creates clean URLs
+import autoprefixer from 'autoprefixer'; // Adds browser prefixes to CSS
+import browserSync from 'browser-sync'; // Live-reload development server
+import cssnano from 'cssnano'; // Minifies CSS
 // The main Metalsmith library and plugins that transform your content
 import Metalsmith from 'metalsmith'; // The core static site generator
-import drafts from '@metalsmith/drafts'; // Excludes draft content from builds
-import collections from '@metalsmith/collections';
-import blogPages from 'metalsmith-sectioned-blog-pagination';
-import permalinks from '@metalsmith/permalinks'; // Creates clean URLs
-import menus from 'metalsmith-menu-plus'; // Generates navigation menus
-import layouts from '@metalsmith/layouts'; // Applies templates to content
-import safeLinks from 'metalsmith-safe-links';
-
 import componentDependencyBundler from 'metalsmith-bundled-components';
-
-import seo from 'metalsmith-seo'; // Adds SEO metadata to pages
-import optimizeImages from 'metalsmith-optimize-images'; // Optimizes images for web
+import menus from 'metalsmith-menu-plus'; // Generates navigation menus
 import htmlMinifier from 'metalsmith-optimize-html'; // Minifies HTML in production
-
-
-import autoprefixer from 'autoprefixer'; // Adds browser prefixes to CSS
-import cssnano from 'cssnano'; // Minifies CSS
-import { performance } from 'perf_hooks'; // Measures build performance
-import browserSync from 'browser-sync'; // Live-reload development server
+import optimizeImages from 'metalsmith-optimize-images'; // Optimizes images for web
+import safeLinks from 'metalsmith-safe-links';
+import blogPages from 'metalsmith-sectioned-blog-pagination';
+import seo from 'metalsmith-seo'; // Adds SEO metadata to pages
 
 // These variables help determine the current directory and file paths
-const thisFile = fileURLToPath( import.meta.url ); // Gets the actual file path of this script
-const thisDirectory = dirname( thisFile ); // Gets the directory containing this script
-const mainFile = process.argv[ 1 ]; // Gets the file that was executed by Node.js
+const thisFile = fileURLToPath(import.meta.url); // Gets the actual file path of this script
+const thisDirectory = dirname(thisFile); // Gets the directory containing this script
+const mainFile = process.argv[1]; // Gets the file that was executed by Node.js
 
 /**
  * ESM (ECMAScript Modules) doesn't support importing JSON directly
  * So we read the package.json file manually to get dependency information
  * @type {Object}
  */
-const dependencies = JSON.parse( fs.readFileSync( './package.json' ) ).dependencies;
-
+const dependencies = JSON.parse(fs.readFileSync('./package.json')).dependencies;
 
 /**
  * TEMPLATE ENGINE SETUP
@@ -61,7 +55,7 @@ import * as nunjucksFilters from './nunjucks-filters/index.js';
  * @type {Object}
  */
 const engineOptions = {
-  path: [ 'lib/layouts' ], // Where to find template files
+  path: ['lib/layouts'], // Where to find template files
   filters: nunjucksFilters // Custom filters for templates
 };
 
@@ -87,11 +81,11 @@ let devServer = null;
  * This is the core object that will build our site
  * @type {Metalsmith}
  */
-const metalsmith = Metalsmith( thisDirectory );
+const metalsmith = Metalsmith(thisDirectory);
 
 // Pass DEBUG environment variable if it exists
-if ( process.env.DEBUG ) {
-  metalsmith.env( 'DEBUG', process.env.DEBUG );
+if (process.env.DEBUG) {
+  metalsmith.env('DEBUG', process.env.DEBUG);
 }
 
 /**
@@ -100,62 +94,66 @@ if ( process.env.DEBUG ) {
  */
 metalsmith
   // Clean the destination directory before building
-  .clean( true )
+  .clean(true)
   // Ignore macOS system files
-  .ignore( [ '**/.DS_Store' ] )
-  .watch( isProduction ? false : [
-    'src/**/*',
-    'lib/layouts/**/*',
-    'lib/assets/main.css',
-    'lib/assets/main.js',
-    'lib/assets/styles/**/*',
-    'lib/data/**/*'
-  ] )
+  .ignore(['**/.DS_Store'])
+  .watch(
+    isProduction
+      ? false
+      : [
+          'src/**/*',
+          'lib/layouts/**/*',
+          'lib/assets/main.css',
+          'lib/assets/main.js',
+          'lib/assets/styles/**/*',
+          'lib/data/**/*'
+        ]
+  )
   // Pass NODE_ENV to plugins
-  .env( 'NODE_ENV', process.env.NODE_ENV )
+  .env('NODE_ENV', process.env.NODE_ENV)
   // Where to find source files
-  .source( './src' )
+  .source('./src')
   // Where to output the built site
-  .destination( './build' )
+  .destination('./build')
   // Static files in src/assets/ copied directly without plugin processing
-  .statik( [ 'assets' ] )
-  .metadata( {
+  .statik(['assets'])
+  .metadata({
     msVersion: dependencies.metalsmith,
     nodeVersion: process.version
-  } )
+  })
 
   /**
    * Load external data files into metadata
    * This runs on each build, so changes to data files are picked up during watch mode
    * Each JSON file in lib/data becomes a key under metadata.data (e.g., site.json -> data.site)
    */
-  .use( ( files, metalsmith, done ) => {
-    const dataDir = path.join( metalsmith.directory(), 'lib', 'data' );
-    const dataFiles = fs.readdirSync( dataDir ).filter( f => f.endsWith( '.json' ) );
-    const data = dataFiles.reduce( ( obj, file ) => {
-      const key = file.replace( '.json', '' );
-      const content = fs.readFileSync( path.join( dataDir, file ), 'utf8' );
-      obj[ key ] = JSON.parse( content );
+  .use((_files, metalsmith, done) => {
+    const dataDir = path.join(metalsmith.directory(), 'lib', 'data');
+    const dataFiles = fs.readdirSync(dataDir).filter((f) => f.endsWith('.json'));
+    const data = dataFiles.reduce((obj, file) => {
+      const key = file.replace('.json', '');
+      const content = fs.readFileSync(path.join(dataDir, file), 'utf8');
+      obj[key] = JSON.parse(content);
       return obj;
-    }, {} );
+    }, {});
     metalsmith.metadata().data = data;
     done();
-  } )
+  })
 
   // Exclude draft content in production mode
-  .use( drafts( !isProduction ) )
+  .use(drafts(!isProduction))
 
   /**
    * Create a collection of blog posts
    * Learn more: https://github.com/metalsmith/collections
    */
   .use(
-    collections( {
+    collections({
       blog: {
         pattern: 'blog/*.md',
         sort: 'card.date:desc'
       }
-    } )
+    })
   )
 
   /**
@@ -165,10 +163,10 @@ metalsmith
    * Learn more: https://github.com/wernerglinka/metalsmith-sectioned-blog-pagination
    */
   .use(
-    blogPages( {
+    blogPages({
       pagesPerPage: 4,
       blogDirectory: 'blog/'
-    } )
+    })
   )
 
   /**
@@ -178,9 +176,9 @@ metalsmith
    * Learn more: https://github.com/metalsmith/permalinks
    */
   .use(
-    permalinks( {
+    permalinks({
       match: '**/*.md'
-    } )
+    })
   )
 
   /**
@@ -188,11 +186,11 @@ metalsmith
    * Learn more: https://github.com/wernerglinka/metalsmith-menu-plus
    */
   .use(
-    menus( {
+    menus({
       metadataKey: 'mainMenu', // Where to store menu data
       usePermalinks: true, // Use clean URLs in menu
-      navExcludePatterns: [ '404.html', 'robots.txt' ] // Files to exclude from menu
-    } )
+      navExcludePatterns: ['404.html', 'robots.txt'] // Files to exclude from menu
+    })
   )
 
   /*
@@ -215,12 +213,12 @@ metalsmith
    * Learn more: https://github.com/metalsmith/layouts
    */
   .use(
-    layouts( {
+    layouts({
       directory: 'lib/layouts', // Where to find templates
       transform: 'nunjucks', // Template engine to use
-      pattern: [ '**/*.html' ], // Files to apply templates to
+      pattern: ['**/*.html'], // Files to apply templates to
       engineOptions // Options for the template engine
-    } )
+    })
   )
 
   /**
@@ -233,14 +231,14 @@ metalsmith
    * Learn more: https://github.com/wernerglinka/metalsmith-safe-links
    */
   .use(
-    safeLinks( {
-      hostnames: [ 'http://localhost:3000/', 'wernerglinka.github.io' ],
+    safeLinks({
+      hostnames: ['http://localhost:3000/', 'wernerglinka.github.io'],
       basePath: basePath
-    } )
+    })
   )
 
   .use(
-    componentDependencyBundler( {
+    componentDependencyBundler({
       basePath: 'lib/layouts/components/_partials',
       sectionsPath: 'lib/layouts/components/sections',
       schema: {
@@ -250,46 +248,44 @@ metalsmith
       },
       postcss: {
         enabled: true,
-        plugins: [ autoprefixer(), cssnano( { preset: 'default' } ) ],
+        plugins: [autoprefixer(), cssnano({ preset: 'default' })],
         options: {
           // Additional PostCSS options if needed
         }
       }
-    } )
+    })
   );
 
 // These plugins only run in production mode to optimize the site
-if ( isProduction ) {
+if (isProduction) {
   metalsmith
     /**
      * Optimize images for faster loading
      * Learn more: https://github.com/wernerglinka/metalsmith-optimize-images
      */
     .use(
-      optimizeImages( {
+      optimizeImages({
         // Enable progressive loading
-        isProgressive: false,
-      } )
+        isProgressive: false
+      })
     )
 
     /**
-       * Intelligent metadata generation, social media tags, and structured data including Open Graph tags,
-       * Twitter Cards, JSON-LD structured data object, a sitemap and a robots.txt file
-       * Learn more: https://github.com/wernerglinka/metalsmith-seo
-       */
+     * Intelligent metadata generation, social media tags, and structured data including Open Graph tags,
+     * Twitter Cards, JSON-LD structured data object, a sitemap and a robots.txt file
+     * Learn more: https://github.com/wernerglinka/metalsmith-seo
+     */
     .use(
-      seo( {
-        metadataPath: 'data.site'  // Object in metadata points to where to find site metadata
-      } )
+      seo({
+        metadataPath: 'data.site' // Object in metadata points to where to find site metadata
+      })
     )
 
     /**
      * Optimize HTML by Minify HTML to reduce file size
      * Learn more: https://github.com/wernerglinka/metalsmith-optimize-html
      */
-    .use(
-      htmlMinifier()
-    );
+    .use(htmlMinifier());
 }
 
 /**
@@ -297,24 +293,24 @@ if ( isProduction ) {
  * This section handles the actual build process and development server
  * It only runs when this file is executed directly (not when imported)
  */
-if ( mainFile === thisFile ) {
+if (mainFile === thisFile) {
   // Start timing the build for performance measurement
   let t1 = performance.now();
 
   // Execute the Metalsmith build
-  metalsmith.build( ( err ) => {
+  metalsmith.build((err) => {
     // Handle any build errors
-    if ( err ) {
+    if (err) {
       throw err;
     }
 
     // Log build success and time taken
     /* eslint-disable no-console */
-    console.log( `Build success in ${ ( ( performance.now() - t1 ) / 1000 ).toFixed( 1 ) }s` );
+    console.log(`Build success in ${((performance.now() - t1) / 1000).toFixed(1)}s`);
 
     // If watch mode is enabled, set up the development server
-    if ( metalsmith.watch() ) {
-      if ( devServer ) {
+    if (metalsmith.watch()) {
+      if (devServer) {
         t1 = performance.now();
         devServer.reload();
       } else {
@@ -327,24 +323,24 @@ if ( mainFile === thisFile ) {
           reloadThrottle: 0
         };
 
-        if ( basePath ) {
+        if (basePath) {
           // Serve with subdirectory simulation
           config.server = {
             baseDir: './build',
             routes: {
-              [ `/${ basePath }` ]: './build'
+              [`/${basePath}`]: './build'
             }
           };
-          config.startPath = `/${ basePath }/`;
+          config.startPath = `/${basePath}/`;
         } else {
           // Normal serving
           config.server = './build';
         }
 
-        devServer.init( config );
+        devServer.init(config);
       }
     }
-  } );
+  });
 }
 
 // Export the Metalsmith instance for use in other files

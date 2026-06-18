@@ -18,8 +18,8 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import readline from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
+import readline from 'node:readline/promises';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 
@@ -47,14 +47,42 @@ export const ENVELOPE_KEYS = [
  * @type {Array<{key: string, label: string, build: (fieldName: string) => object}>}
  */
 export const FIELD_TYPES = [
-  { key: 'text', label: 'text (single line)', build: (name) => ({ widget: 'text', label: titleCase(name), default: '' }) },
-  { key: 'textarea', label: 'textarea (multi line)', build: (name) => ({ widget: 'textarea', label: titleCase(name), default: '' }) },
-  { key: 'markdown', label: 'markdown', build: (name) => ({ widget: 'markdown', label: titleCase(name), default: '' }) },
-  { key: 'checkbox', label: 'checkbox (boolean)', build: (name) => ({ widget: 'checkbox', label: titleCase(name), default: false }) },
+  {
+    key: 'text',
+    label: 'text (single line)',
+    build: (name) => ({ widget: 'text', label: titleCase(name), default: '' })
+  },
+  {
+    key: 'textarea',
+    label: 'textarea (multi line)',
+    build: (name) => ({ widget: 'textarea', label: titleCase(name), default: '' })
+  },
+  {
+    key: 'markdown',
+    label: 'markdown',
+    build: (name) => ({ widget: 'markdown', label: titleCase(name), default: '' })
+  },
+  {
+    key: 'checkbox',
+    label: 'checkbox (boolean)',
+    build: (name) => ({ widget: 'checkbox', label: titleCase(name), default: false })
+  },
   { key: 'number', label: 'number', build: (name) => ({ widget: 'number', label: titleCase(name), default: 0 }) },
-  { key: 'select', label: 'select (single choice)', build: (name) => ({ widget: 'select', label: titleCase(name), enum: [], default: '' }) },
-  { key: 'multiselect', label: 'multiselect', build: (name) => ({ widget: 'multiselect', label: titleCase(name), enum: [], default: [] }) },
-  { key: 'array', label: 'array (repeatable)', build: (name) => ({ widget: 'array', label: titleCase(name), default: [] }) },
+  {
+    key: 'select',
+    label: 'select (single choice)',
+    build: (name) => ({ widget: 'select', label: titleCase(name), enum: [], default: '' })
+  },
+  {
+    key: 'multiselect',
+    label: 'multiselect',
+    build: (name) => ({ widget: 'multiselect', label: titleCase(name), enum: [], default: [] })
+  },
+  {
+    key: 'array',
+    label: 'array (repeatable)',
+    build: (name) => ({ widget: 'array', label: titleCase(name), default: [] })
+  },
   { key: 'image', label: 'image', build: (name) => ({ widget: 'image', label: titleCase(name), default: '' }) }
 ];
 
@@ -120,7 +148,7 @@ export const applyFieldChanges = (fields, removed, added) => {
   Object.entries(added).forEach(([key, value]) => {
     next[key] = value;
   });
-  if (fields && fields.$extends) {
+  if (fields?.$extends) {
     next.$extends = fields.$extends;
   }
   return next;
@@ -177,7 +205,9 @@ const readExample = async (componentDirectory, name) => {
  */
 const promptFieldType = async (rl, fieldName) => {
   console.log(`\nNew field "${fieldName}". Choose a field type:`);
-  FIELD_TYPES.forEach((type, index) => console.log(`  ${index + 1}. ${type.label}`));
+  FIELD_TYPES.forEach((type, index) => {
+    console.log(`  ${index + 1}. ${type.label}`);
+  });
   console.log(`  ${FIELD_TYPES.length + 1}. $use a partial`);
   const answer = (await rl.question('  Type number: ')).trim();
   const choice = Number(answer);
@@ -224,7 +254,9 @@ const main = async () => {
       newEntries[fieldName] = await promptFieldType(rl, fieldName);
     }
     for (const fieldName of removed) {
-      const answer = (await rl.question(`\nField "${fieldName}" is gone from the example. Delete it from the manifest? [y/N]: `))
+      const answer = (
+        await rl.question(`\nField "${fieldName}" is gone from the example. Delete it from the manifest? [y/N]: `)
+      )
         .trim()
         .toLowerCase();
       if (answer.startsWith('y')) {

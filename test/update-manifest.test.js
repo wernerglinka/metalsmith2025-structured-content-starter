@@ -5,14 +5,15 @@
  */
 
 import { strict as assert } from 'node:assert';
+import { describe, it } from 'node:test';
 import {
-  ENVELOPE_KEYS,
-  FIELD_TYPES,
-  titleCase,
-  manifestFieldNames,
+  applyFieldChanges,
   contentKeys,
   diffFields,
-  applyFieldChanges
+  ENVELOPE_KEYS,
+  FIELD_TYPES,
+  manifestFieldNames,
+  titleCase
 } from '../scripts/update-manifest.mjs';
 
 describe('update-manifest pure logic', () => {

@@ -1,5 +1,5 @@
 /**
- * CSS base 
+ * CSS base
  */
 
 /* Apply border-box to all elements */
@@ -9,7 +9,8 @@
   box-sizing: border-box;
 }
 
-html { /* Prevent font size inflation */
+html {
+  /* Prevent font size inflation */
   text-size-adjust: none;
   font-size: var(--default-font-size);
   scroll-behavior: smooth;

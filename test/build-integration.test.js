@@ -18,14 +18,14 @@
  */
 
 import { strict as assert } from 'node:assert';
-import { rmSync, existsSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { existsSync, rmSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { afterEach, beforeEach, describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
-import Metalsmith from 'metalsmith';
-import drafts from '@metalsmith/drafts';
 import collections from '@metalsmith/collections';
+import drafts from '@metalsmith/drafts';
 import permalinks from '@metalsmith/permalinks';
-import assets from 'metalsmith-static-files';
+import Metalsmith from 'metalsmith';
 
 /**
  * Current directory path for test file location
@@ -97,7 +97,7 @@ describe('Build Integration', () => {
      *
      * @param {Function} done - Mocha callback for async test completion
      */
-    it('should complete a basic build without errors', (done) => {
+    it('should complete a basic build without errors', (_t, done) => {
       const metalsmith = Metalsmith(projectRoot)
         .clean(false) // Don't clean to avoid conflicts with main build
         .source('./src')
@@ -131,7 +131,7 @@ describe('Build Integration', () => {
      *
      * @param {Function} done - Mocha callback for async test completion
      */
-    it('should generate HTML files from markdown sources', (done) => {
+    it('should generate HTML files from markdown sources', (_t, done) => {
       const metalsmith = Metalsmith(projectRoot)
         .clean(false)
         .source('./src')
@@ -184,7 +184,7 @@ describe('Build Integration', () => {
      *
      * @param {Function} done - Mocha callback for async test completion
      */
-    it('should create blog collections correctly', (done) => {
+    it('should create blog collections correctly', (_t, done) => {
       const metalsmith = Metalsmith(projectRoot)
         .clean(false)
         .source('./src')
@@ -237,7 +237,7 @@ describe('Build Integration', () => {
      *
      * @param {Function} done - Mocha callback for async test completion
      */
-    it('should generate clean URLs', (done) => {
+    it('should generate clean URLs', (_t, done) => {
       const metalsmith = Metalsmith(projectRoot)
         .clean(false)
         .source('./src')
@@ -286,26 +286,24 @@ describe('Build Integration', () => {
      *
      * @param {Function} done - Mocha callback for async test completion
      */
-    it('should copy static assets', (done) => {
+    it('should copy static assets', (_t, done) => {
+      // Metalsmith 2.7's native .statik() copies directories under the source
+      // tree verbatim. src/assets/ holds images and icons; main.css lives in
+      // lib/assets/ and is processed by the bundler, so it is not a static copy.
       const metalsmith = Metalsmith(projectRoot)
         .clean(false)
         .source('./src')
         .destination(testBuildDir)
-        .use(drafts(false))
-        .use(
-          assets({
-            source: 'lib/assets/',
-            destination: 'assets/'
-          })
-        );
+        .statik(['assets'])
+        .use(drafts(false));
 
       metalsmith.build((err) => {
         assert.ok(!err, `Build should complete without errors: ${err ? err.message : ''}`);
 
-        // Check that assets were copied
+        // Check that the static asset directories were copied verbatim
         assert.ok(existsSync(join(testBuildDir, 'assets')), 'Assets directory should be created');
-        assert.ok(existsSync(join(testBuildDir, 'assets/global-styles.css')), 'Global CSS should be copied');
         assert.ok(existsSync(join(testBuildDir, 'assets/images')), 'Images directory should be copied');
+        assert.ok(existsSync(join(testBuildDir, 'assets/icons')), 'Icons directory should be copied');
 
         done();
       });
@@ -337,7 +335,7 @@ describe('Build Integration', () => {
      *
      * @param {Function} done - Mocha callback for async test completion
      */
-    it('should preserve frontmatter data in built files', (done) => {
+    it('should preserve frontmatter data in built files', (_t, done) => {
       const metalsmith = Metalsmith(projectRoot)
         .clean(false)
         .source('./src')

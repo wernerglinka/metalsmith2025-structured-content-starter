@@ -39,7 +39,7 @@
 
     /* Separator between items */
     &::after {
-      content: '›'; /* Using a nicer character for separator */
+      content: "›"; /* Using a nicer character for separator */
       margin-left: var(--space-s);
       color: var(--color-primary);
     }
