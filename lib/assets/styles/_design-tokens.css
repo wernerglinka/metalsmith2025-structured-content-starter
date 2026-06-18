@@ -156,34 +156,6 @@
   --tracking: -0.05ch; /* Standard letter spacing */
   --tracking-s: -0.075ch; /* Tighter letter spacing */
 
-  /* Code Syntax Highlighting (PrismJS) */
+  /* Inline code background (Shiki inlines block-code colors, so no token vars). */
   --code-bg: #fcfcfc;
-  --code-text: var(--color-text);
-  --code-selection-bg: #b3d4fc;
-  --token-comment: slategray;
-  --token-punctuation: #999;
-  --token-property: #905;
-  --token-tag: #905;
-  --token-boolean: #905;
-  --token-number: #905;
-  --token-constant: #905;
-  --token-symbol: #905;
-  --token-deleted: #905;
-  --token-selector: #690;
-  --token-attr-name: #690;
-  --token-string: #690;
-  --token-char: #690;
-  --token-builtin: #690;
-  --token-inserted: #690;
-  --token-operator: #9a6e3a;
-  --token-entity: #9a6e3a;
-  --token-url: #9a6e3a;
-  --token-atrule: #07a;
-  --token-attr-value: #07a;
-  --token-keyword: #07a;
-  --token-function: #dd4a68;
-  --token-class-name: #dd4a68;
-  --token-regex: #e90;
-  --token-important: #e90;
-  --token-variable: #e90;
 }

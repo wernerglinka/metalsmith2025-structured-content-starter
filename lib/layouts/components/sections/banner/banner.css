@@ -54,12 +54,14 @@
 
 /*
   Accordion Banner functionality
-  Following hero-slider state management patterns
-  Using banner- prefix to avoid conflicts with simple-accordion
+  Applied via the `classes` field on adjacent sections:
+  - banner section:    classes: 'banner-accordion-header'
+  - following section: classes: 'banner-accordion-content is-closed'
+  Using banner- prefix to avoid conflicts with the accordion section.
 */
 .banner-accordion-header {
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
+  transition: all var(--transition-duration, 0.5s) var(--transition-timing, ease-in-out);
   position: relative;
 
   &:hover {
@@ -85,7 +87,10 @@
 
 .banner-accordion-content {
   overflow: hidden;
-  transition: all 0.5s ease-in-out;
+
+  /* Content sits on a non-banner wrapper, so the banner-scoped tokens are not
+     in scope here; fall back to literal values to keep the transition working. */
+  transition: all var(--transition-duration, 0.5s) var(--transition-timing, ease-in-out);
 
   &.is-closed {
     max-height: 0;
@@ -94,7 +99,7 @@
   }
 
   &:not(.is-closed) {
-    max-height: var(--max-accordion-height);
+    max-height: var(--max-accordion-height, 1000px);
     padding-top: var(--space-s);
     padding-bottom: var(--space-s);
   }

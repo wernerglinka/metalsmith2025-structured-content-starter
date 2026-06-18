@@ -1,6 +1,6 @@
 - sectionType: collection-list
   containerTag: section
-  disabled: false
+  isDisabled: false
   id: ''
   classes: ''
   containerFields:

@@ -73,6 +73,11 @@
       background: none;
       padding: 0;
       color: var(--color-text);
+
+      /* Block code inherits the pre's font; the inline-code 0.9em/Courier New
+         above must not apply here, or Shiki blocks in prose render smaller and
+         in a different font than the code section. */
+      font: inherit;
     }
   }
 

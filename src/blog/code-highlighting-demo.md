@@ -5,13 +5,13 @@ draft: false
 
 seo:
   title: Code Highlighting Demo
-  description: 'Demonstrating code syntax highlighting in blog posts using Prism.js for client-side rendering.'
+  description: 'Demonstrating code syntax highlighting in blog posts using Shiki for build-time rendering.'
   socialImage: 'https://res.cloudinary.com/glinkaco/image/upload/v1646849499/tgc2022/social_yitz6j.png'
   canonicalOverwrite: ''
 
 card:
   title: 'Code Highlighting Demo'
-  description: Demonstrating code syntax highlighting in blog posts using Prism.js for client-side rendering.
+  description: Demonstrating code syntax highlighting in blog posts using Shiki for build-time rendering.
   date: '2025-07-15'
   author:
     - Marie Curie
@@ -59,7 +59,7 @@ sections:
       alt: ''
       caption: ''
 
-  - sectionType: text-only
+  - sectionType: rich-text
     containerTag: article
     classes: ''
     id: 'section-id'
@@ -84,7 +84,7 @@ sections:
       titleTag: 'h2'
       subTitle: ''
       prose: |-
-        This blog post demonstrates code syntax highlighting using Prism.js. Since markdown in structured content sections is converted to HTML at render time in Nunjucks templates, we use client-side highlighting rather than build-time processing.
+        This blog post demonstrates code syntax highlighting using Shiki. Markdown in structured content sections is converted to HTML by the `mdToHTML` filter, which runs Shiki as it renders each fenced code block, so the highlighting is baked into the HTML at build time with no client-side work.
 
         ## JavaScript Example
 
@@ -153,7 +153,7 @@ sections:
               titleTag: h1
         ```
 
-        The syntax highlighting is powered by Prism.js running in the browser, with the theme styles bundled directly into the text-only component CSS.
+        The syntax highlighting is powered by Shiki at build time. Shiki inlines every token color as a style attribute, so there is no theme stylesheet to load and no highlighting work in the browser.
 
     ctas:
       - url: ''
@@ -183,7 +183,7 @@ sections:
     name: 'Marie Curie'
     logoWidth: 30
 
-  - sectionType: blog-navigation
+  - sectionType: collection-links
     containerTag: section
     classes: ''
     id: ''

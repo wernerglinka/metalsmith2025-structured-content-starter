@@ -22,7 +22,6 @@ import permalinks from '@metalsmith/permalinks'; // Creates clean URLs
 import menus from 'metalsmith-menu-plus'; // Generates navigation menus
 import layouts from '@metalsmith/layouts'; // Applies templates to content
 import safeLinks from 'metalsmith-safe-links';
-import prism from 'metalsmith-prism';
 
 import componentDependencyBundler from 'metalsmith-bundled-components';
 
@@ -240,20 +239,15 @@ metalsmith
     } )
   )
 
-  /**
-   * Syntax highlight code blocks using Prism.js
-   * Learn more: https://github.com/wernerglinka/metalsmith-prism
-   */
-  .use(
-    prism( {
-      decode: true
-    } )
-  )
-
   .use(
     componentDependencyBundler( {
       basePath: 'lib/layouts/components/_partials',
       sectionsPath: 'lib/layouts/components/sections',
+      schema: {
+        // Emit the composed editor schema (build/assets/components-schema.json)
+        // for the in-situ editor and Claude to consume as the contract.
+        enabled: true
+      },
       postcss: {
         enabled: true,
         plugins: [ autoprefixer(), cssnano( { preset: 'default' } ) ],
