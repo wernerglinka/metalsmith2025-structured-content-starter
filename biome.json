@@ -83,6 +83,19 @@
   },
   "overrides": [
     {
+      "includes": ["**/*.css"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noImportantStyles": "off"
+          },
+          "style": {
+            "noDescendingSpecificity": "off"
+          }
+        }
+      }
+    },
+    {
       "includes": ["scripts/**", "metalsmith.js", "nunjucks-filters/**", "file-polyfill.js"],
       "linter": {
         "rules": {
