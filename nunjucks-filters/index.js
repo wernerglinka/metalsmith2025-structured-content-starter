@@ -30,7 +30,7 @@ export {
   safeDump
 } from './debug-filters.js';
 // Markdown processing
-export { mdToHTML } from './markdown-filter.js';
+export { mdToHTML, mdInline } from './markdown-filter.js';
 // Object manipulation filters
 export {
   getDownloadUrl,
