@@ -12,6 +12,18 @@ The component catalog under `lib/layouts/components/` is reserved for the author
 
 `head`, `header`, `footer`, `navigation`, and `branding` are always present. Their CSS is pulled into the base bundle through `lib/assets/main.css`, and the header and navigation scripts are imported by `lib/assets/main.js`. Edit those files to change the frame.
 
+## Stylesheet structure
+
+`lib/assets/main.css` is a pure import manifest and must stay that way: the CSS spec only allows `@import` rules before any other rules, so no style rules may live in it. Imports load in cascade order:
+
+1. `_css-base.css` and `_design-tokens.css` — reset and theming tokens
+2. The chrome styles (`_header.css`, `_footer.css`, `_navigation.css`, `_branding.css`)
+3. Feature styles, inserted after the `/* feature-styles */` anchor by `npm run init`
+4. `_global.css` — global element and utility styles for the shell
+5. `_theme-customization.css` — **your** site-specific overrides, imported last so they win cascade ties against everything above
+
+The rule of thumb: theme through `_design-tokens.css`, override anything else in `_theme-customization.css`, and leave the other files pristine so diffing against a newer starter stays clean. Component CSS is bundled after `main.css` by the component bundler, so overriding a component from `_theme-customization.css` needs higher specificity; since components are local to your site, prefer editing the component's own CSS.
+
 ## Optional features
 
 Three pieces of chrome are optional and managed by `npm run init` (the `scripts/init-starter.mjs` script):
