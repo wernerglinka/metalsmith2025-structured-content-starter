@@ -61,5 +61,3 @@ DEPLOY-GITHUB-PAGES.md
 
 # Temporary component updates
 metalsmith-components/
-# Generated responsive image variants (metalsmith-optimize-images cache)
-lib/assets/images/responsive/

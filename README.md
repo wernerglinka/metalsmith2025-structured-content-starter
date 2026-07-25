@@ -252,6 +252,14 @@ Watch mode stops rebuilding, because 2.7 watches through chokidar 4, which dropp
 
 So assets live in `lib/assets/` and are copied by `metalsmith-static-files` after image optimization, which is how this starter worked before 2.7. Revisit when 2.7 is fixed upstream.
 
+### Why the generated image variants are committed
+
+`lib/assets/images/responsive/` holds the output of `metalsmith-optimize-images` and is checked into git on purpose, even though it is build output.
+
+It is a cache. Committing it means CI does not regenerate every variant on every deploy, which is the difference between a fast build and a slow one. It also sidesteps a plugin bug: a build against an empty cache emits the source height with the resized width, so a cold CI build ships images with a distorted aspect ratio. Keeping the cache warm in the repo keeps the markup correct.
+
+Replacing the sample images leaves stale variants behind. Delete the directory and rebuild to regenerate it.
+
 ## Installing Components
 
 `npm run components` lists every catalog component not yet in the site and installs the ones you pick, along with any dependencies they need. Naming components directly installs them without the prompt:
