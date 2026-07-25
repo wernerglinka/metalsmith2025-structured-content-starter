@@ -1,7 +1,9 @@
 {
   "name": "text",
   "type": "partial",
-  "styles": ["text.css"],
+  "styles": [
+    "text.css"
+  ],
   "scripts": [],
   "requires": [],
   "validation": {
@@ -14,7 +16,14 @@
       },
       "titleTag": {
         "type": "string",
-        "enum": ["h1", "h2", "h3", "h4", "h5", "h6"],
+        "enum": [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6"
+        ],
         "default": "h2"
       },
       "isCentered": {
@@ -42,7 +51,14 @@
     "titleTag": {
       "widget": "select",
       "label": "Title level",
-      "enum": ["h1", "h2", "h3", "h4", "h5", "h6"],
+      "enum": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+      ],
       "default": "h2"
     },
     "isCentered": {
