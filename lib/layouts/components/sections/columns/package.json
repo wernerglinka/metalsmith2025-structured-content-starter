@@ -1,0 +1,29 @@
+{
+  "name": "@nunjucks-components/columns",
+  "version": "1.3.1",
+  "description": "Nunjucks columns section",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "section",
+    "columns"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "b0e6c76cec4da4a0",
+  "main": "columns.njk",
+  "files": [
+    "columns.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "columns.css"
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/commons": ">=1.3.1",
+    "@nunjucks-components/text": ">=1.3.1",
+    "@nunjucks-components/image": ">=1.3.1",
+    "@nunjucks-components/ctas": ">=1.3.1"
+  }
+}

@@ -1,11 +1,20 @@
 {
   "name": "columns",
   "type": "section",
-  "styles": ["columns.css"],
+  "styles": [
+    "columns.css"
+  ],
   "scripts": [],
-  "requires": ["commons", "text", "image", "ctas"],
+  "requires": [
+    "commons",
+    "text",
+    "image",
+    "ctas"
+  ],
   "validation": {
-    "required": ["sectionType"],
+    "required": [
+      "sectionType"
+    ],
     "properties": {
       "sectionType": {
         "type": "string",
@@ -40,11 +49,22 @@
       },
       "containerFields.background.imageScreen": {
         "type": "string",
-        "enum": ["light", "dark", "none"]
+        "enum": [
+          "light",
+          "dark",
+          "none"
+        ]
       },
       "text.titleTag": {
         "type": "string",
-        "enum": ["h1", "h2", "h3", "h4", "h5", "h6"],
+        "enum": [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6"
+        ],
         "default": "h2"
       },
       "ctas": {
@@ -56,7 +76,12 @@
             },
             "buttonStyle": {
               "type": "string",
-              "enum": ["primary", "secondary", "tertiary", "inverted"]
+              "enum": [
+                "primary",
+                "secondary",
+                "tertiary",
+                "inverted"
+              ]
             },
             "isSmall": {
               "type": "boolean"
@@ -70,7 +95,10 @@
     "columnsDirection": {
       "widget": "select",
       "label": "Columns direction",
-      "enum": ["", "reverse"],
+      "enum": [
+        "",
+        "reverse"
+      ],
       "default": ""
     },
     "contentClasses": {
@@ -104,6 +132,8 @@
         }
       }
     },
-    "$extends": ["commons"]
+    "$extends": [
+      "commons"
+    ]
   }
 }
