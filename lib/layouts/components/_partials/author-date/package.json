@@ -1,0 +1,23 @@
+{
+  "name": "@nunjucks-components/author-date",
+  "version": "1.3.1",
+  "description": "Nunjucks author-date partial",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "partial",
+    "author-date"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "31a6b688afc25f68",
+  "main": "author-date.njk",
+  "files": [
+    "author-date.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "author-date.css"
+  ]
+}
