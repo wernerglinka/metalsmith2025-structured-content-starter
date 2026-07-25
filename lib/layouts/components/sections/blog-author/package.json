@@ -1,0 +1,29 @@
+{
+  "name": "@nunjucks-components/blog-author",
+  "version": "1.3.1",
+  "description": "Nunjucks blog-author section",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "section",
+    "blog-author"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "b13b8578ae4ebc5a",
+  "main": "blog-author.njk",
+  "files": [
+    "blog-author.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "blog-author.css"
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/text": ">=1.3.1",
+    "@nunjucks-components/image": ">=1.3.1",
+    "@nunjucks-components/commons": ">=1.3.1",
+    "@nunjucks-components/icon": ">=1.3.1"
+  }
+}

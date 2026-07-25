@@ -1,12 +1,23 @@
 {
   "name": "blog-author",
   "type": "section",
-  "styles": ["blog-author.css"],
+  "styles": [
+    "blog-author.css"
+  ],
   "scripts": [],
-  "requires": ["text", "image", "commons"],
-  "context": ["data.author"],
+  "requires": [
+    "text",
+    "image",
+    "commons",
+    "icon"
+  ],
+  "context": [
+    "data.author"
+  ],
   "validation": {
-    "required": ["sectionType"],
+    "required": [
+      "sectionType"
+    ],
     "properties": {
       "sectionType": {
         "type": "string",
@@ -48,7 +59,10 @@
     "name": {
       "widget": "select",
       "label": "Author",
-      "source": { "data": "author", "valueKey": "name" },
+      "source": {
+        "data": "author",
+        "valueKey": "name"
+      },
       "default": ""
     },
     "isReverse": {
@@ -61,6 +75,8 @@
       "label": "Social logo width (px)",
       "default": 30
     },
-    "$extends": ["commons"]
+    "$extends": [
+      "commons"
+    ]
   }
 }
