@@ -1,6 +1,6 @@
 # Multi-Media Section Component
 
-A flexible section component that renders text content alongside various media types. Supports images, videos, audio, icons, and Lottie animations with reversible layouts and responsive behavior.
+A flexible section component that renders text content alongside various media types. Supports images, videos, audio, icons, Lottie animations, a second text block, and embedded frames with reversible layouts and responsive behavior.
 
 ## Supported Media Types
 
@@ -9,6 +9,8 @@ A flexible section component that renders text content alongside various media t
 - **audio**: MP3/OGG audio with background image
 - **icon**: SVG icons from the component library
 - **lottie**: JSON animations with playback controls
+- **text**: A second text block (`mediaText`), for two-column text layouts
+- **iframe**: An embedded frame (`iframe.src`/`iframe.title`), e.g. a form or map
 
 ## Data Structure
 
@@ -19,7 +21,7 @@ A flexible section component that renders text content alongside various media t
   id: ""
   classes: ""
   isReverse: false     # Reverses media/text positioning
-  mediaType: image     # Required: 'image', 'video', 'audio', 'icon', or 'lottie'
+  mediaType: image     # Required: 'image', 'video', 'audio', 'icon', 'lottie', 'text', or 'iframe'
   containerFields:
     inContainer: true
     isAnimated: true
@@ -96,6 +98,26 @@ lottie:
     loop: true
 ```
 
+### Text (two-column text layout)
+```yaml
+mediaType: text
+mediaText:
+  leadIn: ""
+  title: "Second Column Title"
+  titleTag: "h2"
+  subTitle: ""
+  prose: "This text renders in the media slot, beside the main text column."
+```
+
+### Iframe (embedded frame)
+```yaml
+mediaType: iframe
+iframe:
+  src: "https://example.com/embed"
+  title: "Accessible frame title"
+  allow: ""              # optional permissions policy, e.g. 'payment'
+```
+
 ## HTML Structure
 
 ```html
@@ -159,6 +181,7 @@ Fine-tuned responsive adjustments:
 - `audio`: Audio player (when `mediaType: audio`)
 - `icon`: Icon rendering (when `mediaType: icon`)
 - `lottie`: Animation player (when `mediaType: lottie`)
+- `iframe`: Embedded frame (when `mediaType: iframe`)
 
 ### Manifest Structure
 ```json

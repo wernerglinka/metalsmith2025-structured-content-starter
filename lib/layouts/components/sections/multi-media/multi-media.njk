@@ -5,6 +5,7 @@
 {% from "components/_partials/image/image.njk" import image %}
 {% from "components/_partials/video/video.njk" import video %}
 {% from "components/_partials/lottie/lottie.njk" import lottie %}
+{% from "components/_partials/iframe/iframe.njk" import iframe %}
 
 <div class="content {% if section.isReverse %}is-reverse{% endif %}">
   {% if section.mediaType === "audio" %}
@@ -26,6 +27,16 @@
 
   {% if section.mediaType === "lottie"%}
     <div class="media">{{ lottie(section.lottie) }}</div>
+  {% endif %}
+
+  {% if section.mediaType === "text" and section.mediaText | hasText %}
+    <div class="media is-text flow">
+      <div class="prose flow">{{ text(section.mediaText) }}</div>
+    </div>
+  {% endif %}
+
+  {% if section.mediaType === "iframe" and section.iframe.src %}
+    <div class="media is-iframe">{{ iframe(section.iframe) }}</div>
   {% endif %}
 
   {% if section.text | hasText %}
