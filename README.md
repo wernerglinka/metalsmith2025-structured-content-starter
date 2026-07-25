@@ -230,6 +230,43 @@ The `componentDependencyBundler` automatically:
 3. Applies PostCSS processing (autoprefixing, minification)
 4. Outputs optimized per-page stylesheets and scripts
 
+## Installing Components
+
+`npm run components` lists every catalog component not yet in the site and installs the ones you pick, along with any dependencies they need. Naming components directly installs them without the prompt:
+
+```shell
+npm run components                                # pick from the list
+node scripts/install-components.mjs hero banner   # install by name
+```
+
+A component named on the command line is installed again even if it is already present, which is how you pull a canon update. Dependencies are only fetched when missing.
+
+### Installs Are Recorded in Git
+
+Each installed component lands as its own commit, staged from that component's directory only, so unrelated work in progress stays out of it:
+
+```
+component: install hero@1.2.0 from nunjucks-components.com
+
+Component-Name: hero
+Component-Version: 1.2.0
+Content-Hash: a3f9c2e17b40d8e6
+```
+
+The trailers make an install mechanically findable later, with no lockfile or sidecar file to keep in sync. What landed and at which version is a `git log` away, and what you changed since is one diff:
+
+```shell
+git log --grep="Component-Name: hero" -1
+git diff <that commit> HEAD -- lib/layouts/components/sections/hero
+```
+
+Because an install overwrites whatever is in the component's directory, the installer refuses to run when those paths have uncommitted changes, rather than discarding edits it cannot recover. Two flags adjust this:
+
+- `--force` installs anyway, discarding local edits in the affected component directories
+- `--no-commit` places files without recording commits, for sites not kept in git
+
+`--no-commit` still honors the dirty-path refusal, since that guard protects your files rather than your history. Outside a git repository the installer says so and simply places the files.
+
 ## Content Validation
 
 This starter includes built-in validation to catch common configuration errors:
