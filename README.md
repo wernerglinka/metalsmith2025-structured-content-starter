@@ -325,9 +325,28 @@ Without an install commit the check still reports whether a component differs fr
 
 The hash covers the template, stylesheet, script and any modules. It deliberately excludes `manifest.json`, so a manifest-only change on either side does not show up here. `diff -ru` against a fresh download is how you see those.
 
+### Restyling a Component Without Touching It
+
+Reach for this before editing a component's CSS, because it keeps updates cheap.
+
+Component CSS ships in `@layer components.<name>`, and anything in `lib/overrides/<name>/<name>.css` ships in `@layer site.<name>`. The `site` layer sits above `components`, so an override wins on layer alone:
+
+```css
+/* lib/overrides/hero/hero.css */
+.hero {
+  --hero-text-width: calc(100% - clamp(0px, calc((100vw - 600px) * 3), 50%));
+}
+```
+
+No `!important`, no `.page .section .hero .text` arms race, and the canon file stays byte-identical to the library, which is what keeps `components:status` meaningful and the next update a copy rather than a merge. `lib/overrides/hero/hero.css` ships as an example and is safe to delete.
+
+Prefer setting a component's custom properties over redeclaring its rules. Properties are its design API and survive upstream restructuring; rules are its implementation and do not. Site-wide decisions that are not about one component belong in `lib/assets/styles/_theme-customization.css`, which is also in the `site` layer.
+
+Layers are configured in `site-config.js` under `components.layers`, and every import in `lib/assets/main.css` names the layer it belongs to. That part is not optional: unlayered CSS beats every layer, so one bare `@import` would outrank the entire component catalog.
+
 ### Updating a Component You Have Customized
 
-Components are yours once installed. Edit them freely; the cost is that adopting a later canon version is a merge rather than a copy. Git already knows how to do that merge, and the install commit is what gives it something to merge against.
+Sometimes an override is not enough and you edit the component itself. That is allowed; the cost is that adopting a later canon version becomes a merge rather than a copy. Git already knows how to do that merge, and the install commit is what gives it something to merge against.
 
 Four steps. Say you have edited `hero` and want the current canon version.
 
