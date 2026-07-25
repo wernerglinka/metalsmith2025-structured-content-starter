@@ -276,14 +276,16 @@ A component named on the command line is installed again even if it is already p
 Each installed component lands as its own commit, staged from that component's directory only, so unrelated work in progress stays out of it:
 
 ```
-component: install hero@1.2.0 from nunjucks-components.com
+component: install hero@1.3.1 from nunjucks-components.com
 
 Component-Name: hero
-Component-Version: 1.2.0
+Component-Version: 1.3.1
 Content-Hash: a3f9c2e17b40d8e6
 ```
 
-The trailers make an install mechanically findable later, with no lockfile or sidecar file to keep in sync. What landed and at which version is a `git log` away, and what you changed since is one diff:
+The version is the library's, not the component's: components are published as a set, so `1.3.1` says which library release this copy of `hero` came from. `Content-Hash` is the per-component identity, and it is the field that moves when the component's own content changes.
+
+The trailers make an install mechanically findable later, with no lockfile or sidecar file to keep in sync. What landed and from which release is a `git log` away, and what you changed since is one diff:
 
 ```shell
 git log --grep="Component-Name: hero" -1
@@ -356,7 +358,7 @@ Component-Version: 1.3.1
 Content-Hash: bdce80ff48392bc5
 ```
 
-`version` and `contentHash` come from the canon catalog at `https://nunjucks-components.com/downloads/manifest.json`.
+`version` and `contentHash` come from the canon catalog at `https://nunjucks-components.com/downloads/manifest.json`, where `version` is the library release and `contentHash` identifies this component's content.
 
 ## Content Validation
 

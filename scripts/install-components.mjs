@@ -175,6 +175,12 @@ export const componentPath = (entry, config) => {
  * The commit message recording one install. The trailers are what makes an
  * install commit mechanically findable later, without any sidecar file:
  * `git log --grep="Component-Name: hero"`.
+ *
+ * `version` is the catalog's, which is the library's release version rather
+ * than a per-component one: components are published as a set, so it records
+ * which release this copy came from. `contentHash` is the per-component
+ * identity and is what moves when the component's own content changes.
+ *
  * @param {object} entry - Catalog entry (name, version, contentHash)
  * @param {string} source - Where the component came from, e.g. the registry host
  * @returns {string} Commit message
