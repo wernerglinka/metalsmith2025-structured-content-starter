@@ -1,0 +1,23 @@
+{
+  "name": "@nunjucks-components/button",
+  "version": "1.3.1",
+  "description": "Nunjucks button partial",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "partial",
+    "button"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "c40f61e99b9d0169",
+  "main": "button.njk",
+  "files": [
+    "button.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "button.css"
+  ]
+}

@@ -5,8 +5,8 @@
     <a
       class="button {{ info.buttonStyle }}{% if info.isSmall %} small{% endif %}"
       href="{{info.url}}"
-      {% if info.url | isExternal %}target="_blank" rel="noopener noreferrer" aria-label="{{ info.label }} (opens in new window)" {% endif %}
-      {% if info.ariaLabel %}aria-label="{{ info.ariaLabel }}"{% endif %}
+      {% if info.url | isExternal %}target="_blank" rel="noopener noreferrer"{% endif %}
+      {% if info.ariaLabel %}aria-label="{{ info.ariaLabel }}"{% elif info.url | isExternal %}aria-label="{{ info.label }} (opens in new window)"{% endif %}
     >
       {% if info.icon %}{% include "icons/" + info.icon + ".njk" %}{% endif %}
       {{ info.label}}
