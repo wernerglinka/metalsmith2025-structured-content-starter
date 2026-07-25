@@ -1,0 +1,5 @@
+mediaType: iframe
+iframe:
+  src: 'https://example.com/embed'
+  title: 'Accessible frame title'
+  allow: '' # optional permissions policy, e.g. 'payment'
