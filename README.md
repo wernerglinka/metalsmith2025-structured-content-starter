@@ -299,6 +299,32 @@ Because an install overwrites whatever is in the component's directory, the inst
 
 `--no-commit` still honors the dirty-path refusal, since that guard protects your files rather than your history. Outside a git repository the installer says so and simply places the files.
 
+### Knowing What Needs Updating
+
+```shell
+npm run components:status
+```
+
+Components are published as a set, so the catalog's version is the library's release and cannot tell you whether one component moved between two releases. The content hash can, and this is what it is for. The check computes each installed component's hash from the files on disk, compares it against the catalog, and uses the `Content-Hash` trailer of its last install commit as the baseline that makes the difference attributable:
+
+```
+outdated (2)
+  hero        canon moved, your copy did not
+  banner      canon moved, your copy did not
+
+modified (1)
+  text        you changed it, canon did not
+
+diverged (1)
+  commons     you changed it and canon moved
+```
+
+`outdated` is a plain reinstall. `modified` needs nothing; it is your fork, working as intended. `diverged` is the case the update recipe below exists for, because both sides moved and the two changes have to be merged.
+
+Without an install commit the check still reports whether a component differs from canon, but cannot say who moved. That is the state of every component installed before install commits existed, and the second recipe below is how to give it a baseline.
+
+The hash covers the template, stylesheet, script and any modules. It deliberately excludes `manifest.json`, so a manifest-only change on either side does not show up here. `diff -ru` against a fresh download is how you see those.
+
 ### Updating a Component You Have Customized
 
 Components are yours once installed. Edit them freely; the cost is that adopting a later canon version is a merge rather than a copy. Git already knows how to do that merge, and the install commit is what gives it something to merge against.

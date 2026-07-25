@@ -252,6 +252,23 @@ export const createGit = (root, run = runCommand) => {
     },
 
     /**
+     * The full message of a component's most recent install commit, found by
+     * its Component-Name trailer. This is how a later read gets at what canon
+     * looked like when the component was installed.
+     *
+     * @param {string} componentName - Component to look up
+     * @returns {Promise<string|null>} The commit message, or null when never installed
+     */
+    lastInstallMessage: async (componentName) => {
+      try {
+        const { stdout } = await git(['log', '--grep', `Component-Name: ${componentName}$`, '-1', '--pretty=%B']);
+        return stdout.trim() || null;
+      } catch {
+        return null;
+      }
+    },
+
+    /**
      * Stage one component's directory and commit it on its own, leaving any
      * unrelated staged work in the index untouched. A reinstall that changed
      * nothing records nothing; there is no empty commit to explain later.
