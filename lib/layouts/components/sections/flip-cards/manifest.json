@@ -1,11 +1,18 @@
 {
   "name": "flip-cards",
   "type": "section",
-  "styles": ["flip-cards.css"],
+  "styles": [
+    "flip-cards.css"
+  ],
   "scripts": [],
-  "requires": ["ctas", "text", "image", "commons"],
+  "requires": [
+    "flip-card",
+    "commons"
+  ],
   "validation": {
-    "required": ["sectionType"],
+    "required": [
+      "sectionType"
+    ],
     "properties": {
       "sectionType": {
         "type": "string",
@@ -37,7 +44,14 @@
       },
       "text.titleTag": {
         "type": "string",
-        "enum": ["h1", "h2", "h3", "h4", "h5", "h6"],
+        "enum": [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6"
+        ],
         "default": "h2"
       },
       "cards": {
@@ -46,7 +60,14 @@
           "properties": {
             "text.titleTag": {
               "type": "string",
-              "enum": ["h1", "h2", "h3", "h4", "h5", "h6"],
+              "enum": [
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6"
+              ],
               "default": "h3"
             }
           }
@@ -62,9 +83,13 @@
       "widget": "array",
       "label": "Flip cards",
       "items": {
-        "$extends": ["flip-card"]
+        "$extends": [
+          "flip-card"
+        ]
       }
     },
-    "$extends": ["commons"]
+    "$extends": [
+      "commons"
+    ]
   }
 }

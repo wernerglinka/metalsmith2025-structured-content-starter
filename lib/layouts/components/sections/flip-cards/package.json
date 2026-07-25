@@ -1,0 +1,27 @@
+{
+  "name": "@nunjucks-components/flip-cards",
+  "version": "1.3.1",
+  "description": "Nunjucks flip-cards section",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "section",
+    "flip-cards"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "eb2bce588b89624c",
+  "main": "flip-cards.njk",
+  "files": [
+    "flip-cards.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "flip-cards.css"
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/flip-card": ">=1.3.1",
+    "@nunjucks-components/commons": ">=1.3.1"
+  }
+}

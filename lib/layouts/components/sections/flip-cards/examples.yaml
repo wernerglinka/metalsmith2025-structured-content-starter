@@ -1,0 +1,59 @@
+- sectionType: flip-cards
+  containerTag: aside
+  classes: ""
+  id: ""
+  isDisabled: false
+  containerFields:
+    inContainer: true
+    isAnimated: true
+    noMargin:
+      top: false
+      bottom: false
+    noPadding:
+      top: false
+      bottom: false
+    background:
+      color: ""
+      image: ""
+      imageScreen: "none"
+  cards:
+    - front:
+        icon: "activity"
+        text:
+          leadIn: "Simple Text Section"
+          title: "The Card Title"
+          titleTag: "h3"
+          subTitle: ""
+          prose: "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Duis mollis, est non commodo luctus."
+      back:
+        text:
+          leadIn: ""
+          title: "This is the back"
+          titleTag: "h3"
+          subTitle: ""
+          prose: "Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod."
+        ctas:
+          - url: "https://apple.com"
+            label: "Go Apple"
+            isButton: false
+            buttonStyle: "primary"
+    - front:
+        icon: "airplay"
+        text:
+          leadIn: "Simple Text Section"
+          title: "The Second Card Title"
+          titleTag: "h3"
+          subTitle: ""
+          prose: "Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum."
+      back:
+        text:
+          leadIn: ""
+          title: "The Back"
+          titleTag: "h3"
+          subTitle: ""
+          prose: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh."
+        ctas:
+          - url: "https://glinka.co"
+            label: "Learn More"
+            isButton: true
+            buttonStyle: "primary small"
