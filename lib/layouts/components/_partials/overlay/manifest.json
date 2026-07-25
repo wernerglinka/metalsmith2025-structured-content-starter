@@ -1,7 +1,9 @@
 {
   "name": "overlay",
   "type": "partial",
-  "styles": ["overlay.css"],
+  "styles": [
+    "overlay.css"
+  ],
   "scripts": [],
   "requires": [],
   "validation": {

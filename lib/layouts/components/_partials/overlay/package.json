@@ -1,0 +1,23 @@
+{
+  "name": "@nunjucks-components/overlay",
+  "version": "1.3.1",
+  "description": "Nunjucks overlay partial",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "partial",
+    "overlay"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "539d313b9367764b",
+  "main": "overlay.njk",
+  "files": [
+    "overlay.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "overlay.css"
+  ]
+}
