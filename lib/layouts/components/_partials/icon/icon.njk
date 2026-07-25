@@ -2,8 +2,9 @@
   {# Normalize the input to always get a valid icon object #}
   {% set iconObj = item | normalizeIcon %}
 
+  {% set iconLabel = iconObj.title or iconObj.icon %}
   {% if iconObj.url | hasUrl %}
-    <a class="icon-wrapper" href="{{ iconObj.url }}" {% if iconObj.url | isExternal %} target="_blank" rel="noopener noreferrer" aria-label="{{ iconObj.title }} (opens in new window)" {% endif %}>
+    <a class="icon-wrapper" href="{{ iconObj.url }}" {% if iconObj.url | isExternal %} target="_blank" rel="noopener noreferrer" aria-label="{{ iconLabel }} (opens in new window)" {% else %} aria-label="{{ iconLabel }}" {% endif %}>
       {% include "icons/" + iconObj.icon + ".njk" ignore missing %}
     </a>
   {% else %}
