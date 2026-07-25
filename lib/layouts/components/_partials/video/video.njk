@@ -4,13 +4,13 @@
 {% macro video(info) %}
   {% if info.inSitu %}
     <div class="video media in-situ">
-      <span class="close">
+      <button type="button" class="close" aria-label="Close video">
         {% set item = {
           url: '',
           icon: 'x'
         } %}
         {{ icon(item) }}
-      </span>
+      </button>
       
       <div class="in-situ-video-wrapper js-in-situ-video-wrapper">
         <div class="js-in-situ-video in-situ-video" 
@@ -22,7 +22,7 @@
         </div>
       </div>
     
-      <button class="video-trigger">
+      <button type="button" class="video-trigger">
         <div class="play-button"></div>
         {% set imageData = {
           src: info.tn,
@@ -34,7 +34,7 @@
     </div>
   {% else %}
     <div class="video media">
-      <button class="js-modal-video" 
+      <button type="button" class="js-modal-video"
         data-videoid="{{ info.id }}" 
         data-videosrc="{{ info.src or 'youtube' }}"
         {% if info.cloudname %}data-cloudname="{{ info.cloudname }}"{% endif %}

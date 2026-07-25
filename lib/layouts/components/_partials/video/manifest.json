@@ -1,18 +1,33 @@
 {
   "name": "video",
   "type": "partial",
-  "styles": ["video.css"],
-  "scripts": ["video.js"],
-  "requires": ["overlay", "image", "icon"],
+  "styles": [
+    "video.css"
+  ],
+  "scripts": [
+    "video.js"
+  ],
+  "requires": [
+    "overlay",
+    "image",
+    "icon"
+  ],
   "validation": {
-    "required": ["id", "tn"],
+    "required": [
+      "id",
+      "tn"
+    ],
     "properties": {
       "id": {
         "type": "string"
       },
       "src": {
         "type": "string",
-        "enum": ["youtube", "vimeo", "cloudinary"],
+        "enum": [
+          "youtube",
+          "vimeo",
+          "cloudinary"
+        ],
         "default": "youtube"
       },
       "tn": {
@@ -44,7 +59,11 @@
     "src": {
       "widget": "select",
       "label": "Source",
-      "enum": ["youtube", "vimeo", "cloudinary"],
+      "enum": [
+        "youtube",
+        "vimeo",
+        "cloudinary"
+      ],
       "default": "youtube"
     },
     "tn": {
