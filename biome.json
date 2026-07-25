@@ -16,7 +16,7 @@
       "!package-lock.json",
       "!**/*.svg",
       "!**/*.html",
-      "!src/assets/"
+      "!lib/assets/images/"
     ]
   },
   "formatter": {

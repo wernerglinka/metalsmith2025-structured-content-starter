@@ -36,6 +36,7 @@ import optimizeImages from 'metalsmith-optimize-images'; // Optimizes images for
 import safeLinks from 'metalsmith-safe-links';
 import blogPages from 'metalsmith-sectioned-blog-pagination';
 import seo from 'metalsmith-seo'; // Adds SEO metadata to pages
+import assets from 'metalsmith-static-files'; // Copies static assets to the build
 
 import dataLoader from './lib/plugins/data-loader.js';
 import * as nunjucksFilters from './nunjucks-filters/index.js';
@@ -84,8 +85,6 @@ metalsmith
   .env('NODE_ENV', process.env.NODE_ENV)
   .source(config.source)
   .destination(config.destination)
-  // Files in these src/ directories are copied straight through, unprocessed
-  .statik(config.staticDirectories)
   .metadata({
     msVersion: dependencies.metalsmith,
     nodeVersion: process.version
@@ -195,26 +194,43 @@ metalsmith
   );
 
 /**
- * These last three only run in production, where the cost of optimizing is
- * worth paying and drafts are already gone.
+ * 10. Image optimization, production only.
+ * Generates the responsive variants and rewrites <img> tags into srcsets.
+ * Runs before the static copy so the variants are in place when it happens.
+ * Learn more: https://github.com/wernerglinka/metalsmith-optimize-images
+ */
+if (isProduction) {
+  metalsmith.use(optimizeImages(config.optimizeImages));
+}
+
+/**
+ * 11. Static assets
+ * Copies lib/assets to the build untouched, minus the CSS and JS entry
+ * points the bundler already handled.
+ * Learn more: https://github.com/wernerglinka/metalsmith-static-files
+ */
+metalsmith.use(
+  assets({
+    source: config.staticFiles.source,
+    destination: config.staticFiles.destination,
+    ignore: config.staticFiles.ignore
+  })
+);
+
+/**
+ * The last two only run in production, where the cost is worth paying.
  */
 if (isProduction) {
   metalsmith
     /**
-     * 10. Image optimization
-     * Learn more: https://github.com/wernerglinka/metalsmith-optimize-images
-     */
-    .use(optimizeImages(config.optimizeImages))
-
-    /**
-     * 11. SEO
+     * 12. SEO
      * Open Graph tags, Twitter cards, JSON-LD, a sitemap and robots.txt.
      * Learn more: https://github.com/wernerglinka/metalsmith-seo
      */
     .use(seo(config.seo))
 
     /**
-     * 12. HTML minification
+     * 13. HTML minification
      * Learn more: https://github.com/wernerglinka/metalsmith-optimize-html
      */
     .use(htmlMinifier(config.optimizeHtml));

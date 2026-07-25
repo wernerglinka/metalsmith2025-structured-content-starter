@@ -26,6 +26,7 @@ import collections from '@metalsmith/collections';
 import drafts from '@metalsmith/drafts';
 import permalinks from '@metalsmith/permalinks';
 import Metalsmith from 'metalsmith';
+import assets from 'metalsmith-static-files';
 
 /**
  * Current directory path for test file location
@@ -287,15 +288,21 @@ describe('Build Integration', () => {
      * @param {Function} done - Mocha callback for async test completion
      */
     it('should copy static assets', (_t, done) => {
-      // Metalsmith 2.7's native .statik() copies directories under the source
-      // tree verbatim. src/assets/ holds images and icons; main.css lives in
-      // lib/assets/ and is processed by the bundler, so it is not a static copy.
+      // Assets live outside src/ and are copied by metalsmith-static-files, so
+      // they never enter the file tree as pages. main.css and main.js are
+      // excluded because the component bundler produces them.
       const metalsmith = Metalsmith(projectRoot)
         .clean(false)
         .source('./src')
         .destination(testBuildDir)
-        .statik(['assets'])
-        .use(drafts(false));
+        .use(drafts(false))
+        .use(
+          assets({
+            source: 'lib/assets/',
+            destination: 'assets/',
+            ignore: ['main.css', 'main.js', 'styles/']
+          })
+        );
 
       metalsmith.build((err) => {
         assert.ok(!err, `Build should complete without errors: ${err ? err.message : ''}`);

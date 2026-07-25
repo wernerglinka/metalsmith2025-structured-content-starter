@@ -244,6 +244,14 @@ Content-facing metadata (site title, URL, SEO defaults) lives in `lib/data/site.
 
 A stage a site does not use is deleted rather than switched off in config. If the pipeline starts branching on whether a config key exists, the build has quietly turned back into a framework.
 
+### Why Metalsmith is pinned to 2.6.3
+
+2.7 introduced `statik()`, which copies directories under `src/` to the build without passing them through the file tree. Two things break under it, and both are silent.
+
+Watch mode stops rebuilding, because 2.7 watches through chokidar 4, which dropped glob support, and the watch paths are globs. And responsive images stop being generated, because `metalsmith-optimize-images` cannot resolve an image that never entered the file tree: every lookup fails, no `<img>` is rewritten, and the build reports success. The second one is worse than it sounds, since an incremental build finds last build's images still on disk and partly works, so the failure only shows up on a clean checkout.
+
+So assets live in `lib/assets/` and are copied by `metalsmith-static-files` after image optimization, which is how this starter worked before 2.7. Revisit when 2.7 is fixed upstream.
+
 ## Installing Components
 
 `npm run components` lists every catalog component not yet in the site and installs the ones you pick, along with any dependencies they need. Naming components directly installs them without the prompt:

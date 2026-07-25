@@ -33,8 +33,16 @@ export default {
     directory: 'lib/data'
   },
 
-  /** Directories under src/ copied to the build untouched */
-  staticDirectories: ['assets'],
+  /**
+   * Files copied to the build without processing. They live outside src/ so
+   * they never enter the file tree as pages, and the copy runs after image
+   * optimization so the generated variants are already in place.
+   */
+  staticFiles: {
+    source: 'lib/assets/',
+    destination: 'assets/',
+    ignore: ['main.css', 'main.js', 'styles/']
+  },
 
   /** Named collections. Sort accepts any frontmatter path, plus :asc or :desc */
   collections: {
@@ -101,9 +109,18 @@ export default {
     }
   },
 
-  /** Responsive image variants, production only */
+  /**
+   * Responsive image variants, production only.
+   *
+   * `cache` keeps the generated variants in lib/assets/images/responsive so a
+   * rebuild does not redo the work. It also tells the plugin where the source
+   * images live, which is what lets it rewrite <img> tags into srcsets when
+   * the images are copied to the build rather than passed through the file
+   * tree. Without it, nothing is rewritten.
+   */
   optimizeImages: {
-    isProgressive: false
+    isProgressive: false,
+    cache: true
   },
 
   /**
@@ -120,14 +137,7 @@ export default {
 
   /** Paths watched in development, each change triggering a rebuild */
   watch: {
-    paths: [
-      'src/**/*',
-      'lib/layouts/**/*',
-      'lib/assets/main.css',
-      'lib/assets/main.js',
-      'lib/assets/styles/**/*',
-      'lib/data/**/*'
-    ]
+    paths: ['src/**/*', 'lib/layouts/**/*', 'lib/assets/**/*', 'lib/data/**/*']
   },
 
   /** Development server. These keys are passed to BrowserSync as they are. */
