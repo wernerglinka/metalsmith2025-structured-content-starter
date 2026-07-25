@@ -4,7 +4,7 @@
  * Manifest reconciliation helper.
  *
  * Keeps a component's manifest `fields` in step with its example object after a
- * developer changes the component's data contract. It diffs the example (`.yml`)
+ * developer changes the component's data contract. It diffs the example (`examples.yml`)
  * against the manifest `fields`: for each field in the example that the manifest
  * does not declare, it asks the developer to pick a field type and adds it; for
  * each field the manifest declares that the example no longer has, it asks and
@@ -180,18 +180,28 @@ const findComponentDirectory = async (root, config, name) => {
 };
 
 /**
- * Read and parse the component's example object from its `.yml` file. The file
- * holds a YAML array with a single section object.
+ * Read and parse the component's example object from `examples.yml`, a YAML
+ * array whose first entry is the section object.
+ *
+ * The filename is fixed rather than derived from the component name, so every
+ * component directory has one predictable example file.
+ *
  * @param {string} componentDirectory - Component directory
- * @param {string} name - Component name
+ * @param {string} name - Component name, used in error messages
  * @returns {Promise<object>} The example object
  */
 const readExample = async (componentDirectory, name) => {
-  const raw = await fs.readFile(path.join(componentDirectory, `${name}.yml`), 'utf8');
+  const examplePath = path.join(componentDirectory, 'examples.yml');
+  let raw;
+  try {
+    raw = await fs.readFile(examplePath, 'utf8');
+  } catch {
+    throw new Error(`No examples.yml in ${componentDirectory}, so ${name} has no example to diff against`);
+  }
   const parsed = parseYaml(raw);
   const example = Array.isArray(parsed) ? parsed[0] : parsed;
   if (!example || typeof example !== 'object') {
-    throw new Error(`Could not read an example object from ${name}.yml`);
+    throw new Error(`Could not read an example object from ${examplePath}`);
   }
   return example;
 };

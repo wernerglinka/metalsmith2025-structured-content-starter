@@ -1,6 +1,0 @@
-mediaType: lottie
-lottie:
-  src: '/assets/lotties/example4.json'
-  control:
-    autoplay: true
-    loop: true
