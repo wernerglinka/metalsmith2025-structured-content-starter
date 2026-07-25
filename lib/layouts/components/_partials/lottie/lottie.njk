@@ -1,6 +1,5 @@
 {% macro lottie(lottieData) %}
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
+  {# The lottie-player web component is loaded once by lottie.js #}
   <lottie-player
     src="{{ lottieData.src }}"
     background="transparent"

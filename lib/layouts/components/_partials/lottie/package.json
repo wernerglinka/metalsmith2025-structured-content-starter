@@ -1,0 +1,23 @@
+{
+  "name": "@nunjucks-components/lottie",
+  "version": "1.3.1",
+  "description": "Nunjucks lottie partial",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "partial",
+    "lottie"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "39184fa15d1478d5",
+  "main": "lottie.njk",
+  "files": [
+    "lottie.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "lottie.js"
+  ]
+}

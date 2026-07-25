@@ -1,11 +1,17 @@
 {
   "name": "lottie",
   "type": "partial",
-  "styles": ["lottie.css"],
-  "scripts": [],
+  "styles": [
+    "lottie.css"
+  ],
+  "scripts": [
+    "lottie.js"
+  ],
   "requires": [],
   "validation": {
-    "required": ["src"],
+    "required": [
+      "src"
+    ],
     "properties": {
       "src": {
         "type": "string"
