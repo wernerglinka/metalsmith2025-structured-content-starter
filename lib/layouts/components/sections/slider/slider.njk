@@ -10,7 +10,7 @@
     aria-label="{% if section.text.title %}{{ section.text.title }}{% else %}Image carousel{% endif %}"
     tabindex="0"
   >
-    {{ sliderPagination(section.slides, section.isTabs) }}
+    {{ sliderPagination(section.slides, section.config === 'isTabs') }}
   
 
     <ul class="slides" aria-live="polite" aria-atomic="false">
