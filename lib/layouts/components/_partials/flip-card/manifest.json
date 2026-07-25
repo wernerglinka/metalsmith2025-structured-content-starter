@@ -1,11 +1,23 @@
 {
   "name": "flip-card",
   "type": "partial",
-  "styles": ["flip-card.css"],
-  "scripts": ["flip-card.js"],
-  "requires": ["ctas", "text", "icon", "commons"],
+  "styles": [
+    "flip-card.css"
+  ],
+  "scripts": [
+    "flip-card.js"
+  ],
+  "requires": [
+    "ctas",
+    "text",
+    "icon",
+    "commons"
+  ],
   "validation": {
-    "required": ["front", "back"],
+    "required": [
+      "front",
+      "back"
+    ],
     "properties": {
       "front": {
         "type": "object",
