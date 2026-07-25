@@ -1,0 +1,28 @@
+{
+  "name": "@nunjucks-components/rich-text",
+  "version": "1.3.1",
+  "description": "Nunjucks rich-text section",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "section",
+    "rich-text"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "215831031be9d3f2",
+  "main": "rich-text.njk",
+  "files": [
+    "rich-text.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "rich-text.css"
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/ctas": ">=1.3.1",
+    "@nunjucks-components/text": ">=1.3.1",
+    "@nunjucks-components/commons": ">=1.3.1"
+  }
+}
