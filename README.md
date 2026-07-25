@@ -297,6 +297,67 @@ Because an install overwrites whatever is in the component's directory, the inst
 
 `--no-commit` still honors the dirty-path refusal, since that guard protects your files rather than your history. Outside a git repository the installer says so and simply places the files.
 
+### Updating a Component You Have Customized
+
+Components are yours once installed. Edit them freely; the cost is that adopting a later canon version is a merge rather than a copy. Git already knows how to do that merge, and the install commit is what gives it something to merge against.
+
+Four steps. Say you have edited `hero` and want the current canon version.
+
+**1. Find the commit where it was installed.**
+
+```shell
+git log --grep="Component-Name: hero" -1 --format=%H
+```
+
+**2. Save what you changed since.**
+
+```shell
+git diff <install-commit> HEAD -- lib/layouts/components/sections/hero > /tmp/hero.patch
+```
+
+That patch is your fork: every edit you made on top of the version you installed, and nothing else.
+
+**3. Reinstall from canon.**
+
+```shell
+git status --porcelain -- lib/layouts/components/sections/hero   # must be empty
+node scripts/install-components.mjs hero
+```
+
+Naming the component explicitly reinstalls it even though it is present. The canon files land, and a fresh install commit records the new version. Your edits are gone from the working tree at this point, which is fine, because step 2 has them.
+
+**4. Reapply your edits.**
+
+```shell
+git apply --3way /tmp/hero.patch
+```
+
+`--3way` merges rather than applying blindly, so edits to lines canon did not touch land silently and genuine collisions come back as ordinary conflict markers for you to resolve. Build, check the result, then commit the reapplied customization as its own commit so the next update has a clean baseline to diff from.
+
+If the patch applies cleanly and the component still looks right, you are done. If it conflicts, the conflict is the useful part: it is the exact place where canon changed something you had also changed.
+
+### Updating a Component Installed Before Install Commits Existed
+
+Components installed by hand, or by the per-component `install.sh` scripts, have no install commit to diff against. There is no baseline in your history, so make one from canon instead:
+
+```shell
+curl -sO https://nunjucks-components.com/downloads/partials/text.zip
+unzip -q text.zip -d /tmp/canon
+diff -ru /tmp/canon/text lib/layouts/components/_partials/text
+```
+
+Read that diff in both directions. Lines only in your copy are your customizations. Lines only in canon are improvements you never received, which is the part that is easy to miss. Decide file by file: a manifest is usually safe to take wholesale, while CSS you have edited deserves a real merge. Commit the result with the same trailers the installer writes, so the next update has a baseline:
+
+```
+component: update text@1.3.1 manifest from nunjucks-components.com
+
+Component-Name: text
+Component-Version: 1.3.1
+Content-Hash: bdce80ff48392bc5
+```
+
+`version` and `contentHash` come from the canon catalog at `https://nunjucks-components.com/downloads/manifest.json`.
+
 ## Content Validation
 
 This starter includes built-in validation to catch common configuration errors:
