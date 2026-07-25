@@ -1,11 +1,23 @@
 {
   "name": "logos-list",
   "type": "section",
-  "styles": ["logos-list.css"],
-  "scripts": ["logos-list.js"],
-  "requires": ["commons", "image", "icon", "text", "ctas"],
+  "styles": [
+    "logos-list.css"
+  ],
+  "scripts": [
+    "logos-list.js"
+  ],
+  "requires": [
+    "commons",
+    "image",
+    "icon",
+    "text",
+    "ctas"
+  ],
   "validation": {
-    "required": ["sectionType"],
+    "required": [
+      "sectionType"
+    ],
     "properties": {
       "sectionType": {
         "type": "string",
@@ -49,7 +61,10 @@
       },
       "logos.scope": {
         "type": "string",
-        "enum": ["all", "selections"]
+        "enum": [
+          "all",
+          "selections"
+        ]
       },
       "logos.logoWidth": {
         "type": "number"
@@ -88,7 +103,10 @@
       "scope": {
         "widget": "select",
         "label": "Scope",
-        "enum": ["all", "selections"],
+        "enum": [
+          "all",
+          "selections"
+        ],
         "default": "all"
       },
       "selections": {
@@ -116,6 +134,8 @@
     "ctas": {
       "$use": "ctas"
     },
-    "$extends": ["commons"]
+    "$extends": [
+      "commons"
+    ]
   }
 }

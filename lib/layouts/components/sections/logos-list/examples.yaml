@@ -1,0 +1,37 @@
+- sectionType: logos-list
+  containerTag: section
+  classes: ""
+  id: ""
+  isDisabled: false
+  isReverse: false
+  hasCenteredContent: false
+  containerFields:
+    inContainer: false
+    isAnimated: true
+    noMargin:
+      top: false
+      bottom: false
+    noPadding:
+      top: false
+      bottom: false
+    background:
+      color: ""
+      image: ""
+      imageScreen: "none"
+  text:
+    leadIn: ""
+    title: "Trusted By"
+    titleTag: "h2"
+    subTitle: ""
+    prose: "Companies that trust our services."
+  logos:
+    source: "socialLinks"
+    logoWidth: 90
+    scope: "all"
+    selections: []
+    showTitle: false
+  ctas:
+    - url: ""
+      label: ""
+      isButton: true
+      buttonStyle: "primary"

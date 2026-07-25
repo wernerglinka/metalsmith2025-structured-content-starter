@@ -1,0 +1,31 @@
+{
+  "name": "@nunjucks-components/logos-list",
+  "version": "1.3.1",
+  "description": "Nunjucks logos-list section",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "section",
+    "logos-list"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "311758e7c957b013",
+  "main": "logos-list.njk",
+  "files": [
+    "logos-list.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "logos-list.css",
+    "logos-list.js"
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/commons": ">=1.3.1",
+    "@nunjucks-components/image": ">=1.3.1",
+    "@nunjucks-components/icon": ">=1.3.1",
+    "@nunjucks-components/text": ">=1.3.1",
+    "@nunjucks-components/ctas": ">=1.3.1"
+  }
+}
