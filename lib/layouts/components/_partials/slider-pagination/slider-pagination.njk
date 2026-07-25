@@ -8,7 +8,7 @@
       type="button"
       class="slider-pagination-button {% if loop.index == 1 %}active{% endif %}"
       aria-label="{% if slide.text.title %}Go to {{ slide.text.title }}{% else %}Go to slide {{ loop.index }}{% endif %}"
-      {% if loop.index == 1 %}aria-disabled="true"{% endif %}
+      {% if loop.index == 1 %}aria-current="true"{% endif %}
     >
       <span aria-hidden="true"> {% if isTabs %}{{ slide.text.title }} {% else %}{{ loop.index }} {% endif %} </span>
     </button>
