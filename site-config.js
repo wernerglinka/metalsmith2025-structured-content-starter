@@ -19,6 +19,15 @@ export default {
   source: './src',
   destination: './build',
 
+  /**
+   * Empty the destination before each build, and files never to read from
+   * the source in the first place.
+   */
+  build: {
+    clean: true,
+    ignore: ['**/.DS_Store']
+  },
+
   /** JSON files loaded into metadata.data (lib/data/site.json -> data.site) */
   data: {
     directory: 'lib/data'
@@ -84,6 +93,8 @@ export default {
     basePath: 'lib/layouts/components',
     sectionsDir: 'sections',
     partialsDir: '_partials',
+    /** cssnano preset used when minifying the bundled CSS */
+    minifyPreset: 'default',
     /** Emit the composed editor schema for the in-situ editor to consume */
     schema: {
       enabled: true
@@ -119,9 +130,11 @@ export default {
     ]
   },
 
-  /** Development server */
+  /** Development server. These keys are passed to BrowserSync as they are. */
   devServer: {
     host: 'localhost',
-    port: 3000
+    port: 3000,
+    injectChanges: false,
+    reloadThrottle: 0
   }
 };

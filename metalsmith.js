@@ -75,9 +75,9 @@ if (process.env.DEBUG) {
 
 metalsmith
   // Empty the destination directory before each build
-  .clean(true)
-  // Ignore macOS system files
-  .ignore(['**/.DS_Store'])
+  .clean(config.build.clean)
+  // Files never read from the source, macOS system files by default
+  .ignore(config.build.ignore)
   // Watch these paths in development; never in production
   .watch(isProduction ? false : config.watch.paths)
   // Pass NODE_ENV to plugins
@@ -188,7 +188,7 @@ metalsmith
       schema: config.components.schema,
       postcss: {
         enabled: true,
-        plugins: [autoprefixer(), cssnano({ preset: 'default' })],
+        plugins: [autoprefixer(), cssnano({ preset: config.components.minifyPreset })],
         options: {}
       }
     })
@@ -252,12 +252,7 @@ if (mainFile === thisFile) {
     const { default: browserSync } = await import('browser-sync');
     devServer = browserSync.create();
 
-    const serverConfig = {
-      host: config.devServer.host,
-      port: config.devServer.port,
-      injectChanges: false,
-      reloadThrottle: 0
-    };
+    const serverConfig = { ...config.devServer };
 
     if (basePath) {
       // Serve with subdirectory simulation
