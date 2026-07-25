@@ -1,27 +1,51 @@
 {
   "name": "collection-card",
   "type": "partial",
-  "styles": ["collection-card.css"],
+  "styles": [
+    "collection-card.css"
+  ],
   "scripts": [],
-  "requires": ["icon", "text", "author-date"],
+  "requires": [
+    "icon",
+    "author-date"
+  ],
   "validation": {
-    "required": ["link", "title"],
+    "required": [
+      "link",
+      "title"
+    ],
     "properties": {
-      "link": { "type": "string" },
-      "pattern": { "type": "string" },
-      "thumbnail": { "type": "string" },
-      "title": { "type": "string" },
-      "excerpt": { "type": "string" },
+      "link": {
+        "type": "string"
+      },
+      "pattern": {
+        "type": "string"
+      },
+      "thumbnail": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
       "author": {
         "oneOf": [
-          { "type": "string" },
+          {
+            "type": "string"
+          },
           {
             "type": "array",
-            "items": { "type": "string" }
+            "items": {
+              "type": "string"
+            }
           }
         ]
       },
-      "date": { "type": "string" }
+      "date": {
+        "type": "string"
+      }
     }
   }
 }

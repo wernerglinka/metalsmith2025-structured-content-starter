@@ -1,0 +1,27 @@
+{
+  "name": "@nunjucks-components/collection-card",
+  "version": "1.3.1",
+  "description": "Nunjucks collection-card partial",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "partial",
+    "collection-card"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "0e53193ba293ccc1",
+  "main": "collection-card.njk",
+  "files": [
+    "collection-card.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "collection-card.css"
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/icon": ">=1.3.1",
+    "@nunjucks-components/author-date": ">=1.3.1"
+  }
+}
