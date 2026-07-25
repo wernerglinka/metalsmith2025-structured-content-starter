@@ -5,8 +5,9 @@ starter-side work. The library has its own list in that repository's
 `update.md`, and the two halves are described below so whoever does either one
 can see the whole picture.
 
-Nothing here is broken enough to block a site. Two items render incorrectly
-today, and the rest is the difference between "works" and "themeable".
+Nothing here is broken enough to block a site. The items that rendered
+incorrectly were fixed in library v1.3.2, see section 2; what remains is the
+difference between "works" and "themeable".
 
 ---
 
@@ -56,20 +57,36 @@ Those 11 are three different problems wearing the same shirt.
 It is a component parameter, not part of the vocabulary, and its absence from
 the token file is correct.
 
-### 2. Broken references (library fixes these)
+### 2. Broken references (fixed in library v1.3.2)
 
-Two declarations resolve to nothing and are dropped at computed-value time, so
-they silently do not apply:
+Two declarations resolved to nothing and were dropped at computed-value time,
+so they silently did not apply:
 
 | Token | Component | Used for |
 |---|---|---|
 | `--default-letter-spacing` | `button` | `letter-spacing` on every button |
 | `--space-lg` | `collection-pagination` | wrapper margin, and icon width/height |
 
-`--space-lg` looks like a naming slip: this starter's scale runs `--space-l`
-and `--space-l-xl`, with no `lg`. Whether the fix is to correct canon's
-reference or to add the name here is the library's call, but it should be one
-or the other rather than both.
+The library fixed both on 2026-07-25 in v1.3.2, and the fix surfaced a larger
+count than this audit saw. Because the audit runs against the components
+installed here, it could not see canon components this site never installed:
+`--space-lg` also appeared in `code` and `search`, `--default-letter-spacing`
+also in `podcast`, and `search.css` alone consumed ten further tokens from a
+foreign naming scheme (`--color-text-tertiary`, `--space-md`,
+`--font-size-sm` and friends). Canon-wide the true count was seventeen
+silently dropped declarations across five components, not two.
+
+How they were fixed matters on this side. `--space-lg` became `--space-l` and
+the search tokens were mapped into the existing vocabulary, so those ask
+nothing new of this starter. But `--default-letter-spacing` became
+`--tracking`, which canon now references directly with no fallback, because
+`body` already applied it and the change is behaviour-neutral. `--tracking`
+has therefore moved from the page shell into the set of tokens canon is
+entitled to rely on: renaming or dropping it now breaks `button` and
+`podcast`.
+
+Sites pick the fixes up by reinstalling the affected components: `button`,
+`collection-pagination`, `code`, `search`, `podcast`.
 
 ### 3. Fallback-only values (the actual starter decision)
 
@@ -120,7 +137,11 @@ being vocabulary at all. Deciding that per token is the point of this list.
 4. **Make the audit repeatable.** The check above was a one-off script. As
    `scripts/token-contract.mjs` it would catch a canon component referencing a
    token this starter never shipped, which is the failure mode that renders
-   subtly wrong and warns nobody.
+   subtly wrong and warns nobody. Be honest about its scope: run here, it
+   audits only the components this site has installed, which is how the
+   original audit found two broken references where canon had seventeen. The
+   canon-wide lint belongs in the library, where every component is present;
+   this script's job is the installed contract.
 
 ## Verification
 
@@ -135,4 +156,4 @@ not actually the same.
 The two halves must land together in the direction that keeps sites working:
 this starter can define a token before canon uses it, but canon must not
 reference a token before the starter ships it. A component that names a token
-nobody defines is the case in section 2 above, and it fails silently.
+nobody defines was the case in section 2 above, and it failed silently.
