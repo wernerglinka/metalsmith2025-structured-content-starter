@@ -3,7 +3,7 @@
 
 {% macro audio(info) %}
 
-  <div class="custom-audio-player" data-audio-player>
+  <div class="custom-audio-player" data-audio-player role="group" aria-label="Audio player" tabindex="0">
     {% if info.bgImage %}
       {% set imageData = {
         src: info.bgImage,

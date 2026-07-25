@@ -1,9 +1,16 @@
 {
   "name": "audio",
   "type": "partial",
-  "styles": ["audio.css"],
-  "scripts": ["audio.js"],
-  "requires": ["image", "icon"],
+  "styles": [
+    "audio.css"
+  ],
+  "scripts": [
+    "audio.js"
+  ],
+  "requires": [
+    "image",
+    "icon"
+  ],
   "validation": {
     "properties": {
       "bgImage": {
