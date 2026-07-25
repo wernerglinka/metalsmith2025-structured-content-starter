@@ -1,7 +1,9 @@
 {
   "name": "commons",
   "type": "section",
-  "styles": ["commons.css"],
+  "styles": [
+    "commons.css"
+  ],
   "scripts": [],
   "requires": [],
   "abstract": true,
@@ -14,7 +16,12 @@
     "containerTag": {
       "widget": "select",
       "label": "Container tag",
-      "enum": ["section", "article", "aside", "div"],
+      "enum": [
+        "section",
+        "article",
+        "aside",
+        "div"
+      ],
       "default": "section"
     },
     "id": {
@@ -76,7 +83,11 @@
         "imageScreen": {
           "widget": "select",
           "label": "Background image screen",
-          "enum": ["light", "dark", "none"],
+          "enum": [
+            "light",
+            "dark",
+            "none"
+          ],
           "default": "none"
         },
         "isDark": {

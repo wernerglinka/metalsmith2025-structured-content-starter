@@ -1,0 +1,23 @@
+{
+  "name": "@nunjucks-components/commons",
+  "version": "1.3.1",
+  "description": "Nunjucks commons section",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "section",
+    "commons"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "df8a945709f1df5a",
+  "main": "commons.njk",
+  "files": [
+    "commons.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "commons.css"
+  ]
+}
