@@ -1,27 +1,36 @@
 /**
  * main.css is a pure import manifest: @import rules are only valid
- * before any other CSS rules, so no style rules may live here. Order
- * matters: later imports win cascade ties over earlier ones.
+ * before any other CSS rules, so no style rules may live here.
+ *
+ * Every import declares the cascade layer it belongs to, and that, rather
+ * than import order, decides precedence. The layer has to be explicit:
+ * unlayered CSS beats every layer, so a bare @import here would outrank
+ * every component in the catalog.
+ *
+ * `tokens` holds custom properties, `base` the reset and the page shell,
+ * `components` is where the bundler puts each component's CSS, and `site`
+ * is yours. The order is declared in site-config.js.
  */
 
-@import url("./styles/_css-base.css");
-@import url("./styles/_design-tokens.css");
+@import url("./styles/_css-base.css") layer(base);
+@import url("./styles/_design-tokens.css") layer(tokens);
 
 /* Page shell chrome (header/footer/navigation/branding live in layouts/pages/parts, not the component catalog) */
-@import url("./styles/_header.css");
-@import url("./styles/_footer.css");
-@import url("./styles/_navigation.css");
-@import url("./styles/_branding.css");
+@import url("./styles/_header.css") layer(base);
+@import url("./styles/_footer.css") layer(base);
+@import url("./styles/_navigation.css") layer(base);
+@import url("./styles/_branding.css") layer(base);
 
 /* Optional shell features, toggled by scripts/init-starter.mjs. Do not edit tagged lines by hand. */
 /* feature-styles */
-@import url("./styles/_breadcrumbs.css"); /* feature:breadcrumbs */
+@import url("./styles/_breadcrumbs.css") layer(base); /* feature:breadcrumbs */
 
 /* Global element and utility styles for the page shell */
-@import url("./styles/_global.css");
+@import url("./styles/_global.css") layer(base);
 
 /*
-  Theme customizations: site-specific overrides.
-  Imported last so these styles win in the style cascade.
+  Theme customizations: site-wide design decisions. In the `site` layer, so
+  they win over component CSS by layer rather than by being imported last.
+  Tweaks to one component belong in lib/overrides/<name>/<name>.css instead.
 */
-@import url("./styles/_theme-customization.css");
+@import url("./styles/_theme-customization.css") layer(site);

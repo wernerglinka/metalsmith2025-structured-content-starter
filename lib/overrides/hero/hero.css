@@ -1,0 +1,25 @@
+/**
+ * Site override for the `hero` section. Example, and safe to delete.
+ *
+ * This file ships in @layer site.hero, which sits above @layer
+ * components.hero, so everything here beats the canon component without
+ * needing a more specific selector. The canon file in
+ * lib/layouts/components/sections/hero/ stays untouched and reinstallable,
+ * which is what keeps `npm run components:status` meaningful and updates
+ * a copy rather than a merge.
+ *
+ * The convention is one directory per component:
+ * lib/overrides/<name>/<name>.css. Overrides are bundled only for
+ * components a page actually uses, so an override for an unused component
+ * costs nothing.
+ *
+ * Prefer setting the component's own custom properties, as below, over
+ * redeclaring its rules. Properties are its design API; rules are its
+ * implementation, and implementations get restructured upstream.
+ */
+
+.hero {
+  /* Canon lets the text column grow to 60% of the viewport on wide screens.
+     Narrower reads better against a full-bleed image. */
+  --hero-text-width: calc(100% - clamp(0px, calc((100vw - 600px) * 3), 50%));
+}

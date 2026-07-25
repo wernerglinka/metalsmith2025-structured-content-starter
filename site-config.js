@@ -106,6 +106,21 @@ export default {
     /** Emit the composed editor schema for the in-situ editor to consume */
     schema: {
       enabled: true
+    },
+    /**
+     * Cascade layers. Each component's CSS is wrapped in
+     * @layer components.<name>, and lib/overrides/<name>/<name>.css in
+     * @layer site.<name>, so an override wins over the component it
+     * overrides without needing a more specific selector, and canon
+     * component files never have to be edited in place.
+     *
+     * The order below is the whole cascade of the site, lowest first.
+     * Anything left unlayered would beat all of it, which is why every
+     * import in lib/assets/main.css names its layer.
+     */
+    layers: {
+      enabled: true,
+      order: ['tokens', 'base', 'components', 'site']
     }
   },
 

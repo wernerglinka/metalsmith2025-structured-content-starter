@@ -185,6 +185,7 @@ metalsmith
       basePath: `${config.components.basePath}/${config.components.partialsDir}`,
       sectionsPath: `${config.components.basePath}/${config.components.sectionsDir}`,
       schema: config.components.schema,
+      layers: config.components.layers,
       postcss: {
         enabled: true,
         plugins: [autoprefixer(), cssnano({ preset: config.components.minifyPreset })],

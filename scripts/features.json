@@ -9,8 +9,16 @@
         "anchor": "feature-imports",
         "code": "{% from \"pages/parts/dark-light-theme-switcher.njk\" import darkLightThemeSwitcher %}"
       },
-      { "file": "header", "anchor": "feature-slot:header", "code": "{{ darkLightThemeSwitcher() }}" },
-      { "file": "css", "anchor": "feature-styles", "code": "@import url('./styles/_dark-light-theme-switcher.css');" },
+      {
+        "file": "header",
+        "anchor": "feature-slot:header",
+        "code": "{{ darkLightThemeSwitcher() }}"
+      },
+      {
+        "file": "css",
+        "anchor": "feature-styles",
+        "code": "@import url('./styles/_dark-light-theme-switcher.css') layer(base);"
+      },
       {
         "file": "js",
         "anchor": "feature-scripts",
@@ -33,8 +41,16 @@
         "anchor": "feature-slot:header",
         "code": "{{ languageSwitcher(data.languages.available, data.languages.defaultLang, data.languages.fallbackUrl) }}"
       },
-      { "file": "css", "anchor": "feature-styles", "code": "@import url('./styles/_language-switcher.css');" },
-      { "file": "js", "anchor": "feature-scripts", "code": "import '../layouts/pages/parts/language-switcher.js';" }
+      {
+        "file": "css",
+        "anchor": "feature-styles",
+        "code": "@import url('./styles/_language-switcher.css') layer(base);"
+      },
+      {
+        "file": "js",
+        "anchor": "feature-scripts",
+        "code": "import '../layouts/pages/parts/language-switcher.js';"
+      }
     ]
   },
   "breadcrumbs": {
@@ -46,8 +62,16 @@
         "anchor": "feature-imports",
         "code": "{% from \"pages/parts/breadcrumbs.njk\" import breadcrumbs %}"
       },
-      { "file": "default", "anchor": "feature-slot:breadcrumbs", "code": "{{ breadcrumbs(navigation.breadcrumbs) }}" },
-      { "file": "css", "anchor": "feature-styles", "code": "@import url('./styles/_breadcrumbs.css');" }
+      {
+        "file": "default",
+        "anchor": "feature-slot:breadcrumbs",
+        "code": "{{ breadcrumbs(navigation.breadcrumbs) }}"
+      },
+      {
+        "file": "css",
+        "anchor": "feature-styles",
+        "code": "@import url('./styles/_breadcrumbs.css') layer(base);"
+      }
     ]
   }
 }
