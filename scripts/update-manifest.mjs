@@ -21,7 +21,7 @@ import path from 'node:path';
 import { stdin, stdout } from 'node:process';
 import readline from 'node:readline/promises';
 import { fileURLToPath } from 'node:url';
-import yaml from 'js-yaml';
+import { load as parseYaml } from 'js-yaml';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
@@ -188,7 +188,7 @@ const findComponentDirectory = async (root, config, name) => {
  */
 const readExample = async (componentDirectory, name) => {
   const raw = await fs.readFile(path.join(componentDirectory, `${name}.yml`), 'utf8');
-  const parsed = yaml.load(raw);
+  const parsed = parseYaml(raw);
   const example = Array.isArray(parsed) ? parsed[0] : parsed;
   if (!example || typeof example !== 'object') {
     throw new Error(`Could not read an example object from ${name}.yml`);
