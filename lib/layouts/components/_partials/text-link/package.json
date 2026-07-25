@@ -1,0 +1,23 @@
+{
+  "name": "@nunjucks-components/text-link",
+  "version": "1.3.1",
+  "description": "Nunjucks text-link partial",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "partial",
+    "text-link"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "34ae81631df76735",
+  "main": "text-link.njk",
+  "files": [
+    "text-link.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "text-link.css"
+  ]
+}
