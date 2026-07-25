@@ -123,6 +123,7 @@ A quick look at the top-level files and directories you'll see in this Metalsmit
     ├── lib/                     # Project assets, components, and templates
     │   ├── assets/              # Static assets (images, global CSS)
     │   ├── data/                # Global data files (JSON)
+    │   ├── plugins/             # Site-owned build plugins (data-loader)
     │   └── layouts/             # Templates and components
     │       ├── components/      # Reusable components
     │       │   ├── _helpers/    # Template helpers
@@ -136,7 +137,8 @@ A quick look at the top-level files and directories you'll see in this Metalsmit
     ├── .prettierignore          # Prettier ignore rules
     ├── prettier.config.js       # Prettier configuration
     ├── LICENSE                  # License file
-    ├── metalsmith.js            # Metalsmith configuration
+    ├── metalsmith.js            # The build pipeline, every plugin in order
+    ├── site-config.js           # Build configuration values
     ├── package-lock.json        # Dependency lock file
     ├── package.json             # Project manifest
     └── README.md                # Project documentation
@@ -229,6 +231,18 @@ The `componentDependencyBundler` automatically:
 2. Bundles only the CSS and JavaScript for those components
 3. Applies PostCSS processing (autoprefixing, minification)
 4. Outputs optimized per-page stylesheets and scripts
+
+## The Build
+
+The build is two files, and the split between them is the point.
+
+`metalsmith.js` is the pipeline. Every plugin is visible, in the order it runs, so you can read top to bottom and see what happens to your content on the way to `build/`. It has no site-specific values in it, which is why you can copy it to the next site nearly verbatim.
+
+`site-config.js` is the values: paths, collections, pagination, permalinks, menus, SEO, watch paths. No logic, no plugin names, no conditionals. It is grouped in pipeline order, so the two files read in parallel. This is the file you edit when starting a site.
+
+Content-facing metadata (site title, URL, SEO defaults) lives in `lib/data/site.json` and is read from there. Keeping it out of `site-config.js` is deliberate: two homes for one value is how they drift apart.
+
+A stage a site does not use is deleted rather than switched off in config. If the pipeline starts branching on whether a config key exists, the build has quietly turned back into a framework.
 
 ## Installing Components
 
