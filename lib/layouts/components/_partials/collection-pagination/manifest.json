@@ -1,12 +1,20 @@
 {
   "name": "collection-pagination",
   "type": "partial",
-  "styles": ["collection-pagination.css"],
+  "styles": [
+    "collection-pagination.css"
+  ],
   "scripts": [],
   "requires": [],
-  "requiredPlugins": ["metalsmith-sectioned-blog-pagination"],
+  "requiredPlugins": [
+    "metalsmith-sectioned-blog-pagination"
+  ],
   "validation": {
-    "required": ["numberOfPages", "pageNumber", "domain"],
+    "required": [
+      "numberOfPages",
+      "pageNumber",
+      "domain"
+    ],
     "properties": {
       "numberOfPages": {
         "type": "number",

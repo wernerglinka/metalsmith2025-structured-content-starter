@@ -7,18 +7,18 @@
  * - --contrast-text-on-dark
  * - --color-border-light
  * - --space-2xs
- * - --space-lg
+ * - --space-l
  */
 .blogs-pagination {
   display: flex;
   justify-content: center;
   gap: var(--space-2xs);
-  margin: var(--space-lg) auto;
+  margin: var(--space-l) auto;
   padding: 0;
 
   li {
-    width: var(--space-lg);
-    height: var(--space-lg);
+    width: var(--space-l);
+    height: var(--space-l);
     display: flex;
     justify-content: center;
     align-items: center;

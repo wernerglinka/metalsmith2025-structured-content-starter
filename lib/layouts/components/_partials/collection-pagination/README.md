@@ -51,3 +51,9 @@ On blog index page 3
 - **Numbered Pages**: Shows all page numbers with current page highlighted
 - **Disabled States**: Visual indication for unavailable navigation options
 - **Semantic HTML**: Proper link structure for accessibility
+
+## Why No `fields` Block
+
+Pagination is computed from the collection at build time (page count,
+current page, domain). No section frontmatter authors it, and no manifest
+composes it via `$use` or `$extends`, so it declares no `fields`.

@@ -1,0 +1,23 @@
+{
+  "name": "@nunjucks-components/collection-pagination",
+  "version": "1.4.0",
+  "description": "Nunjucks collection-pagination partial",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "partial",
+    "collection-pagination"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "4293dbae3812bb2d",
+  "main": "collection-pagination.njk",
+  "files": [
+    "collection-pagination.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "collection-pagination.css"
+  ]
+}
