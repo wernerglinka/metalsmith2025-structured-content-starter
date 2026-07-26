@@ -1,13 +1,13 @@
 /*
  * Theme customizations
- * Site-specific style overrides go here. This file is imported last
- * in main.css, so rules in it win cascade ties against all shell
- * styles (base, tokens, chrome, features, globals). For theming,
- * prefer adjusting _design-tokens.css; use this file for everything
- * the tokens don't cover.
+ * Site-wide style decisions go here. This file ships in the `site`
+ * cascade layer (see main.css and the layer order in site-config.js),
+ * so its rules beat the base styles and every component's CSS by layer
+ * precedence, with no extra specificity needed. For theming, prefer
+ * adjusting _design-tokens.css; use this file for everything the
+ * tokens don't cover.
  *
- * Note: component CSS (lib/layouts/components) is appended after the
- * main.css bundle by the component bundler, so overriding a component
- * rule from here needs higher specificity. Since components are local
- * to your site, prefer editing the component's own CSS instead.
+ * Tweaks to a single component belong in lib/overrides/<name>/<name>.css
+ * instead, which ships in @layer site.<name> and wins over that
+ * component while leaving its canon file untouched and reinstallable.
  */

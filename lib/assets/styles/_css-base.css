@@ -12,7 +12,6 @@
 html {
   /* Prevent font size inflation */
   text-size-adjust: none;
-  font-size: var(--default-font-size);
   scroll-behavior: smooth;
   scroll-padding-top: var(--space-l-xl);
 }

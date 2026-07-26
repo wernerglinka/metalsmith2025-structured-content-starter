@@ -15,8 +15,9 @@
  * borders, the transition timings, and the layout tokens.
  *
  * `npm run tokens:check` audits this contract against the components
- * actually installed in this site: it reports any token a component
- * consumes that is defined nowhere. Run it after editing this file or
+ * actually installed in this site and against the page-shell stylesheets
+ * in lib/assets: it reports any token either side consumes that is
+ * defined nowhere. Run it after editing this file or
  * installing components. The reverse direction, canon referencing a token
  * no starter ships, is enforced by the library's own lint
  * (`npm run lint:components -- --vocab <this repo>/lib/assets/styles`
@@ -192,6 +193,7 @@
   /* Animation Timing Functions */
   --transition-base: 400ms ease-in-out; /* Standard transition */
 
+  --transition-fast: 200ms ease-in-out; /* Quick hover feedback (breadcrumbs, small UI) */
   --transition-movement: 200ms linear; /* For position animations */
   --transition-fade: 500ms ease; /* For opacity transitions */
   --transition-bounce: 500ms cubic-bezier(0.5, 0.05, 0.2, 1.5); /* Bouncy animation */

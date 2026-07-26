@@ -24,6 +24,11 @@
  * every component is present (`npm run lint:components` there, with
  * `--vocab` pointing at this repository's lib/assets/styles).
  *
+ * The page-shell stylesheets under lib/assets are audited too, against a
+ * stricter universe: vocabulary, overrides, and vendor only. The shell must
+ * not consume a property that exists only because some component defines
+ * it, since components load per page while the shell loads everywhere.
+ *
  * Usage:
  *   npm run tokens:check
  *   node scripts/token-contract.mjs --strict   # fail on warnings too
@@ -42,6 +47,7 @@ const projectRoot = path.resolve(scriptDirectory, '..');
 
 const VOCABULARY_DIR = 'lib/assets/styles';
 const OVERRIDES_DIR = 'lib/overrides';
+const SHELL_DIR = 'lib/assets';
 
 /**
  * Properties a component's template sets as an inline style per instance.
@@ -118,25 +124,38 @@ const readIfPresent = async (filePath) => {
 };
 
 /**
+ * Every .css file under a directory, recursively.
+ * @param {string} directory - Absolute path
+ * @returns {Promise<string[]>} File paths, empty when the directory is absent
+ */
+const listCssFiles = async (directory) => {
+  const files = [];
+  let entries = [];
+  try {
+    entries = await fs.readdir(directory, { withFileTypes: true });
+  } catch {
+    return files;
+  }
+  for (const entry of entries) {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...(await listCssFiles(fullPath)));
+    } else if (entry.name.endsWith('.css')) {
+      files.push(fullPath);
+    }
+  }
+  return files;
+};
+
+/**
  * Concatenate every .css file under a directory, recursively.
  * @param {string} directory - Absolute path
  * @returns {Promise<string>} Combined CSS, empty when the directory is absent
  */
 const readCssDir = async (directory) => {
   let css = '';
-  let entries = [];
-  try {
-    entries = await fs.readdir(directory, { withFileTypes: true });
-  } catch {
-    return css;
-  }
-  for (const entry of entries) {
-    const fullPath = path.join(directory, entry.name);
-    if (entry.isDirectory()) {
-      css += await readCssDir(fullPath);
-    } else if (entry.name.endsWith('.css')) {
-      css += `\n${await fs.readFile(fullPath, 'utf-8')}`;
-    }
+  for (const file of await listCssFiles(directory)) {
+    css += `\n${await fs.readFile(file, 'utf-8')}`;
   }
   return css;
 };
@@ -257,9 +276,9 @@ const auditFile = (file, css, isKnown) => {
 
 /**
  * Print the findings and the summary line.
- * @param {{components: number, vocabulary: number, errors: string[], warnings: string[], strict: boolean}} result - Audit result
+ * @param {{components: number, shellFiles: number, vocabulary: number, errors: string[], warnings: string[], strict: boolean}} result - Audit result
  */
-const report = ({ components, vocabulary, errors, warnings, strict }) => {
+const report = ({ components, shellFiles, vocabulary, errors, warnings, strict }) => {
   if (errors.length > 0) {
     console.log(`\n${errors.length} error(s):\n`);
     for (const message of errors) {
@@ -276,7 +295,7 @@ const report = ({ components, vocabulary, errors, warnings, strict }) => {
     console.log('token contract: clean');
   }
   console.log(
-    `\ntoken contract: ${components} installed components, ${vocabulary} vocabulary tokens, ${errors.length} errors, ${warnings.length} warnings${strict ? ' (strict)' : ''}`
+    `\ntoken contract: ${components} installed components, ${shellFiles} shell stylesheets, ${vocabulary} vocabulary tokens, ${errors.length} errors, ${warnings.length} warnings${strict ? ' (strict)' : ''}`
   );
 };
 
@@ -306,7 +325,22 @@ const main = async () => {
     }
   }
 
-  report({ components: components.length, vocabulary: vocabulary.size, errors, warnings, strict });
+  const shellFiles = await listCssFiles(path.join(projectRoot, SHELL_DIR));
+  const isShellKnown = (name) => vocabulary.has(name) || overrideDefined.has(name) || vendorDefined.has(name);
+  for (const file of shellFiles) {
+    const findings = auditFile(file, await fs.readFile(file, 'utf-8'), isShellKnown);
+    errors.push(...findings.errors);
+    warnings.push(...findings.warnings);
+  }
+
+  report({
+    components: components.length,
+    shellFiles: shellFiles.length,
+    vocabulary: vocabulary.size,
+    errors,
+    warnings,
+    strict
+  });
   process.exit(errors.length > 0 || (strict && warnings.length > 0) ? 1 : 0);
 };
 

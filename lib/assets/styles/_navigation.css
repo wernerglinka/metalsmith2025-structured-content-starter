@@ -11,9 +11,6 @@
  * - --color-primary
  * - --color-link-inactive
  * - --color-link-in-path
- * - --color-background-dark
- * - --color-border-dark
- * - --color-shadow-dark
  */
 
 /* Navigation uses the header container (already defined in header.css) */
@@ -110,7 +107,8 @@
     background-color: var(--color-background);
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 5px 10px var(--color-shadow);
+    /* --color-shadow is a complete box-shadow value, not a color */
+    box-shadow: var(--color-shadow);
 
     /* Hidden by default */
     opacity: 0;
@@ -168,14 +166,9 @@
   }
 }
 
-/** Dark Theme styles variations */
-@container header (max-width: 48rem) {
-  .dark-theme .main-menu {
-    background-color: var(--color-background-dark);
-    box-shadow: 0 5px 10px var(--color-shadow-dark);
-  }
-
-  .dark-theme .main-menu li {
-    border-bottom-color: var(--color-border-dark);
-  }
-}
+/*
+ * No .dark-theme rules here on purpose: the menu styles above consume
+ * tokens (--color-background, --color-border-light, --color-shadow), so
+ * a site that enables the theme switcher themes this menu by overriding
+ * those tokens under .dark-theme in _design-tokens.css.
+ */

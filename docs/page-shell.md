@@ -14,15 +14,13 @@ The component catalog under `lib/layouts/components/` is reserved for the author
 
 ## Stylesheet structure
 
-`lib/assets/main.css` is a pure import manifest and must stay that way: the CSS spec only allows `@import` rules before any other rules, so no style rules may live in it. Imports load in cascade order:
+`lib/assets/main.css` is a pure import manifest and must stay that way: the CSS spec only allows `@import` rules before any other rules, so no style rules may live in it. Every import declares the cascade layer it belongs to, and the layer order declared in `site-config.js` (`tokens`, `base`, `vendor`, `components`, `site`), not import order, decides precedence:
 
-1. `_css-base.css` and `_design-tokens.css` — reset and theming tokens
-2. The chrome styles (`_header.css`, `_footer.css`, `_navigation.css`, `_branding.css`)
-3. Feature styles, inserted after the `/* feature-styles */` anchor by `npm run init`
-4. `_global.css` — global element and utility styles for the shell
-5. `_theme-customization.css` — **your** site-specific overrides, imported last so they win cascade ties against everything above
+- `_design-tokens.css` loads into `layer(tokens)` and `_css-base.css` plus `_global.css` into `layer(base)`
+- The chrome styles (`_header.css`, `_footer.css`, `_navigation.css`, `_branding.css`) and the feature styles inserted after the `/* feature-styles */` anchor by `npm run init` load into `layer(site)`, so the shell beats component CSS by layer
+- `_theme-customization.css` also loads into `layer(site)`, for **your** site-wide decisions
 
-The rule of thumb: theme through `_design-tokens.css`, override anything else in `_theme-customization.css`, and leave the other files pristine so diffing against a newer starter stays clean. Component CSS is bundled after `main.css` by the component bundler, so overriding a component from `_theme-customization.css` needs higher specificity; since components are local to your site, prefer editing the component's own CSS.
+The rule of thumb: theme through `_design-tokens.css`, put site-wide decisions the tokens don't cover in `_theme-customization.css`, and leave the other files pristine so diffing against a newer starter stays clean. Both win over any component's CSS by layer precedence, no extra specificity needed. Tweaks to a single component belong in `lib/overrides/<name>/<name>.css`, which ships in `@layer site.<name>` and beats that component while leaving its canon file untouched and reinstallable.
 
 ## Optional features
 
