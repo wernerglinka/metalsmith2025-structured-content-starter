@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Installation script for logos-list v1.3.1
-# Content Hash: 311758e7c957b013
+# Installation script for logos-list v1.5.0
+# Content Hash: a8c3ee5ac8f3c7b0
 
 set -e
 
 # Base URL for component downloads
 DOWNLOAD_BASE_URL="https://nunjucks-components.com/downloads"
 
-echo "🔧 Installing logos-list v1.3.1..."
+echo "🔧 Installing logos-list v1.5.0..."
 
 # Detect project directory and component source
 COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -156,8 +156,8 @@ mkdir -p "$TARGET_DIR"
 # Check for existing installation
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
-  if [ "$EXISTING_HASH" = "311758e7c957b013" ]; then
-    echo "✓ logos-list v1.3.1 already installed (no changes)"
+  if [ "$EXISTING_HASH" = "a8c3ee5ac8f3c7b0" ]; then
+    echo "✓ logos-list v1.5.0 already installed (no changes)"
     exit 0
   else
     echo "📦 Upgrading logos-list (content changed)"

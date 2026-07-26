@@ -128,18 +128,21 @@ A dynamic marquee-style component for displaying collections of logos, client ma
 ### Marquee Animation System
 ```css
 @keyframes marquee {
-  0% { transform: translate3d(var(--start-position, 0%), 0, 0); }
-  100% { transform: translate3d(var(--end-position, -50%), 0, 0); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
 }
 
-.logos-wrapper {
-  --logo-padding: 20px;
-  --list-height: 160px;
-  --start-position: 0%;
-  --end-position: -50%;
-  --animation-speed: 15s;
-  
-  animation: marquee var(--animation-speed) linear infinite;
+/* Component properties, declared on the section root. Override them
+   from lib/overrides/logos-list/logos-list.css. */
+.logos-list {
+  --logos-list-height: auto;
+  --logos-list-animation-speed: 15s;
+  --logos-list-logo-padding: var(--space-s);
+}
+
+.marquee {
+  height: var(--logos-list-height);
+  animation: marquee var(--logos-list-animation-speed) linear infinite;
   animation-play-state: paused;  /* Controlled by JavaScript */
 }
 ```
@@ -164,7 +167,7 @@ A dynamic marquee-style component for displaying collections of logos, client ma
 ### Interactive States
 ```css
 /* Hover pause */
-.marquee:hover .logos-wrapper {
+.marquee-container:hover .marquee {
   animation-play-state: paused;
   transition-duration: 0.8s;
 }
@@ -183,10 +186,8 @@ A dynamic marquee-style component for displaying collections of logos, client ma
 
 /* Title styling for awards */
 .logo-title {
-  margin-top: var(--space-xs);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-p);
   text-align: center;
-  color: var(--color-text-secondary);
 }
 ```
 
@@ -357,10 +358,11 @@ logos:
 ## Customization Options
 
 ### Animation Speed
-Modify scrolling speed via CSS custom properties:
+Modify scrolling speed via the component property, e.g. from
+`lib/overrides/logos-list/logos-list.css`:
 ```css
-.custom-speed .logos-wrapper {
-  --animation-speed: 20s;  /* Slower scrolling */
+.logos-list {
+  --logos-list-animation-speed: 20s;  /* Slower scrolling */
 }
 ```
 

@@ -1,6 +1,11 @@
 /**
  * Logos List Section Styles
  *
+ * Component Properties (override from lib/overrides/logos-list/logos-list.css):
+ * - --logos-list-height
+ * - --logos-list-animation-speed
+ * - --logos-list-logo-padding
+ *
  * Design Tokens:
  * - --space-m-l
  * - --single-list-width
@@ -11,9 +16,16 @@
  * - --space-xl
  * - --space-3xl
  * - --space-s
- * - --logo-list-height
- * - --logo-animation-speed
  */
+
+.logos-list {
+  /* Adjustable values, with fallbacks into the global tokens. Override
+     the properties, not the rules that consume them. The strip height
+     stays intrinsic (auto) until a site pins it. */
+  --logos-list-height: auto;
+  --logos-list-animation-speed: 15s;
+  --logos-list-logo-padding: var(--space-s);
+}
 
 @keyframes marquee {
   0% {
@@ -102,16 +114,13 @@
   }
 
   .marquee {
-    --logo-padding: var(--space-s);
-    --list-height: var(--logo-list-height, 10rem);
-    --animation-speed: var(--logo-animation-speed, 15s);
-
     position: relative;
     width: var(--single-list-width); /* important to set this to the width of one list */
+    height: var(--logos-list-height);
     display: flex;
     gap: 0;
     transform: translate3d(0, 0, 0);
-    animation: marquee var(--animation-speed) linear infinite;
+    animation: marquee var(--logos-list-animation-speed) linear infinite;
     animation-play-state: paused;
 
     &.play {
@@ -167,7 +176,7 @@
       justify-content: center;
       height: 100%;
       border: none;
-      padding: 0 var(--logo-padding);
+      padding: 0 var(--logos-list-logo-padding);
     }
 
     a:hover {
