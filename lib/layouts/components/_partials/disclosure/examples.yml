@@ -1,0 +1,7 @@
+# Used through the multi-media section: an optional disclosures array
+# renders beneath the text column's prose and CTAs.
+disclosures:
+  - title: 'Accessibility'
+    prose: 'The studio is wheelchair accessible. Contact us about other accommodations, we are happy to help.'
+  - title: 'Cancellation policy'
+    prose: 'Full refund up to 7 days before the first session. See the [full policy](/policies) for details.'

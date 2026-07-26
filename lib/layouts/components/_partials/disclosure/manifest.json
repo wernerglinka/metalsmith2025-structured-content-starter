@@ -1,0 +1,38 @@
+{
+  "name": "disclosure",
+  "type": "partial",
+  "styles": [
+    "disclosure.css"
+  ],
+  "scripts": [],
+  "requires": [],
+  "validation": {
+    "type": "array",
+    "items": {
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "prose": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "fields": {
+    "widget": "array",
+    "label": "Disclosure blocks",
+    "items": {
+      "title": {
+        "widget": "text",
+        "label": "Summary title",
+        "default": ""
+      },
+      "prose": {
+        "widget": "markdown",
+        "label": "Body (markdown)",
+        "default": ""
+      }
+    }
+  }
+}

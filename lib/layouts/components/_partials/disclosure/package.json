@@ -1,0 +1,23 @@
+{
+  "name": "@nunjucks-components/disclosure",
+  "version": "1.4.0",
+  "description": "Nunjucks disclosure partial",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "partial",
+    "disclosure"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "08467956a85a4c8c",
+  "main": "disclosure.njk",
+  "files": [
+    "disclosure.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "disclosure.css"
+  ]
+}
