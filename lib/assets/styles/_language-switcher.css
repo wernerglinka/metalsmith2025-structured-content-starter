@@ -4,7 +4,7 @@
  * Design Tokens:
  * - --space-3xs, --space-2xs, --space-xs, --space-s, --space-m-l
  * - --color-primary, --color-link-navigation
- * - --color-text, --color-link-inactive, --color-highlight-background
+ * - --color-text, --color-link-inactive, --color-background-light
  * - --background-color-link-hover
  * - --font-s
  * - --glass-background-light, --glass-backdrop-filter, --glass-border,
@@ -93,7 +93,7 @@
     padding: 0;
 
     &[aria-selected="true"] .language-option {
-      background: var(--color-highlight-background);
+      background: var(--color-background-light);
     }
   }
 }
