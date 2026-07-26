@@ -35,9 +35,9 @@
       "default": ""
     },
     "speed": {
-      "widget": "text",
+      "widget": "number",
       "label": "Playback speed",
-      "default": "1"
+      "default": 1
     },
     "control": {
       "loop": {

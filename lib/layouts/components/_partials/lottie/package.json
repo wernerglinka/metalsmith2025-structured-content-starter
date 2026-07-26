@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/lottie",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Nunjucks lottie partial",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "lottie"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "39184fa15d1478d5",
+  "contentHash": "b4d2ae7a4e6a584d",
   "main": "lottie.njk",
   "files": [
     "lottie.njk",
