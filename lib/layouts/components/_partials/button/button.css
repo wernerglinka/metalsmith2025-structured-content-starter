@@ -4,7 +4,7 @@
  * Design Tokens:
  * - --space-2xs-xs
  * - --space-s-m
- * - --default-letter-spacing
+ * - --tracking
  * - --glass-backdrop-filter
  * - --glass-box-shadow
  * - --primary-button-text-color
@@ -29,7 +29,7 @@ button {
   padding: var(--space-2xs-xs) var(--space-s-m);
   transition: transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
   font-weight: 500;
-  letter-spacing: var(--default-letter-spacing);
+  letter-spacing: var(--tracking);
   background: rgb(218 30 40 / 80%);
   backdrop-filter: var(--glass-backdrop-filter);
   isolation: isolate;

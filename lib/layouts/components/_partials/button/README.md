@@ -34,3 +34,11 @@ Import the macro in your template:
 ## Button Styles
 
 Button appearance is controlled by CSS classes matching the `buttonStyle` value. External links automatically receive security attributes (`target="_blank" rel="noopener noreferrer"`).
+
+## Why No `fields` Block
+
+The authorable shape a button renders (`url`, `label`, `isButton`,
+`buttonStyle`, `isSmall`) is declared once, by the `ctas` partial's
+`fields` block, and flows in as a single CTA entry. This partial is the
+renderer of that entry, not a separately authored component, so it
+declares no `fields` of its own.
