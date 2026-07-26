@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Installation script for text v1.3.1
-# Content Hash: bdce80ff48392bc5
+# Installation script for text v1.4.0
+# Content Hash: 1af622f2963f25fc
 
 set -e
 
 # Base URL for component downloads
 DOWNLOAD_BASE_URL="https://nunjucks-components.com/downloads"
 
-echo "🔧 Installing text v1.3.1..."
+echo "🔧 Installing text v1.4.0..."
 
 # Detect project directory and component source
 COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -156,8 +156,8 @@ mkdir -p "$TARGET_DIR"
 # Check for existing installation
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
-  if [ "$EXISTING_HASH" = "bdce80ff48392bc5" ]; then
-    echo "✓ text v1.3.1 already installed (no changes)"
+  if [ "$EXISTING_HASH" = "1af622f2963f25fc" ]; then
+    echo "✓ text v1.4.0 already installed (no changes)"
     exit 0
   else
     echo "📦 Upgrading text (content changed)"

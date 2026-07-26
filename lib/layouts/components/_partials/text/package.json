@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/text",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Nunjucks text partial",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "text"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "bdce80ff48392bc5",
+  "contentHash": "1af622f2963f25fc",
   "main": "text.njk",
   "files": [
     "text.njk",
