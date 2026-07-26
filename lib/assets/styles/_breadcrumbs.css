@@ -54,7 +54,7 @@
     /* Remove separator from last item */
     &:last-child {
       color: var(--color-text-inactive);
-      font-weight: 600;
+      font-weight: var(--font-weight-semibold);
 
       &::after {
         display: none;

@@ -61,7 +61,7 @@ h4 {
 
 .lead-in {
   font-size: var(--font-xs);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   letter-spacing: var(--tracking-s);
   text-transform: uppercase;
   color: var(--color-text-highlight);
@@ -93,7 +93,7 @@ a {
   color: var(--color-primary);
   display: inline-block; /* Needed for transform to work */
   background-color: transparent;
-  transition: all 0.5s ease-in-out;
+  transition: all var(--transition-fade);
 
   &:hover {
     background-color: var(--glass-background);

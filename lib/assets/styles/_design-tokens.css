@@ -63,6 +63,14 @@
   --color-top-message-background: #161616;
   --color-top-message-text: #f4f4f4;
 
+  /*
+   * Height of the optional top message bar. This 0rem is the vocabulary
+   * default; _header.css raises it on :root (in the higher `site` layer)
+   * while the bar is present and not dismissed. Canon's commons component
+   * consumes it to offset full-height sections.
+   */
+  --top-message-offset: 0rem;
+
   /* Header chrome: translucent, pairs with the backdrop blur in _header.css */
   --color-header-background: rgb(255 255 255 / 60%);
 
@@ -173,6 +181,8 @@
   --font-primary: "Open Sans", sans-serif;
   --font-heading: "Montserrat", sans-serif;
   --default-font-weight: 300;
+  --font-weight-medium: 500; /* Lead-ins, emphasized labels */
+  --font-weight-semibold: 600; /* Current breadcrumb, language codes */
   --default-line-height: 1.5;
   --smaller-line-height: 1;
 

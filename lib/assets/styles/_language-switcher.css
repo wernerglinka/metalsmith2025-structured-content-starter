@@ -6,7 +6,8 @@
  * - --color-primary, --color-link-navigation
  * - --color-text, --color-link-inactive, --color-background-light
  * - --background-color-link-hover
- * - --font-s
+ * - --font-s, --font-weight-semibold
+ * - --transition-fast
  * - --glass-background-light, --glass-backdrop-filter, --glass-border,
  *   --glass-border-radius, --glass-box-shadow
  */
@@ -32,7 +33,7 @@
 
   /* Focus indicator */
   &:focus {
-    outline: 2px solid var(--color-primary, #007acc);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
 
@@ -50,7 +51,7 @@
 
       * {
         stroke: var(--color-link-navigation);
-        transition: stroke 0.3s ease-in-out;
+        transition: stroke var(--transition-fast);
       }
     }
   }
@@ -78,9 +79,9 @@
   visibility: hidden;
   transform: translateY(-0.5rem);
   transition:
-    opacity 0.2s ease,
-    transform 0.2s ease,
-    visibility 0.2s;
+    opacity var(--transition-fast),
+    transform var(--transition-fast),
+    visibility var(--transition-fast);
 
   &.is-open {
     opacity: 1;
@@ -112,7 +113,7 @@ a.language-option {
   text-decoration: none;
   font-size: var(--font-s);
   color: var(--color-text);
-  transition: background 0.15s ease;
+  transition: background var(--transition-fast);
 
   &:hover {
     background: var(--background-color-link-hover);
@@ -126,7 +127,7 @@ a.language-option {
 }
 
 .lang-code {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   min-width: 2rem;
 }
 
@@ -134,12 +135,8 @@ a.language-option {
   color: var(--color-link-inactive);
 }
 
-/* Dark theme adjustments - glass tokens auto-adjust via CSS custom properties */
-.dark-theme .language-option:hover,
-.dark-theme .language-option:focus {
-  background: rgb(255 255 255 / 10%);
-}
-
-.dark-theme .language-dropdown li[aria-selected="true"] .language-option {
-  background: rgb(255 255 255 / 15%);
-}
+/*
+ * No dark-theme rules: every color above is a token that the
+ * body.dark-theme block in _design-tokens.css redefines, so the
+ * switcher themes itself.
+ */

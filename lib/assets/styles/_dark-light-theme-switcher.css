@@ -5,6 +5,7 @@
  * - --space-m-l
  * - --color-primary
  * - --color-link-navigation
+ * - --transition-fade
  */
 .theme-toggle {
   background: transparent;
@@ -16,7 +17,7 @@
 
   /* Focus indicator */
   &:focus {
-    outline: 2px solid var(--color-primary, #007acc);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
 
@@ -40,7 +41,7 @@
 
       * {
         stroke: var(--color-link-navigation);
-        transition: stroke 0.5s ease-in-out;
+        transition: stroke var(--transition-fade);
       }
     }
   }
