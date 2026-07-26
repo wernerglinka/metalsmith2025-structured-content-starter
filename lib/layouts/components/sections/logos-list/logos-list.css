@@ -5,6 +5,7 @@
  * - --logos-list-height
  * - --logos-list-animation-speed
  * - --logos-list-logo-padding
+ * - --logos-list-fade-width
  *
  * Design Tokens:
  * - --space-m-l
@@ -25,6 +26,7 @@
   --logos-list-height: auto;
   --logos-list-animation-speed: 15s;
   --logos-list-logo-padding: var(--space-s);
+  --logos-list-fade-width: var(--space-3xl);
 }
 
 @keyframes marquee {
@@ -61,40 +63,22 @@
     overflow: hidden;
   }
 
-  /* when scrolling, add gradients for fade-out effect before and after the logos */
-  .mask:has(.play)::before,
-  .mask:has(.play)::after {
-    content: '';
-    position: absolute;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    width: var(--space-3xl);
-    height: 100%;
-    pointer-events: none;
-    background-image: linear-gradient(
+  /*
+   * While the marquee runs, fade the strip's edges by masking the content
+   * to transparency, so the fade holds over any background: solid, image,
+   * gradient, or a retuned theme, with no dark variant needed. The mask is
+   * static on purpose: the movement is a transform animation, so there is
+   * no scroll position for a scroll-driven fade to track.
+   */
+  .mask:has(.play) {
+    mask-image: linear-gradient(
       to right,
-      rgb(255 255 255 / 100%) 0%,
-      rgb(255 255 255 / 95%) 20%,
-      rgb(255 255 255 / 80%) 40%,
-      rgb(255 255 255 / 40%) 60%,
-      rgb(255 255 255 / 10%) 80%,
+      transparent 0,
+      #000 var(--logos-list-fade-width),
+      #000 calc(100% - var(--logos-list-fade-width)),
       transparent 100%
     );
-  }
-
-  .mask:has(.play)::after {
-    left: auto;
-    right: 0;
-    background-image: linear-gradient(
-      to right,
-      transparent 0%,
-      rgb(255 255 255 / 10%) 20%,
-      rgb(255 255 255 / 40%) 40%,
-      rgb(255 255 255 / 80%) 60%,
-      rgb(255 255 255 / 95%) 80%,
-      rgb(255 255 255 / 100%) 100%
-    );
+    mask-repeat: no-repeat;
   }
 
   .hint {
@@ -203,32 +187,5 @@
   /* Reverse animation */
   .is-reverse .logos-wrapper.play {
     animation-direction: reverse;
-  }
-}
-
-/* Dark theme: change gradient masks to dark */
-.dark-theme .logos-list .content {
-  .mask:has(.play)::before {
-    background-image: linear-gradient(
-      to right,
-      rgb(26 26 26 / 100%) 0%,
-      rgb(26 26 26 / 95%) 20%,
-      rgb(26 26 26 / 80%) 40%,
-      rgb(26 26 26 / 40%) 60%,
-      rgb(26 26 26 / 10%) 80%,
-      transparent 100%
-    );
-  }
-
-  .mask:has(.play)::after {
-    background-image: linear-gradient(
-      to right,
-      transparent 0%,
-      rgb(26 26 26 / 10%) 20%,
-      rgb(26 26 26 / 40%) 40%,
-      rgb(26 26 26 / 80%) 60%,
-      rgb(26 26 26 / 95%) 80%,
-      rgb(26 26 26 / 100%) 100%
-    );
   }
 }

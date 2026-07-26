@@ -1,0 +1,196 @@
+/*
+ * scroll-fade.css
+ *
+ * Edge fades for scroll containers, done with CSS masks so the fade goes
+ * to actual transparency and works over any background (image, gradient,
+ * blur), not just a solid color you can repaint.
+ *
+ * Three classes, each for one real situation:
+ *
+ *   .fade-y         Vertical scroll container. Top fade appears once you
+ *                   scroll down; bottom fade clears as you reach the end.
+ *                   No phantom fade at the start or finish.
+ *
+ *   .fade-x         Horizontal scroll container the USER scrolls (drag,
+ *                   wheel, trackpad). Left/right fades track scroll the
+ *                   same way .fade-y tracks vertical scroll.
+ *
+ *   .fade-x-static  Auto-running marquee, where content moves by its own
+ *                   animation and there is no real scroll position to read.
+ *                   Both edges stay faded the whole time. Use this, NOT
+ *                   .fade-x, for marquees: scroll(self x) has nothing to
+ *                   track when the movement comes from a transform.
+ *
+ * Tuning: each class exposes --fade for the fade depth. It defaults to
+ * the fluid --space-l-xl token; override per instance with one line,
+ * e.g.  .logo-strip { --fade: 1.5rem; }
+ *
+ * Note: the mask applies to the scrollbar too when the masked element is
+ * itself the scroller. If that looks wrong, put the mask on an inner
+ * wrapper and let an outer element own the overflow.
+ *
+ * Browser support: the scroll-aware classes use scroll-driven animations.
+ * The @supports fallback degrades them to a permanent both-edge fade, so
+ * the worst case is a static fade, never a broken one. .fade-x-static
+ * needs none of that and works everywhere mask-image does.
+ */
+
+/* ------------------------------------------------------------------ */
+
+/* Edge factors. Registered as real numbers so they can be animated.   */
+
+/* 0 means the edge is fully opaque (no fade), 1 means fully faded.    */
+
+/* ------------------------------------------------------------------ */
+
+@property --fade-t {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: false;
+}
+
+@property --fade-b {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: false;
+}
+
+@property --fade-l {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: false;
+}
+
+@property --fade-r {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: false;
+}
+
+/* ------------------------------------------------------------------ */
+
+/* Vertical scroll container (user-scrolled)                          */
+
+/* ------------------------------------------------------------------ */
+
+.fade-y {
+  --fade: var(--space-l-xl, 3rem);
+
+  /* Two masks, one per edge, intersected so a pixel survives only where
+     both keep it. The alpha at each edge is driven by its factor. */
+  mask-image:
+    linear-gradient(to bottom, rgb(0 0 0 / calc(1 - var(--fade-t))) 0, #000 var(--fade)),
+    linear-gradient(to top, rgb(0 0 0 / calc(1 - var(--fade-b))) 0, #000 var(--fade));
+  mask-composite: intersect;
+  mask-repeat: no-repeat;
+
+  /* Scroll position is the animation clock. */
+  animation:
+    fade-reveal-t auto linear both,
+    fade-reveal-b auto linear both;
+  animation-timeline: scroll(self y), scroll(self y);
+
+  /* Top edge reveals over the first --fade of scroll; bottom edge
+     clears over the last --fade. */
+  animation-range:
+    0 var(--fade),
+    calc(100% - var(--fade)) 100%;
+}
+
+@keyframes fade-reveal-t {
+  from {
+    --fade-t: 0;
+  }
+
+  to {
+    --fade-t: 1;
+  }
+}
+
+@keyframes fade-reveal-b {
+  from {
+    --fade-b: 1;
+  }
+
+  to {
+    --fade-b: 0;
+  }
+}
+
+@supports not (animation-timeline: scroll()) {
+  .fade-y {
+    --fade-t: 1;
+    --fade-b: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+
+/* Horizontal scroll container (user-scrolled)                        */
+
+/* ------------------------------------------------------------------ */
+
+.fade-x {
+  --fade: var(--space-l-xl, 3rem);
+
+  mask-image:
+    linear-gradient(to right, rgb(0 0 0 / calc(1 - var(--fade-l))) 0, #000 var(--fade)),
+    linear-gradient(to left, rgb(0 0 0 / calc(1 - var(--fade-r))) 0, #000 var(--fade));
+  mask-composite: intersect;
+  mask-repeat: no-repeat;
+  animation:
+    fade-reveal-l auto linear both,
+    fade-reveal-r auto linear both;
+  animation-timeline: scroll(self x), scroll(self x);
+  animation-range:
+    0 var(--fade),
+    calc(100% - var(--fade)) 100%;
+}
+
+@keyframes fade-reveal-l {
+  from {
+    --fade-l: 0;
+  }
+
+  to {
+    --fade-l: 1;
+  }
+}
+
+@keyframes fade-reveal-r {
+  from {
+    --fade-r: 1;
+  }
+
+  to {
+    --fade-r: 0;
+  }
+}
+
+@supports not (animation-timeline: scroll()) {
+  .fade-x {
+    --fade-l: 1;
+    --fade-r: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+
+/* Auto-running marquee (always-on fade, no scroll tracking)          */
+
+/* ------------------------------------------------------------------ */
+
+.fade-x-static {
+  --fade: var(--space-l-xl, 3rem);
+
+  /* Single gradient, transparent at both ends, opaque in the middle.
+     No factors, no animation: the fade is permanent. */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--fade),
+    #000 calc(100% - var(--fade)),
+    transparent 100%
+  );
+  mask-repeat: no-repeat;
+}

@@ -15,6 +15,9 @@
 @import url("./styles/_css-base.css") layer(base);
 @import url("./styles/_design-tokens.css") layer(tokens);
 
+/* Mask-based edge-fade utilities for scroll containers and marquees */
+@import url("./styles/_scroll-fade.css") layer(base);
+
 /*
   Page shell chrome (header/footer/navigation/branding live in
   layouts/pages/parts, not the component catalog). In the `site` layer, not
