@@ -17,7 +17,7 @@
       {
         "file": "css",
         "anchor": "feature-styles",
-        "code": "@import url('./styles/_dark-light-theme-switcher.css') layer(base);"
+        "code": "@import url('./styles/_dark-light-theme-switcher.css') layer(site);"
       },
       {
         "file": "js",
@@ -44,7 +44,7 @@
       {
         "file": "css",
         "anchor": "feature-styles",
-        "code": "@import url('./styles/_language-switcher.css') layer(base);"
+        "code": "@import url('./styles/_language-switcher.css') layer(site);"
       },
       {
         "file": "js",
@@ -70,7 +70,7 @@
       {
         "file": "css",
         "anchor": "feature-styles",
-        "code": "@import url('./styles/_breadcrumbs.css') layer(base);"
+        "code": "@import url('./styles/_breadcrumbs.css') layer(site);"
       }
     ]
   }
