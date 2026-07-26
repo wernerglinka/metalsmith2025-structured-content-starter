@@ -39,7 +39,8 @@
     "release:patch": "./scripts/release.sh patch --ci",
     "release:minor": "./scripts/release.sh minor --ci",
     "release:major": "./scripts/release.sh major --ci",
-    "components:status": "node scripts/component-status.mjs"
+    "components:status": "node scripts/component-status.mjs",
+    "tokens:check": "node scripts/token-contract.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.5",
