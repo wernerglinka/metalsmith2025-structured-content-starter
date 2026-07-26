@@ -157,3 +157,52 @@ The two halves must land together in the direction that keeps sites working:
 this starter can define a token before canon uses it, but canon must not
 reference a token before the starter ships it. A component that names a token
 nobody defines was the case in section 2 above, and it failed silently.
+
+---
+
+## Update 2026-07-25: what the library shipped, and what that changes here
+
+The library completed its side through v1.4.0. Three things affect the work
+above; this section is what makes a fresh session on this document
+self-sufficient.
+
+**Canon has the lint now.** `npm run lint:components` in the library repo
+checks every component for undefined token references, unprefixed component
+properties, layer-unsafe stylesheets, and fields-vs-validation default
+drift. It takes `--vocab <dir>`, so the cross-repo contract check is one
+command from the library checkout:
+
+```shell
+npm run lint:components -- --vocab ../path/to/starter/lib/assets/styles
+```
+
+That run is currently error-clean, meaning canon references no token this
+starter does not ship. The planned `scripts/token-contract.mjs` here can be
+thin: its remaining job is the installed-contract check against this site's
+actual component set, and it can borrow the parsing from the library's
+`scripts/component-lint.mjs`.
+
+**The fallback-only list is longer than eight.** The library lint's warning
+list is the authoritative census. Beyond the eight in section 3, canon
+components consume with fallback-only values: `--font-size-s`, `--font-size-m`,
+`--font-size-xs`, `--text-color`, `--color-text-secondary` (maps,
+related-posts — a foreign naming scheme; the library should map these to the
+real vocabulary rather than this starter adopting the names), and
+`--color-accent`, `--color-hover`, `--color-text-muted`, `--spacing-md`,
+`--section-padding`, `--max-width` (calendar, same situation). The decision
+rule from step 1 applies: single-component names belong in that component's
+`--<component>-*` namespace on the library side, not in this vocabulary.
+Note `--commons-content-gap` and `--commons-max-width` now mediate
+`--content-gap` and `--wrapper-max-width` through fallback chains, so
+defining either token here keeps working unchanged.
+
+**The vendor-layer trap applies to this starter.** Vendor stylesheets
+(Shikwasa, Leaflet, OpenLayers) are injected at runtime as plain `<link>`
+elements, which are unlayered, and unlayered CSS beats every cascade layer —
+including `site` overrides. The library's own site fixes this by wrapping
+vendor CSS in a `vendor` layer at copy time and ordering the cascade
+`tokens, base, vendor, components, site` (vendor above base so widgets beat
+generic element styles, below components so a component that deliberately
+restyles a widget wins). See the vendor-copy step in the library's
+`metalsmith.js`; this starter's build should mirror it, and the layer order
+in `site-config.js` gains the `vendor` entry.
