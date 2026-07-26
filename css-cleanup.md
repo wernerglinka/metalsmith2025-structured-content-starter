@@ -206,3 +206,104 @@ generic element styles, below components so a component that deliberately
 restyles a widget wins). See the vendor-copy step in the library's
 `metalsmith.js`; this starter's build should mirror it, and the layer order
 in `site-config.js` gains the `vendor` entry.
+
+---
+
+## Update 2026-07-25 (later the same day): starter side done
+
+The four work items above are complete. What happened, and the state left
+behind:
+
+**Components were brought current first.** The audit only means something
+against the components as canon ships them, so the stale ones were
+reinstalled from the 1.4.0 catalog before anything else: banner, button,
+commons, lottie, multi-media, text, video, collection-pagination, hero, plus
+disclosure, which arrived as a new dependency. That picked up the section 2
+fixes for the two components installed here (`button`, `collection-pagination`).
+`components:status` now reports everything current except `featured-posts`,
+which is local-only by design. Each install is its own commit, per the
+installer's convention.
+
+**The vocabulary decisions (step 1 and 2).** Five of the fallback-only
+tokens are consumed by more than one component or are layout-wide, so they
+are now defined in `_design-tokens.css`, each with exactly the value its
+fallbacks already carried, so the change is behaviour-neutral by
+construction:
+
+| Token | Value | Consumed by |
+|---|---|---|
+| `--wrapper-max-width` | `85rem` | commons, multi-media |
+| `--content-gap` | `2rem` | commons, blog-author |
+| `--flow-space` | `1em` | text (ctas scopes its own) |
+| `--font-md` | `1.25rem` | overlay (artwork in canon) |
+| `--color-primary-light` | `var(--color-primary)` | slider-pagination, text |
+
+`--color-primary-light` is aliased to the primary on purpose: that is what
+the fallbacks resolved to, so it is the neutral default, and the token now
+exists for a site to retune to an actual lighter shade.
+
+The other three installed-here candidates were referred to the library as
+component properties, per the step 1 decision rule: `--iframe-height`
+(iframe should define it, the name already carries the component prefix),
+and `--logo-list-height` / `--logo-animation-speed` (logos-list, want
+renaming into `--logos-list-*`). The foreign naming schemes in maps,
+related-posts, calendar and page-transitions stay library-side mapping
+work, as the previous update already concluded.
+
+**Documentation (step 3).** `_design-tokens.css` now opens by stating the
+contract: which token groups canon is entitled to rely on, what breaks if a
+token is renamed or dropped, and which command audits each direction.
+
+**The audit is repeatable (step 4).** `scripts/token-contract.mjs`, run as
+`npm run tokens:check`, audits the installed contract: every `var(--x)` in
+every installed component's stylesheets against the vocabulary in
+`lib/assets/styles/`, definitions in other installed components,
+`lib/overrides/`, and vendor stylesheets when present. Missing token without
+fallback is an error and exits 1; fallback-only is a warning; `--strict`
+fails on warnings too. The parsing mirrors the library's
+`component-lint.mjs` so the two tools agree on what counts as defined.
+Current output: 0 errors, 3 warnings, and the 3 are exactly the tokens
+referred to the library above. When the library lands those renames and the
+components are reinstalled, the run goes clean.
+
+**The vendor layer is declared.** `site-config.js` now orders the cascade
+`tokens, base, vendor, components, site`. No installed component ships
+vendor CSS today, so the layer is empty; the config comment explains that a
+runtime-injected vendor stylesheet must be copied into the build wrapped in
+`@layer vendor { ... }` the day one arrives. The starter build does not yet
+carry a vendor-copy step, deliberately: none of the vendor packages exist in
+this starter's `node_modules`, and a copy step referencing absent packages
+would fail. The step belongs with the component whose installation brings
+the package in.
+
+**Verification, as prescribed.** Development build before and after the
+token changes, then a diff of the built `assets/main.css`. The diff is
+exactly the intended change and nothing else: the `@layer` statement gains
+`vendor`, and the five tokens appear in `:root`. Production build passes.
+The cross-repo lint from the library checkout (`npm run lint:components --
+--vocab .../lib/assets/styles`) went from 46 warnings to 37, still zero
+errors; everything remaining is library-side work.
+
+**What remains, all of it in the library's court:** the component-property
+renames for logos-list and iframe, and mapping the foreign naming schemes
+(maps, related-posts, calendar, page-transitions) into the real vocabulary.
+Each one that lands turns into a reinstall here and a shorter
+`tokens:check` output.
+
+**Found while verifying: the page shell was in the wrong layer.** The
+hamburger menu rendered as a primary-colored button at every viewport
+width. Not caused by this session's changes; the pre-session commit builds
+byte-identical CSS for that cascade. It dates to turning layers on: the
+button component styles the bare `button` element, the shell's resets in
+`_header.css` and the `display: none` in `_navigation.css` sat in `base`,
+and `components` beats `base` by layer no matter the specificity. Before
+layers the shell won those fights on specificity; layers took that away.
+The library's own site had already hit this and moved its shell chrome to
+the `site` layer. This starter now mirrors that: `_header.css`,
+`_footer.css`, `_navigation.css` and `_branding.css` import at
+`layer(site)` in `main.css`, and the three feature stylesheets in
+`scripts/features.json` inject at `layer(site)` too. `_global.css` stays
+in `base` on purpose: its generic element styles (a, svg, headings) are
+exactly what components should beat. Verified in the browser at 1400px
+and 500px: hamburger hidden on desktop and unstyled on mobile, the menu
+opens and closes, and real `.button` CTAs keep their component styling.
