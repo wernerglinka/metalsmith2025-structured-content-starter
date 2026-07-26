@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/iframe",
-  "version": "1.3.1",
+  "version": "1.5.0",
   "description": "Nunjucks iframe partial",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "iframe"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "f1e15e187de9487d",
+  "contentHash": "e008ed03dbf4e477",
   "main": "iframe.njk",
   "files": [
     "iframe.njk",

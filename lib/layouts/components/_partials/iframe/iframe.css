@@ -3,14 +3,17 @@
  * Responsive wrapper for an embedded third-party frame. The fixed
  * default height suits tall embeds like Givebutter's registration
  * form and avoids double scrollbars; contexts can override it via
- * --iframe-height.
+ * --iframe-height (scoped to .iframe-frame, e.g. from
+ * lib/overrides/iframe/iframe.css).
  */
 .iframe-frame {
+  --iframe-height: 50rem;
+
   inline-size: 100%;
 
   iframe {
     inline-size: 100%;
-    block-size: var(--iframe-height, 50rem);
+    block-size: var(--iframe-height);
     border: 0;
     border-radius: 4px;
   }
