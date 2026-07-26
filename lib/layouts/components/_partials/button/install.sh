@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Installation script for button v1.4.0
-# Content Hash: 8650492b7f3e2242
+# Installation script for button v1.6.0
+# Content Hash: 0127922077219a7b
 
 set -e
 
 # Base URL for component downloads
 DOWNLOAD_BASE_URL="https://nunjucks-components.com/downloads"
 
-echo "🔧 Installing button v1.4.0..."
+echo "🔧 Installing button v1.6.0..."
 
 # Detect project directory and component source
 COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -156,8 +156,8 @@ mkdir -p "$TARGET_DIR"
 # Check for existing installation
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
-  if [ "$EXISTING_HASH" = "8650492b7f3e2242" ]; then
-    echo "✓ button v1.4.0 already installed (no changes)"
+  if [ "$EXISTING_HASH" = "0127922077219a7b" ]; then
+    echo "✓ button v1.6.0 already installed (no changes)"
     exit 0
   else
     echo "📦 Upgrading button (content changed)"
