@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/multi-media",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Nunjucks multi-media section",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "multi-media"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "ac75701bb13e1bfd",
+  "contentHash": "a155ccdf09b845ca",
   "main": "multi-media.njk",
   "files": [
     "multi-media.njk",
@@ -21,14 +21,15 @@
     "multi-media.css"
   ],
   "peerDependencies": {
-    "@nunjucks-components/ctas": ">=1.3.1",
-    "@nunjucks-components/text": ">=1.3.1",
-    "@nunjucks-components/image": ">=1.3.1",
-    "@nunjucks-components/video": ">=1.3.1",
-    "@nunjucks-components/audio": ">=1.3.1",
-    "@nunjucks-components/icon": ">=1.3.1",
-    "@nunjucks-components/lottie": ">=1.3.1",
-    "@nunjucks-components/iframe": ">=1.3.1",
-    "@nunjucks-components/commons": ">=1.3.1"
+    "@nunjucks-components/ctas": ">=1.4.0",
+    "@nunjucks-components/text": ">=1.4.0",
+    "@nunjucks-components/image": ">=1.4.0",
+    "@nunjucks-components/video": ">=1.4.0",
+    "@nunjucks-components/audio": ">=1.4.0",
+    "@nunjucks-components/icon": ">=1.4.0",
+    "@nunjucks-components/lottie": ">=1.4.0",
+    "@nunjucks-components/iframe": ">=1.4.0",
+    "@nunjucks-components/disclosure": ">=1.4.0",
+    "@nunjucks-components/commons": ">=1.4.0"
   }
 }

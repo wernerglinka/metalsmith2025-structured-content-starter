@@ -63,3 +63,6 @@
     src: 'https://example.com/embed'
     title: 'Accessible frame title'
     allow: '' # optional permissions policy, e.g. 'payment'
+  disclosures: # optional collapsed details/summary blocks beneath the text column's prose and CTAs
+    - title: 'Disclosure title'
+      prose: 'Markdown body shown when the block is expanded.'

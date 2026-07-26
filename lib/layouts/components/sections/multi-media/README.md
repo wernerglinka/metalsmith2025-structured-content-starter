@@ -118,6 +118,25 @@ iframe:
   allow: ""              # optional permissions policy, e.g. 'payment'
 ```
 
+## Disclosures (optional)
+
+An optional `disclosures` array renders collapsed details/summary
+blocks (the disclosure partial) beneath the text column's prose and
+CTAs, independent of the media type. Use it to fold secondary content
+like policies or fine print under the main text, for example next to a
+registration iframe:
+
+```yaml
+disclosures:
+  - title: "Accessibility"
+    prose: "Markdown body shown when the block is expanded."
+  - title: "Cancellation policy"
+    prose: "More markdown."
+```
+
+The text column renders when it has text or disclosures, so a
+disclosures-only column is valid.
+
 ## HTML Structure
 
 ```html

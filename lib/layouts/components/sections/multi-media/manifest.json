@@ -14,6 +14,7 @@
     "icon",
     "lottie",
     "iframe",
+    "disclosure",
     "commons"
   ],
   "validation": {
@@ -115,6 +116,19 @@
             }
           }
         }
+      },
+      "disclosures": {
+        "type": "array",
+        "items": {
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "prose": {
+              "type": "string"
+            }
+          }
+        }
       }
     }
   },
@@ -164,6 +178,9 @@
     },
     "ctas": {
       "$use": "ctas"
+    },
+    "disclosures": {
+      "$use": "disclosure"
     },
     "$extends": [
       "commons"

@@ -6,6 +6,7 @@
 {% from "components/_partials/video/video.njk" import video %}
 {% from "components/_partials/lottie/lottie.njk" import lottie %}
 {% from "components/_partials/iframe/iframe.njk" import iframe %}
+{% from "components/_partials/disclosure/disclosure.njk" import disclosures %}
 
 <div class="content {% if section.isReverse %}is-reverse{% endif %}">
   {% if section.mediaType === "audio" %}
@@ -39,13 +40,17 @@
     <div class="media is-iframe">{{ iframe(section.iframe) }}</div>
   {% endif %}
 
-  {% if section.text | hasText %}
+  {% set hasDisclosures = section.disclosures | hasItems %}
+  {% if section.text | hasText or hasDisclosures %}
     <div class="text flow">
-      {% if section.text %}
+      {% if section.text | hasText %}
         <div class="prose flow">{{ text(section.text)}}</div>
       {% endif %}
       {% if section.ctas | hasCtas %}
         {{ ctas(section.ctas) }}
+      {% endif %}
+      {% if hasDisclosures %}
+        {{ disclosures(section.disclosures) }}
       {% endif %}
     </div><!-- .text -->
   {% endif %}
