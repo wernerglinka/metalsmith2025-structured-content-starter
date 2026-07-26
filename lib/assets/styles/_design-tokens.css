@@ -1,5 +1,26 @@
 /**
  * Design Tokens
+ *
+ * This file is a public interface, not just site styling. Canon components
+ * from nunjucks-components resolve their var() references against these
+ * definitions, so the vocabulary below is a contract with two signatories:
+ * the library defines which tokens its components consume, and this file
+ * guarantees those tokens exist. Renaming or dropping a token a component
+ * consumes breaks that component silently, at computed-value time, with no
+ * build error.
+ *
+ * The groups canon is entitled to rely on: the colors, the fluid type
+ * scale (--font-*), the fluid space scale and its pairs (--space-*), the
+ * font stacks, weights and line heights, letter spacing (--tracking*),
+ * borders, the transition timings, and the layout tokens.
+ *
+ * `npm run tokens:check` audits this contract against the components
+ * actually installed in this site: it reports any token a component
+ * consumes that is defined nowhere. Run it after editing this file or
+ * installing components. The reverse direction, canon referencing a token
+ * no starter ships, is enforced by the library's own lint
+ * (`npm run lint:components -- --vocab <this repo>/lib/assets/styles`
+ * from the library checkout).
  */
 
 @import "./_css-patterns.css";
@@ -7,6 +28,13 @@
 :root {
   /* Colors */
   --color-primary: #da1e28;
+
+  /*
+   * Aliased to the primary on purpose: slider-pagination and text fall back
+   * to var(--color-primary) when this is unset, so the alias is the
+   * behaviour-neutral default. Retune it to an actual lighter shade here.
+   */
+  --color-primary-light: var(--color-primary);
   --color-secondary: #fa4d56;
   --color-text: #161616;
   --color-text-light: #f4f4f4;
@@ -86,6 +114,13 @@
   --font-h1: clamp(2.4883rem, 2.1921rem + 1.1849vw, 3.1104rem); /* 40px - 50px */
   --font-xl: clamp(2.986rem, 2.6305rem + 1.4219vw, 3.7325rem); /* 48px - 60px */
 
+  /*
+   * A fixed mid size next to the fluid scale, consumed by overlay (and
+   * artwork in canon). 1.25rem matches the fallback those components ship,
+   * and the max of --font-p; make it fluid here if the site wants that.
+   */
+  --font-md: 1.25rem;
+
   /**
    * Fluid spacing is created with utopia.fyi
    * The whole spacing is based on the Utopia space calculator.
@@ -141,6 +176,15 @@
   --header-height: 80px;
   --container-width: 1024px;
   --gutter: var(--space-s-l); /* Default spacing for grid/flex gaps */
+  --wrapper-max-width: 85rem; /* Content measure; commons and multi-media resolve against it */
+  --content-gap: 2rem; /* Gap between content blocks in commons and blog-author */
+
+  /*
+   * Vertical rhythm between flowing elements, the flow-space idiom. The
+   * text partial consumes it; ctas scopes its own larger value. 1em keeps
+   * the rhythm proportional to each element's font size.
+   */
+  --flow-space: 1em;
 
   /* Borders */
   --default-border-width: 0.2rem;
