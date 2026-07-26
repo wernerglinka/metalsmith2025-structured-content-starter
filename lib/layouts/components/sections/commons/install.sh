@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Installation script for commons v1.3.1
-# Content Hash: df8a945709f1df5a
+# Installation script for commons v1.4.0
+# Content Hash: 3786c1bdf0068b14
 
 set -e
 
 # Base URL for component downloads
 DOWNLOAD_BASE_URL="https://nunjucks-components.com/downloads"
 
-echo "🔧 Installing commons v1.3.1..."
+echo "🔧 Installing commons v1.4.0..."
 
 # Detect project directory and component source
 COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -156,8 +156,8 @@ mkdir -p "$TARGET_DIR"
 # Check for existing installation
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
-  if [ "$EXISTING_HASH" = "df8a945709f1df5a" ]; then
-    echo "✓ commons v1.3.1 already installed (no changes)"
+  if [ "$EXISTING_HASH" = "3786c1bdf0068b14" ]; then
+    echo "✓ commons v1.4.0 already installed (no changes)"
     exit 0
   else
     echo "📦 Upgrading commons (content changed)"
