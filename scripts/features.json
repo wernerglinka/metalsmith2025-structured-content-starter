@@ -2,7 +2,7 @@
   "theme-switcher": {
     "label": "Dark/light theme switcher",
     "default": false,
-    "afterEnable": "Add .dark-theme overrides for your design tokens to theme the whole page (see docs/theme-switcher.md).",
+    "afterEnable": "The dark token block in lib/assets/styles/_design-tokens.css themes the whole page; retune it there alongside your light tokens (see docs/theme-switcher.md).",
     "edits": [
       {
         "file": "header",

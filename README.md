@@ -96,7 +96,7 @@ You need Node.js version 18 or higher.
     npm run init
     ```
 
-    This asks y/n for each optional feature and wires your choices in: the **dark/light theme switcher** (off by default), the **language switcher** (off by default), and **breadcrumbs** (on by default, turn it off for small sites). Two need a one-time setup once enabled: the language switcher reads `lib/data/languages.json`, and the theme switcher needs `.dark-theme` overrides for your design tokens to theme the whole page. See [docs/page-shell.md](docs/page-shell.md), [docs/theme-switcher.md](docs/theme-switcher.md), and [docs/language-switcher.md](docs/language-switcher.md). To change one feature without the prompts: `node scripts/init-starter.mjs disable breadcrumbs`.
+    This asks y/n for each optional feature and wires your choices in: the **dark/light theme switcher** (off by default), the **language switcher** (off by default), and **breadcrumbs** (on by default, turn it off for small sites). One needs a one-time setup once enabled: the language switcher reads `lib/data/languages.json`. The theme switcher works out of the box; its dark token values live in the `body.dark-theme` block in `lib/assets/styles/_design-tokens.css`, ready to retune. See [docs/page-shell.md](docs/page-shell.md), [docs/theme-switcher.md](docs/theme-switcher.md), and [docs/language-switcher.md](docs/language-switcher.md). To change one feature without the prompts: `node scripts/init-starter.mjs disable breadcrumbs`.
 
 1.  **Available scripts**
 

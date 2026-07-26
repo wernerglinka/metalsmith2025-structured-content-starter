@@ -20,14 +20,6 @@ The button (`lib/layouts/pages/parts/dark-light-theme-switcher.njk`) shows a moo
 
 ## Make it theme your design
 
-Enabling the switcher gives you the toggle and the dark styling for the chrome, but the toggle only flips a `dark-theme` class on `<body>`. For the whole page to respond, define dark overrides for your design tokens under `.dark-theme` in `lib/assets/styles/_design-tokens.css` (or a dedicated dark-theme stylesheet). For example:
+The toggle flips a `dark-theme` class on `<body>`, and `lib/assets/styles/_design-tokens.css` ships a complete `body.dark-theme` block that redefines the color tokens under it. Because the shell and the components consume tokens rather than raw colors, enabling the switcher themes the whole page out of the box.
 
-```css
-.dark-theme {
-  --color-background: #14171a;
-  --color-text: #e6e6e6;
-  /* ...override the rest of your semantic color tokens... */
-}
-```
-
-Without these overrides the button works and persists, but only the components that already ship dark styles will change.
+When you retune the light tokens to your own design, retune the `body.dark-theme` block alongside them; the two live next to each other in the same file. Tokens documented as theme-constant (the button colors, the image screens, `--color-footer-text-light`) are deliberately absent from the dark block and keep their light values.

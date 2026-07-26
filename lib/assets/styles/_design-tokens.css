@@ -63,6 +63,9 @@
   --color-top-message-background: #161616;
   --color-top-message-text: #f4f4f4;
 
+  /* Header chrome: translucent, pairs with the backdrop blur in _header.css */
+  --color-header-background: rgb(255 255 255 / 60%);
+
   /* Button Colors */
   --primary-button-color: rgb(218 30 40 / 80%);
   --primary-button-text-color: #f4f4f4; /* Always light text on red */
@@ -204,4 +207,61 @@
 
   /* Inline code background (Shiki inlines block-code colors, so no token vars). */
   --code-bg: #fcfcfc;
+}
+
+/*
+ * Dark theme. The optional theme switcher (npm run init, or
+ * `node scripts/init-starter.mjs enable theme-switcher`) toggles a
+ * `dark-theme` class on <body>; this block redefines the color tokens
+ * under it, so the switcher themes the whole page out of the box.
+ * Retune these values alongside the light values above.
+ *
+ * Deliberately not redefined: the button colors, the screens
+ * (--light-screen/--dark-screen), --color-footer-text-light, and the
+ * glass tokens other than the two below. They are documented above as
+ * theme-constant, so they inherit their light values.
+ */
+body.dark-theme {
+  /* Colors */
+  --color-primary: #ff6b6b;
+  --color-secondary: #ff8787;
+  --color-text: #e5e5e5;
+  --color-text-light: #161616;
+  --color-text-dark: #999;
+  --color-text-highlight: #ffa94d;
+  --color-text-highlight-light: #ffc078;
+  --color-text-inactive: #888;
+  --color-link-inactive: #aaa;
+  --color-link-in-path: #999;
+  --color-link-navigation: #e5e5e5;
+  --background-color-link-hover: rgb(255 255 255 / 10%);
+  --color-pagination-active: #ccc;
+  --color-background: #1a1a1a;
+  --color-background-light: #2d2d2d;
+  --color-highlight-background: #4a3020;
+  --color-dark-background: #0d0d0d;
+  --color-border-light: #404040;
+  --color-border: #e0e0e0;
+  --color-shadow: 0px 0px 20px 3px rgb(0 0 0 / 50%);
+  --color-surface-hover: rgb(255 255 255 / 5%);
+  --color-surface-focus: rgb(255 255 255 / 8%);
+  --color-icon-default: #999;
+
+  /* Top Message Bar - inverted */
+  --color-top-message-background: #f4f4f4;
+  --color-top-message-text: #161616;
+
+  /* Header chrome: same translucency over the dark background */
+  --color-header-background: rgb(26 26 26 / 60%);
+
+  /* Glass Morphism - light glass becomes dark glass */
+  --glass-border: none;
+  --glass-background-light: rgb(0 0 0 / 70%);
+
+  /* Contrast colors - same roles, resolved against the dark palette */
+  --contrast-text-on-light: var(--color-text-light);
+  --contrast-text-on-dark: var(--color-text);
+
+  /* Inline code background */
+  --code-bg: #2d2d2d;
 }

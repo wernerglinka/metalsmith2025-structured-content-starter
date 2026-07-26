@@ -8,6 +8,7 @@
  * - Design tokens for all spacing and colors
  *
  * Design Tokens:
+ * - --color-header-background
  * - --color-shadow
  * - --gutter
  * - --space-s
@@ -112,7 +113,7 @@
 header {
   position: relative;
   width: 100%;
-  background: rgb(255 255 255 / 60%);
+  background: var(--color-header-background);
   backdrop-filter: blur(var(--space-xs, 0.3125rem));
 
   /* Fluid height: 3.25rem at 400px viewport, scales to 5rem at wider screens */
@@ -236,7 +237,7 @@ header {
   left: 0;
   right: 0;
   z-index: 90;
-  background: rgb(255 255 255 / 60%);
+  background: var(--color-header-background);
   backdrop-filter: blur(var(--space-xs, 0.3125rem));
   padding: var(--space-s) var(--gutter);
   transition:

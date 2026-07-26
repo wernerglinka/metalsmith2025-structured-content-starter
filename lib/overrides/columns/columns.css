@@ -1,0 +1,21 @@
+/**
+ * Site override for the `columns` section.
+ *
+ * The hero-cta composition paints its band with
+ * --color-text-highlight-light, which is a light orange in both themes.
+ * The text inside inherits the page color, which goes light in dark
+ * mode: light text on a light band. Pin the band's text to the on-light
+ * contrast token, which resolves to dark text in both themes. Elements
+ * that set their own color (the lead-in, buttons) are unaffected.
+ */
+.hero-cta .content {
+  color: var(--contrast-text-on-light);
+}
+
+/*
+ * The lead-in's highlight color goes light orange in dark theme, which
+ * disappears against the band. Light theme keeps the authored accent.
+ */
+.dark-theme .hero-cta .content .lead-in {
+  color: inherit;
+}
