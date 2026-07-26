@@ -1,0 +1,9 @@
+# False positives: depcheck cannot see these usages.
+# - jstransformer-nunjucks: loaded implicitly by @metalsmith/layouts via
+#   transform: 'nunjucks' in site-config.js
+# - release-it: invoked via npx in scripts/release.sh
+# - auto-changelog: invoked via npx in the .release-it.json after:bump hook
+ignores:
+  - jstransformer-nunjucks
+  - release-it
+  - auto-changelog

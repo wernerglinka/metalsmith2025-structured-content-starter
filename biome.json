@@ -17,7 +17,7 @@
       "!**/*.svg",
       "!**/*.html",
       "!lib/assets/images/",
-      "!lib/layouts/components/**"
+      "!lib/layouts/components"
     ]
   },
   "formatter": {
