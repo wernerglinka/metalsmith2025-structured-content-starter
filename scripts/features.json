@@ -5,6 +5,11 @@
     "afterEnable": "The dark token block in lib/assets/styles/_design-tokens.css themes the whole page; retune it there alongside your light tokens (see docs/theme-switcher.md).",
     "edits": [
       {
+        "file": "default",
+        "anchor": "feature-slot:theme-init",
+        "code": "{% include \"pages/parts/theme-init.njk\" %}"
+      },
+      {
         "file": "header",
         "anchor": "feature-imports",
         "code": "{% from \"pages/parts/dark-light-theme-switcher.njk\" import darkLightThemeSwitcher %}"

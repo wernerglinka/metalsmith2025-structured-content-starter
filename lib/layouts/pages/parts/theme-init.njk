@@ -1,0 +1,19 @@
+{#
+  First-paint theme init for the dark/light theme switcher. Included right
+  after <body> opens and runs synchronously, so a returning dark-theme
+  visitor never sees a flash of the light theme while main.js loads at the
+  end of the page. When no choice has been saved yet, the system
+  preference decides; the toggle in dark-light-theme-switcher.js persists
+  every later choice to localStorage.
+#}
+<script>
+  (() => {
+    try {
+      const saved = localStorage.getItem("theme");
+      const dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.body.classList.toggle("dark-theme", dark);
+    } catch {
+      /* localStorage unavailable: keep the light default */
+    }
+  })();
+</script>
