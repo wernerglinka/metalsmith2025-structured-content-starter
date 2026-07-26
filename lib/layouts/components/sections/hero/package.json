@@ -1,0 +1,30 @@
+{
+  "name": "@nunjucks-components/hero",
+  "version": "1.4.0",
+  "description": "Nunjucks hero section",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "section",
+    "hero"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "d2015e3a200be7a3",
+  "main": "hero.njk",
+  "files": [
+    "hero.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "hero.css"
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/ctas": ">=1.4.0",
+    "@nunjucks-components/text": ">=1.4.0",
+    "@nunjucks-components/image": ">=1.4.0",
+    "@nunjucks-components/commons": ">=1.4.0",
+    "@nunjucks-components/author-date": ">=1.4.0"
+  }
+}

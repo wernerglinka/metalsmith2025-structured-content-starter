@@ -1,6 +1,12 @@
 /**
  * Hero Section Styles
  *
+ * Component Properties (override from lib/overrides/hero/hero.css):
+ * - --hero-text-width
+ * - --hero-text-padding
+ * - --hero-text-background
+ * - --hero-text-radius
+ *
  * Design Tokens:
  * - --space-s-l
  * - --glass-background
@@ -29,6 +35,12 @@
   */
   --hero-text-width: calc(100% - clamp(0px, calc((100vw - 600px) * 2), 40%));
 
+  /* Adjustable values, with fallbacks into the global tokens. Override
+     the properties, not the rules that consume them. */
+  --hero-text-padding: var(--space-s-l);
+  --hero-text-background: var(--glass-background);
+  --hero-text-radius: var(--space-2xs-xs);
+
   .background-image {
     background-size: cover;
     background-attachment: fixed;
@@ -38,11 +50,11 @@
 
   .text {
     width: var(--hero-text-width);
-    padding: var(--space-s-l);
-    background: var(--glass-background);
+    padding: var(--hero-text-padding);
+    background: var(--hero-text-background);
     backdrop-filter: blur(10px);
     box-shadow: var(--glass-box-shadow);
-    border-radius: var(--space-2xs-xs);
+    border-radius: var(--hero-text-radius);
     overflow: hidden;
   }
 
@@ -97,8 +109,9 @@
 
 /* Dark theme: adjust glass background to be darker and text to be lighter */
 .dark-theme .hero.first-section {
+  --hero-text-background: var(--glass-background-dark);
+
   .text {
-    background: var(--glass-background-dark);
     color: var(--color-text);
   }
 }
