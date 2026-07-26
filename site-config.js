@@ -117,10 +117,20 @@ export default {
      * The order below is the whole cascade of the site, lowest first.
      * Anything left unlayered would beat all of it, which is why every
      * import in lib/assets/main.css names its layer.
+     *
+     * `vendor` sits between `base` and `components` for third-party widget
+     * CSS (Leaflet, OpenLayers, Shikwasa): it must beat the generic element
+     * styles in `base`, while a component that deliberately restyles a
+     * widget must beat the vendor defaults. No installed component ships
+     * vendor CSS yet, so the layer is empty, but it is declared here so the
+     * slot exists. If you install a component that injects a vendor
+     * stylesheet at runtime, copy that file into the build wrapped in
+     * `@layer vendor { ... }`; a plain <link> is unlayered CSS and would
+     * beat every layer, including your own `site` overrides.
      */
     layers: {
       enabled: true,
-      order: ['tokens', 'base', 'components', 'site']
+      order: ['tokens', 'base', 'vendor', 'components', 'site']
     }
   },
 
