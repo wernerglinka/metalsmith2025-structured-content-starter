@@ -41,7 +41,6 @@ export default {
   staticFiles: {
     source: 'lib/assets/',
     destination: 'assets/',
-    ignore: ['main.css', 'main.js', 'styles/']
   },
 
   /** Named collections. Sort accepts any frontmatter path, plus :asc or :desc */
@@ -99,6 +98,9 @@ export default {
    */
   components: {
     basePath: 'lib/layouts/components',
+    /** The page shell's entry points, bundled with every component's CSS and JS. The plugin's own default is lib/assets. */
+    mainCSSEntry: 'lib/shell/main.css',
+    mainJSEntry: 'lib/shell/main.js',
     sectionsDir: 'sections',
     partialsDir: '_partials',
     /** cssnano preset used when minifying the bundled CSS */
@@ -116,7 +118,7 @@ export default {
      *
      * The order below is the whole cascade of the site, lowest first.
      * Anything left unlayered would beat all of it, which is why every
-     * import in lib/assets/main.css names its layer.
+     * import in lib/shell/main.css names its layer.
      *
      * `vendor` sits between `base` and `components` for third-party widget
      * CSS (Leaflet, OpenLayers, Shikwasa): it must beat the generic element
@@ -162,7 +164,7 @@ export default {
 
   /** Paths watched in development, each change triggering a rebuild */
   watch: {
-    paths: ['src/**/*', 'lib/layouts/**/*', 'lib/assets/**/*', 'lib/data/**/*']
+    paths: ['src/**/*', 'lib/layouts/**/*', 'lib/shell/**/*', 'lib/assets/**/*', 'lib/data/**/*']
   },
 
   /** Development server. These keys are passed to BrowserSync as they are. */

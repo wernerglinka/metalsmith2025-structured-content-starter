@@ -184,6 +184,8 @@ metalsmith
     componentDependencyBundler({
       basePath: `${config.components.basePath}/${config.components.partialsDir}`,
       sectionsPath: `${config.components.basePath}/${config.components.sectionsDir}`,
+      mainCSSEntry: config.components.mainCSSEntry,
+      mainJSEntry: config.components.mainJSEntry,
       schema: config.components.schema,
       layers: config.components.layers,
       postcss: {
@@ -206,8 +208,7 @@ if (isProduction) {
 
 /**
  * 11. Static assets
- * Copies lib/assets to the build untouched, minus the CSS and JS entry
- * points the bundler already handled.
+ * Copies lib/assets (static files: images, icons) to the build untouched.
  * Learn more: https://github.com/wernerglinka/metalsmith-static-files
  */
 metalsmith.use(

@@ -7,7 +7,7 @@
  * (status / enable / disable) are also available for scripting.
  *
  * Optional shell pieces keep their templates in `lib/layouts/pages/parts/` and
- * styles in `lib/assets/styles/`, but stay inert until wired in. Wiring a feature
+ * styles in `lib/shell/styles/`, but stay inert until wired in. Wiring a feature
  * inserts a few tagged lines after fixed anchors in a layout, `main.css`, and/or
  * `main.js`; each line carries a `feature:<name>` tag so it can be removed again.
  * The registry in `scripts/features.json` describes each feature's edits.
@@ -36,8 +36,8 @@ const repoRoot = path.resolve(scriptDirectory, '..');
 const targetFiles = {
   header: { path: 'lib/layouts/pages/parts/header.njk', comment: 'njk' },
   default: { path: 'lib/layouts/pages/default.njk', comment: 'njk' },
-  css: { path: 'lib/assets/main.css', comment: 'css' },
-  js: { path: 'lib/assets/main.js', comment: 'js' }
+  css: { path: 'lib/shell/main.css', comment: 'css' },
+  js: { path: 'lib/shell/main.js', comment: 'js' }
 };
 
 /**

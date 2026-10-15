@@ -8,7 +8,7 @@ An optional header dropdown for multi-language sites. It lists the available lan
 node scripts/init-starter.mjs enable language-switcher
 ```
 
-This wires the switcher into the shell: the macro import and call in `lib/layouts/pages/parts/header.njk`, the styles in `lib/assets/main.css`, and the script in `lib/assets/main.js`. To turn it off again:
+This wires the switcher into the shell: the macro import and call in `lib/layouts/pages/parts/header.njk`, the styles in `lib/shell/main.css`, and the script in `lib/shell/main.js`. To turn it off again:
 
 ```shell
 node scripts/init-starter.mjs disable language-switcher

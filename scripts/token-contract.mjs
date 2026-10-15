@@ -11,7 +11,7 @@
  *
  * The "defined" universe a consumption is resolved against:
  *
- *   vocabulary - every custom property in lib/assets/styles/, the tokens
+ *   vocabulary - every custom property in lib/shell/styles/, the tokens
  *                this starter guarantees (see _design-tokens.css)
  *   components - properties any installed component defines itself, the
  *                `--<component>-*` design API
@@ -22,9 +22,9 @@
  * Scope is deliberately the installed contract: only the components present
  * in this site are audited. The canon-wide check lives in the library, where
  * every component is present (`npm run lint:components` there, with
- * `--vocab` pointing at this repository's lib/assets/styles).
+ * `--vocab` pointing at this repository's lib/shell/styles).
  *
- * The page-shell stylesheets under lib/assets are audited too, against a
+ * The page-shell stylesheets under lib/shell are audited too, against a
  * stricter universe: vocabulary, overrides, and vendor only. The shell must
  * not consume a property that exists only because some component defines
  * it, since components load per page while the shell loads everywhere.
@@ -45,9 +45,9 @@ import { fileURLToPath } from 'node:url';
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
 
-const VOCABULARY_DIR = 'lib/assets/styles';
+const VOCABULARY_DIR = 'lib/shell/styles';
 const OVERRIDES_DIR = 'lib/overrides';
-const SHELL_DIR = 'lib/assets';
+const SHELL_DIR = 'lib/shell';
 
 /**
  * Properties a component's template sets as an inline style per instance.

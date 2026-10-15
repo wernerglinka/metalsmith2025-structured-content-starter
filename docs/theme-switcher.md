@@ -8,7 +8,7 @@ An optional header button that toggles the site between light and dark themes. T
 node scripts/init-starter.mjs enable theme-switcher
 ```
 
-This wires the switcher into the shell: the macro import and call in `lib/layouts/pages/parts/header.njk`, the styles in `lib/assets/main.css`, the script in `lib/assets/main.js`, and a first-paint init include in `lib/layouts/pages/default.njk`. To turn it off again:
+This wires the switcher into the shell: the macro import and call in `lib/layouts/pages/parts/header.njk`, the styles in `lib/shell/main.css`, the script in `lib/shell/main.js`, and a first-paint init include in `lib/layouts/pages/default.njk`. To turn it off again:
 
 ```shell
 node scripts/init-starter.mjs disable theme-switcher
@@ -22,6 +22,6 @@ Because `main.js` loads at the end of the page, a tiny inline script (`lib/layou
 
 ## Make it theme your design
 
-The toggle flips a `dark-theme` class on `<body>`, and `lib/assets/styles/_design-tokens.css` ships a complete `body.dark-theme` block that redefines the color tokens under it. Because the shell and the components consume tokens rather than raw colors, enabling the switcher themes the whole page out of the box.
+The toggle flips a `dark-theme` class on `<body>`, and `lib/shell/styles/_design-tokens.css` ships a complete `body.dark-theme` block that redefines the color tokens under it. Because the shell and the components consume tokens rather than raw colors, enabling the switcher themes the whole page out of the box.
 
 When you retune the light tokens to your own design, retune the `body.dark-theme` block alongside them; the two live next to each other in the same file. Tokens documented as theme-constant (the button colors, the image screens, `--color-footer-text-light`) are deliberately absent from the dark block and keep their light values.

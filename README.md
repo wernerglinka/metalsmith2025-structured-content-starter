@@ -90,13 +90,13 @@ You need Node.js version 18 or higher.
 
 1.  **Initialize the page shell.**
 
-    The frame every page shares (head, header, footer, navigation, branding, breadcrumbs) is the **page shell**, kept in `lib/layouts/pages/parts/` and `lib/assets/styles/` rather than the component catalog, so you edit it directly. Three pieces are optional; set them up interactively:
+    The frame every page shares (head, header, footer, navigation, branding, breadcrumbs) is the **page shell**, kept in `lib/layouts/pages/parts/` and `lib/shell/styles/` rather than the component catalog, so you edit it directly. Three pieces are optional; set them up interactively:
 
     ```shell
     npm run init
     ```
 
-    This asks y/n for each optional feature and wires your choices in: the **dark/light theme switcher** (off by default), the **language switcher** (off by default), and **breadcrumbs** (on by default, turn it off for small sites). One needs a one-time setup once enabled: the language switcher reads `lib/data/languages.json`. The theme switcher works out of the box; its dark token values live in the `body.dark-theme` block in `lib/assets/styles/_design-tokens.css`, ready to retune. See [docs/page-shell.md](docs/page-shell.md), [docs/theme-switcher.md](docs/theme-switcher.md), and [docs/language-switcher.md](docs/language-switcher.md). To change one feature without the prompts: `node scripts/init-starter.mjs disable breadcrumbs`.
+    This asks y/n for each optional feature and wires your choices in: the **dark/light theme switcher** (off by default), the **language switcher** (off by default), and **breadcrumbs** (on by default, turn it off for small sites). One needs a one-time setup once enabled: the language switcher reads `lib/data/languages.json`. The theme switcher works out of the box; its dark token values live in the `body.dark-theme` block in `lib/shell/styles/_design-tokens.css`, ready to retune. See [docs/page-shell.md](docs/page-shell.md), [docs/theme-switcher.md](docs/theme-switcher.md), and [docs/language-switcher.md](docs/language-switcher.md). To change one feature without the prompts: `node scripts/init-starter.mjs disable breadcrumbs`.
 
 1.  **Available scripts**
 
@@ -154,7 +154,8 @@ A quick look at the top-level files and directories you'll see in this Metalsmit
    - **`src/robots.txt`**: SEO-friendly robots.txt file
 
 3. **`lib`**: This directory contains all the project assets and templates:
-   - **`lib/assets`**: Static assets like images and global CSS
+   - **`lib/shell`**: The page shell's CSS/JS entry points and styles (`main.css`, `main.js`, `styles/`)
+   - **`lib/assets`**: Static files (images, icons) copied to `build/assets/` untouched
    - **`lib/data`**: JSON data files for global site configuration
    - **`lib/layouts`**: Templates and components:
      - **`components/_partials`**: Reusable UI components (buttons, cards, etc.)
@@ -340,9 +341,9 @@ Component CSS ships in `@layer components.<name>`, and anything in `lib/override
 
 No `!important`, no `.page .section .hero .text` arms race, and the canon file stays byte-identical to the library, which is what keeps `components:status` meaningful and the next update a copy rather than a merge. `lib/overrides/hero/hero.css` ships as an example and is safe to delete.
 
-Prefer setting a component's custom properties over redeclaring its rules. Properties are its design API and survive upstream restructuring; rules are its implementation and do not. Site-wide decisions that are not about one component belong in `lib/assets/styles/_theme-customization.css`, which is also in the `site` layer.
+Prefer setting a component's custom properties over redeclaring its rules. Properties are its design API and survive upstream restructuring; rules are its implementation and do not. Site-wide decisions that are not about one component belong in `lib/shell/styles/_theme-customization.css`, which is also in the `site` layer.
 
-Layers are configured in `site-config.js` under `components.layers`, and every import in `lib/assets/main.css` names the layer it belongs to. That part is not optional: unlayered CSS beats every layer, so one bare `@import` would outrank the entire component catalog.
+Layers are configured in `site-config.js` under `components.layers`, and every import in `lib/shell/main.css` names the layer it belongs to. That part is not optional: unlayered CSS beats every layer, so one bare `@import` would outrank the entire component catalog.
 
 ### Updating a Component You Have Customized
 
