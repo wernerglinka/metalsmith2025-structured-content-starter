@@ -38,6 +38,10 @@
     &:hover {
       background: var(--color-primary-light, var(--color-primary));
       transform: scale(1.1);
+
+      @media (prefers-reduced-motion: reduce) {
+        transform: none;
+      }
     }
 
     &.active {

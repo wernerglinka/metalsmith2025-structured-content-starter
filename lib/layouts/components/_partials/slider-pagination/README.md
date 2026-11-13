@@ -325,3 +325,8 @@ document.addEventListener('keydown', (e) => {
 - **IE11**: Requires some CSS fallbacks
 - **Mobile**: Excellent touch support on all devices
 - **Screen Readers**: Full compatibility with assistive technologies
+## Why No `fields` Block
+
+The pagination is generated from the composing slider's `slides` array;
+its labels and count come from data the slider sections already declare.
+With no authorable data of its own, it declares no `fields`.
