@@ -1,8 +1,11 @@
-{% from "components/_partials/icon/icon.njk" import icon %}
-
+{#
+  The icons are included directly. The icon partial would wrap each one in a
+  link, and a link inside a button is invalid, adds a second tab stop and
+  scrolls the page to the top when clicked.
+#}
 {% macro darkLightThemeSwitcher() %}
-  <button class="theme-toggle js-theme-toggle none" aria-label="Toggle dark/light theme" title="Toggle dark/light theme">
-    <span class="light">{{ icon({ url: "#", icon: "moon" }) }}</span>
-    <span class="dark">{{ icon({ url: "#", icon: "sun" }) }}</span>
+  <button type="button" class="theme-toggle js-theme-toggle none" aria-label="Dark theme" aria-pressed="false" title="Toggle dark/light theme">
+    <span class="light" aria-hidden="true">{% include "icons/moon.njk" %}</span>
+    <span class="dark" aria-hidden="true">{% include "icons/sun.njk" %}</span>
   </button>
 {% endmacro %}

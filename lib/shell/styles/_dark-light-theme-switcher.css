@@ -16,14 +16,9 @@
   height: var(--space-m-l);
 
   /* Focus indicator */
-  &:focus {
+  &:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
-  }
-
-  /* Remove default focus outline */
-  &:focus:not(:focus-visible) {
-    outline: none;
   }
 
   span {
@@ -31,18 +26,14 @@
     top: -2px;
   }
 
-  a {
-    border-bottom: none;
+  svg {
+    width: 1.4em;
+    height: 1.4em;
+    vertical-align: middle;
 
-    svg {
-      width: 1.4em;
-      height: 1.4em;
-      vertical-align: middle;
-
-      * {
-        stroke: var(--color-link-navigation);
-        transition: stroke var(--transition-fade);
-      }
+    * {
+      stroke: var(--color-link-navigation);
+      transition: stroke var(--transition-fade);
     }
   }
 

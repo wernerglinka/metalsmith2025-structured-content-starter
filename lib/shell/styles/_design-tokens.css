@@ -220,6 +220,18 @@
 }
 
 /*
+ * Native UI (scrollbars, form controls, the canvas behind the page) follows
+ * the theme, which is the dark-theme class on the body.
+ */
+:root {
+  color-scheme: light;
+
+  &:has(body.dark-theme) {
+    color-scheme: dark;
+  }
+}
+
+/*
  * Dark theme. The optional theme switcher (npm run init, or
  * `node scripts/init-starter.mjs enable theme-switcher`) toggles a
  * `dark-theme` class on <body>; this block redefines the color tokens

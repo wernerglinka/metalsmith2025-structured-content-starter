@@ -16,7 +16,7 @@ node scripts/init-starter.mjs disable theme-switcher
 
 ## How it works
 
-The button (`lib/layouts/pages/parts/dark-light-theme-switcher.njk`) shows a moon/sun icon. Its script (`dark-light-theme-switcher.js`) is self-contained: on load it applies the saved theme (or the system preference when nothing is saved), and on click it toggles a `dark-theme` class on `<body>` and stores the choice. The icons used (`moon`, `sun`) are already in `lib/layouts/icons/`.
+The button (`lib/layouts/pages/parts/dark-light-theme-switcher.njk`) shows a moon/sun icon. Its script (`dark-light-theme-switcher.js`) is self-contained: on load it applies the saved theme (or the system preference when nothing is saved), and on click it toggles a `dark-theme` class on `<body>` and stores the choice. The button reports its state through `aria-pressed`. A choice made in another tab is picked up, and while nothing is saved the page follows changes to the system preference. `color-scheme` is derived from the same class in `_design-tokens.css`, so scrollbars and form controls match the theme. The icons used (`moon`, `sun`) are already in `lib/layouts/icons/`.
 
 Because `main.js` loads at the end of the page, a tiny inline script (`lib/layouts/pages/parts/theme-init.njk`, included right after `<body>` opens) applies the same rules synchronously, so a returning dark-theme visitor never sees a flash of the light theme. Both scripts share one decision: saved choice first, system preference otherwise.
 

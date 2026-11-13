@@ -12,7 +12,11 @@
 html {
   /* Prevent font size inflation */
   text-size-adjust: none;
-  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+
   scroll-padding-top: var(--space-l-xl);
 }
 

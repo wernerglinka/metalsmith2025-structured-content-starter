@@ -32,13 +32,9 @@
   appearance: none;
 
   /* Focus indicator */
-  &:focus {
+  &:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
   }
 
   a {
@@ -78,6 +74,11 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(-0.5rem);
+
+  @media (prefers-reduced-motion: reduce) {
+    transform: none;
+  }
+
   transition:
     opacity var(--transition-fast),
     transform var(--transition-fast),
@@ -120,8 +121,10 @@ a.language-option {
     border-bottom: none;
   }
 
-  &:focus {
-    outline: none;
+  /* Inset ring: the menu clips anything drawn outside the option */
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
     background: var(--background-color-link-hover);
   }
 }

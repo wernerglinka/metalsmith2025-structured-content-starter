@@ -114,6 +114,11 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(-5rem);
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
+    }
+
     transition:
       opacity 0.3s ease,
       transform 0.3s ease,
