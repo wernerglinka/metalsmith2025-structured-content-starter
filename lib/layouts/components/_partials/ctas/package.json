@@ -1,0 +1,27 @@
+{
+  "name": "@nunjucks-components/ctas",
+  "version": "1.6.4",
+  "description": "Nunjucks ctas partial",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "partial",
+    "ctas"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "e85f0fdc4086e7d7",
+  "main": "ctas.njk",
+  "files": [
+    "ctas.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "ctas.css"
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/button": ">=1.6.4",
+    "@nunjucks-components/text-link": ">=1.6.4"
+  }
+}
