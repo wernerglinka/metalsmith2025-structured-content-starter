@@ -87,7 +87,12 @@
     code {
       background: none;
       padding: 0;
-      color: var(--color-text);
+
+      /* Shiki colors the pre inline (color: #f8f8f2 on its dark theme);
+         that must reach un-tokenized text inside code, so no color of our
+         own here. Anything but inherit renders dark-on-dark in the light
+         theme. */
+      color: inherit;
 
       /* Block code inherits the pre's font; the inline-code 0.9em/Courier New
          above must not apply here, or Shiki blocks in prose render smaller and
