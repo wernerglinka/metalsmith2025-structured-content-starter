@@ -29,3 +29,10 @@ Import the macro in your template:
 ## External Links
 
 External links automatically receive security attributes (`target="_blank" rel="noopener noreferrer"`) and an accessible label indicating they open in a new window.
+
+## Why No `fields` Block
+
+Like `button`, this partial renders a single CTA entry whose authorable
+shape (`url`, `label`) is declared by the `ctas` partial's `fields` block.
+It is the renderer of that entry, not a separately authored component, so
+it declares no `fields` of its own.
