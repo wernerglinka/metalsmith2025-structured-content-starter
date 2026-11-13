@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Installation script for collection-card v1.3.1
-# Content Hash: 0e53193ba293ccc1
+# Installation script for collection-card v1.6.4
+# Content Hash: c9398d9ee208ad4f
 
 set -e
 
 # Base URL for component downloads
 DOWNLOAD_BASE_URL="https://nunjucks-components.com/downloads"
 
-echo "🔧 Installing collection-card v1.3.1..."
+echo "🔧 Installing collection-card v1.6.4..."
 
 # Detect project directory and component source
 COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -156,8 +156,8 @@ mkdir -p "$TARGET_DIR"
 # Check for existing installation
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
-  if [ "$EXISTING_HASH" = "0e53193ba293ccc1" ]; then
-    echo "✓ collection-card v1.3.1 already installed (no changes)"
+  if [ "$EXISTING_HASH" = "c9398d9ee208ad4f" ]; then
+    echo "✓ collection-card v1.6.4 already installed (no changes)"
     exit 0
   else
     echo "📦 Upgrading collection-card (content changed)"

@@ -118,3 +118,9 @@ The card component uses CSS classes for styling:
 - Proper heading hierarchy for screen readers
 - Descriptive link text and image alt attributes
 - Keyboard navigation support through standard HTML elements
+## Why No `fields` Block
+
+Cards are rendered from collection items at build time: the data is the
+target page's `card` metadata, authored on that page, not in the section
+that composes the list. With nothing authorable in the section object,
+this partial declares no `fields` and stays out of the editor schema.
