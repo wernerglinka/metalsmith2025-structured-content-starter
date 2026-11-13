@@ -1,13 +1,13 @@
 # Video Component
 
-The video component provides a flexible solution for embedding videos from multiple providers into a Metalsmith site. Rather than implementing separate components for each video platform or display mode, this unified component handles YouTube, Vimeo, and Cloudinary videos seamlessly, presenting them either inSitu within your content flow or as modal overlays. The component employs modern web development practices including lazy loading with Intersection Observer, dynamic script loading to minimize initial page weight, and a single-player architecture that ensures only one video plays at a time across your entire page. Through event-driven design and factory pattern, the component maintains clean separation between providers while offering consistent behavior and user experience regardless of the video source. The architecture prioritizes performance through intelligent resource management, loading provider APIs only when needed and automatically cleaning up resources when videos are closed or switched, making it an ideal choice for content-rich sites where video engagement is important but page performance cannot be compromised.
+The video component provides a flexible solution for embedding videos from multiple providers into a Metalsmith site. Rather than implementing separate components for each video platform or display mode, this unified component handles YouTube, Vimeo, and Cloudinary videos seamlessly, presenting them either inSitu within your content flow or as modal overlays. The component employs modern web development practices including a click-to-load facade (nothing is fetched from a provider until the visitor presses play), a native `<dialog>` for modal playback, dynamic script loading to minimize initial page weight, and a single-player architecture that ensures only one video plays at a time across your entire page. Through event-driven design and factory pattern, the component maintains clean separation between providers while offering consistent behavior and user experience regardless of the video source. The architecture prioritizes performance through intelligent resource management, loading provider APIs only when needed and automatically cleaning up resources when videos are closed or switched, making it an ideal choice for content-rich sites where video engagement is important but page performance cannot be compromised.
 
 ## Features
 
 - **Multiple Providers**: YouTube, Vimeo, and Cloudinary support
 - **Display Modes**: inSitu playback or modal overlay
 - **Responsive Design**: Automatic sizing across all devices
-- **Performance Optimized**: Lazy loading, script caching, intersection observer
+- **Performance Optimized**: Click-to-load facade, script caching
 - **Time Controls**: Start and end time support for YouTube
 - **Event-Driven**: Centralized event bus for component communication
 - **Accessibility**: Full keyboard navigation and screen reader support
@@ -42,10 +42,10 @@ video:
   src: 'youtube' # 'youtube', 'vimeo', or 'cloudinary'
   id: 'dQw4w9WgXcQ' # Video ID or public ID
   cloudname: 'my-cloud' # Required for Cloudinary
-  tn: '/assets/images/thumb.jpg' # Thumbnail for modal display
+  tn: '/assets/images/thumb.jpg' # Thumbnail shown until play is pressed
+  alt: 'Product tour' # Names the play button: "Play video: Product tour"
   start: 30 # Start time in seconds (YouTube only)
   end: 120 # End time in seconds (YouTube only)
-  lazy: true # Enable lazy loading (default: true)
 ```
 
 ## Properties
@@ -54,10 +54,10 @@ video:
 - `src`: Video provider ('youtube', 'vimeo', 'cloudinary'). Defaults to 'youtube' for backward compatibility
 - `id`: Video identifier (YouTube video ID, Vimeo ID, or Cloudinary public ID)
 - `cloudname`: Cloudinary cloud name (required for Cloudinary videos)
-- `tn`: Thumbnail image path (used for modal display)
+- `tn`: Thumbnail image path, shown until play is pressed
+- `alt`: Short description of the video. It becomes the play button's accessible name ("Play video: {alt}"); the thumbnail itself is rendered with an empty alt. Without it the button is named "Play video"
 - `start`: Optional start time in seconds (YouTube only)
 - `end`: Optional end time in seconds (YouTube only)
-- `lazy`: Enable lazy loading with Intersection Observer (default: true)
 
 ## Usage Examples
 
@@ -107,14 +107,13 @@ video:
       data-videosrc="youtube"
       data-starttime="30"
       data-endtime="120"
-      data-lazy="true"
     ></div>
   </div>
-  <button class="video-trigger">
-    <div class="play-button"></div>
-    <img src="/assets/images/thumb.jpg" alt="Video thumbnail" />
+  <button type="button" class="video-trigger" aria-label="Play video: Product tour">
+    <span class="play-button"></span>
+    <img src="/assets/images/thumb.jpg" alt="" />
   </button>
-  <button class="close" aria-label="Close video">×</button>
+  <button type="button" class="close" aria-label="Close video">Close</button>
 </div>
 ```
 
@@ -203,24 +202,29 @@ const playerVars = {
 
 ### Modal Features
 
-- **Close Button**: Click the [Close] button to close the modal
-- **Fade Animations**: Smooth fade in/out transitions using CSS animations
-- **Scroll Lock**: Prevents background scrolling when modal is open (via `body.modal-active`)
-- **Single Player**: Opening a modal stops any playing inSitu videos
-- **Auto Cleanup**: Player and DOM elements are cleaned up on close
+The modal is a native `<dialog>` opened with `showModal()`. One dialog is created on first use, appended to `<body>`, and reused for every modal video on the page. The browser provides the behavior that was previously scripted by hand:
 
-### Modal Overlay Structure
+- **Top layer**: Renders above everything without a `z-index`
+- **Inert page**: Content behind the modal cannot be focused or read by assistive technology
+- **Focus**: Moves to the Close button on open and returns to the trigger on close
+- **Dismissal**: Close button, Escape, the mobile back gesture, and a click on the backdrop (`closedby="any"`, with a small pointer-position fallback where `closedby` is unsupported)
+- **Scroll containment**: `overscroll-behavior: contain` on the dialog and its backdrop; `body.modal-active` is no longer used
+- **Fade in and out**: 0.3s opacity transition, shortened to 0.1s under `prefers-reduced-motion: reduce`. `@starting-style` drives the fade in. For the fade out, the script sets `data-closing` on the dialog, waits for the transition, then calls `close()`, which works in every browser
+- **Single Player**: Opening a modal stops any playing inSitu videos
+- **Single teardown path**: Every way of closing fires the dialog's `close` event, which removes the player
+
+### Modal Structure
 
 ```html
-<div id="video-overlay" class="js-video-overlay">
-  <span class="close">[Close]</span>
-  <div class="responsive-wrapper">
-    <div class="video-container">
-      <!-- Provider-specific player inserted here -->
-    </div>
+<dialog class="modal-dialog video-dialog" aria-label="Video player" closedby="any">
+  <button type="button" class="close" aria-label="Close video" autofocus>Close</button>
+  <div class="modal-dialog-content video-container">
+    <!-- Provider-specific player inserted here -->
   </div>
-</div>
+</dialog>
 ```
+
+The dialog is built by the `overlay` partial's `modules/modal-dialog.js`, which also carries the shared `.modal-dialog` styles in `overlay.css`. The video partial only sets the dialog's size and the 16:9 player box (`.video-dialog` in `video.css`).
 
 ## CSS Classes
 
@@ -253,12 +257,10 @@ await loadScript('https://www.youtube.com/iframe_api');
 await loadStyles('https://unpkg.com/cloudinary-video-player@latest/dist/cld-video-player.min.css');
 ```
 
-### Lazy Loading with Intersection Observer
+### Click-to-Load Facade
 
-- **Viewport Detection**: inSitu videos initialize when entering viewport
-- **Root Margin**: 100px before viewport edge (hardcoded)
-- **Graceful Fallback**: Works without IntersectionObserver support
-- **Note**: Always enabled for inSitu videos, cannot be configured
+- **No provider requests on page load**: Only the thumbnail is rendered. The provider API and player iframe load when the visitor presses play
+- **Privacy-enhanced YouTube**: YouTube players are served from `youtube-nocookie.com`
 
 ### Single-Player Management
 
@@ -316,8 +318,10 @@ videoConfig.set({
 
 ## Accessibility Considerations
 
-- **Close Button**: Text-based [Close] button is keyboard accessible
-- **Thumbnail Alt Text**: Provide descriptive alt text for video thumbnails
+- **Modal**: Native `<dialog>` semantics, focus containment and focus return
+- **Play Button Name**: Set `alt` so each play button has a distinct name ("Play video: {alt}")
+- **Hidden Trigger**: While an inSitu video plays, its thumbnail button is `visibility: hidden`, so it is out of the tab order
+- **Reduced Motion**: The modal fade is shortened when the visitor prefers reduced motion
 - **Semantic HTML**: Uses button elements for interactive controls
 
 ## Browser Support
@@ -331,9 +335,8 @@ videoConfig.set({
 
 1. **Provider Selection**: Choose the right provider for your needs
 2. **Thumbnail Quality**: Use high-quality thumbnails for modal videos
-3. **Lazy Loading**: Enable lazy loading for videos below the fold (default: true)
-4. **Alt Text**: Always provide descriptive alt text for thumbnails
-5. **Error Handling**: Component includes automatic error recovery
+3. **Alt Text**: Always set `alt`; it names the play button
+4. **Error Handling**: Component includes automatic error recovery
 
 ## Troubleshooting
 

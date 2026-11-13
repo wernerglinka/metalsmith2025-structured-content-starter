@@ -1,16 +1,11 @@
 {% from "components/_partials/image/image.njk" import image %}
-{% from "components/_partials/icon/icon.njk" import icon %}
 
 {% macro video(info) %}
+  {# The button carries the accessible name; the thumbnail inside it is decorative #}
+  {% set playLabel = ("Play video: " + info.alt) if info.alt else "Play video" %}
   {% if info.inSitu %}
     <div class="video media in-situ">
-      <button type="button" class="close" aria-label="Close video">
-        {% set item = {
-          url: '',
-          icon: 'x'
-        } %}
-        {{ icon(item) }}
-      </button>
+      <button type="button" class="close" aria-label="Close video">Close</button>
       
       <div class="in-situ-video-wrapper js-in-situ-video-wrapper">
         <div class="js-in-situ-video in-situ-video" 
@@ -22,11 +17,11 @@
         </div>
       </div>
     
-      <button type="button" class="video-trigger">
-        <div class="play-button"></div>
+      <button type="button" class="video-trigger" aria-label="{{ playLabel }}">
+        <span class="play-button"></span>
         {% set imageData = {
           src: info.tn,
-          alt: info.alt or "Video thumbnail - click to play"
+          alt: ''
         } %}
         {{ image(imageData) }}
       </button>
@@ -34,17 +29,17 @@
     </div>
   {% else %}
     <div class="video media">
-      <button type="button" class="js-modal-video"
+      <button type="button" class="js-modal-video" aria-label="{{ playLabel }}"
         data-videoid="{{ info.id }}" 
         data-videosrc="{{ info.src or 'youtube' }}"
         {% if info.cloudname %}data-cloudname="{{ info.cloudname }}"{% endif %}
         {% if info.start %}data-starttime="{{ info.start }}"{% endif %}
         {% if info.end %}data-endtime="{{ info.end }}"{% endif %}
       >
-        <div class="play-button"></div>
+        <span class="play-button"></span>
         {% set imageData = {
           src: info.tn,
-          alt: info.alt or "Video thumbnail - click to play"
+          alt: ''
         } %}
         {{ image(imageData) }}
       </button>

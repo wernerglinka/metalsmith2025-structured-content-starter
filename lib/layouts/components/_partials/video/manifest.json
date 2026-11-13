@@ -9,8 +9,7 @@
   ],
   "requires": [
     "overlay",
-    "image",
-    "icon"
+    "image"
   ],
   "validation": {
     "required": [

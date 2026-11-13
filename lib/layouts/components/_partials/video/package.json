@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/video",
-  "version": "1.4.0",
+  "version": "1.6.4",
   "description": "Nunjucks video partial",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "video"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "32d9a9f93d806845",
+  "contentHash": "2c77299a7986be61",
   "main": "video.njk",
   "files": [
     "video.njk",
@@ -23,8 +23,7 @@
     "modules/"
   ],
   "peerDependencies": {
-    "@nunjucks-components/overlay": ">=1.4.0",
-    "@nunjucks-components/image": ">=1.4.0",
-    "@nunjucks-components/icon": ">=1.4.0"
+    "@nunjucks-components/overlay": ">=1.6.4",
+    "@nunjucks-components/image": ">=1.6.4"
   }
 }
