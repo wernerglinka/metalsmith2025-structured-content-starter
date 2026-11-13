@@ -275,3 +275,6 @@ console.log('Is paused:', animation.isPaused);
 console.log('Current frame:', animation.currentFrame);
 console.log('Total frames:', animation.totalFrames);
 ```
+## Reduced Motion
+
+For visitors who prefer reduced motion (`prefers-reduced-motion: reduce`), animations with `control.autoplay` do not start automatically. The player's own controls are shown instead, so the visitor can choose to play them.
