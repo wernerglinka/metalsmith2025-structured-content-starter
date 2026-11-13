@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Installation script for overlay v1.3.1
-# Content Hash: 539d313b9367764b
+# Installation script for overlay v1.6.4
+# Content Hash: 08bbf4a3da91b78b
 
 set -e
 
 # Base URL for component downloads
 DOWNLOAD_BASE_URL="https://nunjucks-components.com/downloads"
 
-echo "🔧 Installing overlay v1.3.1..."
+echo "🔧 Installing overlay v1.6.4..."
 
 # Detect project directory and component source
 COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -156,8 +156,8 @@ mkdir -p "$TARGET_DIR"
 # Check for existing installation
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
-  if [ "$EXISTING_HASH" = "539d313b9367764b" ]; then
-    echo "✓ overlay v1.3.1 already installed (no changes)"
+  if [ "$EXISTING_HASH" = "08bbf4a3da91b78b" ]; then
+    echo "✓ overlay v1.6.4 already installed (no changes)"
     exit 0
   else
     echo "📦 Upgrading overlay (content changed)"
@@ -171,6 +171,11 @@ cp "$COMPONENT_DIR/overlay.css" "$TARGET_DIR/"
 cp "$COMPONENT_DIR/manifest.json" "$TARGET_DIR/"
 if [ -f "$COMPONENT_DIR/README.md" ]; then
   cp "$COMPONENT_DIR/README.md" "$TARGET_DIR/"
+fi
+
+# Copy modules directory
+if [ -d "$COMPONENT_DIR/modules" ]; then
+  cp -r "$COMPONENT_DIR/modules" "$TARGET_DIR/"
 fi
 
 echo ""

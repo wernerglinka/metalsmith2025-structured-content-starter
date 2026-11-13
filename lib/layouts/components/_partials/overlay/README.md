@@ -1,270 +1,88 @@
 # Overlay Component
 
-Modal overlay component for displaying content above the main page content with backdrop and close functionality.
+Shared modal dialog for components that show content above the page. It is used by the `video` partial (modal player), the `artwork` section (enlarged image), the `team-grid` section (member bios) and the `calendar` section (event details panel). The overlay has no template of its own and is not placed in frontmatter; a component pulls it in by listing `overlay` in its manifest `requires` and importing the helper.
 
-## Features
+## Files
 
-- **Modal Display**: Content appears above page with backdrop
-- **Close Functionality**: Multiple ways to close the overlay
-- **Backdrop Click**: Click outside content to close
-- **Keyboard Support**: ESC key to close, focus management
-- **Scroll Lock**: Prevents background scrolling when open
-- **Smooth Animations**: Fade in/out transitions
+- `modules/modal-dialog.js`: builds or enhances a native `<dialog>` and exports `createModalDialog`, `enhanceModalDialog` and `closeModalDialog`
+- `overlay.css`: the shared `.modal-dialog` styles (backdrop, fades, Close control)
+- `overlay.njk`: placeholder, renders nothing
 
-## Data Structure
+## What the browser provides
 
-```yaml
-overlay:
-  id: "unique-overlay-id"
-  title: "Overlay Title"
-  content: "Overlay content goes here"
-  closeLabel: "Close"
-  backdrop: true
+The dialog is opened with `showModal()`, so the platform handles the top layer (no `z-index`), makes the page behind inert, keeps focus inside, closes on Escape and the mobile back gesture, and returns focus to the trigger. None of that is scripted here.
+
+## What the helper adds
+
+- **Light dismiss**: `closedby="any"` closes on a backdrop click. Where `closedby` is unsupported (Safari), a small pointer-position fallback does the same
+- **Fade out**: a closed dialog leaves the top layer at once, so the helper sets `data-closing`, waits for the CSS transition, then calls `close()`. This works in every browser
+- **Close control**: a text-only "Close" button with `autofocus`
+
+The fade in uses `@starting-style`. Both fades run 0.3s, shortened to 0.1s under `prefers-reduced-motion: reduce`. Scroll is contained with `overscroll-behavior: contain` on the dialog and its backdrop; no class is set on `<body>`.
+
+## Usage
+
+```javascript
+import { closeModalDialog, createModalDialog } from '../../_partials/overlay/modules/modal-dialog.js';
+
+const { dialog, content } = createModalDialog({
+  className: 'my-dialog', // added next to `modal-dialog`
+  label: 'Accessible name of the dialog',
+  closeLabel: 'Close my thing' // must contain the visible text "Close"
+});
+
+// Every way of closing ends in the close event: tear content down here
+dialog.addEventListener('close', () => content.replaceChildren());
+
+content.replaceChildren(someElement);
+trigger.focus(); // so focus returns to the trigger, also in Safari
+dialog.showModal();
+
+// Later
+closeModalDialog(dialog); // fades out
+closeModalDialog(dialog, { immediate: true }); // e.g. before a page transition
 ```
 
-## Properties
+Create the dialog once and reuse it; `createModalDialog` appends it to `<body>`.
 
-- `id`: Unique identifier for the overlay
-- `title`: Overlay title/heading
-- `content`: Main overlay content (supports markdown)
-- `closeLabel`: Text for close button (accessibility)
-- `backdrop`: Enable/disable backdrop click to close
+### A dialog that is already in the markup
 
-## HTML Structure
+When the dialog's content is rendered by the template (as in `team-grid`), give it the `modal-dialog` class and pass it to `enhanceModalDialog`. That adds light dismiss and the fade out; you supply your own close button.
+
+```javascript
+import { closeModalDialog, enhanceModalDialog } from '../../_partials/overlay/modules/modal-dialog.js';
+
+enhanceModalDialog(dialog);
+trigger.addEventListener('click', () => {
+  trigger.focus();
+  dialog.showModal();
+});
+closeButton.addEventListener('click', () => closeModalDialog(dialog));
+```
+
+### Non-modal panels
+
+`closeModalDialog` also works for a dialog opened with `dialog.show()`, such as the calendar's event details panel. Style the open state as `[open]:not([data-closing])` and the helper lets the exit transition finish before it closes the dialog.
+
+## Generated markup
 
 ```html
-<div id="unique-overlay-id" class="overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
-  <div class="overlay-backdrop"></div>
-  <div class="overlay-content">
-    <header class="overlay-header">
-      <h2 id="overlay-title">Overlay Title</h2>
-      <button class="overlay-close" aria-label="Close overlay">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </header>
-    
-    <main class="overlay-body">
-      <p>Overlay content goes here</p>
-    </main>
-  </div>
-</div>
+<dialog class="modal-dialog my-dialog" aria-label="…" closedby="any">
+  <button type="button" class="close" aria-label="…" autofocus>Close</button>
+  <div class="modal-dialog-content"><!-- your content --></div>
+</dialog>
 ```
 
-## CSS Classes
+## Styling
 
-- `.overlay`: Main overlay container
-- `.overlay-backdrop`: Semi-transparent background
-- `.overlay-content`: Content container
-- `.overlay-header`: Header with title and close button
-- `.overlay-body`: Main content area
-- `.overlay-close`: Close button
-- `.overlay-open`: Applied to body when overlay is active
-- `.overlay-visible`: Applied to show overlay
-
-## Usage Examples
-
-### Image Gallery Overlay
-```yaml
-overlay:
-  id: "image-gallery"
-  title: "Image Gallery"
-  content: '<img src="/assets/images/gallery-1.jpg" alt="Gallery image">'
-  closeLabel: "Close gallery"
-```
-
-### Video Overlay
-```yaml
-overlay:
-  id: "video-modal"
-  title: "Watch Video"
-  content: '<video controls><source src="/assets/video/demo.mp4"></video>'
-  closeLabel: "Close video"
-```
-
-### Contact Form Overlay
-```yaml
-overlay:
-  id: "contact-form"
-  title: "Get In Touch"
-  content: '<form class="contact-form">...</form>'
-  closeLabel: "Close form"
-  backdrop: false
-```
-
-### Information Overlay
-```yaml
-overlay:
-  id: "terms-conditions"
-  title: "Terms & Conditions"
-  content: "Full terms and conditions text..."
-  closeLabel: "Close terms"
-```
-
-## JavaScript Integration
-
-### Opening Overlay
-```javascript
-function openOverlay(overlayId) {
-  const overlay = document.getElementById(overlayId);
-  overlay.classList.add('overlay-visible');
-  document.body.classList.add('overlay-open');
-  
-  // Focus management
-  overlay.querySelector('.overlay-close').focus();
-}
-```
-
-### Closing Overlay
-```javascript
-function closeOverlay(overlayId) {
-  const overlay = document.getElementById(overlayId);
-  overlay.classList.remove('overlay-visible');
-  document.body.classList.remove('overlay-open');
-  
-  // Return focus to trigger element
-  document.querySelector(`[data-overlay="${overlayId}"]`).focus();
-}
-```
-
-### Event Listeners
-```javascript
-// ESC key to close
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && document.body.classList.contains('overlay-open')) {
-    closeOverlay(getCurrentOverlayId());
-  }
-});
-
-// Backdrop click to close
-document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('overlay-backdrop')) {
-    closeOverlay(e.target.closest('.overlay').id);
-  }
-});
-```
-
-## CSS Styling
+Size the dialog and style its content through your own class. The shared styles reset the dialog box (no padding, border or background), so the dialog is exactly as large as the Close control plus your content. A click outside that box lands on the backdrop and dismisses the dialog.
 
 ```css
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.overlay-visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.overlay-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
-.overlay-content {
-  position: relative;
-  background: white;
-  border-radius: 8px;
-  max-width: 90vw;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.my-dialog {
+  width: min(80vw, 60rem);
 }
 ```
 
-## Accessibility Features
+## Browser support
 
-- **ARIA Attributes**: Proper `role="dialog"` and `aria-modal="true"`
-- **Focus Management**: Traps focus within overlay when open
-- **Keyboard Navigation**: ESC key closes, tab navigation works properly
-- **Screen Reader Support**: Proper labeling and structure
-- **Focus Return**: Returns focus to trigger element on close
-
-## Responsive Design
-
-```css
-@media (max-width: 768px) {
-  .overlay-content {
-    width: 95vw;
-    max-height: 95vh;
-    margin: 2.5vh 2.5vw;
-  }
-  
-  .overlay-header {
-    padding: 1rem;
-  }
-  
-  .overlay-body {
-    padding: 0 1rem 1rem;
-  }
-}
-```
-
-## Animation Options
-
-### Fade Animation
-```css
-.overlay {
-  transition: opacity 0.3s ease;
-}
-```
-
-### Scale Animation
-```css
-.overlay-content {
-  transform: scale(0.7);
-  transition: transform 0.3s ease;
-}
-
-.overlay-visible .overlay-content {
-  transform: scale(1);
-}
-```
-
-### Slide Animation
-```css
-.overlay-content {
-  transform: translateY(-50px);
-  transition: transform 0.3s ease;
-}
-
-.overlay-visible .overlay-content {
-  transform: translateY(0);
-}
-```
-
-## Best Practices
-
-1. **Focus Management**: Always manage focus properly for accessibility
-2. **Scroll Lock**: Prevent body scrolling when overlay is open
-3. **ESC Key**: Always allow ESC to close overlays
-4. **Backdrop Click**: Make backdrop clickable to close (unless disabled)
-5. **Mobile Considerations**: Ensure overlays work well on touch devices
-
-## Browser Support
-
-- **Modern Browsers**: Full support in all current browsers
-- **IE11**: Requires polyfills for some CSS features
-- **Mobile**: Excellent support on iOS and Android
-- **Touch Devices**: Full touch interaction support
-
-## Performance
-
-- **CSS Transforms**: Use transforms for animations (GPU accelerated)
-- **Lazy Loading**: Load overlay content only when needed
-- **Event Delegation**: Use event delegation for multiple overlays
-- **Memory Management**: Clean up event listeners when removing overlays
+`<dialog>` and `showModal()` are Baseline Widely Available. `closedby` and `@starting-style` are newer; without `closedby` the fallback handles light dismiss, and without `@starting-style` the dialog opens without the fade in.

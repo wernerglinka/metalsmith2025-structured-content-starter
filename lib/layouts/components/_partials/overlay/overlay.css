@@ -1,95 +1,89 @@
 /**
  * Overlay Component Styles
  *
+ * Shared look of the native modal <dialog> built by modal-dialog.js. The
+ * browser supplies the top layer, the inert page, focus containment and
+ * Escape handling. Components size the dialog and style its content through
+ * their own class (.video-dialog, .artwork-dialog).
+ *
  * Design Tokens:
- * - --overlay-background
  * - --contrast-text-on-dark
  * - --color-text-light
- * - --space-xl
  * - --font-md
  */
-#video-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 3000;
-  background-color: rgb(0 0 0 / 60%);
-  display: none;
+.modal-dialog {
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: none;
+  background: transparent;
 
-  &.is-open {
-    display: block;
+  /* Closed look; also the end state of the fade out */
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+
+  /* Stop scroll gestures inside the dialog chaining to the page behind it */
+  &:modal {
+    overscroll-behavior: contain;
+  }
+
+  /* ::backdrop only honors overscroll-behavior once it is a scroll container */
+  &::backdrop {
+    background-color: transparent;
+    overflow: hidden;
+    overscroll-behavior: contain;
+    transition: background-color 0.3s ease-out;
+  }
+
+  /*
+   * Open look. @starting-style fades it in; modal-dialog.js sets
+   * [data-closing] to fade it back out before it calls close().
+   */
+  &[open]:not([data-closing]) {
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  &[open]:not([data-closing])::backdrop {
+    background-color: rgb(0 0 0 / 60%);
+
+    @starting-style {
+      background-color: transparent;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &,
+    &::backdrop {
+      transition-duration: 0.1s;
+    }
   }
 
   .close {
-    position: absolute;
-    z-index: 1;
-    top: 7vh;
-    right: 10vw;
-    padding: 0;
+    display: block;
+    margin-inline-start: auto;
+    padding: 0.5rem 0.25rem;
     border: none;
+
+    /* Text only: drop the glass surface the global button styles add */
     background: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    border-radius: 0;
+
+    /* Keep the focus ring inside the dialog, which clips its overflow */
+    outline-offset: -2px;
     font-family: inherit;
     font-size: var(--font-md, 1.25rem);
     color: var(--contrast-text-on-dark);
 
     &:hover {
+      transform: none; /* Override button.css scale */
       cursor: pointer;
       color: var(--color-text-light);
     }
-  }
-
-  .responsive-wrapper {
-    position: fixed;
-    top: 10vh;
-    left: 10vw;
-    width: 80vw;
-    z-index: 1003;
-    overflow: visible;
-  }
-
-  .video-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-
-    iframe,
-    video,
-    .cld-video-player {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  &.fadeout {
-    display: block;
-    animation: fadeout 1s ease-in-out forwards;
-  }
-
-  &.fadein {
-    display: block;
-    animation: fadein 1s ease-in-out forwards;
-  }
-}
-
-@keyframes fadeout {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
