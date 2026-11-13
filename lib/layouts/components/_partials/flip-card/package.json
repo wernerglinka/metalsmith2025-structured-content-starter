@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/flip-card",
-  "version": "1.3.1",
+  "version": "1.6.4",
   "description": "Nunjucks flip-card partial",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "flip-card"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "cac1588ad6d14aa8",
+  "contentHash": "dc3a139824de5c9c",
   "main": "flip-card.njk",
   "files": [
     "flip-card.njk",
@@ -22,9 +22,9 @@
     "flip-card.js"
   ],
   "peerDependencies": {
-    "@nunjucks-components/ctas": ">=1.3.1",
-    "@nunjucks-components/text": ">=1.3.1",
-    "@nunjucks-components/icon": ">=1.3.1",
-    "@nunjucks-components/commons": ">=1.3.1"
+    "@nunjucks-components/ctas": ">=1.6.4",
+    "@nunjucks-components/text": ">=1.6.4",
+    "@nunjucks-components/icon": ">=1.6.4",
+    "@nunjucks-components/commons": ">=1.6.4"
   }
 }

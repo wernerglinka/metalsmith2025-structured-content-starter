@@ -26,6 +26,12 @@
   transition:
     transform 0.8s,
     outline 0.2s ease;
+
+  /* Reduced motion: swap faces without the 3D rotation */
+  @media (prefers-reduced-motion: reduce) {
+    transition: outline 0.2s ease;
+  }
+
   transform-style: preserve-3d;
 
   /* font sizes for card are constant for all viewport widths */
