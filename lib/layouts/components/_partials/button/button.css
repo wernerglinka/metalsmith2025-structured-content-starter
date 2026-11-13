@@ -40,6 +40,11 @@ button {
 
   &:hover {
     transform: scale(1.05);
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
+    }
+
     background-color: transparent; /* Override global anchor hover */
   }
 
@@ -70,7 +75,7 @@ button {
     padding: 0;
   }
 
-  &:focus {
+  &:focus-visible {
     outline: 2px solid var(--color-text-light);
     outline-offset: 2px;
 

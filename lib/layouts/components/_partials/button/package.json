@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/button",
-  "version": "1.6.0",
+  "version": "1.6.4",
   "description": "Nunjucks button partial",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "button"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "0127922077219a7b",
+  "contentHash": "c25fbb3718092f91",
   "main": "button.njk",
   "files": [
     "button.njk",
