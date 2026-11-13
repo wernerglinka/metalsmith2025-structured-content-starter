@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/commons",
-  "version": "1.4.0",
+  "version": "1.6.4",
   "description": "Nunjucks commons section",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "commons"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "3786c1bdf0068b14",
+  "contentHash": "41acce5782110e4b",
   "main": "commons.njk",
   "files": [
     "commons.njk",
