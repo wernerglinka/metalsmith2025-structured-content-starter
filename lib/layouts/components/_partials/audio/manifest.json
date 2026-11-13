@@ -9,7 +9,8 @@
   ],
   "requires": [
     "image",
-    "icon"
+    "icon",
+    "button"
   ],
   "validation": {
     "properties": {

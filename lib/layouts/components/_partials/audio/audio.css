@@ -140,6 +140,17 @@
       cursor: pointer;
       margin: 0;
     }
+
+    /* The range input is transparent, so show its keyboard focus on the bar */
+    &:has(.progress-input:focus-visible) {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 4px;
+      border-radius: var(--audio-progress-bar-radius);
+
+      .progress-handle {
+        opacity: 1;
+      }
+    }
   }
 
   .time-display {
@@ -184,9 +195,13 @@
         width: 100%;
         height: var(--audio-progress-bar-height);
         background: transparent;
-        outline: none;
         cursor: pointer;
         border-radius: var(--audio-progress-bar-radius);
+
+        &:focus-visible {
+          outline: 2px solid var(--color-primary);
+          outline-offset: 4px;
+        }
 
         /* Track styling for WebKit browsers */
         &::-webkit-slider-runnable-track {

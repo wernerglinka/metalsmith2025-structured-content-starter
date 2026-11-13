@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Installation script for audio v1.3.1
-# Content Hash: 79d49d2fddc787f1
+# Installation script for audio v1.6.4
+# Content Hash: a253506a2340d56c
 
 set -e
 
 # Base URL for component downloads
 DOWNLOAD_BASE_URL="https://nunjucks-components.com/downloads"
 
-echo "🔧 Installing audio v1.3.1..."
+echo "🔧 Installing audio v1.6.4..."
 
 # Detect project directory and component source
 COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -156,8 +156,8 @@ mkdir -p "$TARGET_DIR"
 # Check for existing installation
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
-  if [ "$EXISTING_HASH" = "79d49d2fddc787f1" ]; then
-    echo "✓ audio v1.3.1 already installed (no changes)"
+  if [ "$EXISTING_HASH" = "a253506a2340d56c" ]; then
+    echo "✓ audio v1.6.4 already installed (no changes)"
     exit 0
   else
     echo "📦 Upgrading audio (content changed)"
@@ -192,6 +192,18 @@ if [ ! -f "$COMPONENTS_BASE/$PARTIALS_DIR/icon/manifest.json" ] && [ ! -f "$COMP
   fi
 else
   echo "  ✓ icon (already installed)"
+fi
+# Check for button
+if [ ! -f "$COMPONENTS_BASE/$PARTIALS_DIR/button/manifest.json" ] && [ ! -f "$COMPONENTS_BASE/$SECTIONS_DIR/button/manifest.json" ]; then
+  # Try to auto-install (most dependencies are partials)
+  if ! install_dependency "button" "partial"; then
+    # Try as section if partial fails
+    if ! install_dependency "button" "section"; then
+      FAILED_DEPS="$FAILED_DEPS button"
+    fi
+  fi
+else
+  echo "  ✓ button (already installed)"
 fi
 
 # Check if any dependencies failed

@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/audio",
-  "version": "1.3.1",
+  "version": "1.6.4",
   "description": "Nunjucks audio partial",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "audio"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "79d49d2fddc787f1",
+  "contentHash": "a253506a2340d56c",
   "main": "audio.njk",
   "files": [
     "audio.njk",
@@ -22,7 +22,8 @@
     "audio.js"
   ],
   "peerDependencies": {
-    "@nunjucks-components/image": ">=1.3.1",
-    "@nunjucks-components/icon": ">=1.3.1"
+    "@nunjucks-components/image": ">=1.6.4",
+    "@nunjucks-components/icon": ">=1.6.4",
+    "@nunjucks-components/button": ">=1.6.4"
   }
 }
