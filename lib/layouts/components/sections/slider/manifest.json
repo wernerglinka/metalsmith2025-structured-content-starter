@@ -47,12 +47,8 @@
       "containerFields.background.isDark": {
         "type": "boolean"
       },
-      "config": {
-        "type": "string",
-        "enum": [
-          "",
-          "isTabs"
-        ]
+      "isTabs": {
+        "type": "boolean"
       },
       "text.titleTag": {
         "type": "string",
@@ -110,14 +106,10 @@
     }
   },
   "fields": {
-    "config": {
-      "widget": "select",
-      "label": "Slider mode",
-      "enum": [
-        "",
-        "isTabs"
-      ],
-      "default": ""
+    "isTabs": {
+      "widget": "checkbox",
+      "label": "Show tabs labelled with each slide's title",
+      "default": false
     },
     "text": {
       "$use": "text"

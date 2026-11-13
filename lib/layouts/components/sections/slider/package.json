@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/slider",
-  "version": "1.3.1",
+  "version": "1.6.4",
   "description": "Nunjucks slider section",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "slider"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "14c7b9665e626498",
+  "contentHash": "13a30380b0283691",
   "main": "slider.njk",
   "files": [
     "slider.njk",
@@ -22,10 +22,10 @@
     "slider.js"
   ],
   "peerDependencies": {
-    "@nunjucks-components/ctas": ">=1.3.1",
-    "@nunjucks-components/text": ">=1.3.1",
-    "@nunjucks-components/image": ">=1.3.1",
-    "@nunjucks-components/commons": ">=1.3.1",
-    "@nunjucks-components/slider-pagination": ">=1.3.1"
+    "@nunjucks-components/ctas": ">=1.6.4",
+    "@nunjucks-components/text": ">=1.6.4",
+    "@nunjucks-components/image": ">=1.6.4",
+    "@nunjucks-components/commons": ">=1.6.4",
+    "@nunjucks-components/slider-pagination": ">=1.6.4"
   }
 }

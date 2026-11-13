@@ -3,14 +3,14 @@
 {% from "components/_partials/image/image.njk" import image %}
 {% from "components/_partials/slider-pagination/slider-pagination.njk" import sliderPagination %}
 
-<div class="slider container {% if section.config === 'isTabs' %}is-tabs{% endif %}">
+<div class="slider container {% if section.isTabs %}is-tabs{% endif %}">
   <div
     class="slider-wrapper"
     role="region"
     aria-label="{% if section.text.title %}{{ section.text.title }}{% else %}Image carousel{% endif %}"
     tabindex="0"
   >
-    {{ sliderPagination(section.slides, section.config === 'isTabs') }}
+    {{ sliderPagination(section.slides, section.isTabs) }}
   
 
     <ul class="slides" aria-live="polite" aria-atomic="false">

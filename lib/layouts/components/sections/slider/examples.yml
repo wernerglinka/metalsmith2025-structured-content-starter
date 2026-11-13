@@ -16,7 +16,7 @@
       color: ""
       image: ""
       imageScreen: "none"
-  config: ""
+  isTabs: false
   text:
     leadIn: ""
     title: "Slider Title"
