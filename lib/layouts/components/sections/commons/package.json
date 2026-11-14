@@ -11,7 +11,7 @@
     "commons"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "edc4f88ef5e12cc9",
+  "contentHash": "353daefc07d4d014",
   "main": "commons.njk",
   "files": [
     "commons.njk",

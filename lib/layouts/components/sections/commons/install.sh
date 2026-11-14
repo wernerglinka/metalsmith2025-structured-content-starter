@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Installation script for commons v1.6.4
-# Content Hash: edc4f88ef5e12cc9
+# Content Hash: 353daefc07d4d014
 
 set -e
 
@@ -156,7 +156,7 @@ mkdir -p "$TARGET_DIR"
 # Check for existing installation
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
-  if [ "$EXISTING_HASH" = "edc4f88ef5e12cc9" ]; then
+  if [ "$EXISTING_HASH" = "353daefc07d4d014" ]; then
     echo "✓ commons v1.6.4 already installed (no changes)"
     exit 0
   else
