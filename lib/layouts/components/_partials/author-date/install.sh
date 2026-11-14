@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Installation script for author-date v1.3.1
-# Content Hash: 31a6b688afc25f68
+# Installation script for author-date v1.6.4
+# Content Hash: ba73388880561f53
 
 set -e
 
 # Base URL for component downloads
 DOWNLOAD_BASE_URL="https://nunjucks-components.com/downloads"
 
-echo "🔧 Installing author-date v1.3.1..."
+echo "🔧 Installing author-date v1.6.4..."
 
 # Detect project directory and component source
 COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -156,8 +156,8 @@ mkdir -p "$TARGET_DIR"
 # Check for existing installation
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
-  if [ "$EXISTING_HASH" = "31a6b688afc25f68" ]; then
-    echo "✓ author-date v1.3.1 already installed (no changes)"
+  if [ "$EXISTING_HASH" = "ba73388880561f53" ]; then
+    echo "✓ author-date v1.6.4 already installed (no changes)"
     exit 0
   else
     echo "📦 Upgrading author-date (content changed)"

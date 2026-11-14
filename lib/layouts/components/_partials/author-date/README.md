@@ -86,3 +86,11 @@ ctas:
 - **Glass Morphism Design**: Modern glass effect styling for buttons
 - **URL Validation**: Only renders CTAs with valid, non-empty URLs
 - **Accessibility**: WCAG 2.1 AA compliant with proper focus management
+
+## Why No `fields` Block
+
+This partial renders author and date values from a page's `card` metadata
+(or a collection item's), passed in by the composing template. Nothing in a
+section object authors it, and no manifest composes it via `$use` or
+`$extends`, so it declares no `fields` and does not participate in the
+editor schema.

@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/author-date",
-  "version": "1.3.1",
+  "version": "1.6.4",
   "description": "Nunjucks author-date partial",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "author-date"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "31a6b688afc25f68",
+  "contentHash": "ba73388880561f53",
   "main": "author-date.njk",
   "files": [
     "author-date.njk",
