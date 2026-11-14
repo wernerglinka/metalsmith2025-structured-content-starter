@@ -27,8 +27,14 @@
       "isFullScreen": {
         "type": "boolean"
       },
+      "targetId": {
+        "type": "string"
+      },
       "isDisabled": {
         "type": "boolean"
+      },
+      "date": {
+        "type": "string"
       },
       "containerFields.inContainer": {
         "type": "boolean"
@@ -98,13 +104,32 @@
   "fields": {
     "isReverse": {
       "widget": "checkbox",
-      "label": "Reverse layout (image on the right)",
+      "label": "Reverse layout (text on the right)",
       "default": false
     },
     "isFullScreen": {
       "widget": "checkbox",
       "label": "Full-screen hero",
       "default": false
+    },
+    "targetId": {
+      "widget": "text",
+      "label": "Scroll target: id of the section the full-screen arrow scrolls to (defaults to first-section)",
+      "default": ""
+    },
+    "date": {
+      "widget": "text",
+      "label": "Date (YYYY-MM-DD)",
+      "default": ""
+    },
+    "author": {
+      "widget": "multiselect",
+      "label": "Authors",
+      "source": {
+        "data": "author",
+        "valueKey": "name"
+      },
+      "default": []
     },
     "text": {
       "$use": "text",

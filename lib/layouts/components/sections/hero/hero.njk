@@ -21,14 +21,14 @@
       {% if section.ctas | hasCtas %}
         {{ ctas(section.ctas) }}
       {% endif %}
-      {% if section.date or section.author %}
+      {% if section.date or (section.author | length) %}
         <div class="author-date">{{ authorDate({ date: section.date, author: section.author }) }}</div>
       {% endif %}
     </div>
   {% endif %}
   {% if section.isFullScreen %}
-    {# scroll to first section after the hero #}
-    <a class="full-screen" href="#first-section" aria-label="Scroll to next section">
+    {# targetId names the section to scroll to; 'first-section' is the default #}
+    <a class="full-screen" href="#{{ section.targetId or 'first-section' }}" aria-label="Scroll to next section">
       {% include "icons/arrow-down.njk" %}
       <span class="sr-only">Scroll to next section</span>
     </a>

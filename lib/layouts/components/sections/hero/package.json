@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/hero",
-  "version": "1.4.0",
+  "version": "1.6.4",
   "description": "Nunjucks hero section",
   "keywords": [
     "nunjucks",
@@ -11,7 +11,7 @@
     "hero"
   ],
   "x-nunjucks-component": true,
-  "contentHash": "d2015e3a200be7a3",
+  "contentHash": "ed5bf31242e6de9b",
   "main": "hero.njk",
   "files": [
     "hero.njk",
@@ -21,10 +21,10 @@
     "hero.css"
   ],
   "peerDependencies": {
-    "@nunjucks-components/ctas": ">=1.4.0",
-    "@nunjucks-components/text": ">=1.4.0",
-    "@nunjucks-components/image": ">=1.4.0",
-    "@nunjucks-components/commons": ">=1.4.0",
-    "@nunjucks-components/author-date": ">=1.4.0"
+    "@nunjucks-components/ctas": ">=1.6.4",
+    "@nunjucks-components/text": ">=1.6.4",
+    "@nunjucks-components/image": ">=1.6.4",
+    "@nunjucks-components/commons": ">=1.6.4",
+    "@nunjucks-components/author-date": ">=1.6.4"
   }
 }

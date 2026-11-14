@@ -4,6 +4,9 @@
   id: ""
   isDisabled: false
   isFullScreen: true
+  targetId: ""
+  date: ""
+  author: ""
   isReverse: false
   containerFields:
     inContainer: true
