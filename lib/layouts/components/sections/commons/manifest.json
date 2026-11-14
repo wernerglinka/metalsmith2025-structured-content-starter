@@ -34,6 +34,11 @@
       "label": "CSS classes",
       "default": ""
     },
+    "isFullScreen": {
+      "widget": "checkbox",
+      "label": "Fill the viewport height",
+      "default": false
+    },
     "containerFields": {
       "inContainer": {
         "widget": "checkbox",
