@@ -6,6 +6,8 @@
  * - --commons-section-padding
  * - --commons-content-gap
  * - --commons-max-width
+ * - --commons-reveal-distance
+ * - --commons-reveal-range
  *
  * Design Tokens:
  * - --space-l-2xl
@@ -29,6 +31,8 @@
   --commons-section-padding: var(--space-s-l);
   --commons-content-gap: var(--content-gap, 2rem);
   --commons-max-width: var(--wrapper-max-width, 85rem);
+  --commons-reveal-distance: var(--space-m-l, 2rem);
+  --commons-reveal-range: 16rem;
 
   position: relative;
 
@@ -223,6 +227,34 @@
 
   &.no-bottom-padding .text {
     padding-block-end: var(--commons-section-padding);
+  }
+}
+
+/*
+  Reveal on scroll (containerFields.isAnimated)
+  The section fades and slides in while it enters the viewport, driven by its
+  own view timeline, so there is no script and scrolling back reverses it.
+  The range is capped so a section taller than the viewport is fully shown
+  after --commons-reveal-range of scrolling, not only once it fills the screen.
+  Only a "from" keyframe with a backwards fill: once the section is in, the
+  animation applies nothing, so no transform lingers to trap fixed children.
+  Decorative, so browsers without scroll-driven animations and visitors who
+  prefer reduced motion simply see the section.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes commons-reveal {
+      from {
+        opacity: 0;
+        translate: 0 var(--commons-reveal-distance);
+      }
+    }
+
+    .section-wrapper.is-animated {
+      animation: commons-reveal auto linear backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry min(100%, var(--commons-reveal-range));
+    }
   }
 }
 
