@@ -203,6 +203,9 @@ header {
       &.search-active {
         opacity: 0;
         pointer-events: none;
+
+        /* Out of the tab order too, not only out of sight */
+        visibility: hidden;
       }
     }
 
