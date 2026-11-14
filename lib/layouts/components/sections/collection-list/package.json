@@ -1,0 +1,29 @@
+{
+  "name": "@nunjucks-components/collection-list",
+  "version": "1.6.4",
+  "description": "Nunjucks collection-list section",
+  "keywords": [
+    "nunjucks",
+    "metalsmith",
+    "eleventy",
+    "component",
+    "section",
+    "collection-list"
+  ],
+  "x-nunjucks-component": true,
+  "contentHash": "8acc0e08f161e7cd",
+  "main": "collection-list.njk",
+  "files": [
+    "collection-list.njk",
+    "manifest.json",
+    "README.md",
+    "install.sh",
+    "collection-list.css"
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/commons": ">=1.6.4",
+    "@nunjucks-components/author-date": ">=1.6.4",
+    "@nunjucks-components/collection-card": ">=1.6.4",
+    "@nunjucks-components/collection-pagination": ">=1.6.4"
+  }
+}

@@ -1,13 +1,27 @@
 {
   "name": "collection-list",
   "type": "section",
-  "styles": ["collection-list.css"],
+  "styles": [
+    "collection-list.css"
+  ],
   "scripts": [],
-  "requires": ["commons"],
-  "context": ["collections"],
-  "requiredPlugins": ["metalsmith-sectioned-blog-pagination"],
+  "requires": [
+    "commons",
+    "author-date",
+    "collection-card",
+    "collection-pagination"
+  ],
+  "context": [
+    "collections"
+  ],
+  "requiredPlugins": [
+    "metalsmith-sectioned-blog-pagination"
+  ],
   "validation": {
-    "required": ["sectionType", "collectionName"],
+    "required": [
+      "sectionType",
+      "collectionName"
+    ],
     "properties": {
       "sectionType": {
         "type": "string",
@@ -16,6 +30,10 @@
       "collectionName": {
         "type": "string",
         "description": "Name of the collection to display (e.g., 'blog', 'components')"
+      },
+      "domainName": {
+        "type": "string",
+        "description": "URL segment the pagination links are built on (e.g., 'blog')"
       },
       "containerFields.inContainer": {
         "type": "boolean"
@@ -41,9 +59,18 @@
     "collectionName": {
       "widget": "select",
       "label": "Collection",
-      "source": { "collections": true },
+      "source": {
+        "collections": true
+      },
       "default": ""
     },
-    "$extends": ["commons"]
+    "domainName": {
+      "widget": "text",
+      "label": "Pagination URL segment",
+      "default": ""
+    },
+    "$extends": [
+      "commons"
+    ]
   }
 }
