@@ -28,6 +28,9 @@
       "isDisabled": {
         "type": "boolean"
       },
+      "componentDownload": {
+        "type": "string"
+      },
       "containerFields.inContainer": {
         "type": "boolean"
       },
@@ -92,6 +95,11 @@
       "widget": "checkbox",
       "label": "Reverse layout (image on the right)",
       "default": false
+    },
+    "componentDownload": {
+      "widget": "text",
+      "label": "Component package a __COMPONENT_DOWNLOAD__ CTA links to",
+      "default": ""
     },
     "text": {
       "$use": "text"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Installation script for banner v1.4.0
+# Installation script for banner v1.6.4
 # Content Hash: 2a0bface8a653cfa
 
 set -e
@@ -8,7 +8,7 @@ set -e
 # Base URL for component downloads
 DOWNLOAD_BASE_URL="https://nunjucks-components.com/downloads"
 
-echo "🔧 Installing banner v1.4.0..."
+echo "🔧 Installing banner v1.6.4..."
 
 # Detect project directory and component source
 COMPONENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -157,7 +157,7 @@ mkdir -p "$TARGET_DIR"
 if [ -f "$TARGET_DIR/manifest.json" ]; then
   EXISTING_HASH=$(grep -o '"contentHash": "[^"]*"' "$TARGET_DIR/manifest.json" | cut -d'"' -f4)
   if [ "$EXISTING_HASH" = "2a0bface8a653cfa" ]; then
-    echo "✓ banner v1.4.0 already installed (no changes)"
+    echo "✓ banner v1.6.4 already installed (no changes)"
     exit 0
   else
     echo "📦 Upgrading banner (content changed)"

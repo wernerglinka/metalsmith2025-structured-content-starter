@@ -1,6 +1,6 @@
 {
   "name": "@nunjucks-components/banner",
-  "version": "1.4.0",
+  "version": "1.6.4",
   "description": "Nunjucks banner section",
   "keywords": [
     "nunjucks",
@@ -22,9 +22,9 @@
     "banner.js"
   ],
   "peerDependencies": {
-    "@nunjucks-components/ctas": ">=1.4.0",
-    "@nunjucks-components/text": ">=1.4.0",
-    "@nunjucks-components/image": ">=1.4.0",
-    "@nunjucks-components/commons": ">=1.4.0"
+    "@nunjucks-components/ctas": ">=1.6.4",
+    "@nunjucks-components/text": ">=1.6.4",
+    "@nunjucks-components/image": ">=1.6.4",
+    "@nunjucks-components/commons": ">=1.6.4"
   }
 }
