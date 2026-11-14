@@ -19,5 +19,8 @@
     "README.md",
     "install.sh",
     "slider-pagination.css"
-  ]
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/button": ">=1.6.4"
+  }
 }

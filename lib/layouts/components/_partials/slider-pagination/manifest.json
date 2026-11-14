@@ -5,7 +5,9 @@
     "slider-pagination.css"
   ],
   "scripts": [],
-  "requires": [],
+  "requires": [
+    "button"
+  ],
   "validation": {
     "required": [
       "slides"
