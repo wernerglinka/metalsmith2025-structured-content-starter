@@ -17,10 +17,10 @@ sections:
     containerTag: section
     classes: 'first-section'
     id: ''
-    description: "This is a hero section with a background image and text overlay. The background image may be screened with a light or dark screen ( set with 'imageScreen' property in the background object ) so the text is not over powered by the image. The text area has a lead-in, title, sub-title, and prose. The prose is markdown text. All of the text parts are optional. There can be multiple CTAs, which are optional and may be buttons or links."
+    # This is a hero section with a background image and text overlay. The background image may be screened with a light or dark screen ( set with 'imageScreen' property in the background object ) so the text is not over powered by the image. The text area has a lead-in, title, sub-title, and prose. The prose is markdown text. All of the text parts are optional. There can be multiple CTAs, which are optional and may be buttons or links.
     isDisabled: false
     isFullScreen: false
-    isReverse: true
+    isReverse: false
     isAnimated: true
     date: ''
     author: ''
@@ -114,7 +114,7 @@ sections:
     containerTag: section
     classes: 'text-image-cta'
     id: 'section-id'
-    description: 'Implements a text, image, cta layout in a horizontal alignment.'
+    # Implements a text, image, cta layout in a horizontal alignment.
     isDisabled: false
     isAnimated: true
     containerFields:
@@ -161,7 +161,7 @@ sections:
     containerTag: section
     classes: 'image-gallery'
     id: 'section-id'
-    description: 'Implements a three column image gallery.'
+    # Implements a three column image gallery.
     isDisabled: false
     isAnimated: true
     containerFields:
@@ -244,7 +244,7 @@ sections:
     containerTag: section
     classes: ''
     id: ''
-    description: 'Implements a manual slider section.'
+    # Implements a manual slider section.
     isDisabled: false
     isAnimated: true
     containerFields:

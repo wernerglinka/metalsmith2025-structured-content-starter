@@ -37,18 +37,14 @@
     outline-offset: 2px;
   }
 
-  a {
-    border-bottom: none;
+  svg {
+    width: 1.4em;
+    height: 1.4em;
+    vertical-align: middle;
 
-    svg {
-      width: 1.4em;
-      height: 1.4em;
-      vertical-align: middle;
-
-      * {
-        stroke: var(--color-link-navigation);
-        transition: stroke var(--transition-fast);
-      }
+    * {
+      stroke: var(--color-link-navigation);
+      transition: stroke var(--transition-fast);
     }
   }
 }
@@ -94,7 +90,7 @@
     margin: 0;
     padding: 0;
 
-    &[aria-selected="true"] .language-option {
+    .language-option[aria-current="true"] {
       background: var(--color-background-light);
     }
   }

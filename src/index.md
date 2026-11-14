@@ -25,11 +25,11 @@ sections:
     containerTag: section
     classes: 'first-section merge-with-next'
     id: ''
-    description: "This is a hero section that merges with the next section. The hero section has a class of 'merge-with-next' which removes the bottom margin. The next section has 'containerFields.noMargin.top' set to true which removes the top margin. The hero section also has a class of 'main-hero' which is used to apply specific styles for this particulat hero implementation."
+    # This is a hero section that merges with the next section. The hero section has a class of 'merge-with-next' which removes the bottom margin. The next section has 'containerFields.noMargin.top' set to true which removes the top margin. The hero section also has a class of 'main-hero' which is used to apply specific styles for this particulat hero implementation.
 
     isDisabled: false
     isFullScreen: false
-    isReverse: true
+    isReverse: false
     containerFields:
       inContainer: false
       isAnimated: true
@@ -64,7 +64,7 @@ sections:
     containerTag: section
     classes: 'media-image hero-cta'
     id: ''
-    description: "This is a composed section that merges with the previous hero section. The hero section has a class of 'merge-with-next' which removes the bottom margin. The composed section has 'containerFields.noMargin.top' set to true which removes the top margin. The composed section also has a class of 'in-container' which wraps the section in a container. This is a popular visual pattern in corporate and marketing websites."
+    # This is a composed section that merges with the previous hero section. The hero section has a class of 'merge-with-next' which removes the bottom margin. The composed section has 'containerFields.noMargin.top' set to true which removes the top margin. The composed section also has a class of 'in-container' which wraps the section in a container. This is a popular visual pattern in corporate and marketing websites.
     isDisabled: false
     containerFields:
       inContainer: true
@@ -111,7 +111,6 @@ sections:
     classes: ''
     id: 'section-id'
     isDisabled: false
-    isReverse: false
     containerFields:
       inContainer: false
       isAnimated: true

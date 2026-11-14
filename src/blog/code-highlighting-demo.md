@@ -22,10 +22,10 @@ sections:
     containerTag: section
     classes: 'first-section'
     id: ''
-    description: "This is a blog post hero section."
+    # This is a blog post hero section.
     isDisabled: false
     isFullScreen: false
-    isReverse: true
+    isReverse: false
     date: '2025-07-15'
     author:
       - Marie Curie
@@ -64,7 +64,6 @@ sections:
     classes: ''
     id: 'section-id'
     isDisabled: false
-    isReverse: false
     containerFields:
       inContainer: false
       isAnimated: true
@@ -188,7 +187,6 @@ sections:
     classes: ''
     id: ''
     isDisabled: false
-    isReverse: false
     containerFields:
       inContainer: false
       isAnimated: true

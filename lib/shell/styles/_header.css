@@ -165,6 +165,7 @@ header {
     /* Reset button styles for header buttons - higher specificity than global button styles */
     button.none,
     button.theme-toggle,
+    button.language-toggle,
     button.search-icon-toggle,
     button[type="submit"] {
       background: transparent;

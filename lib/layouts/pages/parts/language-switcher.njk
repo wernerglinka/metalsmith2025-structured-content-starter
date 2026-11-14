@@ -1,5 +1,3 @@
-{% from "components/_partials/icon/icon.njk" import icon %}
-
 {#
   Language Switcher Component
 
@@ -21,13 +19,17 @@
   {% set fallback = fallbackUrl or data.languages.fallbackUrl or '/404/' %}
 
   <div class="language-switcher js-language-switcher" data-default-lang="{{ default }}" data-fallback-url="{{ fallback }}">
-    {{ icon({ url: "#", icon: "globe" }) }}
+    <button type="button" class="language-toggle icon-wrapper js-language-toggle" aria-label="Choose language" aria-expanded="false" aria-controls="language-dropdown">
+      {% include "icons/globe.njk" %}
+    </button>
     <span class="current-lang js-current-lang">{{ default | upper }}</span>
 
-    <ul class="language-dropdown js-language-dropdown" role="listbox" aria-label="Available languages">
+    {# A plain list of links, not a listbox: the options are reached with Tab.
+       role="list" keeps the list semantics Safari drops with list-style: none. #}
+    <ul id="language-dropdown" class="language-dropdown js-language-dropdown" role="list">
       {% for lang in langs %}
-        <li role="option" data-lang="{{ lang.code }}"{% if lang.code == default %} aria-selected="true"{% endif %}>
-          <a href="{{ fallback }}" class="language-option js-language-option">
+        <li data-lang="{{ lang.code }}">
+          <a href="{{ fallback }}" class="language-option js-language-option" lang="{{ lang.code }}"{% if lang.code == default %} aria-current="true"{% endif %}>
             <span class="lang-code">{{ lang.code | upper }}</span>
             <span class="lang-label">{{ lang.label }}</span>
           </a>

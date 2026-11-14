@@ -23,10 +23,10 @@ sections:
     containerTag: section
     classes: 'first-section'
     id: ''
-    description: "This is a blog post hero section. The hero section has a class of 'blog-hero'."
+    # This is a blog post hero section. The hero section has a class of 'blog-hero'.
     isDisabled: false
     isFullScreen: false
-    isReverse: true
+    isReverse: false
     date: '2025-06-02'
     author:
       - Albert Einstein
@@ -66,7 +66,6 @@ sections:
     classes: ''
     id: 'section-id'
     isDisabled: false
-    isReverse: false
     containerFields:
       inContainer: false
       isAnimated: true
@@ -148,7 +147,6 @@ sections:
     classes: ''
     id: ''
     isDisabled: false
-    isReverse: false
     containerFields:
       inContainer: false
       isAnimated: true
