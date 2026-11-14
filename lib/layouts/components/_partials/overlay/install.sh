@@ -164,6 +164,45 @@ if [ -f "$TARGET_DIR/manifest.json" ]; then
   fi
 fi
 
+# Check and auto-install dependencies
+echo "Checking dependencies..."
+AUTO_INSTALLED_DEPS=""
+FAILED_DEPS=""
+
+# Check for button
+if [ ! -f "$COMPONENTS_BASE/$PARTIALS_DIR/button/manifest.json" ] && [ ! -f "$COMPONENTS_BASE/$SECTIONS_DIR/button/manifest.json" ]; then
+  # Try to auto-install (most dependencies are partials)
+  if ! install_dependency "button" "partial"; then
+    # Try as section if partial fails
+    if ! install_dependency "button" "section"; then
+      FAILED_DEPS="$FAILED_DEPS button"
+    fi
+  fi
+else
+  echo "  ✓ button (already installed)"
+fi
+
+# Check if any dependencies failed
+if [ -n "$FAILED_DEPS" ]; then
+  echo ""
+  echo "⚠ Warning: Could not install some dependencies:$FAILED_DEPS"
+  echo ""
+  echo "You may need to download them manually from:"
+  echo "  https://nunjucks-components.com/downloads/"
+  echo ""
+  # Skip interactive prompt if called from bundle installer or auto-install mode
+  if [ -n "$BUNDLE_INSTALL" ] || [ -n "$AUTO_INSTALL" ]; then
+    echo "  (Auto-continuing)"
+    echo ""
+  else
+    read -p "Continue installation anyway? (y/n) " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+      exit 1
+    fi
+  fi
+fi
+
 # Copy files
 echo "Copying files..."
 cp "$COMPONENT_DIR/overlay.njk" "$TARGET_DIR/"
@@ -182,6 +221,9 @@ echo ""
 echo "✓ Installation complete"
 echo ""
 echo "Files installed to: $TARGET_DIR"
+if [ -n "$AUTO_INSTALLED_DEPS" ]; then
+  echo "Dependencies installed:$AUTO_INSTALLED_DEPS"
+fi
 echo ""
 # Cleanup extracted component directory if not called from bundle or auto-install
 if [ -z "$BUNDLE_INSTALL" ] && [ -z "$AUTO_INSTALL" ] && [ -f "$COMPONENT_DIR/package.json" ] && grep -q "\"x-nunjucks-component\"" "$COMPONENT_DIR/package.json" 2>/dev/null; then

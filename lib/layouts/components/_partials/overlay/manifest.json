@@ -5,7 +5,9 @@
     "overlay.css"
   ],
   "scripts": [],
-  "requires": [],
+  "requires": [
+    "button"
+  ],
   "validation": {
     "required": [],
     "properties": {}

@@ -20,5 +20,8 @@
     "install.sh",
     "overlay.css",
     "modules/"
-  ]
+  ],
+  "peerDependencies": {
+    "@nunjucks-components/button": ">=1.6.4"
+  }
 }
