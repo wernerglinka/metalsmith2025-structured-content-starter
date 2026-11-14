@@ -21,12 +21,12 @@ sections:
     # This is a full screen hero section with a background image and text overlay. The proporty 'isFullScreen' is set to true, which turn a standard hero section into full screen.
     isDisabled: false
     isReverse: false
-    isAnimated: true
     isFullScreen: true
     targetId: 'first-section'
     date: ''
     author: ''
     containerFields:
+      isAnimated: true
       inContainer: false
       noMargin:
         top: true
@@ -60,8 +60,8 @@ sections:
     classes: ''
     id: 'first-section'
     isDisabled: false
-    isAnimated: true
     containerFields:
+      isAnimated: true
       inContainer: false
       noMargin:
         top: true
@@ -92,8 +92,8 @@ sections:
     classes: ''
     id: 'first-section'
     isDisabled: false
-    isAnimated: true
     containerFields:
+      isAnimated: true
       inContainer: false
       noMargin:
         top: true
@@ -125,8 +125,8 @@ sections:
     id: ''
     # Implements a manual slider section.
     isDisabled: false
-    isAnimated: true
     containerFields:
+      isAnimated: true
       inContainer: true
       noMargin:
         top: false
@@ -196,8 +196,8 @@ sections:
     id: ''
     # Implements a manual slider section.
     isDisabled: false
-    isAnimated: true
     containerFields:
+      isAnimated: true
       inContainer: true
       noMargin:
         top: false
@@ -266,8 +266,8 @@ sections:
     classes: ''
     id: 'first-section'
     isDisabled: false
-    isAnimated: true
     containerFields:
+      isAnimated: true
       inContainer: false
       noMargin:
         top: true
@@ -329,8 +329,8 @@ sections:
     classes: ''
     id: 'first-section'
     isDisabled: false
-    isAnimated: true
     containerFields:
+      isAnimated: true
       inContainer: false
       noMargin:
         top: true

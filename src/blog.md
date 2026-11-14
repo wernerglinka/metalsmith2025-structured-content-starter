@@ -25,7 +25,7 @@ sections:
     author: ''
     containerFields:
       inContainer: false
-      isAnimated: true
+      isAnimated: false
       noMargin:
         top: true
         bottom: false
@@ -64,7 +64,7 @@ sections:
     isFullScreen: false
     containerFields:
       inContainer: false
-      isAnimated: true
+      isAnimated: false
       noMargin:
         top: true
         bottom: false

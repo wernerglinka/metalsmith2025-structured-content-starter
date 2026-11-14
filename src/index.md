@@ -32,7 +32,7 @@ sections:
     isReverse: false
     containerFields:
       inContainer: false
-      isAnimated: true
+      isAnimated: false
       noMargin:
         top: true
         bottom: true
@@ -68,7 +68,7 @@ sections:
     isDisabled: false
     containerFields:
       inContainer: true
-      isAnimated: true
+      isAnimated: false
       noMargin:
         top: true
         bottom: false
@@ -113,7 +113,7 @@ sections:
     isDisabled: false
     containerFields:
       inContainer: false
-      isAnimated: true
+      isAnimated: false
       noMargin:
         top: true
         bottom: true
@@ -149,7 +149,7 @@ sections:
     isReverse: false
     containerFields:
       inContainer: true
-      isAnimated: true
+      isAnimated: false
       noMargin:
         top: false
         bottom: true
@@ -174,7 +174,7 @@ sections:
     isReverse: false
     containerFields:
       inContainer: true
-      isAnimated: true
+      isAnimated: false
       noMargin:
         top: false
         bottom: true
@@ -214,7 +214,7 @@ sections:
     isReverse: false
     containerFields:
       inContainer: false
-      isAnimated: true
+      isAnimated: false
       noMargin:
         top: false
         bottom: false

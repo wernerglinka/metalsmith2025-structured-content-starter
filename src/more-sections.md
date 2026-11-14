@@ -21,7 +21,6 @@ sections:
     isDisabled: false
     isFullScreen: false
     isReverse: false
-    isAnimated: true
     date: ''
     author: ''
     containerFields:
@@ -58,7 +57,6 @@ sections:
     classes: ''
     id: ''
     isDisabled: false
-    isAnimated: true
     containerFields:
       inContainer: false
       noMargin:
@@ -93,7 +91,7 @@ sections:
     isReverse: true
     containerFields:
       inContainer: false
-      isAnimated: true
+      isAnimated: false
       noMargin:
         top: true
         bottom: false
@@ -116,7 +114,6 @@ sections:
     id: 'section-id'
     # Implements a text, image, cta layout in a horizontal alignment.
     isDisabled: false
-    isAnimated: true
     containerFields:
       inContainer: true
       noMargin:
@@ -163,7 +160,6 @@ sections:
     id: 'section-id'
     # Implements a three column image gallery.
     isDisabled: false
-    isAnimated: true
     containerFields:
       inContainer: true
       noMargin:
@@ -207,7 +203,6 @@ sections:
     id: 'section-id'
     isDisabled: false
     isReverse: false
-    isAnimated: true
     containerFields:
       inContainer: false
       noMargin:
@@ -246,7 +241,6 @@ sections:
     id: ''
     # Implements a manual slider section.
     isDisabled: false
-    isAnimated: true
     containerFields:
       inContainer: true
       noMargin:
