@@ -6,7 +6,7 @@
   {% include "pages/parts/head.njk" %}
 
 
-  <body class="{{ bodyClasses }}">
+  <body class="{{ bodyClasses }}" data-page-classes="{{ bodyClasses }}">
     {# feature-slot:theme-init #}
     <span id="top"></span>
     {% include "pages/parts/header.njk" %}
